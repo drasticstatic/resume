@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | Christopher Wilson</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="../css/resume.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CW</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section resources-hero">
+            <h1>Educational Resources</h1>
+            <p class="hero-subtitle">Learning Materials for Sacred Technology, Precision Engineering, and Spiritual Innovation</p>
+        </section>
+
+        <!-- Learning Paths -->
+        <section class="section learning-paths">
+            <h2>Learning Paths</h2>
+            
+            <div class="paths-grid">
+                <div class="path-card">
+                    <div class="path-icon">🌐</div>
+                    <h3>Zero-Knowledge Development</h3>
+                    <p>Master privacy-preserving blockchain development with Aleo Leo and ZK circuits.</p>
+                    <div class="path-topics">
+                        <span class="topic">Aleo Leo Programming</span>
+                        <span class="topic">ZK Circuit Design</span>
+                        <span class="topic">Privacy Protocols</span>
+                        <span class="topic">MPC Systems</span>
+                    </div>
+                    <button onclick="openResourceModal('zk-development')">View Resources</button>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">🔧</div>
+                    <h3>Precision Manufacturing</h3>
+                    <p>Learn CNC machining, CAM programming, and precision engineering principles.</p>
+                    <div class="path-topics">
+                        <span class="topic">Mazatrol Programming</span>
+                        <span class="topic">Mastercam Workflows</span>
+                        <span class="topic">G-code Fundamentals</span>
+                        <span class="topic">Quality Systems</span>
+                    </div>
+                    <button onclick="openResourceModal('manufacturing')">View Resources</button>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">🍄</div>
+                    <h3>Sacred Technology</h3>
+                    <p>Explore the intersection of spirituality, technology, and decentralized systems.</p>
+                    <div class="path-topics">
+                        <span class="topic">Mycelial Models</span>
+                        <span class="topic">Ritual Intelligence</span>
+                        <span class="topic">Soulbound Identity</span>
+                        <span class="topic">DAO Governance</span>
+                    </div>
+                    <button onclick="openResourceModal('sacred-tech')">View Resources</button>
+                </div>
+
+                <div class="path-card">
+                    <div class="path-icon">🎵</div>
+                    <h3>Audio Engineering</h3>
+                    <p>Professional audio production, live sound, and acoustic principles.</p>
+                    <div class="path-topics">
+                        <span class="topic">FOH Engineering</span>
+                        <span class="topic">System Design</span>
+                        <span class="topic">Digital Mixing</span>
+                        <span class="topic">Acoustics</span>
+                    </div>
+                    <button onclick="openResourceModal('audio-engineering')">View Resources</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools & Software -->
+        <section class="section tools-software">
+            <h2>Recommended Tools & Software</h2>
+            
+            <div class="tools-categories">
+                <div class="tool-category">
+                    <h3>🌐 Blockchain Development</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h4>Aleo SDK</h4>
+                            <p>Zero-knowledge application development platform</p>
+                            <a href="https://aleo.org" target="_blank">Learn More</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Wagmi</h4>
+                            <p>React hooks for Ethereum development</p>
+                            <a href="https://wagmi.sh" target="_blank">Documentation</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Hardhat</h4>
+                            <p>Ethereum development environment</p>
+                            <a href="https://hardhat.org" target="_blank">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h3>🔧 CNC & CAM Software</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h4>Mastercam</h4>
+                            <p>Industry-leading CAM software for CNC programming</p>
+                            <a href="https://mastercam.com" target="_blank">Learn More</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>FeatureCAM</h4>
+                            <p>Feature-based CAM for automated programming</p>
+                            <a href="https://autodesk.com/products/featurecam" target="_blank">Documentation</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Mazatrol</h4>
+                            <p>Conversational programming for Mazak machines</p>
+                            <a href="https://mazakusa.com" target="_blank">Resources</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h3>🎵 Audio Production</h3>
+                    <div class="tools-list">
+                        <div class="tool-item">
+                            <h4>Pro Tools</h4>
+                            <p>Industry standard for audio recording and mixing</p>
+                            <a href="https://avid.com/pro-tools" target="_blank">Learn More</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>Yamaha CL Series</h4>
+                            <p>Digital mixing consoles for live sound</p>
+                            <a href="https://usa.yamaha.com" target="_blank">Documentation</a>
+                        </div>
+                        <div class="tool-item">
+                            <h4>SMAART</h4>
+                            <p>Audio measurement and analysis software</p>
+                            <a href="https://rationalacoustics.com" target="_blank">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Education -->
+        <section class="section certifications">
+            <h2>Certifications & Continuing Education</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <h3>🏆 Mazak Certification</h3>
+                    <p>Mazatrol Smooth G Conversational Programming for Turning/Turning with Milling & Hyperquadrex</p>
+                    <span class="cert-year">2019</span>
+                </div>
+
+                <div class="cert-item">
+                    <h3>🏆 Mastercam Certification</h3>
+                    <p>Associate level certification for lathe & mill design and toolpaths</p>
+                    <span class="cert-year">2014-2015</span>
+                </div>
+
+                <div class="cert-item">
+                    <h3>🏆 Journeyman Machinist</h3>
+                    <p>Manufacturer's Association of South Central PA apprenticeship program</p>
+                    <span class="cert-year">2011-2015</span>
+                </div>
+
+                <div class="cert-item">
+                    <h3>🏆 Ordained Minister</h3>
+                    <p>Spiritual guidance and pastoral care within psychedelic-informed communities</p>
+                    <span class="cert-year">Ongoing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommended Reading -->
+        <section class="section reading-list">
+            <h2>Recommended Reading</h2>
+            
+            <div class="books-categories">
+                <div class="book-category">
+                    <h3>📚 Sacred Technology</h3>
+                    <ul class="books-list">
+                        <li>"The Tao of Physics" by Fritjof Capra</li>
+                        <li>"Braiding Sweetgrass" by Robin Wall Kimmerer</li>
+                        <li>"The Web of Life" by Fritjof Capra</li>
+                        <li>"Entangled Life" by Merlin Sheldrake</li>
+                    </ul>
+                </div>
+
+                <div class="book-category">
+                    <h3>📚 Blockchain & Cryptography</h3>
+                    <ul class="books-list">
+                        <li>"Mastering Bitcoin" by Andreas Antonopoulos</li>
+                        <li>"Zero to One" by Peter Thiel</li>
+                        <li>"The Sovereign Individual" by Davidson & Rees-Mogg</li>
+                        <li>"Cryptography Engineering" by Ferguson, Schneier & Kohno</li>
+                    </ul>
+                </div>
+
+                <div class="book-category">
+                    <h3>📚 Engineering & Craftsmanship</h3>
+                    <ul class="books-list">
+                        <li>"Shop Class as Soulcraft" by Matthew Crawford</li>
+                        <li>"The Craftsman" by Richard Sennett</li>
+                        <li>"Zen and the Art of Motorcycle Maintenance" by Robert Pirsig</li>
+                        <li>"The Design of Everyday Things" by Don Norman</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="../js/modal.js"></script>
+    <script src="../js/resources.js"></script>
+</body>
+</html>

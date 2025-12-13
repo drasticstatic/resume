@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Christopher Wilson</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="../css/resume.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CW</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section portfolio-hero">
+            <div class="hero-background">
+                <div class="code-rain"></div>
+            </div>
+            <h1 class="glitch-text" data-text="Portfolio">Portfolio</h1>
+            <p class="hero-subtitle cosmic-text">Sacred Technology • Precision Engineering • Spiritual Innovation</p>
+            <div class="portfolio-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🍄</div>
+                    <div class="stat-info">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Web3 Projects</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔧</div>
+                    <div class="stat-info">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Parts Machined</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⛪</div>
+                    <div class="stat-info">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Sacred Connections</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="section featured-projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="project-showcase">
+                <div class="project-featured">
+                    <div class="project-image">🍄</div>
+                    <div class="project-content">
+                        <h3>Ethereal Offering</h3>
+                        <p class="project-subtitle">Co-Founder & Lead Developer</p>
+                        <p>A spiritually grounded Web3 ecosystem integrating gratitude rituals, soulbound identity, zero-knowledge privacy, and mycelial AI (the Oracle of Fruit). More than a project, it is a living altar: a place where code becomes prayer, where offerings become data, and where technology remembers its responsibility to serve the human heart.</p>
+                        
+                        <div class="tech-stack">
+                            <h4>Technical Stack:</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Aleo Leo</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Wagmi</span>
+                                <span class="tech-tag">Ethers.js</span>
+                                <span class="tech-tag">ZK Circuits</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-links">
+                            <button class="btn-primary" onclick="openProjectModal('ethereal-offering')">View Details</button>
+                            <a href="https://github.com/drasticstatic" class="btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Projects Grid -->
+        <section class="section all-projects">
+            <h2>All Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🗳️</div>
+                    <h3>Anonymous ZK + MPC Voting Platform</h3>
+                    <p>Hybrid privacy-preserving governance system built on Aleo's zero-knowledge framework with MPC fail-safe recovery.</p>
+                    <div class="project-tags">
+                        <span class="tag">Aleo</span>
+                        <span class="tag">MPC</span>
+                        <span class="tag">Privacy</span>
+                        <span class="tag">Governance</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('zk-voting')">Details</button>
+                        <a href="https://github.com/drasticstatic">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">⚡</div>
+                    <h3>DEX Arbitrage Scanner & Treasury Agent</h3>
+                    <p>Automated treasury management system with cross-DEX arbitrage capabilities and real-time profit optimization.</p>
+                    <div class="project-tags">
+                        <span class="tag">DeFi</span>
+                        <span class="tag">Arbitrage</span>
+                        <span class="tag">Solidity</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('dex-arbitrage')">Details</button>
+                        <a href="https://github.com/drasticstatic">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🧠</div>
+                    <h3>Mycelium Agent — Oracle of Fruit</h3>
+                    <p>LLM-powered ritual intelligence system for spiritual-technological ecosystems with mycelial-inspired interaction patterns.</p>
+                    <div class="project-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">Agent</span>
+                        <span class="tag">Ritual</span>
+                        <span class="tag">AI</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('mycelium-agent')">Details</button>
+                        <a href="https://github.com/drasticstatic">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🌐</div>
+                    <h3>Multi-Chain Hackathon Architecture</h3>
+                    <p>Cross-chain interoperability system designed for Mantle, Cosmos, TON, ASI, Chainlink, zkID, and Aleo integration.</p>
+                    <div class="project-tags">
+                        <span class="tag">Cosmos</span>
+                        <span class="tag">Mantle</span>
+                        <span class="tag">TON</span>
+                        <span class="tag">CCIP</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('multi-chain')">Details</button>
+                        <a href="https://github.com/drasticstatic">Code</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🎵</div>
+                    <h3>CSW Productions</h3>
+                    <p>Professional audio engineering services including FOH engineering, live sound, lighting design, and event production.</p>
+                    <div class="project-tags">
+                        <span class="tag">Audio</span>
+                        <span class="tag">Live Sound</span>
+                        <span class="tag">Production</span>
+                        <span class="tag">Engineering</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('csw-productions')">Details</button>
+                        <a href="https://drasticstatic.wixsite.com/cswproductions">Website</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🔧</div>
+                    <h3>Precision Manufacturing Portfolio</h3>
+                    <p>18+ years of CNC machining expertise across aerospace, defense, and entertainment industries with ±0.0001" tolerances.</p>
+                    <div class="project-tags">
+                        <span class="tag">CNC</span>
+                        <span class="tag">Mazatrol</span>
+                        <span class="tag">Mastercam</span>
+                        <span class="tag">Precision</span>
+                    </div>
+                    <div class="project-actions">
+                        <button onclick="openProjectModal('manufacturing')">Details</button>
+                        <a href="https://www.jonesmanufacturingyorkpa.com">Company</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Technologies -->
+        <section class="section skills-overview">
+            <h2>Skills & Technologies</h2>
+            
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <h3>🌐 Blockchain & Web3</h3>
+                    <ul>
+                        <li>Aleo Leo programming (ZK circuits)</li>
+                        <li>MPC-based anonymous voting</li>
+                        <li>DAO smart contracts (Solidity)</li>
+                        <li>Multi-chain interoperability</li>
+                        <li>DEX arbitrage routing</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>💻 Software Development</h3>
+                    <ul>
+                        <li>JavaScript/TypeScript, Node.js</li>
+                        <li>React frontend frameworks</li>
+                        <li>Python scripting & automation</li>
+                        <li>Wagmi, Ethers.js, Aleo SDK</li>
+                        <li>LLM integration & AI agents</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🔧 Manufacturing & Engineering</h3>
+                    <ul>
+                        <li>Mazak: Mazatrol Smooth G</li>
+                        <li>Mastercam, FeatureCAM</li>
+                        <li>G-code programming</li>
+                        <li>Tight-tolerance machining (±0.0001")</li>
+                        <li>ISO-9001, AS9100, ITAR</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🎵 Audio & Production</h3>
+                    <ul>
+                        <li>FOH engineering</li>
+                        <li>Digital/analog mixing consoles</li>
+                        <li>Professional sound reinforcement</li>
+                        <li>Multi-track recording</li>
+                        <li>Event production & lighting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="../js/modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Christopher Wilson</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="../css/resume.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CW</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section contact-hero">
+            <div class="profile-container">
+                <img class="profile" src="../img/profile.jpg" alt="Christopher Wilson">
+                <img class="ring" src="../img/Ring.svg" alt="Ring Border">
+            </div>
+            <h1>Get in Touch</h1>
+            <p class="hero-subtitle">Let's connect about sacred technology, precision engineering, or spiritual innovation</p>
+        </section>
+
+        <!-- Contact Methods -->
+        <section class="section contact-methods">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>For project inquiries, collaboration opportunities, or general questions</p>
+                    <a href="mailto:drasticstatic@gmail.com" class="contact-link">drasticstatic@gmail.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional networking and career-related discussions</p>
+                    <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="contact-link">Connect on LinkedIn</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Code collaboration, open source projects, and technical discussions</p>
+                    <a href="https://github.com/drasticstatic" target="_blank" class="contact-link">View GitHub Profile</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-address-card"></i>
+                    </div>
+                    <h3>Gravatar</h3>
+                    <p>Complete profile with links to all platforms and projects</p>
+                    <a href="https://gravatar.com/christopherdrasticstatic/" target="_blank" class="contact-link">View Full Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="section contact-form-section">
+            <h2>Send a Message</h2>
+            <p>I'm building systems that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. Let's connect if you're interested in:</p>
+            
+            <div class="interests-grid">
+                <div class="interest-item">🌐 Zero-knowledge cryptography and privacy-preserving systems</div>
+                <div class="interest-item">🔧 Precision manufacturing and CNC machining</div>
+                <div class="interest-item">🍄 Sacred technology and spiritual innovation</div>
+                <div class="interest-item">🎵 Audio engineering and live sound production</div>
+                <div class="interest-item">⛪ Ministry and spiritual guidance</div>
+                <div class="interest-item">🤝 Collaboration on meaningful projects</div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a topic...</option>
+                        <option value="collaboration">Project Collaboration</option>
+                        <option value="consulting">Consulting Inquiry</option>
+                        <option value="speaking">Speaking Engagement</option>
+                        <option value="technical">Technical Discussion</option>
+                        <option value="spiritual">Spiritual Guidance</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, question, or how we might work together..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Location & Availability -->
+        <section class="section location-info">
+            <h2>Location & Availability</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📍 Location</h3>
+                    <p>Based in York, Pennsylvania, USA</p>
+                    <p>Available for remote collaboration worldwide</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🕒 Availability</h3>
+                    <p>Currently accepting new projects and collaborations</p>
+                    <p>Response time: Usually within 24-48 hours</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎯 Focus Areas</h3>
+                    <p>Sacred technology development</p>
+                    <p>Zero-knowledge system architecture</p>
+                    <p>Precision manufacturing consulting</p>
+                    <p>Spiritual community building</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section cta-section">
+            <div class="cta-content">
+                <h2>Ready to Build Something Sacred?</h2>
+                <p>Whether you're working on privacy-preserving technology, precision engineering challenges, or spiritual innovation, I'd love to hear about your vision and explore how we might collaborate.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:drasticstatic@gmail.com" class="btn-primary">Start a Conversation</a>
+                    <a href="../pages/portfolio.html" class="btn-secondary">View My Work</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="../js/modal.js"></script>
+    <script src="../js/contact.js"></script>
+</body>
+</html>

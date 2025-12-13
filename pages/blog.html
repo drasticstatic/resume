@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Christopher Wilson</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="../css/resume.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">CW</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section blog-hero">
+            <h1>Blog</h1>
+            <p class="hero-subtitle">Reflections on Sacred Technology, Precision Engineering, and Spiritual Innovation</p>
+        </section>
+
+        <!-- Featured Post -->
+        <section class="section featured-post">
+            <h2>Featured</h2>
+            
+            <article class="post-featured">
+                <div class="post-meta">
+                    <span class="post-date">January 2025</span>
+                    <span class="post-category">Sacred Technology</span>
+                </div>
+                <h3>The Mycelial Model: How Fungal Networks Inspire Decentralized Governance</h3>
+                <p class="post-excerpt">
+                    In the quiet depths of forest floors, mycelial networks demonstrate principles of decentralized coordination that blockchain developers are only beginning to understand. This exploration of how fungal intelligence can inform DAO design reveals patterns that bridge the biological and digital realms.
+                </p>
+                <button class="read-more" onclick="openBlogPost('mycelial-model')">Read More</button>
+            </article>
+        </section>
+
+        <!-- Blog Posts Grid -->
+        <section class="section blog-posts">
+            <h2>Recent Posts</h2>
+            
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">December 2024</span>
+                        <span class="post-category">Engineering</span>
+                    </div>
+                    <h3>From Microns to Merkle Trees: Precision in Physical and Digital Realms</h3>
+                    <p>How 18 years of CNC machining taught me to approach blockchain development with the same attention to detail that aerospace components demand.</p>
+                    <button onclick="openBlogPost('microns-merkle')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">November 2024</span>
+                        <span class="post-category">Spirituality</span>
+                    </div>
+                    <h3>The Oracle of Fruit: When AI Meets Ritual Intelligence</h3>
+                    <p>Exploring the development of our LLM-powered ritual agent and what it means to create technology that honors the sacred.</p>
+                    <button onclick="openBlogPost('oracle-fruit')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">October 2024</span>
+                        <span class="post-category">Web3</span>
+                    </div>
+                    <h3>Zero-Knowledge Privacy: The Technical Foundation of Digital Dignity</h3>
+                    <p>A deep dive into Aleo's Leo programming language and how zero-knowledge proofs enable truly private governance systems.</p>
+                    <button onclick="openBlogPost('zk-privacy')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">September 2024</span>
+                        <span class="post-category">Philosophy</span>
+                    </div>
+                    <h3>Soulbound Identity: Beyond Transferable Tokens</h3>
+                    <p>Why the future of digital identity lies not in what we can trade, but in what we cannot separate from ourselves.</p>
+                    <button onclick="openBlogPost('soulbound-identity')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">August 2024</span>
+                        <span class="post-category">Audio</span>
+                    </div>
+                    <h3>Frequency and Faith: Lessons from the Mixing Console</h3>
+                    <p>How audio engineering principles of harmony, resonance, and signal flow inform both spiritual practice and system design.</p>
+                    <button onclick="openBlogPost('frequency-faith')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">July 2024</span>
+                        <span class="post-category">Recovery</span>
+                    </div>
+                    <h3>Decentralized Healing: Community, Recovery, and Blockchain Governance</h3>
+                    <p>Exploring how the principles of 12-step recovery can inform the design of healing-centered decentralized communities.</p>
+                    <button onclick="openBlogPost('decentralized-healing')">Read More</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Newsletter Signup -->
+        <section class="section newsletter">
+            <div class="newsletter-content">
+                <h2>Stay Connected</h2>
+                <p>Receive updates on sacred technology, precision engineering insights, and spiritual innovation.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" class="email-input">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+                <p class="newsletter-note">No spam, just thoughtful reflections on the intersection of technology and spirit.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Component -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="../js/modal.js"></script>
+    <script src="../js/blog.js"></script>
+</body>
+</html>
