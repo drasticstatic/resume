@@ -33,17 +33,39 @@ class Modal {
         this.modalBody.innerHTML = content;
         this.modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
+        
+        // Add liquid glass effect
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent && !modalContent.classList.contains('liquid-glass')) {
+            modalContent.classList.add('liquid-glass');
+        }
+        
+        // Spore rain on modal open
+        if (typeof createSporeRain === 'function') {
+            createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
+        }
     }
     
     close() {
         this.modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+        
+        // Spore rain on modal close
+        if (typeof createSporeRain === 'function') {
+            createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
+        }
     }
 }
 
 // Initialize modal when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.modalInstance = new Modal();
+    
+    // Add liquid glass to modal
+    const modalContent = document.querySelector('.modal-content');
+    if (modalContent) {
+        modalContent.classList.add('liquid-glass');
+    }
 });
 
 // Utility functions for opening specific modals
@@ -52,95 +74,159 @@ function openProjectModal(projectId) {
         'ethereal-offering': {
             title: 'Ethereal Offering',
             description: `
-                <h3>Ethereal Offering</h3>
-                <p><strong>Co-founder & Lead Developer</strong></p>
-                <p>A spiritually grounded Web3 ecosystem integrating gratitude rituals, soulbound identity, zero-knowledge privacy, and mycelial AI (the Oracle of Fruit).</p>
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🍄</div>
+                    <h3>Ethereal Offering</h3>
+                    <p class="project-role"><strong>Co-founder & Lead Developer</strong> | 2024-Present</p>
+                </div>
                 
-                <h4>Key Features:</h4>
+                <div class="project-description">
+                    <p>A spiritually grounded Web3 ecosystem integrating gratitude rituals, soulbound identity, zero-knowledge privacy, and mycelial AI (the Oracle of Fruit). More than a project, it is a living altar: a place where code becomes prayer, where offerings become data, and where technology remembers its responsibility to serve the human heart.</p>
+                </div>
+                
+                <h4>🌟 Key Features:</h4>
                 <ul>
-                    <li>Gratitude-based token system with soulbound DIDs</li>
-                    <li>Daily NFT minting cycles</li>
-                    <li>LLM-powered ritual intelligence (Oracle of Fruit)</li>
-                    <li>DAO holacracy modules + MPC recovery voting</li>
-                    <li>Full Aleo integration for private credentials</li>
+                    <li><strong>Gratitude-based token economics</strong> - Token distribution based on community contributions and spiritual practice</li>
+                    <li><strong>Soulbound identity protocols (DIDs)</strong> - Non-transferable identity tied to spiritual reputation</li>
+                    <li><strong>Zero-knowledge privacy systems</strong> - Private credentials and anonymous participation using Aleo</li>
+                    <li><strong>Oracle of Fruit</strong> - LLM-powered ritual intelligence for offering analysis and spiritual guidance</li>
+                    <li><strong>DAO governance structures</strong> - Holacratic decision-making with MPC recovery voting</li>
+                    <li><strong>Mycelial network architecture</strong> - Decentralized, resilient community structures</li>
+                    <li><strong>Offering indexing</strong> - Track and honor spiritual contributions across the ecosystem</li>
+                    <li><strong>Community wisdom synthesis</strong> - Collective intelligence through ritual practice</li>
                 </ul>
                 
-                <h4>Technical Stack:</h4>
-                <ul>
-                    <li>Aleo Leo programming (ZK circuits)</li>
-                    <li>React frontend with Wagmi/Ethers.js</li>
-                    <li>Node.js backend with ritual indexing</li>
-                    <li>Multi-chain interoperability (Cosmos, Mantle, TON)</li>
-                </ul>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Aleo Leo</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">Wagmi</span>
+                    <span class="tech-badge">Ethers.js</span>
+                    <span class="tech-badge">ZK Circuits</span>
+                    <span class="tech-badge">LLM Integration</span>
+                    <span class="tech-badge">DAO Governance</span>
+                </div>
+                
+                <h4>🎯 Project Goals:</h4>
+                <p>Ethereal Offering aims to create a Web3 ecosystem where technology serves spiritual growth, community healing, and collective awakening. By integrating zero-knowledge privacy with gratitude-based economics, we're building systems that honor human dignity while enabling transparent, decentralized governance.</p>
+                
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                </div>
             `
         },
         'zk-voting': {
             title: 'Anonymous ZK + MPC Voting Platform',
             description: `
-                <h3>Anonymous ZK + MPC Voting Platform</h3>
-                <p>Hybrid privacy-preserving governance system built on Aleo's zero-knowledge framework.</p>
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🗳️</div>
+                    <h3>Anonymous ZK + MPC Voting Platform</h3>
+                    <p class="project-role"><strong>Lead Developer</strong> | 2024</p>
+                </div>
                 
-                <h4>Innovation Highlights:</h4>
+                <div class="project-description">
+                    <p>Hybrid privacy-preserving governance system built on Aleo's zero-knowledge framework with MPC fail-safe recovery. Enables truly anonymous voting while maintaining verifiability and providing secure key recovery mechanisms through multi-party computation.</p>
+                </div>
+                
+                <h4>🔐 Key Features:</h4>
                 <ul>
-                    <li>Zero-Knowledge Voting: Private ballots, verifiable tallies</li>
-                    <li>MPC Fail-Safe Recovery: DAO-initiated key rotation ensures resilience</li>
-                    <li>Community-incentivized staking around participation</li>
-                    <li>Fail-safe member inactivity/death recovery</li>
+                    <li><strong>Zero-knowledge ballot casting</strong> - Vote privately without revealing identity</li>
+                    <li><strong>MPC fail-safe recovery system</strong> - Distributed key management for resilience</li>
+                    <li><strong>DAO-triggered key rotation</strong> - Automated security updates via governance</li>
+                    <li><strong>Anonymous voter registration</strong> - Privacy-preserving identity verification</li>
+                    <li><strong>Verifiable vote tallying</strong> - Transparent results without compromising privacy</li>
+                    <li><strong>Audit trail without identity exposure</strong> - Accountability with anonymity</li>
                 </ul>
                 
-                <h4>Technical Implementation:</h4>
-                <ul>
-                    <li>Aleo circuits for private ballot casting</li>
-                    <li>MPC key-share recovery design</li>
-                    <li>DAO-triggered rotation and quorum rules</li>
-                    <li>Fully private, verifiable tallying system</li>
-                </ul>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Aleo Leo</span>
+                    <span class="tech-badge">MPC Protocols</span>
+                    <span class="tech-badge">Zero-Knowledge Proofs</span>
+                    <span class="tech-badge">DAO Smart Contracts</span>
+                    <span class="tech-badge">Cryptographic Key Management</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                </div>
             `
         },
         'dex-arbitrage': {
             title: 'DEX Arbitrage Scanner & Treasury Agent',
             description: `
-                <h3>DEX Arbitrage Scanner & Treasury Agent</h3>
-                <p>Automated treasury management system with cross-DEX arbitrage capabilities.</p>
+                <div class="project-modal-header">
+                    <div class="project-icon-large">⚡</div>
+                    <h3>DEX Arbitrage Scanner & Treasury Agent</h3>
+                    <p class="project-role"><strong>Developer</strong> | 2024</p>
+                </div>
                 
-                <h4>Core Features:</h4>
+                <div class="project-description">
+                    <p>Automated treasury management system with cross-DEX arbitrage capabilities and real-time profit optimization. Scans multiple decentralized exchanges for price discrepancies and executes profitable trades while managing treasury assets through auto-compounding strategies.</p>
+                </div>
+                
+                <h4>⚡ Key Features:</h4>
                 <ul>
-                    <li>JavaScript + Solidity arbitrage engine</li>
-                    <li>Auto-filtered token pairs using Dropstab volume/liquidity data</li>
-                    <li>Real-time profit threshold logic</li>
-                    <li>Treasury auto-compounding for DAO reserves</li>
+                    <li><strong>Cross-DEX arbitrage detection</strong> - Real-time price monitoring across exchanges</li>
+                    <li><strong>Real-time profit optimization</strong> - Automated execution when thresholds met</li>
+                    <li><strong>Treasury auto-compounding</strong> - Reinvest profits for exponential growth</li>
+                    <li><strong>Multi-chain support</strong> - Works across Ethereum, BSC, and more</li>
+                    <li><strong>Gas optimization strategies</strong> - Minimize transaction costs</li>
+                    <li><strong>Risk management protocols</strong> - Slippage protection and fail-safes</li>
                 </ul>
                 
-                <h4>Functionality:</h4>
-                <ul>
-                    <li>Scans external DEXs (Uniswap ↔ PancakeSwap)</li>
-                    <li>Executes profitable arbitrage opportunities</li>
-                    <li>Compounds DAO treasury reserves automatically</li>
-                    <li>Risk management and slippage protection</li>
-                </ul>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Solidity</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">Ethers.js</span>
+                    <span class="tech-badge">Uniswap SDK</span>
+                    <span class="tech-badge">PancakeSwap SDK</span>
+                    <span class="tech-badge">Node.js</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                </div>
             `
         },
         'mycelium-agent': {
             title: 'Mycelium Agent — Oracle of Fruit',
             description: `
-                <h3>Mycelium Agent — Oracle of Fruit</h3>
-                <p>LLM-powered ritual intelligence system for spiritual-technological ecosystems.</p>
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🧠</div>
+                    <h3>Mycelium Agent — Oracle of Fruit</h3>
+                    <p class="project-role"><strong>AI Architect & Developer</strong> | 2024</p>
+                </div>
                 
-                <h4>Capabilities:</h4>
+                <div class="project-description">
+                    <p>LLM-powered ritual intelligence system for spiritual-technological ecosystems with mycelial-inspired interaction patterns. The Oracle of Fruit indexes offerings, analyzes spiritual practices, and generates wisdom synthesis for community healing and growth.</p>
+                </div>
+                
+                <h4>🧠 Key Features:</h4>
                 <ul>
-                    <li>Generated "offering intelligence" and gratitude indexing</li>
-                    <li>Ritual practice guidance and community insights</li>
-                    <li>Integration with Ethereal Offering ecosystem</li>
-                    <li>Mycelial metaphor-based interaction patterns</li>
+                    <li><strong>Offering indexing and categorization</strong> - Track spiritual contributions</li>
+                    <li><strong>Ritual intelligence generation</strong> - AI-powered guidance and insights</li>
+                    <li><strong>Spiritual practice guidance</strong> - Personalized recommendations</li>
+                    <li><strong>Community wisdom synthesis</strong> - Collective intelligence aggregation</li>
+                    <li><strong>Mycelial network patterns</strong> - Decentralized, interconnected design</li>
+                    <li><strong>Privacy-preserving AI interactions</strong> - Secure and confidential</li>
                 </ul>
                 
-                <h4>Technical Architecture:</h4>
-                <ul>
-                    <li>Large Language Model integration</li>
-                    <li>Ritual data indexing and analysis</li>
-                    <li>Community participation tracking</li>
-                    <li>Spiritual practice recommendation engine</li>
-                </ul>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">LLM Integration</span>
+                    <span class="tech-badge">Python</span>
+                    <span class="tech-badge">NLP</span>
+                    <span class="tech-badge">Vector Databases</span>
+                    <span class="tech-badge">API Design</span>
+                    <span class="tech-badge">Node.js</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                </div>
             `
         }
     };
@@ -149,6 +235,97 @@ function openProjectModal(projectId) {
     if (project && window.modalInstance) {
         window.modalInstance.open(project.description);
     }
+}
+
+function openDonateModal() {
+    const donateContent = `
+        <div class="donate-modal">
+            <h3>❤️ Support the Work</h3>
+            <p>Your support helps build sacred technology that honors human dignity and spiritual growth.</p>
+            
+            <div class="payment-options">
+                <div class="payment-section">
+                    <h4>Quick Payment</h4>
+                    <div class="payment-links">
+                        <a href="https://www.paypal.me/csdubz" target="_blank" class="payment-btn paypal-btn">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </a>
+                        <a href="https://venmo.com/u/Christopher-Wilson-cdubz" target="_blank" class="payment-btn venmo-btn">
+                            Venmo
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="payment-section">
+                    <h4>Cryptocurrency</h4>
+                    <div class="crypto-addresses">
+                        <div class="crypto-item">
+                            <strong>Cardano (ADA)</strong>
+                            <div class="address-container">
+                                <input type="text" value="addr1q9f5wu44906hflrh9ce8ts0hnkat6022rw642ehfkcukj3c9cwda6hcsmdvsa0rc7la8jq66lqrzdfenahkey83nla2svpg9nt" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="crypto-item">
+                            <strong>Bitcoin (BTC)</strong>
+                            <div class="address-container">
+                                <input type="text" value="bc1q9ak9tt7v4m7egv5gfv32g93ghah5tvzh8c7hwh" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="crypto-item">
+                            <strong>Ethereum (ETH)</strong>
+                            <div class="address-container">
+                                <input type="text" value="0x96F185dB969F3c45EDDff27c73A4880A877BaeF6" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="crypto-item">
+                            <strong>Dogecoin (DOGE)</strong>
+                            <div class="address-container">
+                                <input type="text" value="D7fQthvuwXxWmRJNo78PHQL6uiWZTFMSnu" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="crypto-item">
+                            <strong>Litecoin (LTC)</strong>
+                            <div class="address-container">
+                                <input type="text" value="ltc1qy39tw67h8r7c9uk0uydmv79lrkjlenc6p8j7mw" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                        <div class="crypto-item">
+                            <strong>XRP (Ripple)</strong>
+                            <div class="address-container">
+                                <input type="text" value="rPjzaK8NS24iwk3m2PtrS81M4X4PgN7EAj" readonly onclick="this.select()">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" class="copy-btn"><i class="fas fa-copy"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-section">
+                    <h4>Web3 Wallet</h4>
+                    <button class="wallet-connect-btn" onclick="alert('Wallet connect coming soon! For now, please use the addresses above.')">
+                        <i class="fas fa-wallet"></i> Connect Wallet (Demo Mode)
+                    </button>
+                    <p class="demo-note">Live wallet integration coming soon via ThirdWeb</p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    if (window.modalInstance) {
+        window.modalInstance.open(donateContent);
+    }
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('✓ Address copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+    });
 }
 
 function openBioModal() {

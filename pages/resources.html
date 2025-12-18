@@ -17,21 +17,56 @@
     <!-- Custom styles -->
     <link href="../css/resume.css" rel="stylesheet">
     <link href="../css/modal.css" rel="stylesheet">
+    <link href="../css/psychedelic.css" rel="stylesheet">
+    <link href="../css/navigation.css" rel="stylesheet">
+    <link href="../css/effects.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Top-left action buttons -->
+    <div class="top-left-actions">
+        <button class="action-btn donate-btn-top" onclick="openDonateModal()">
+            <i class="fas fa-heart"></i>
+        </button>
+        <button class="action-btn lost-btn-top" onclick="window.location.href='404.html'">
+            <i class="fas fa-compass"></i>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">CW</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="resources.html" class="active">Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <div class="nav-left">
+                <a href="../index.html" class="nav-logo rainbow-text">CW</a>
+                <div class="nav-profile">
+                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow" onclick="window.location.href='../index.html'">
+                    <img class="ring" src="../img/Ring.svg" alt="Ring Border">
+                </div>
+            </div>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="../index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="about.html" class="nav-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="portfolio.html" class="nav-link"><i data-lucide="briefcase"></i> Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
+                <li><a href="resources.html" class="nav-link active"><i data-lucide="library"></i> Resources</a></li>
+                <li><a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
             </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="hamburger mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -40,14 +75,19 @@
         <section class="section resources-hero">
             <h1>Educational Resources</h1>
             <p class="hero-subtitle">Learning Materials for Sacred Technology, Precision Engineering, and Spiritual Innovation</p>
+            <div class="hero-actions" style="text-align: center; margin-top: 30px; position: relative; z-index: 10;">
+                <a href="glossary.html" class="glossary-btn" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; text-decoration: none; font-size: 1.1rem; transition: all 0.3s ease;">
+                    📚 View Full Glossary
+                </a>
+            </div>
         </section>
 
         <!-- Learning Paths -->
         <section class="section learning-paths">
             <h2>Learning Paths</h2>
             
-            <div class="paths-grid">
-                <div class="path-card">
+            <div class="bento-grid">
+                <div class="bento-item liquid-glass glow-effect">
                     <div class="path-icon">🌐</div>
                     <h3>Zero-Knowledge Development</h3>
                     <p>Master privacy-preserving blockchain development with Aleo Leo and ZK circuits.</p>
@@ -57,10 +97,10 @@
                         <span class="topic">Privacy Protocols</span>
                         <span class="topic">MPC Systems</span>
                     </div>
-                    <button onclick="openResourceModal('zk-development')">View Resources</button>
+                    <button onclick="openResourceModal('zk-development')" class="magnetize-btn">View Resources</button>
                 </div>
 
-                <div class="path-card">
+                <div class="bento-item liquid-glass glow-effect">
                     <div class="path-icon">🔧</div>
                     <h3>Precision Manufacturing</h3>
                     <p>Learn CNC machining, CAM programming, and precision engineering principles.</p>
@@ -70,10 +110,10 @@
                         <span class="topic">G-code Fundamentals</span>
                         <span class="topic">Quality Systems</span>
                     </div>
-                    <button onclick="openResourceModal('manufacturing')">View Resources</button>
+                    <button onclick="openResourceModal('manufacturing')" class="magnetize-btn">View Resources</button>
                 </div>
 
-                <div class="path-card">
+                <div class="bento-item liquid-glass glow-effect">
                     <div class="path-icon">🍄</div>
                     <h3>Sacred Technology</h3>
                     <p>Explore the intersection of spirituality, technology, and decentralized systems.</p>
@@ -83,10 +123,10 @@
                         <span class="topic">Soulbound Identity</span>
                         <span class="topic">DAO Governance</span>
                     </div>
-                    <button onclick="openResourceModal('sacred-tech')">View Resources</button>
+                    <button onclick="openResourceModal('sacred-tech')" class="magnetize-btn">View Resources</button>
                 </div>
 
-                <div class="path-card">
+                <div class="bento-item liquid-glass glow-effect">
                     <div class="path-icon">🎵</div>
                     <h3>Audio Engineering</h3>
                     <p>Professional audio production, live sound, and acoustic principles.</p>
@@ -96,7 +136,7 @@
                         <span class="topic">Digital Mixing</span>
                         <span class="topic">Acoustics</span>
                     </div>
-                    <button onclick="openResourceModal('audio-engineering')">View Resources</button>
+                    <button onclick="openResourceModal('audio-engineering')" class="magnetize-btn">View Resources</button>
                 </div>
             </div>
         </section>
@@ -248,7 +288,26 @@
         </div>
     </div>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <script src="../js/modal.js"></script>
     <script src="../js/resources.js"></script>
+    <script src="../js/effects.js"></script>
+    
+    <script>
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>

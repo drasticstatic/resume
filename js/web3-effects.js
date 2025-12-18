@@ -257,6 +257,258 @@ class Web3Simulator {
     }
 }
 
+// Toggle expandable cards
+function toggleCard(element) {
+    const card = element.closest('.expandable-card');
+    card.classList.toggle('expanded');
+}
+
+// Create spore rain confetti shower effect
+function createSporeRain(x, y) {
+    if (!x || !y) {
+        x = window.innerWidth / 2;
+        y = window.innerHeight / 2;
+    }
+    const sporeCount = 50;
+    for (let i = 0; i < sporeCount; i++) {
+        const spore = document.createElement('div');
+        spore.className = 'rainbow-spore';
+        const angle = (Math.random() * Math.PI * 2);
+        const velocity = 50 + Math.random() * 150;
+        const offsetX = Math.cos(angle) * velocity;
+        const offsetY = Math.sin(angle) * velocity - 100;
+        const size = 4 + Math.random() * 8;
+        const hue = Math.random() * 360;
+        const duration = 1.5 + Math.random() * 1.5;
+        
+        spore.style.cssText = `
+            position: fixed;
+            left: ${x}px;
+            top: ${y}px;
+            width: ${size}px;
+            height: ${size}px;
+            background: hsl(${hue}, 90%, 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            box-shadow: 0 0 ${size * 2}px hsl(${hue}, 90%, 60%);
+            animation: sporeExplode ${duration}s ease-out forwards;
+            --offset-x: ${offsetX}px;
+            --offset-y: ${offsetY}px;
+        `;
+        document.body.appendChild(spore);
+        
+        setTimeout(() => spore.remove(), duration * 1000);
+    }
+}
+
+// Enhanced floating blockchain code
+function createFloatingCode() {
+    const codeSnippets = [
+        'pragma solidity ^0.8.0;',
+        'contract EtherealOffering {',
+        'mapping(address => uint256) gratitude;',
+        'function mint() external payable {',
+        'emit Offering(msg.sender, amount);',
+        'require(blessed == true, "Not blessed");',
+        'bytes32 merkleRoot = 0x...',
+        'keccak256(abi.encodePacked(data))',
+        'modifier onlyOracle() {',
+        'uint256 constant SACRED_NUMBER = 108;',
+        'struct Ritual { bytes32 hash; }',
+        'event SacredOffering(address indexed)',
+        'function bless(address soul) public',
+        'mapping(bytes32 => bool) rituals;',
+        'IERC721 soulboundToken;',
+        'using SafeMath for uint256;',
+        'address public oracle;',
+        'bool public isBlessed;'
+    ];
+    
+    const snippet = document.createElement('div');
+    snippet.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+    
+    const direction = Math.random();
+    let startX, startY, endX, endY;
+    
+    if (direction < 0.7) {
+        // Mostly falling down
+        startX = Math.random() * window.innerWidth;
+        startY = -20;
+        endX = startX + (Math.random() - 0.5) * 200;
+        endY = window.innerHeight + 20;
+    } else {
+        // Random directions
+        const side = Math.floor(Math.random() * 4);
+        switch(side) {
+            case 0: // from left
+                startX = -100; startY = Math.random() * window.innerHeight;
+                endX = window.innerWidth + 100; endY = Math.random() * window.innerHeight;
+                break;
+            case 1: // from right
+                startX = window.innerWidth + 100; startY = Math.random() * window.innerHeight;
+                endX = -100; endY = Math.random() * window.innerHeight;
+                break;
+            case 2: // from top
+                startX = Math.random() * window.innerWidth; startY = -100;
+                endX = Math.random() * window.innerWidth; endY = window.innerHeight + 100;
+                break;
+            case 3: // diagonal
+                startX = Math.random() * window.innerWidth; startY = -100;
+                endX = Math.random() * window.innerWidth; endY = window.innerHeight + 100;
+                break;
+        }
+    }
+    
+    snippet.style.cssText = `
+        position: fixed;
+        color: rgba(57, 255, 20, 0.6);
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        pointer-events: none;
+        z-index: 1;
+        left: ${startX}px;
+        top: ${startY}px;
+        animation: codeFloat${direction < 0.7 ? 'Down' : 'Random'} ${8 + Math.random() * 12}s linear forwards;
+        transform: rotate(${Math.random() * 360}deg);
+    `;
+    
+    snippet.style.setProperty('--end-x', endX + 'px');
+    snippet.style.setProperty('--end-y', endY + 'px');
+    
+    document.body.appendChild(snippet);
+    
+    setTimeout(() => {
+        if (snippet.parentNode) {
+            snippet.remove();
+        }
+    }, 20000);
+}
+
+// Blockchain cube chain visualization
+function createBlockchainChain() {
+    const positions = [
+        { right: '20px', bottom: '20px', size: 80 },
+        { right: '120px', bottom: '30px', size: 60 },
+        { right: '200px', bottom: '50px', size: 45 },
+        { right: '30px', bottom: '120px', size: 50 },
+        { right: '100px', bottom: '140px', size: 35 },
+        { left: '20px', bottom: '20px', size: 70 },
+        { left: '110px', bottom: '40px', size: 50 },
+        { left: '30px', bottom: '110px', size: 40 }
+    ];
+    
+    positions.forEach((pos, index) => {
+        const cube = document.createElement('div');
+        cube.innerHTML = `
+            <div class="blockchain-cube" style="width: ${pos.size}px; height: ${pos.size}px;">
+                <div class="cube-face front">Block #${Math.floor(Math.random() * 999999)}</div>
+                <div class="cube-face back">Hash: 0x${Math.random().toString(16).substr(2, 6)}</div>
+                <div class="cube-face right">Gas: ${Math.floor(Math.random() * 100000)}</div>
+                <div class="cube-face left">Nonce: ${Math.floor(Math.random() * 1000)}</div>
+                <div class="cube-face top">Tx: ${Math.floor(Math.random() * 50)}</div>
+                <div class="cube-face bottom">Size: ${Math.floor(Math.random() * 1000)}kb</div>
+            </div>
+        `;
+        
+        cube.style.cssText = `
+            position: fixed;
+            ${pos.right ? `right: ${pos.right};` : ''}
+            ${pos.left ? `left: ${pos.left};` : ''}
+            bottom: ${pos.bottom};
+            perspective: 1000px;
+            z-index: ${1000 - index};
+            pointer-events: none;
+            opacity: ${0.8 - (index * 0.1)};
+        `;
+        
+        document.body.appendChild(cube);
+    });
+}
+
+// Initialize effects when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new PsychedelicEffects();
+    new Web3Simulator();
+    
+    // Initialize mobile navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+    }
+    
+    // Add spore rain to navbar links
+    document.querySelectorAll('.nav-link').forEach(button => {
+        button.addEventListener('click', function(e) {
+            createSporeRain(e.pageX, e.pageY);
+        });
+    });
+    
+    // Add spore rain to donate and lost buttons
+    document.querySelectorAll('.donate-btn-top, .lost-btn-top, .donate-btn, .404-btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            createSporeRain(e.pageX, e.pageY);
+        });
+    });
+    
+    // Create blockchain chain visualization
+    createBlockchainChain();
+    
+    // Start floating code effect
+    setInterval(createFloatingCode, 2000);
+    
+    // Make all timeline cards expandable
+    document.querySelectorAll('.timeline-item').forEach((item, index) => {
+        if (index > 0) { // Skip first one that's already expandable
+            const content = item.querySelector('.timeline-content');
+            if (content && !content.classList.contains('expandable-card')) {
+                content.classList.add('expandable-card');
+                const h3 = content.querySelector('h3');
+                const years = content.querySelector('.card-years');
+                const list = content.querySelector('ul');
+                const link = content.querySelector('.external-link');
+                
+                content.innerHTML = `
+                    <div class="card-header" onclick="toggleCard(this)">
+                        ${h3 ? h3.outerHTML : ''}
+                        ${years ? years.outerHTML : ''}
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="card-content">
+                        ${list ? list.outerHTML : ''}
+                        ${link ? link.outerHTML : ''}
+                    </div>
+                `;
+            }
+        }
+    });
+    
+    // Add scroll-triggered mycelial growth
+    window.addEventListener('scroll', function() {
+        const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        const mycelialElements = document.querySelectorAll('.mycelial-network');
+        
+        mycelialElements.forEach(element => {
+            element.style.opacity = 0.3 + (scrollPercent * 0.4);
+        });
+    });
+    
+    // Initialize Lucide icons if available
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+    
+    // Add some fun console messages
+    console.log('%c🍄 Welcome to the Mycelial Web! 🍄', 'color: #ff0080; font-size: 20px; font-weight: bold;');
+    console.log('%c⚡ Sacred Technology Activated ⚡', 'color: #00ffff; font-size: 16px;');
+    console.log('%c🌈 Psychedelic Mode: ON 🌈', 'color: #39ff14; font-size: 14px;');
+});
+
 // Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
@@ -291,16 +543,38 @@ style.textContent = `
     .in-view {
         animation-delay: 0s !important;
     }
+    
+    .blockchain-cube {
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 10s infinite linear;
+    }
+    
+    .cube-face {
+        position: absolute;
+        background: rgba(255, 0, 128, 0.1);
+        border: 1px solid rgba(255, 0, 128, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 7px;
+        color: rgba(255, 255, 255, 0.7);
+        font-family: 'Courier New', monospace;
+        backdrop-filter: blur(5px);
+        text-align: center;
+        padding: 2px;
+    }
+    
+    .cube-face.front { transform: rotateY(0deg) translateZ(40px); }
+    .cube-face.back { transform: rotateY(180deg) translateZ(40px); }
+    .cube-face.right { transform: rotateY(90deg) translateZ(40px); }
+    .cube-face.left { transform: rotateY(-90deg) translateZ(40px); }
+    .cube-face.top { transform: rotateX(90deg) translateZ(40px); }
+    .cube-face.bottom { transform: rotateX(-90deg) translateZ(40px); }
+    
+    @keyframes rotateCube {
+        0% { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
 `;
 document.head.appendChild(style);
-
-// Initialize effects when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new PsychedelicEffects();
-    new Web3Simulator();
-    
-    // Add some fun console messages
-    console.log('%c🍄 Welcome to the Mycelial Web! 🍄', 'color: #ff0080; font-size: 20px; font-weight: bold;');
-    console.log('%c⚡ Sacred Technology Activated ⚡', 'color: #00ffff; font-size: 16px;');
-    console.log('%c🌈 Psychedelic Mode: ON 🌈', 'color: #39ff14; font-size: 14px;');
-});

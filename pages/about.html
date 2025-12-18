@@ -17,21 +17,56 @@
     <!-- Custom styles -->
     <link href="../css/resume.css" rel="stylesheet">
     <link href="../css/modal.css" rel="stylesheet">
+    <link href="../css/psychedelic.css" rel="stylesheet">
+    <link href="../css/navigation.css" rel="stylesheet">
+    <link href="../css/effects.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Top-left action buttons -->
+    <div class="top-left-actions">
+        <button class="action-btn donate-btn-top" onclick="openDonateModal()">
+            <i class="fas fa-heart"></i>
+        </button>
+        <button class="action-btn lost-btn-top" onclick="window.location.href='404.html'">
+            <i class="fas fa-compass"></i>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">CW</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <div class="nav-left">
+                <a href="../index.html" class="nav-logo rainbow-text">CW</a>
+                <div class="nav-profile">
+                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow floating-profile" onclick="window.location.href='../index.html'">
+                    <img class="ring" src="../img/Ring.svg" alt="Ring Border">
+                </div>
+            </div>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="../index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="about.html" class="nav-link active"><i data-lucide="user"></i> About</a></li>
+                <li><a href="portfolio.html" class="nav-link"><i data-lucide="briefcase"></i> Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
+                <li><a href="resources.html" class="nav-link"><i data-lucide="library"></i> Resources</a></li>
+                <li><a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
             </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="hamburger mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -39,26 +74,47 @@
         <!-- Hero Section -->
         <section class="section about-hero">
             <div class="hero-background">
+                <div class="liquid-waves"></div>
+                <div class="northern-lights"></div>
+                <div class="mycelial-network"></div>
                 <div class="floating-particles"></div>
             </div>
-            <div class="profile-container floating-profile">
-                <img class="profile" src="../img/profile.jpg" alt="Christopher Wilson">
-                <img class="ring" src="../img/Ring.svg" alt="Ring Border">
-            </div>
-            <h1 class="rainbow-text">About Christopher</h1>
-            <p class="hero-subtitle cosmic-text">Minister-Technologist • Machinist-Mystic • Builder of Sacred Systems</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number neon-text">18+</span>
-                    <span class="stat-label">Years CNC Experience</span>
+            <div class="hero-content">
+                <div class="profile-wrapper">
+                    <div class="profile-container floating-profile breathing-glow">
+                        <img class="profile" src="../img/profile.jpg" alt="Christopher Wilson">
+                        <div class="electric-mycelium"></div>
+                    </div>
+                    <div class="social-circles-arc">
+                        <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-circle sc-1" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/drasticstatic" class="social-circle sc-2" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://gravatar.com/christopherdrasticstatic" class="social-circle sc-3" target="_blank">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                        <a href="#" class="social-circle sc-4" onclick="alert('Coming soon!'); return false;">
+                            <i class="fas fa-question"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number neon-text">4</span>
-                    <span class="stat-label">Major Projects</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number neon-text">∞</span>
-                    <span class="stat-label">Sacred Connections</span>
+                <h1 class="rainbow-text glitch-text" data-text="About Christopher">About Christopher</h1>
+                <p class="hero-subtitle cosmic-text">Minister-Technologist • Machinist-Mystic • Builder of Sacred Systems</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number neon-text">18+</span>
+                        <span class="stat-label">Years CNC Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number neon-text">4</span>
+                        <span class="stat-label">Major Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number neon-text">∞</span>
+                        <span class="stat-label">Sacred Connections</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -67,13 +123,17 @@
         <section class="section story">
             <h2>My Story</h2>
             <div class="story-content">
-                <p>My journey weaves through three worlds: the precision of engineering, the transformation of recovery and psychedelic healing, and the emerging frontier of sacred technology.</p>
+                <p>For nearly twenty years, I've worked in the hum of CNC machines, cutting material down to a ten-thousandth of an inch. In those patterns of motion and metal, I learned discipline, intention, and the beauty of exactness.</p>
                 
-                <p>For nearly twenty years, I shaped matter with microns of precision — turning metal into form, structure, and purpose across Billet Industries, TAIT Towers, and Jones Manufacturing. In that work, I learned discipline, intention, and the quiet language of machines.</p>
+                <p>With nearly two decades of machining experience across Billet Industries, TAIT Towers, and Jones Manufacturing, I have developed a deep respect for rigor, accuracy, and the integrity of well-crafted systems. From aerospace components requiring ±0.0001" tolerances to entertainment rigging for global tours, I discovered that precision is a form of prayer.</p>
                 
-                <p>Through ordination, ceremony, and contemplative practice, I stepped into another apprenticeship — one of the heart. There, I learned presence, gratitude, humility, and the interconnectedness underlying all life.</p>
+                <p>Later, through recovery, psychedelic healing, and ordination, I entered another apprenticeship — one of the heart. There I learned presence, surrender, gratitude, and the interconnectedness that mycelial wisdom reveals so clearly. My ministerial work and psychedelic-informed spiritual path have shaped a parallel commitment to healing, self-awareness, and compassionate leadership.</p>
                 
-                <p>Today, I bring these paths together by building technologies of healing and remembrance: zero-knowledge governance, spiritual identity, ritual intelligence, and gratitude-based ecosystems like <strong>Ethereal Offering</strong>.</p>
+                <p>Today, I stand at the confluence of those paths, building <strong>sacred technology</strong>: zero-knowledge governance, ritual intelligence, soulbound identity, and spiritual-technical ecosystems like <strong>Ethereal Offering</strong>.</p>
+                
+                <p>As co-creator of Ethereal Offering, I am developing mycelial-inspired infrastructures of gratitude, ritual remembrance, and soulbound identity. This isn't just another blockchain project — it's a living altar where code becomes prayer and mycelium becomes architecture.</p>
+                
+                <p><strong>My work reflects a simple belief:</strong> that craft, code, and consciousness are all expressions of the same underlying intelligence — and that when technology is built with intention and reverence, it becomes a tool for collective upliftment.</p>
             </div>
         </section>
 
@@ -81,12 +141,33 @@
         <section class="section professional-journey">
             <h2>Professional Journey</h2>
             <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Co-Founder & Lead Developer</h3>
+                        <h4>Ethereal Offering — Spiritual Web3 Ecosystem</h4>
+                        <p>Co-founded spiritual-technological ecosystem integrating gratitude-based tokens, soulbound identity protocols, zero-knowledge privacy systems, and LLM-powered ritual intelligence (Oracle of Fruit). Building DAO governance structures and mycelial network architectures for decentralized spiritual communities.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('aleo-leo')">Aleo Leo</span>
+                            <span class="tech-tag" onclick="openGlossary('zk-circuits')">ZK Circuits</span>
+                            <span class="tech-tag" onclick="openGlossary('dao-governance')">DAO Governance</span>
+                            <span class="tech-tag" onclick="openGlossary('llm-integration')">LLM Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-date">2022 - Present</div>
                     <div class="timeline-content">
                         <h3>Lead CNC Lathe Programmer & Machinist</h3>
                         <h4>Jones Manufacturing — York, PA</h4>
-                        <p>Family-owned precision machining company. Lead Mazak lathe programmer using Mazatrol for advanced turning/mill-turn operations. Returned to York to be closer to family and community.</p>
+                        <p>Family-owned precision machining company specializing in complex turned components. Lead Mazak lathe programmer using Mazatrol Smooth G for advanced turning/mill-turn operations. Improved cycle times and tool life through optimized toolpaths. Mentored apprentices and junior machinists. Returned to York to be closer to family and community.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('mazatrol-programming')">Mazatrol Programming</span>
+                            <span class="tech-tag" onclick="openGlossary('precision-tolerances')">±0.0001" Tolerances</span>
+                            <span class="tech-tag" onclick="openGlossary('process-optimization')">Process Optimization</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -95,7 +176,12 @@
                     <div class="timeline-content">
                         <h3>CNC Lathe Machinist & CAM Programmer</h3>
                         <h4>TAIT Towers — Lititz, PA</h4>
-                        <p>World-class staging/entertainment engineering company. Programmed and ran Doosan, Haas, and Fanuc-controlled lathes with heavy FeatureCAM and Mastercam workflows.</p>
+                        <p>World-class staging and entertainment engineering company serving global tours and arena installations. Programmed and operated Doosan, Haas, and Fanuc-controlled lathes with heavy FeatureCAM and Mastercam workflows. Supported rapid manufacturing for time-critical entertainment industry projects including major touring productions.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('featurecam')">FeatureCAM</span>
+                            <span class="tech-tag" onclick="openGlossary('mastercam')">Mastercam</span>
+                            <span class="tech-tag" onclick="openGlossary('multi-axis-programming')">Multi-axis Programming</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -104,16 +190,40 @@
                     <div class="timeline-content">
                         <h3>Lead Lathe Programmer & Machinist</h3>
                         <h4>Billet Industries — Hellam, PA</h4>
-                        <p>Began apprenticeship and grew into lead programmer. Mazak/Mastercam/G-code production in AS9100/ITAR precision environment for aerospace, defense, and specialized industrial components.</p>
+                        <p>Began apprenticeship and grew into lead programmer role. Mazak/Mastercam/G-code production in AS9100/ITAR precision environment for aerospace, defense, and specialized industrial components. Trained team members and maintained quality standards in regulated manufacturing environment.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('as9100')">AS9100 Certified</span>
+                            <span class="tech-tag" onclick="openGlossary('itar')">ITAR Compliance</span>
+                            <span class="tech-tag" onclick="openGlossary('aerospace-components')">Aerospace Components</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2008 - Present</div>
                     <div class="timeline-content">
-                        <h3>Freelance Audio Engineer</h3>
+                        <h3>Freelance Audio Engineer & Producer</h3>
                         <h4>CSW Productions — York, PA</h4>
-                        <p>FOH engineering, live sound, lighting, event production for festivals, churches, concerts, schools, orchestras. Advanced system setup and multi-track recording.</p>
+                        <p>Professional audio engineering services including FOH engineering, sound reinforcement, system design and installation, lighting design, event production and rental for festivals, concerts, weddings, churches, schools, theater, and orchestral performances. Advanced multi-track recording and live sound mixing.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('foh-engineering')">FOH Engineering</span>
+                            <span class="tech-tag" onclick="openGlossary('system-design')">System Design</span>
+                            <span class="tech-tag" onclick="openGlossary('live-production')">Live Production</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Ordained Minister</h3>
+                        <h4>Psanctuary Community — Spiritual Guidance</h4>
+                        <p>Ordained minister providing spiritual guidance within psychedelic-informed recovery and healing communities. Facilitating contemplative practices, ceremony support, and integration work. Bridging ancient wisdom traditions with modern therapeutic approaches.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('spiritual-guidance')">Spiritual Guidance</span>
+                            <span class="tech-tag" onclick="openGlossary('integration-support')">Integration Support</span>
+                            <span class="tech-tag" onclick="openGlossary('community-healing')">Community Healing</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,6 +271,163 @@
         </div>
     </div>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <script src="../js/resume.js"></script>
     <script src="../js/modal.js"></script>
+    <script src="../js/web3-effects.js"></script>
+    <script src="../js/effects.js"></script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile navigation toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        // Spore rain on nav clicks
+        document.querySelectorAll('.nav-link').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (typeof createSporeRain === 'function') {
+                    createSporeRain(e.pageX, e.pageY);
+                }
+            });
+        });
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Add typed text effect for story section
+        document.addEventListener('DOMContentLoaded', function() {
+            const storyElements = document.querySelectorAll('.story-content p');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'typeWriter 2s ease-in-out';
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            storyElements.forEach(el => observer.observe(el));
+        });
+        
+        function openGlossary(term) {
+            if (window.modalInstance) {
+                window.modalInstance.open(`
+                    <div class="glossary-entry">
+                        <h3>${term.toUpperCase()}</h3>
+                        <p>Loading definition...</p>
+                        <div class="glossary-actions">
+                            <a href="glossary.html#${term}" class="glossary-link">View Full Glossary</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    </script>
+    
+    <style>
+        .about-hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .about-hero .profile-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .about-hero .profile-container:hover {
+            animation: slowBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes slowBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .about-hero .profile {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .electric-mycelium {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 250px;
+            height: 250px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, 
+                rgba(255, 0, 128, 0.1) 0%,
+                rgba(0, 255, 255, 0.1) 50%,
+                transparent 100%);
+            border-radius: 50%;
+            animation: mycelialPulse 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        .electric-mycelium::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rotate-hue 8s linear infinite;
+        }
+        
+        @keyframes typeWriter {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-wrapper .profile-container {
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-wrapper .profile-container:hover {
+            animation: slowBounce 2s ease-in-out infinite;
+        }
+        
+        .tech-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(255, 0, 128, 0.1);
+            border: 1px solid rgba(255, 0, 128, 0.3);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: rgba(255, 0, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(255, 0, 128, 0.2);
+            border-color: rgba(255, 0, 128, 0.5);
+            transform: translateY(-2px);
+        }
+    </style>
 </body>
 </html>

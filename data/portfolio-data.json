@@ -1,0 +1,166 @@
+{
+  "personal": {
+    "name": "Christopher Wilson",
+    "title": "Minister-Technologist",
+    "subtitle": "CNC Machinist • Web3 Developer • Ordained Minister",
+    "location": "York, Pennsylvania, USA",
+    "email": "drasticstatic@gmail.com",
+    "phone": "(717) 501-1481",
+    "tagline": "Where code becomes prayer and mycelium becomes architecture",
+    "bio": "For nearly two decades I've worked in precision manufacturing across Billet Industries, TAIT Towers, and Jones Manufacturing — creating hardware for aerospace, defense, and global entertainment. Today I apply that same precision and discipline to spiritual-technological systems: zero-knowledge governance, DAO architectures, gratitude-based tokens, mycelial agents, and decentralized communities of healing.",
+    "social": {
+      "github": "https://github.com/drasticstatic",
+      "linkedin": "https://www.linkedin.com/in/christopherwilsonmrt/",
+      "gravatar": "https://gravatar.com/christopherdrasticstatic",
+      "website": "https://drasticstatic.github.io/resume/"
+    }
+  },
+  "projects": [
+    {
+      "id": "ethereal-offering",
+      "title": "Ethereal Offering",
+      "icon": "🍄",
+      "role": "Co-Founder & Lead Developer",
+      "year": "2024-Present",
+      "featured": true,
+      "shortDescription": "Gratitude-based token system with soulbound DIDs and ritual intelligence.",
+      "fullDescription": "A spiritually grounded Web3 ecosystem integrating gratitude rituals, soulbound identity, zero-knowledge privacy, and mycelial AI (the Oracle of Fruit). More than a project, it is a living altar: a place where code becomes prayer, where offerings become data, and where technology remembers its responsibility to serve the human heart.",
+      "features": [
+        "Gratitude-based token economics",
+        "Soulbound identity protocols (DIDs)",
+        "Zero-knowledge privacy systems",
+        "LLM-powered ritual intelligence (Oracle of Fruit)",
+        "DAO governance structures",
+        "Mycelial network architecture",
+        "Offering indexing and analysis",
+        "Community wisdom synthesis"
+      ],
+      "techStack": ["Aleo Leo", "React", "Node.js", "Wagmi", "Ethers.js", "ZK Circuits", "LLM Integration", "DAO Governance"],
+      "tags": ["ZK", "Soulbound", "DAO", "NFT", "Ritual", "Sacred Technology"],
+      "links": {
+        "github": "https://github.com/drasticstatic",
+        "demo": null
+      }
+    },
+    {
+      "id": "zk-voting",
+      "title": "Anonymous ZK + MPC Voting Platform",
+      "icon": "🗳️",
+      "role": "Lead Developer",
+      "year": "2024",
+      "featured": true,
+      "shortDescription": "Aleo-based private ballots with MPC recovery and DAO-triggered key rotation.",
+      "fullDescription": "Hybrid privacy-preserving governance system built on Aleo's zero-knowledge framework with MPC fail-safe recovery. Enables truly anonymous voting while maintaining verifiability and providing secure key recovery mechanisms through multi-party computation.",
+      "features": [
+        "Zero-knowledge ballot casting",
+        "MPC fail-safe recovery system",
+        "DAO-triggered key rotation",
+        "Anonymous voter registration",
+        "Verifiable vote tallying",
+        "Privacy-preserving governance",
+        "Secure key management",
+        "Audit trail without identity exposure"
+      ],
+      "techStack": ["Aleo Leo", "MPC Protocols", "Zero-Knowledge Proofs", "DAO Smart Contracts", "Cryptographic Key Management"],
+      "tags": ["Aleo", "MPC", "Privacy", "Governance", "ZK-SNARKs"],
+      "links": {
+        "github": "https://github.com/drasticstatic",
+        "demo": null
+      }
+    },
+    {
+      "id": "dex-arbitrage",
+      "title": "DEX Arbitrage Scanner & Treasury Agent",
+      "icon": "⚡",
+      "role": "Developer",
+      "year": "2024",
+      "featured": true,
+      "shortDescription": "Automated arbitrage engine for Uniswap/PancakeSwap and treasury auto-compounding logic.",
+      "fullDescription": "Automated treasury management system with cross-DEX arbitrage capabilities and real-time profit optimization. Scans multiple decentralized exchanges for price discrepancies and executes profitable trades while managing treasury assets through auto-compounding strategies.",
+      "features": [
+        "Cross-DEX arbitrage detection",
+        "Real-time profit optimization",
+        "Treasury auto-compounding",
+        "Multi-chain support",
+        "Gas optimization strategies",
+        "Risk management protocols",
+        "Automated trade execution",
+        "Performance analytics dashboard"
+      ],
+      "techStack": ["Solidity", "JavaScript", "Ethers.js", "Uniswap SDK", "PancakeSwap SDK", "Web3.js", "Node.js"],
+      "tags": ["DeFi", "Arbitrage", "Solidity", "JavaScript", "Treasury Management"],
+      "links": {
+        "github": "https://github.com/drasticstatic",
+        "demo": null
+      }
+    },
+    {
+      "id": "mycelium-agent",
+      "title": "Mycelium Agent — Oracle of Fruit",
+      "icon": "🧠",
+      "role": "AI Architect & Developer",
+      "year": "2024",
+      "featured": true,
+      "shortDescription": "LLM-powered ritual agent indexing offerings and generating ritual intelligence.",
+      "fullDescription": "LLM-powered ritual intelligence system for spiritual-technological ecosystems with mycelial-inspired interaction patterns. The Oracle of Fruit indexes offerings, analyzes spiritual practices, and generates wisdom synthesis for community healing and growth.",
+      "features": [
+        "Offering indexing and categorization",
+        "Ritual intelligence generation",
+        "Spiritual practice guidance",
+        "Community wisdom synthesis",
+        "Mycelial network patterns",
+        "Context-aware responses",
+        "Integration with Ethereal Offering",
+        "Privacy-preserving AI interactions"
+      ],
+      "techStack": ["LLM Integration", "Python", "Natural Language Processing", "Vector Databases", "API Design", "Node.js"],
+      "tags": ["LLM", "Agent", "Ritual", "AI", "Mycelial Intelligence"],
+      "links": {
+        "github": "https://github.com/drasticstatic",
+        "demo": null
+      }
+    }
+  ],
+  "skills": {
+    "blockchain": [
+      "Aleo Leo (ZK Circuits)",
+      "Solidity Smart Contracts",
+      "MPC Systems",
+      "DAO Governance",
+      "DeFi Protocols",
+      "Zero-Knowledge Proofs",
+      "Multi-chain Interoperability"
+    ],
+    "manufacturing": [
+      "Mazatrol Programming",
+      "Mastercam CAM",
+      "FeatureCAM",
+      "G-code Optimization",
+      "CNC Lathe Operations",
+      "Precision Metrology (±0.0001\")",
+      "AS9100/ITAR Compliance"
+    ],
+    "software": [
+      "JavaScript/TypeScript",
+      "React/Node.js",
+      "Python Scripting",
+      "API Integration",
+      "LLM Integration",
+      "Web3.js/Ethers.js"
+    ],
+    "audio": [
+      "FOH Engineering",
+      "Digital/Analog Mixing",
+      "Sound Reinforcement",
+      "System Design",
+      "Multi-track Recording"
+    ],
+    "sacred": [
+      "Ritual Intelligence",
+      "Mycelial Networks",
+      "Spiritual AI Systems",
+      "Privacy-First Design",
+      "Community Governance"
+    ]
+  }
+}

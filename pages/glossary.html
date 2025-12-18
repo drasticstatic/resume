@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary | Christopher Wilson</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link href="../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    <link href="../css/resume.css" rel="stylesheet">
+    <link href="../css/modal.css" rel="stylesheet">
+    <link href="../css/psychedelic.css" rel="stylesheet">
+    <link href="../css/navigation.css" rel="stylesheet">
+    <link href="../css/effects.css" rel="stylesheet">
+</head>
+<body>
+    <div class="top-left-actions">
+        <button class="action-btn donate-btn-top" onclick="openDonateModal()">
+            <i class="fas fa-heart"></i>
+        </button>
+        <button class="action-btn lost-btn-top" onclick="window.location.href='404.html'">
+            <i class="fas fa-compass"></i>
+        </button>
+    </div>
+
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="../index.html" class="nav-logo rainbow-text">CW</a>
+                <div class="nav-profile">
+                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow floating-profile" onclick="window.location.href='../index.html'">
+                    <img class="ring" src="../img/Ring.svg" alt="Ring Border">
+                </div>
+            </div>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="../index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="about.html" class="nav-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="portfolio.html" class="nav-link"><i data-lucide="briefcase"></i> Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
+                <li><a href="resources.html" class="nav-link active"><i data-lucide="library"></i> Resources</a></li>
+                <li><a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
+            </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="hamburger mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section glossary-hero">
+            <h1 class="glitch-text rainbow-text">Glossary</h1>
+            <p class="hero-subtitle">Sacred Technology & Precision Engineering Terms</p>
+        </section>
+
+        <section class="section glossary-content" id="glossary">
+            <div class="glossary-grid">
+                <div class="glossary-term" id="zk">
+                    <h3>Zero-Knowledge Proofs (ZK)</h3>
+                    <p>Cryptographic method allowing one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself. Essential for privacy-preserving blockchain applications.</p>
+                </div>
+
+                <div class="glossary-term" id="soulbound">
+                    <h3>Soulbound Tokens</h3>
+                    <p>Non-transferable NFTs that represent identity, credentials, or achievements tied to a specific wallet address. Cannot be sold or transferred, representing intrinsic value tied to the holder.</p>
+                </div>
+
+                <div class="glossary-term" id="dao">
+                    <h3>DAO (Decentralized Autonomous Organization)</h3>
+                    <p>Organization represented by rules encoded as smart contracts, controlled by members rather than central authority. Enables transparent, democratic governance on the blockchain.</p>
+                </div>
+
+                <div class="glossary-term" id="aleo">
+                    <h3>Aleo</h3>
+                    <p>Privacy-focused blockchain platform using zero-knowledge cryptography (ZK-SNARKs) for building private applications. Uses Leo programming language for writing ZK circuits.</p>
+                </div>
+
+                <div class="glossary-term" id="mpc">
+                    <h3>MPC (Multi-Party Computation)</h3>
+                    <p>Cryptographic protocol allowing multiple parties to jointly compute a function while keeping inputs private. Used for secure key management and collaborative computation.</p>
+                </div>
+
+                <div class="glossary-term" id="defi">
+                    <h3>DeFi (Decentralized Finance)</h3>
+                    <p>Financial services built on blockchain without traditional intermediaries like banks. Includes lending, borrowing, trading, and yield farming protocols.</p>
+                </div>
+
+                <div class="glossary-term" id="solidity">
+                    <h3>Solidity</h3>
+                    <p>Object-oriented programming language for writing smart contracts on Ethereum and EVM-compatible blockchains. Syntax similar to JavaScript and C++.</p>
+                </div>
+
+                <div class="glossary-term" id="llm">
+                    <h3>LLM (Large Language Model)</h3>
+                    <p>AI model trained on vast amounts of text data to understand and generate human-like text. Powers applications like ChatGPT and our Oracle of Fruit.</p>
+                </div>
+
+                <div class="glossary-term" id="ritual-intelligence">
+                    <h3>Ritual Intelligence</h3>
+                    <p>AI systems designed to support spiritual practices, ceremonies, and contemplative traditions. Combines technology with sacred wisdom for community healing.</p>
+                </div>
+
+                <div class="glossary-term" id="mycelial-networks">
+                    <h3>Mycelial Networks</h3>
+                    <p>Decentralized organizational structures inspired by fungal networks. Emphasizes interconnection, distributed intelligence, and mutual support without hierarchy.</p>
+                </div>
+
+                <div class="glossary-term" id="mazatrol">
+                    <h3>Mazatrol</h3>
+                    <p>Conversational CNC programming language used on Mazak machine tools. Allows intuitive part programming through graphical interface and conversational prompts.</p>
+                </div>
+
+                <div class="glossary-term" id="mastercam">
+                    <h3>Mastercam</h3>
+                    <p>Industry-leading CAM (Computer-Aided Manufacturing) software for creating CNC toolpaths and programs. Used for mill, lathe, and multi-axis machining.</p>
+                </div>
+
+                <div class="glossary-term" id="cnc-lathe">
+                    <h3>CNC Lathe</h3>
+                    <p>Computer-controlled machine tool that rotates workpiece for precision turning operations. Capable of complex geometries with tight tolerances.</p>
+                </div>
+
+                <div class="glossary-term" id="metrology">
+                    <h3>Precision Metrology</h3>
+                    <p>Science of measurement ensuring parts meet specified tolerances, often to ±0.0001" accuracy. Uses CMMs, micrometers, and optical comparators.</p>
+                </div>
+
+                <div class="glossary-term" id="nft">
+                    <h3>NFT (Non-Fungible Token)</h3>
+                    <p>Unique digital asset verified using blockchain technology. Represents ownership of specific items, art, or content that cannot be replicated.</p>
+                </div>
+
+                <div class="glossary-term" id="privacy">
+                    <h3>Privacy-First Design</h3>
+                    <p>Architectural approach prioritizing user privacy and data sovereignty. Uses encryption, zero-knowledge proofs, and minimal data collection.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="../js/resume.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/web3-effects.js"></script>
+    <script src="../js/effects.js"></script>
+    
+    <script>
+        lucide.createIcons();
+        
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

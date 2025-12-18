@@ -17,21 +17,56 @@
     <!-- Custom styles -->
     <link href="../css/resume.css" rel="stylesheet">
     <link href="../css/modal.css" rel="stylesheet">
+    <link href="../css/psychedelic.css" rel="stylesheet">
+    <link href="../css/navigation.css" rel="stylesheet">
+    <link href="../css/effects.css" rel="stylesheet">
 </head>
 
 <body>
+    <!-- Top-left action buttons -->
+    <div class="top-left-actions">
+        <button class="action-btn donate-btn-top" onclick="openDonateModal()">
+            <i class="fas fa-heart"></i>
+        </button>
+        <button class="action-btn lost-btn-top" onclick="window.location.href='404.html'">
+            <i class="fas fa-compass"></i>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navigation">
         <div class="nav-container">
-            <a href="../index.html" class="nav-logo">CW</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="portfolio.html" class="active">Portfolio</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <div class="nav-left">
+                <a href="../index.html" class="nav-logo rainbow-text">CW</a>
+                <div class="nav-profile">
+                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow floating-profile" onclick="window.location.href='../index.html'">
+                    <img class="ring" src="../img/Ring.svg" alt="Ring Border">
+                </div>
+            </div>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="../index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="about.html" class="nav-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="portfolio.html" class="nav-link active"><i data-lucide="briefcase"></i> Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
+                <li><a href="resources.html" class="nav-link"><i data-lucide="library"></i> Resources</a></li>
+                <li><a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
             </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="hamburger mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -39,28 +74,23 @@
         <!-- Hero Section -->
         <section class="section portfolio-hero">
             <div class="hero-background">
-                <div class="code-rain"></div>
+                <div class="matrix-code-rain"></div>
+                <div class="floating-particles"></div>
+                <div class="mycelial-network"></div>
             </div>
-            <h1 class="glitch-text" data-text="Portfolio">Portfolio</h1>
-            <p class="hero-subtitle cosmic-text">Sacred Technology • Precision Engineering • Spiritual Innovation</p>
-            <div class="portfolio-stats">
-                <div class="stat-card">
-                    <div class="stat-icon">🍄</div>
-                    <div class="stat-info">
+            <div class="hero-content">
+                <h1 class="glitch-text rainbow-text" data-text="Portfolio">Portfolio</h1>
+                <p class="hero-subtitle cosmic-text">Sacred Technology • Precision Engineering • Spiritual Innovation</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
                         <span class="stat-number">4</span>
                         <span class="stat-label">Web3 Projects</span>
                     </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">🔧</div>
-                    <div class="stat-info">
+                    <div class="stat-item">
                         <span class="stat-number">1000+</span>
                         <span class="stat-label">Parts Machined</span>
                     </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon">⛪</div>
-                    <div class="stat-info">
+                    <div class="stat-item">
                         <span class="stat-number">∞</span>
                         <span class="stat-label">Sacred Connections</span>
                     </div>
@@ -83,12 +113,12 @@
                         <div class="tech-stack">
                             <h4>Technical Stack:</h4>
                             <div class="tech-tags">
-                                <span class="tech-tag">Aleo Leo</span>
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">Wagmi</span>
-                                <span class="tech-tag">Ethers.js</span>
-                                <span class="tech-tag">ZK Circuits</span>
+                                <span class="tech-tag" onclick="openGlossary('aleo-leo')">Aleo Leo</span>
+                                <span class="tech-tag" onclick="openGlossary('react')">React</span>
+                                <span class="tech-tag" onclick="openGlossary('nodejs')">Node.js</span>
+                                <span class="tech-tag" onclick="openGlossary('wagmi')">Wagmi</span>
+                                <span class="tech-tag" onclick="openGlossary('ethersjs')">Ethers.js</span>
+                                <span class="tech-tag" onclick="openGlossary('zk-circuits')">ZK Circuits</span>
                             </div>
                         </div>
                         
@@ -111,10 +141,10 @@
                     <h3>Anonymous ZK + MPC Voting Platform</h3>
                     <p>Hybrid privacy-preserving governance system built on Aleo's zero-knowledge framework with MPC fail-safe recovery.</p>
                     <div class="project-tags">
-                        <span class="tag">Aleo</span>
-                        <span class="tag">MPC</span>
-                        <span class="tag">Privacy</span>
-                        <span class="tag">Governance</span>
+                        <span class="tag" onclick="openGlossary('aleo')">Aleo</span>
+                        <span class="tag" onclick="openGlossary('mpc')">MPC</span>
+                        <span class="tag" onclick="openGlossary('privacy')">Privacy</span>
+                        <span class="tag" onclick="openGlossary('dao')">Governance</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('zk-voting')">Details</button>
@@ -127,10 +157,10 @@
                     <h3>DEX Arbitrage Scanner & Treasury Agent</h3>
                     <p>Automated treasury management system with cross-DEX arbitrage capabilities and real-time profit optimization.</p>
                     <div class="project-tags">
-                        <span class="tag">DeFi</span>
-                        <span class="tag">Arbitrage</span>
-                        <span class="tag">Solidity</span>
-                        <span class="tag">JavaScript</span>
+                        <span class="tag" onclick="openGlossary('defi')">DeFi</span>
+                        <span class="tag" onclick="openGlossary('arbitrage')">Arbitrage</span>
+                        <span class="tag" onclick="openGlossary('solidity')">Solidity</span>
+                        <span class="tag" onclick="openGlossary('javascript')">JavaScript</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('dex-arbitrage')">Details</button>
@@ -143,10 +173,10 @@
                     <h3>Mycelium Agent — Oracle of Fruit</h3>
                     <p>LLM-powered ritual intelligence system for spiritual-technological ecosystems with mycelial-inspired interaction patterns.</p>
                     <div class="project-tags">
-                        <span class="tag">LLM</span>
-                        <span class="tag">Agent</span>
-                        <span class="tag">Ritual</span>
-                        <span class="tag">AI</span>
+                        <span class="tag" onclick="openGlossary('llm')">LLM</span>
+                        <span class="tag" onclick="openGlossary('agent')">Agent</span>
+                        <span class="tag" onclick="openGlossary('ritual')">Ritual</span>
+                        <span class="tag" onclick="openGlossary('ai')">AI</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('mycelium-agent')">Details</button>
@@ -159,10 +189,10 @@
                     <h3>Multi-Chain Hackathon Architecture</h3>
                     <p>Cross-chain interoperability system designed for Mantle, Cosmos, TON, ASI, Chainlink, zkID, and Aleo integration.</p>
                     <div class="project-tags">
-                        <span class="tag">Cosmos</span>
-                        <span class="tag">Mantle</span>
-                        <span class="tag">TON</span>
-                        <span class="tag">CCIP</span>
+                        <span class="tag" onclick="openGlossary('cosmos')">Cosmos</span>
+                        <span class="tag" onclick="openGlossary('mantle')">Mantle</span>
+                        <span class="tag" onclick="openGlossary('ton')">TON</span>
+                        <span class="tag" onclick="openGlossary('ccip')">CCIP</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('multi-chain')">Details</button>
@@ -175,10 +205,10 @@
                     <h3>CSW Productions</h3>
                     <p>Professional audio engineering services including FOH engineering, live sound, lighting design, and event production.</p>
                     <div class="project-tags">
-                        <span class="tag">Audio</span>
-                        <span class="tag">Live Sound</span>
-                        <span class="tag">Production</span>
-                        <span class="tag">Engineering</span>
+                        <span class="tag" onclick="openGlossary('audio')">Audio</span>
+                        <span class="tag" onclick="openGlossary('live-sound')">Live Sound</span>
+                        <span class="tag" onclick="openGlossary('production')">Production</span>
+                        <span class="tag" onclick="openGlossary('engineering')">Engineering</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('csw-productions')">Details</button>
@@ -191,10 +221,10 @@
                     <h3>Precision Manufacturing Portfolio</h3>
                     <p>18+ years of CNC machining expertise across aerospace, defense, and entertainment industries with ±0.0001" tolerances.</p>
                     <div class="project-tags">
-                        <span class="tag">CNC</span>
-                        <span class="tag">Mazatrol</span>
-                        <span class="tag">Mastercam</span>
-                        <span class="tag">Precision</span>
+                        <span class="tag" onclick="openGlossary('cnc')">CNC</span>
+                        <span class="tag" onclick="openGlossary('mazatrol')">Mazatrol</span>
+                        <span class="tag" onclick="openGlossary('mastercam')">Mastercam</span>
+                        <span class="tag" onclick="openGlossary('precision')">Precision</span>
                     </div>
                     <div class="project-actions">
                         <button onclick="openProjectModal('manufacturing')">Details</button>
@@ -264,6 +294,127 @@
         </div>
     </div>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <script src="../js/modal.js"></script>
+    <script src="../js/web3-effects.js"></script>
+    <script src="../js/effects.js"></script>
+    
+    <script>
+        // Initialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Mobile navigation toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        // Matrix code rain effect
+        function createMatrixRain() {
+            const matrix = document.querySelector('.matrix-code-rain');
+            if (!matrix) return;
+            
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 20; i++) {
+                const column = document.createElement('div');
+                column.style.cssText = `
+                    position: absolute;
+                    left: ${Math.random() * 100}%;
+                    top: -100px;
+                    color: rgba(57, 255, 20, 0.8);
+                    font-family: 'Courier New', monospace;
+                    font-size: 14px;
+                    animation: matrixFall ${5 + Math.random() * 10}s linear infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                
+                matrix.appendChild(column);
+            }
+        }
+        
+        // Add matrix animation CSS
+        const matrixStyle = document.createElement('style');
+        matrixStyle.textContent = `
+            .matrix-code-rain {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                pointer-events: none;
+            }
+            
+            @keyframes matrixFall {
+                0% { transform: translateY(-100px); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+            
+            .portfolio-hero {
+                position: relative;
+                min-height: 70vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(matrixStyle);
+        
+        // Spore rain on nav clicks
+        document.querySelectorAll('.nav-link').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (typeof createSporeRain === 'function') {
+                    createSporeRain(e.pageX, e.pageY);
+                }
+            });
+        });
+        
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixRain();
+            
+            // Add hover effects to project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(255, 0, 128, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+        
+        function openGlossary(term) {
+            if (window.modalInstance) {
+                window.modalInstance.open(`
+                    <div class="glossary-entry">
+                        <h3>${term.toUpperCase()}</h3>
+                        <p>Loading definition...</p>
+                        <div class="glossary-actions">
+                            <a href="glossary.html#${term}" class="glossary-link">View Full Glossary</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    </script>
 </body>
 </html>

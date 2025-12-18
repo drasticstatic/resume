@@ -23,63 +23,97 @@
     <link href="css/resume.css" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
     <link href="css/psychedelic.css" rel="stylesheet">
+    <link href="css/navigation.css" rel="stylesheet">
+    <link href="css/effects.css" rel="stylesheet">
 </head>
 
 <body>
+    <div class="shader-bg"></div>
+    <!-- Top-left action buttons -->
+    <div class="top-left-actions">
+        <button class="action-btn donate-btn-top" onclick="openDonateModal()">
+            <i class="fas fa-heart"></i>
+        </button>
+        <button class="action-btn lost-btn-top" onclick="window.location.href='pages/404.html'">
+            <i class="fas fa-compass"></i>
+        </button>
+    </div>
+
     <!-- Navigation -->
     <nav class="navigation">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">CW</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="pages/about.html">About</a></li>
-                <li><a href="pages/portfolio.html">Portfolio</a></li>
-                <li><a href="pages/blog.html">Blog</a></li>
-                <li><a href="pages/resources.html">Resources</a></li>
-                <li><a href="pages/contact.html">Contact</a></li>
+            <div class="nav-left">
+                <a href="index.html" class="nav-logo rainbow-text">CW</a>
+                <div class="nav-profile">
+                    <img src="./img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow floating-profile" onclick="window.location.href='index.html'">
+                    <img class="ring" src="./img/Ring.svg" alt="Ring Border">
+                </div>
+            </div>
+            <ul class="nav-menu desktop-nav">
+                <li><a href="index.html" class="nav-link active"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="pages/about.html" class="nav-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="pages/portfolio.html" class="nav-link"><i data-lucide="briefcase"></i> Portfolio</a></li>
+                <li><a href="pages/blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
+                <li><a href="pages/resources.html" class="nav-link"><i data-lucide="library"></i> Resources</a></li>
+                <li><a href="pages/contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
             </ul>
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+            <div class="hamburger mobile-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <header class="header">
-        <div class="header-links flex-start">
-            <div class="profile-container">
-                <img class="profile" src="./img/profile.jpg" alt="Christopher Wilson">
-                <img class="ring" src="./img/Ring.svg" alt="Ring Border">
-            </div>
-
-            <ul class="flex-list list-items-circle">
-                <li>
-                    <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/drasticstatic" target="_blank">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://gravatar.com/christopherdrasticstatic/" target="_blank">
-                        <i class="fas fa-address-card"></i>
-                    </a>
-                </li>
-            </ul>
+    <header class="hero-section" style="position: relative;">
+        <div class="pulse-beam" style="left: 20%;"></div>
+        <div class="pulse-beam" style="left: 50%;"></div>
+        <div class="pulse-beam" style="left: 80%;"></div>
+        <div class="hero-background">
+            <div class="liquid-waves"></div>
+            <div class="northern-lights"></div>
+            <div class="mycelial-network"></div>
+            <div class="floating-particles"></div>
+            <div class="solidity-code-rain"></div>
         </div>
-
-        <h1 class="glitch-text" data-text="Hi, I'm Christopher Wilson Minister-Technologist">
-            Hi, I'm Christopher Wilson<br />
-            <span class="rainbow-text">Minister-Technologist</span>
-        </h1>
-        <p class="hero-description cosmic-text">Co-founder of <span class="highlight-glow">Ethereal Offering</span> • Lead CNC Lathe Programmer at Jones Manufacturing<br/>Building private ZK voting, DAO governance, and <span class="highlight-glow">ritual intelligence systems</span></p>
-
-        <ul class="contact-details flex-list">
-            <li>York, PA USA</li>
-            <hr />
-            <li>(717) 501-1481</li>
-            <hr />
-            <li><a href="mailto: drasticstatic@gmail.com" style="border: none;">drasticstatic@gmail.com</a></li>
-        </ul>
+        <div class="hero-content">
+            <h1 class="hero-title glitch-text breathing-text" data-text="Hi, I'm Christopher Wilson">
+                Hi, I'm Christopher Wilson<br/>
+                <span class="rainbow-text">Minister-Technologist</span>
+            </h1>
+            <div class="hero-description-container" style="text-align: center;">
+                <p class="hero-description typed-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    Co-founder of <span class="highlight-glow">Ethereal Offering</span>. Lead CNC Lathe Programmer at Jones Manufacturing. 
+                    Building private ZK voting, DAO governance, and ritual intelligence systems where 
+                    <span class="highlight-glow">code becomes prayer and mycelium becomes architecture</span>.
+                </p>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">18+</span>
+                    <span class="stat-label">Years Machining</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Web3 Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Sacred Connections</span>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
 
@@ -90,7 +124,10 @@
                 I'm a <span class="tech-highlight">CNC machinist</span>, <span class="tech-highlight">CAM programmer</span>, <span class="tech-highlight">blockchain builder</span>, and <span class="spiritual-highlight">ordained minister</span>
             </h2>
             <p class="about-description">
-                For nearly two decades I've worked in precision manufacturing across Billet Industries, TAIT Towers, and Jones Manufacturing — creating hardware for aerospace, defense, and global entertainment. Today I apply that same precision and discipline to spiritual-technological systems: zero-knowledge governance, DAO architectures, gratitude-based tokens, mycelial agents, and decentralized communities of healing.
+                My mission is to build systems — spiritual, technological, and communal — that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. I combine precision engineering with zero-knowledge privacy, decentralized governance, and ministerial presence to create tools that empower individuals, strengthen communities, and reflect the sacred interconnectedness of all life.
+            </p>
+            <p class="about-description">
+                For nearly two decades I've worked in precision manufacturing across Billet Industries, TAIT Towers, and Jones Manufacturing. Today I apply that same precision and discipline to spiritual-technological systems: zero-knowledge governance, DAO architectures, gratitude-based tokens, mycelial agents, and decentralized communities of healing.
             </p>
             <div class="achievements-grid">
                 <div class="achievement-item">
@@ -117,7 +154,7 @@
 
         <section class="section projects">
             <div class="flex-between">
-                <h2 class="projects-title">Take a look at my <span class="neon-text">projects</span></h2>
+                <h2 class="projects-title">Take a look at my <span class="projects-highlight soft-glow">works</span></h2>
 
                 <a href="https://github.com/drasticstatic" class="projects-link flex-between">
                     See all works <img src="./img/ArrowUpRight.svg" alt="Arrow" style="margin-left: 8px; opacity: 0.7;">
@@ -130,10 +167,10 @@
                     <h3 class="card-title">Ethereal Offering</h3>
                     <p class="card-description">Gratitude-based token system with soulbound DIDs and ritual intelligence. Co-founder: Christopher Wilson.</p>
                     <div class="card-tags">
-                        <span class="tag">ZK</span>
-                        <span class="tag">Soulbound</span>
-                        <span class="tag">DAO</span>
-                        <span class="tag">NFT</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('zk')">ZK</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('soulbound')">Soulbound</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('dao')">DAO</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('nft')">NFT</span>
                     </div>
                     <div class="card-buttons">
                         <button class="card-button--site" onclick="openProjectModal('ethereal-offering')">Details</button>
@@ -146,9 +183,9 @@
                     <h3 class="card-title">Anonymous ZK + MPC Voting</h3>
                     <p class="card-description">Aleo-based private ballots with MPC recovery and DAO-triggered key rotation.</p>
                     <div class="card-tags">
-                        <span class="tag">Aleo</span>
-                        <span class="tag">MPC</span>
-                        <span class="tag">Privacy</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('aleo')">Aleo</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('mpc')">MPC</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('privacy')">Privacy</span>
                     </div>
                     <div class="card-buttons">
                         <button class="card-button--site" onclick="openProjectModal('zk-voting')">Details</button>
@@ -161,9 +198,9 @@
                     <h3 class="card-title">DEX Arbitrage Scanner</h3>
                     <p class="card-description">Automated arbitrage engine for Uniswap/PancakeSwap and treasury auto-compounding logic.</p>
                     <div class="card-tags">
-                        <span class="tag">DeFi</span>
-                        <span class="tag">Arbitrage</span>
-                        <span class="tag">Solidity</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('defi')">DeFi</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('arbitrage')">Arbitrage</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('solidity')">Solidity</span>
                     </div>
                     <div class="card-buttons">
                         <button class="card-button--site" onclick="openProjectModal('dex-arbitrage')">Details</button>
@@ -176,9 +213,9 @@
                     <h3 class="card-title">Mycelium Agent — Oracle of Fruit</h3>
                     <p class="card-description">LLM-powered ritual agent indexing offerings and generating ritual intelligence.</p>
                     <div class="card-tags">
-                        <span class="tag">LLM</span>
-                        <span class="tag">Agent</span>
-                        <span class="tag">Ritual</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('llm')">LLM</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('agent')">Agent</span>
+                        <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('ritual')">Ritual</span>
                     </div>
                     <div class="card-buttons">
                         <button class="card-button--site" onclick="openProjectModal('mycelium-agent')">Details</button>
@@ -196,72 +233,98 @@
                 <img src="./img/Dot.svg" alt="Blue Dot">
             </p>
 
-            <h2 class="experience-title">Experience <span class="subtitle-glow">⚡ Precision Meets Innovation</span></h2>
+            <h2 class="experience-title">Experience <span class="subtitle-glow neon-text">⚡ Precision Meets Innovation</span></h2>
 
             <div class="experience-timeline">
+                <div class="timeline-line"></div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content experience-card">
-                        <h3 class="card-title">
-                            Jones Manufacturing - <span class="highlight">Lead CNC Lathe Programmer</span>
-                        </h3>
-                        <p class="card-years">2022-Present</p>
-                        <ul class="card-list">
-                            <li class="card-list-item">Lead Mazak lathe programmer using Mazatrol for advanced turning/mill-turn operations</li>
-                            <li class="card-list-item">Improved cycle times & tool life through optimized toolpaths</li>
-                            <li class="card-list-item">Mentored apprentices and junior machinists</li>
-                        </ul>
+                    <div class="timeline-content experience-card expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3 class="card-title">
+                                Jones Manufacturing - <span class="highlight">Lead CNC Lathe Programmer</span>
+                            </h3>
+                            <p class="card-years">2022-Present</p>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <ul class="card-list">
+                                <li class="card-list-item">Lead Mazak lathe programmer using Mazatrol for advanced turning/mill-turn operations</li>
+                                <li class="card-list-item">Improved cycle times & tool life through optimized toolpaths</li>
+                                <li class="card-list-item">Mentored apprentices and junior machinists</li>
+                            </ul>
+                            <a href="https://www.jonesmanufacturingyorkpa.com" class="external-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visit Company
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content experience-card">
-                        <h3 class="card-title">
-                            TAIT Towers - <span class="highlight">CNC Machinist & CAM Programmer</span>
-                        </h3>
-                        <p class="card-years">2016-2022</p>
-                        <ul class="card-list">
-                            <li class="card-list-item">Programmed and ran Doosan, Haas, and Fanuc-controlled lathes</li>
-                            <li class="card-list-item">Heavy FeatureCAM and Mastercam workflows</li>
-                            <li class="card-list-item">Supported rapid manufacturing for global tours and arena installations</li>
-                        </ul>
+                    <div class="timeline-content experience-card expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3 class="card-title">
+                                TAIT Towers - <span class="highlight">CNC Machinist & CAM Programmer</span>
+                            </h3>
+                            <p class="card-years">2016-2022</p>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <ul class="card-list">
+                                <li class="card-list-item">Programmed and ran Doosan, Haas, and Fanuc-controlled lathes</li>
+                                <li class="card-list-item">Heavy FeatureCAM and Mastercam workflows</li>
+                                <li class="card-list-item">Supported rapid manufacturing for global tours and arena installations</li>
+                            </ul>
+                            <a href="https://www.taittowers.com" class="external-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Visit Company
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content experience-card">
-                        <h3 class="card-title">
-                            Billet Industries - <span class="highlight">Lead Lathe Programmer</span>
-                        </h3>
-                        <p class="card-years">2006-2016</p>
-                        <ul class="card-list">
-                            <li class="card-list-item">Began apprenticeship → grew into lead programmer</li>
-                            <li class="card-list-item">AS9100/ITAR precision environment</li>
-                            <li class="card-list-item">Produced aerospace, defense, and specialized industrial components</li>
-                        </ul>
+                    <div class="timeline-content experience-card expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3 class="card-title">
+                                Billet Industries - <span class="highlight">Lead Lathe Programmer</span>
+                            </h3>
+                            <p class="card-years">2006-2016</p>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <ul class="card-list">
+                                <li class="card-list-item">Began apprenticeship → grew into lead programmer</li>
+                                <li class="card-list-item">AS9100/ITAR precision environment</li>
+                                <li class="card-list-item">Produced aerospace, defense, and specialized industrial components</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
-                    <div class="timeline-content experience-card">
-                        <h3 class="card-title">
-                            Ethereal Offering - <span class="highlight">Co-Founder</span>
-                        </h3>
-                        <p class="card-years">2024-Present</p>
-                        <ul class="card-list">
-                            <li class="card-list-item">Co-created spiritual Web3 ecosystem with gratitude tokens</li>
-                            <li class="card-list-item">Developed Oracle of Fruit (LLM-powered ritual intelligence)</li>
-                            <li class="card-list-item">Integrated Aleo ZK circuits with soulbound identity systems</li>
-                        </ul>
+                    <div class="timeline-content experience-card expandable-card">
+                        <div class="card-header" onclick="toggleCard(this)">
+                            <h3 class="card-title">
+                                Ethereal Offering - <span class="highlight">Co-Founder</span>
+                            </h3>
+                            <p class="card-years">2024-Present</p>
+                            <i class="fas fa-chevron-down expand-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <ul class="card-list">
+                                <li class="card-list-item">Co-created spiritual Web3 ecosystem with gratitude tokens</li>
+                                <li class="card-list-item">Developed Oracle of Fruit (LLM-powered ritual intelligence)</li>
+                                <li class="card-list-item">Integrated Aleo ZK circuits with soulbound identity systems</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- SKILLS -->
-
         <section class="section skills">
-            <h2 class="skills-title">Skills that I have <span class="skill-subtitle">🌈 Multidimensional Expertise</span></h2>
+            <h2 class="skills-title">Skills that I have <span class="skill-subtitle rainbow-text">🌈 Multidimensional Expertise</span></h2>
 
             <div class="skill-cards flex-center">
                 <div class="skill-card flex-center">
@@ -284,103 +347,163 @@
                 </div>
             </div>
 
-            <ul class="skill-list flex-between">
-                <li><img src="./img/Check.svg" alt="Checkmark">Zero-Knowledge Cryptography (Aleo Leo)</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">CNC Programming (Mazatrol, Mastercam, G-code)</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">DAO Governance & MPC Systems</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Audio Engineering & Live Sound</li>
-            </ul>
+            <div class="skill-categories">
+                <div class="skill-category">
+                    <h3 class="category-title">Web3 & Blockchain</h3>
+                    <div class="skill-items">
+                        <span class="skill-item" onclick="openGlossary('aleo-leo')">Aleo Leo (ZK Circuits)</span>
+                        <span class="skill-item" onclick="openGlossary('solidity')">Solidity Smart Contracts</span>
+                        <span class="skill-item" onclick="openGlossary('mpc')">MPC Systems</span>
+                        <span class="skill-item" onclick="openGlossary('dao')">DAO Governance</span>
+                        <span class="skill-item" onclick="openGlossary('defi')">DeFi Protocols</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Precision Manufacturing</h3>
+                    <div class="skill-items">
+                        <span class="skill-item" onclick="openGlossary('mazatrol')">Mazatrol Programming</span>
+                        <span class="skill-item" onclick="openGlossary('mastercam')">Mastercam CAM</span>
+                        <span class="skill-item" onclick="openGlossary('gcode')">G-code Optimization</span>
+                        <span class="skill-item" onclick="openGlossary('cnc-lathe')">CNC Lathe Operations</span>
+                        <span class="skill-item" onclick="openGlossary('metrology')">Precision Metrology</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Software Development</h3>
+                    <div class="skill-items">
+                        <span class="skill-item" onclick="openGlossary('javascript')">JavaScript/TypeScript</span>
+                        <span class="skill-item" onclick="openGlossary('react')">React/Node.js</span>
+                        <span class="skill-item" onclick="openGlossary('python')">Python Scripting</span>
+                        <span class="skill-item" onclick="openGlossary('api')">API Integration</span>
+                        <span class="skill-item" onclick="openGlossary('database')">Database Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3 class="category-title">Sacred Technology</h3>
+                    <div class="skill-items">
+                        <span class="skill-item" onclick="openGlossary('ritual-intelligence')">Ritual Intelligence</span>
+                        <span class="skill-item" onclick="openGlossary('mycelial-networks')">Mycelial Networks</span>
+                        <span class="skill-item" onclick="openGlossary('spiritual-ai')">Spiritual AI Systems</span>
+                        <span class="skill-item" onclick="openGlossary('privacy-first')">Privacy-First Design</span>
+                        <span class="skill-item" onclick="openGlossary('community-governance')">Community Governance</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- BLOG PREVIEW -->
-        <section class="section blog-preview">
-            <h2 class="section-title-glow">Latest <span class="neon-text">Insights</span> <span class="subtitle-glow">🌌 Sacred Technology Reflections</span></h2>
+        <!-- LATEST INSIGHTS -->
+        <section class="section latest-insights">
+            <h2 class="insights-title">Latest <span class="insights-highlight soft-glow">Wisdom</span></h2>
+            <p class="insights-subtitle">🌌 Sacred Technology Reflections</p>
             
-            <div class="blog-cards">
-                <article class="blog-card">
-                    <div class="blog-meta">
-                        <span class="blog-date">January 2025</span>
-                        <span class="blog-category">Sacred Technology</span>
+            <div class="insights-stream">
+                <div class="insight-flow">
+                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
+                        <div class="insight-date">January 15, 2025</div>
+                        <h3 class="insight-title">The Mycelial Web</h3>
+                        <p class="insight-text">How fungal networks inspire decentralized governance and blockchain consensus mechanisms...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Sacred Technology</span>
+                            <span class="insight-tag">5 min</span>
+                        </div>
                     </div>
-                    <h3>The Mycelial Model: How Fungal Networks Inspire Decentralized Governance</h3>
-                    <p class="blog-excerpt">In the quiet depths of forest floors, mycelial networks demonstrate principles of decentralized coordination that blockchain developers are only beginning to understand...</p>
-                    <button class="read-more-btn" onclick="window.location.href='pages/blog.html'">Read More</button>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-meta">
-                        <span class="blog-date">December 2024</span>
-                        <span class="blog-category">Engineering</span>
+                    
+                    <div class="insight-connector"></div>
+                    
+                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
+                        <div class="insight-date">January 8, 2025</div>
+                        <h3 class="insight-title">From Microns to Mysticism</h3>
+                        <p class="insight-text">Lessons from eighteen years of precision machining about patience, intention, and sacred geometry...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Precision & Prayer</span>
+                            <span class="insight-tag">7 min</span>
+                        </div>
                     </div>
-                    <h3>From Microns to Merkle Trees: Precision in Physical and Digital Realms</h3>
-                    <p class="blog-excerpt">How 18 years of CNC machining taught me to approach blockchain development with the same attention to detail that aerospace components demand...</p>
-                    <button class="read-more-btn" onclick="window.location.href='pages/blog.html'">Read More</button>
-                </article>
-
-                <article class="blog-card">
-                    <div class="blog-meta">
-                        <span class="blog-date">November 2024</span>
-                        <span class="blog-category">Spirituality</span>
+                    
+                    <div class="insight-connector"></div>
+                    
+                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
+                        <div class="insight-date">December 28, 2024</div>
+                        <h3 class="insight-title">Zero-Knowledge as Spiritual Practice</h3>
+                        <p class="insight-text">Why privacy-preserving cryptography mirrors contemplative traditions of knowing without revealing...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Web3 & Spirituality</span>
+                            <span class="insight-tag">6 min</span>
+                        </div>
                     </div>
-                    <h3>The Oracle of Fruit: When AI Meets Ritual Intelligence</h3>
-                    <p class="blog-excerpt">Exploring the development of our LLM-powered ritual agent and what it means to create technology that honors the sacred...</p>
-                    <button class="read-more-btn" onclick="window.location.href='pages/blog.html'">Read More</button>
-                </article>
+                </div>
             </div>
-            
-            <div class="view-all-link">
-                <a href="pages/blog.html" class="cta-button" data-text="View All Posts">View All Posts →</a>
+
+            <div class="insights-actions">
+                <button class="cta-button spark-button grow-button" data-text="Read Full Story" onclick="openBioModal()">Read Full Story</button>
+                <a href="pages/blog.html" class="cta-button spark-button grow-button" data-text="View All Posts">View All Posts</a>
             </div>
         </section>
 
         <!-- CONTACT -->
-
         <section class="section contact">
-            <div class="contact-links flex-start">
-                <div class="profile-container">
-                    <img class="profile" src="./img/profile.jpg" alt="Christopher Wilson">
-                    <img class="ring" src="./img/Ring.svg" alt="Ring Border">
-                </div>
-
-                <ul class="flex-list list-items-circle">
-                    <li>
-                        <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/drasticstatic" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://gravatar.com/christopherdrasticstatic/" target="_blank">
-                            <i class="fas fa-address-card"></i>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-
-            <h1>
-                Get in touch
-            </h1>
-
-            <p>
+            <h1 class="contact-title glitch-text">Get in touch</h1>
+            <p class="contact-description">
                 I'm building systems that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. Let's connect if you're interested in sacred technology, precision engineering, or spiritual-technical innovation.
             </p>
-
-            <ul class="contact-details flex-list">
-                <li>York, PA, USA</li>
-                <hr />
-                <li>(717) 501-1481</li>
-                <hr />
-                <li><a href="mailto: drasticstatic@gmail.com">drasticstatic@gmail.com</a></li>
-            </ul>
+            <div class="contact-cta">
+                <button class="cta-button spark-button grow-button" data-text="Start Conversation" onclick="openContactModal()">Start Conversation</button>
+            </div>
         </section>
     </main>
-    <footer class="footer flex-center">
-        <p><small>© Christopher Wilson 2025. All rights reserved.</small></p>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:drasticstatic@gmail.com" style="color: inherit; text-decoration: none;">drasticstatic@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+17175011481" style="color: inherit; text-decoration: none;">(717) 501-1481</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Support</h4>
+                <div class="support-actions">
+                    <button class="donate-btn" onclick="openDonateModal()">
+                        <i class="fas fa-heart"></i> Donate
+                    </button>
+                    <button class="404-btn" onclick="window.location.href='pages/404.html'">
+                        <i class="fas fa-compass"></i> Lost?
+                    </button>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="mycelial-sigil breathing-glow"></div>
+                    <p class="footer-tagline">Where code becomes prayer</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Christopher Wilson. Built with intention, precision, and sacred technology.</p>
+        </div>
     </footer>
 
     <!-- Modal Component -->
@@ -395,10 +518,58 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
     <!-- Custom scripts for this template -->
     <script src="js/resume.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/web3-effects.js"></script>
+    <script src="js/effects.js"></script>
+    
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Mobile navigation toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+        
+        // Rainbow spore drop on navigation clicks
+        document.querySelectorAll('.nav-link, .cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                createSporeRain(e.pageX, e.pageY);
+            });
+        });
+        
+        function createSporeRain(x, y) {
+            for (let i = 0; i < 20; i++) {
+                const spore = document.createElement('div');
+                spore.className = 'rainbow-spore';
+                spore.style.left = x + 'px';
+                spore.style.top = y + 'px';
+                document.body.appendChild(spore);
+                
+                setTimeout(() => spore.remove(), 2000);
+            }
+        }
+        
+        function openGlossary(term) {
+            if (window.modalInstance) {
+                window.modalInstance.open(`
+                    <div class="glossary-entry">
+                        <h3>${term.toUpperCase()}</h3>
+                        <p>Loading definition...</p>
+                        <div class="glossary-actions">
+                            <a href="pages/glossary.html#${term}" class="glossary-link">View Full Glossary</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    </script>
 </body>
 
 </html>
