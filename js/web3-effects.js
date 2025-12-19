@@ -388,6 +388,176 @@ function createFloatingCode() {
     }, 20000);
 }
 
+// Create rainbow mycelial network with increased intensity
+function createMycelialNetwork() {
+    const network = document.createElement('div');
+    network.className = 'mycelial-network';
+    network.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.6;
+    `;
+    
+    // Create rainbow branching hyphae across full page
+    for (let i = 0; i < 35; i++) {
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+        const length = 100 + Math.random() * 250;
+        const angle = Math.random() * 360;
+        const hue = Math.random() * 360;
+        
+        const mainHypha = document.createElement('div');
+        mainHypha.style.cssText = `
+            position: absolute;
+            left: ${startX}px;
+            top: ${startY}px;
+            width: ${length}px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, hsl(${hue}, 80%, 60%), transparent);
+            transform: rotate(${angle}deg);
+            transform-origin: 0 50%;
+            box-shadow: 0 0 8px hsl(${hue}, 80%, 60%);
+            animation: rainbowShift 8s ease-in-out infinite;
+        `;
+        
+        // Add 2-4 rainbow branches
+        for (let j = 0; j < 2 + Math.floor(Math.random() * 3); j++) {
+            const branch = document.createElement('div');
+            const branchLength = 50 + Math.random() * 120;
+            const branchAngle = -60 + Math.random() * 120;
+            const branchPos = 20 + Math.random() * 60;
+            const branchHue = (hue + 60 + Math.random() * 120) % 360;
+            
+            branch.style.cssText = `
+                position: absolute;
+                left: ${branchPos}%;
+                top: 0;
+                width: ${branchLength}px;
+                height: 1px;
+                background: linear-gradient(90deg, hsl(${branchHue}, 70%, 50%), transparent);
+                transform: rotate(${branchAngle}deg);
+                transform-origin: 0 50%;
+                box-shadow: 0 0 4px hsl(${branchHue}, 70%, 50%);
+            `;
+            mainHypha.appendChild(branch);
+        }
+        
+        network.appendChild(mainHypha);
+    }
+    
+    document.body.appendChild(network);
+    
+    // Rainbow footer networks
+    setTimeout(() => {
+        const footers = document.querySelectorAll('footer, .footer');
+        footers.forEach(footer => {
+            const rect = footer.getBoundingClientRect();
+            const footerY = rect.top + window.scrollY;
+            
+            // Dense rainbow footer network
+            for (let i = 0; i < 12; i++) {
+                const x = (i + 1) * (window.innerWidth / 13);
+                const y = footerY + Math.random() * rect.height;
+                const hue = (i * 30) % 360;
+                
+                const footerHypha = document.createElement('div');
+                footerHypha.style.cssText = `
+                    position: absolute;
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: ${80 + Math.random() * 120}px;
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, hsl(${hue}, 90%, 70%), transparent);
+                    transform: rotate(${-45 + Math.random() * 90}deg);
+                    transform-origin: 0 50%;
+                    box-shadow: 0 0 10px hsl(${hue}, 90%, 70%);
+                    animation: rainbowShift 6s ease-in-out infinite ${i * 0.5}s;
+                `;
+                network.appendChild(footerHypha);
+            }
+        });
+    }, 100);
+}
+
+// Create realistic root system with recursive branching
+function createRootSystem(parent, x, y, angle, depth, length) {
+    if (depth <= 0) return;
+    
+    const root = document.createElement('div');
+    const thickness = Math.max(1, depth * 0.8);
+    
+    root.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: ${length}px;
+        height: ${thickness}px;
+        background: linear-gradient(90deg, rgba(139, 69, 19, 0.6), rgba(57, 255, 20, 0.4));
+        transform: rotate(${angle}deg);
+        transform-origin: 0 50%;
+        border-radius: ${thickness}px;
+        box-shadow: 0 0 ${thickness * 2}px rgba(57, 255, 20, 0.3);
+    `;
+    
+    parent.appendChild(root);
+    
+    // Calculate end position
+    const endX = x + Math.cos(angle * Math.PI / 180) * length;
+    const endY = y + Math.sin(angle * Math.PI / 180) * length;
+    
+    // Create 2-4 branches
+    const branches = 2 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < branches; i++) {
+        const branchAngle = angle + (Math.random() - 0.5) * 90;
+        const branchLength = length * (0.6 + Math.random() * 0.3);
+        setTimeout(() => {
+            createRootSystem(parent, endX, endY, branchAngle, depth - 1, branchLength);
+        }, depth * 30);
+    }
+}
+
+// Create tree branches growing downward
+function createTreeBranches(parent, x, y, angle, depth, length) {
+    if (depth <= 0) return;
+    
+    const branch = document.createElement('div');
+    const thickness = Math.max(1, depth * 0.7);
+    
+    branch.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: ${length}px;
+        height: ${thickness}px;
+        background: linear-gradient(90deg, rgba(34, 139, 34, 0.5), rgba(57, 255, 20, 0.3));
+        transform: rotate(${angle}deg);
+        transform-origin: 0 50%;
+        border-radius: ${thickness}px;
+        box-shadow: 0 0 ${thickness * 2}px rgba(57, 255, 20, 0.2);
+    `;
+    
+    parent.appendChild(branch);
+    
+    const endX = x + Math.cos(angle * Math.PI / 180) * length;
+    const endY = y + Math.sin(angle * Math.PI / 180) * length;
+    
+    // Create 2-3 sub-branches
+    const subBranches = 2 + Math.floor(Math.random() * 2);
+    for (let i = 0; i < subBranches; i++) {
+        const branchAngle = angle + (Math.random() - 0.5) * 60;
+        const branchLength = length * (0.7 + Math.random() * 0.2);
+        setTimeout(() => {
+            createTreeBranches(parent, endX, endY, branchAngle, depth - 1, branchLength);
+        }, depth * 25);
+    }
+}
+
+
 // Blockchain cube chain visualization
 function createBlockchainChain() {
     const positions = [
@@ -463,6 +633,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create blockchain chain visualization
     createBlockchainChain();
     
+    // Create mycelial network
+    createMycelialNetwork();
+    
     // Start floating code effect
     setInterval(createFloatingCode, 1500);
     
@@ -497,21 +670,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Disable scroll effects to prevent lag
-    // let scrollTimeout;
-    // window.addEventListener('scroll', function() {
-    //     if (scrollTimeout) return;
-    //     scrollTimeout = setTimeout(() => {
-    //         requestAnimationFrame(() => {
-    //             const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    //             const mycelialElements = document.querySelectorAll('.mycelial-network');
-    //             mycelialElements.forEach(element => {
-    //                 element.style.opacity = 0.3 + (scrollPercent * 0.4);
-    //             });
-    //         });
-    //         scrollTimeout = null;
-    //     }, 100);
-    // });
+    // Enhanced scroll effect with intensity and new hyphae
+    let scrollTimeout;
+    let lastScrollPercent = 0;
+    
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) return;
+        scrollTimeout = setTimeout(() => {
+            const scrollPercent = Math.min(window.scrollY / 1000, 1);
+            const mycelialElements = document.querySelectorAll('.mycelial-network');
+            
+            mycelialElements.forEach(element => {
+                // Increase overall opacity
+                element.style.opacity = 0.3 + (scrollPercent * 0.5);
+                
+                // Enhance rainbow intensity on scroll
+                const hyphae = element.querySelectorAll('div');
+                hyphae.forEach((hypha, index) => {
+                    const intensity = 0.5 + (scrollPercent * 0.4);
+                    const hue = (index * 25 + Date.now() / 100) % 360;
+                    hypha.style.filter = `brightness(${1 + scrollPercent}) saturate(${1.5 + scrollPercent})`;
+                });
+                
+                // Add new rainbow hyphae as you scroll
+                if (scrollPercent > lastScrollPercent + 0.15) {
+                    console.log('🌈 Adding rainbow hyphae at scroll:', scrollPercent);
+                    const hue = Math.random() * 360;
+                    const newHypha = document.createElement('div');
+                    newHypha.style.cssText = `
+                        position: absolute;
+                        left: ${Math.random() * window.innerWidth}px;
+                        top: ${window.scrollY + Math.random() * window.innerHeight}px;
+                        width: ${120 + Math.random() * 250}px;
+                        height: 3px;
+                        background: linear-gradient(90deg, transparent, hsl(${hue}, 90%, 70%), hsl(${(hue + 60) % 360}, 90%, 70%));
+                        transform: rotate(${Math.random() * 360}deg);
+                        transform-origin: 0 50%;
+                        box-shadow: 0 0 15px hsl(${hue}, 90%, 70%);
+                        animation: hyphaGrow 3s ease-out, rainbowShift 4s ease-in-out infinite;
+                        z-index: 10;
+                    `;
+                    element.appendChild(newHypha);
+                }
+            });
+            
+            lastScrollPercent = scrollPercent;
+            scrollTimeout = null;
+        }, 100);
+    });
     
     // Initialize Lucide icons if available
     if (typeof lucide !== 'undefined') {
@@ -654,6 +860,60 @@ style.textContent = `
         0% { opacity: 0; }
         50% { opacity: 0.8; }
         100% { opacity: 0; }
+    }
+    
+    @keyframes hyphaGrow {
+        0% { 
+            width: 0;
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.8;
+        }
+        100% { 
+            width: var(--target-width, 300px);
+            opacity: 0.8;
+        }
+    }
+    
+    @keyframes rainbowShift {
+        0% { filter: hue-rotate(0deg) brightness(1) saturate(1); }
+        25% { filter: hue-rotate(90deg) brightness(1.2) saturate(1.5); }
+        50% { filter: hue-rotate(180deg) brightness(1.4) saturate(2); }
+        75% { filter: hue-rotate(270deg) brightness(1.2) saturate(1.5); }
+        100% { filter: hue-rotate(360deg) brightness(1) saturate(1); }
+    }
+    
+    @keyframes hyphaBreath {
+        0%, 100% { 
+            transform: scaleY(1) scaleX(1);
+            filter: brightness(1);
+        }
+        50% { 
+            transform: scaleY(1.5) scaleX(1.1);
+            filter: brightness(1.3);
+        }
+    }
+    
+    @keyframes hyphaWave {
+        0%, 100% { 
+            transform: translateY(0) rotate(var(--rotation, 0deg));
+        }
+        25% { 
+            transform: translateY(-2px) rotate(calc(var(--rotation, 0deg) + 2deg));
+        }
+        75% { 
+            transform: translateY(2px) rotate(calc(var(--rotation, 0deg) - 2deg));
+        }
+    }
+    
+    @keyframes branchSway {
+        0%, 100% { 
+            transform: rotate(var(--branch-angle, 0deg)) scaleX(1);
+        }
+        50% { 
+            transform: rotate(calc(var(--branch-angle, 0deg) + 5deg)) scaleX(1.1);
+        }
     }
 `;
 document.head.appendChild(style);
