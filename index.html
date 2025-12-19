@@ -25,6 +25,7 @@
     <link href="css/psychedelic.css" rel="stylesheet">
     <link href="css/navigation.css" rel="stylesheet">
     <link href="css/effects.css" rel="stylesheet">
+    <link href="css/hero-fixes.css" rel="stylesheet">
 </head>
 
 <body>
@@ -88,15 +89,16 @@
             <div class="solidity-code-rain"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title glitch-text breathing-text" data-text="Hi, I'm Christopher Wilson">
-                Hi, I'm Christopher Wilson<br/>
+            <h1 class="hero-title glitch-text breathing-text" data-text="Hi, I'm Christopher Stephen Wilson">
+                Hi, I'm Christopher Stephen Wilson<br/>
                 <span class="rainbow-text">Minister-Technologist</span>
             </h1>
             <div class="hero-description-container" style="text-align: center;">
-                <p class="hero-description typed-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                    Co-founder of <span class="highlight-glow">Ethereal Offering</span>. Lead CNC Lathe Programmer at Jones Manufacturing. 
-                    Building private ZK voting, DAO governance, and ritual intelligence systems where 
-                    <span class="highlight-glow">code becomes prayer and mycelium becomes architecture</span>.
+                <p class="hero-description typed-text" style="text-align: center; max-width: 800px; margin: 30px auto;">
+                    CNC Lathe Programmer and Machinist gone Web3 Developer<br/>
+                    Co-founder of <span class="highlight-glow">Ethereal Offering</span><br/>
+                    Building private ZK voting, DAO governance, and ritual intelligence systems where<br/>
+                    <span class="highlight-glow">code and architecture reflect prayer and devotion</span>.
                 </p>
             </div>
             <div class="hero-stats">
@@ -438,7 +440,6 @@
             </div>
 
             <div class="insights-actions">
-                <button class="cta-button spark-button grow-button" data-text="Read Full Story" onclick="openBioModal()">Read Full Story</button>
                 <a href="pages/blog.html" class="cta-button spark-button grow-button" data-text="View All Posts">View All Posts</a>
             </div>
         </section>
@@ -447,7 +448,7 @@
         <section class="section contact">
             <h1 class="contact-title glitch-text">Get in touch</h1>
             <p class="contact-description">
-                I'm building systems that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. Let's connect if you're interested in sacred technology, precision engineering, or spiritual-technical innovation.
+                Looking to co-create? or have something built? I am building systems that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. Let's connect if you're interested in sacred technology, precision engineering, or spiritual-technical innovation.
             </p>
             <div class="contact-cta">
                 <button class="cta-button spark-button grow-button" data-text="Start Conversation" onclick="openContactModal()">Start Conversation</button>
@@ -496,7 +497,9 @@
             <div class="footer-section">
                 <div class="footer-logo">
                     <div class="mycelial-sigil breathing-glow"></div>
-                    <p class="footer-tagline">Where code becomes prayer</p>
+                    <p class="footer-tagline">&nbsp;&nbsp;&nbsp;Engineering the sacred:</p>
+                    <p class="footer-tagline">~ Where prayer and devotion</p>
+                    <p class="footer-tagline">&nbsp;&nbsp;&nbsp;&nbsp;manifest as code</p>
                 </div>
             </div>
         </div>
@@ -526,6 +529,8 @@
     <script src="js/modal.js"></script>
     <script src="js/web3-effects.js"></script>
     <script src="js/effects.js"></script>
+    <script src="js/solidity-rain.js"></script>
+    <script src="js/hero-effects.js"></script>
     
     <script>
         // Initialize Lucide icons
@@ -563,7 +568,7 @@
                         <h3>${term.toUpperCase()}</h3>
                         <p>Loading definition...</p>
                         <div class="glossary-actions">
-                            <a href="pages/glossary.html#${term}" class="glossary-link">View Full Glossary</a>
+                            <a href="pages/glossary.html#${term}" class="glossary-link" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">📚 View Full Glossary</a>
                         </div>
                     </div>
                 `);

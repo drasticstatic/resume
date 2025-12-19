@@ -362,15 +362,18 @@ function createFloatingCode() {
     
     snippet.style.cssText = `
         position: fixed;
-        color: rgba(57, 255, 20, 0.6);
+        color: #39ff14;
         font-family: 'Courier New', monospace;
-        font-size: 12px;
+        font-size: 13px;
         pointer-events: none;
-        z-index: 1;
+        z-index: 10000;
         left: ${startX}px;
         top: ${startY}px;
-        animation: codeFloat${direction < 0.7 ? 'Down' : 'Random'} ${8 + Math.random() * 12}s linear forwards;
+        animation: codeFloat${direction < 0.7 ? 'Down' : 'Random'} ${20 + Math.random() * 20}s linear forwards, colorCycle 3s ease-in-out infinite;
+        animation-delay: 0s, ${Math.random() * 3}s;
+        will-change: transform, opacity;
         transform: rotate(${Math.random() * 360}deg);
+        text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
     `;
     
     snippet.style.setProperty('--end-x', endX + 'px');
@@ -450,7 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Add spore rain to donate and lost buttons
-    document.querySelectorAll('.donate-btn-top, .lost-btn-top, .donate-btn, .404-btn').forEach(button => {
+    const buttons = document.querySelectorAll('.donate-btn-top, .lost-btn-top, .donate-btn');
+    buttons.forEach(button => {
         button.addEventListener('click', function(e) {
             createSporeRain(e.pageX, e.pageY);
         });
@@ -460,7 +464,12 @@ document.addEventListener('DOMContentLoaded', () => {
     createBlockchainChain();
     
     // Start floating code effect
-    setInterval(createFloatingCode, 2000);
+    setInterval(createFloatingCode, 1500);
+    
+    // Create initial burst of floating code
+    for (let i = 0; i < 5; i++) {
+        setTimeout(() => createFloatingCode(), i * 400);
+    }
     
     // Make all timeline cards expandable
     document.querySelectorAll('.timeline-item').forEach((item, index) => {
@@ -488,15 +497,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Add scroll-triggered mycelial growth
-    window.addEventListener('scroll', function() {
-        const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-        const mycelialElements = document.querySelectorAll('.mycelial-network');
-        
-        mycelialElements.forEach(element => {
-            element.style.opacity = 0.3 + (scrollPercent * 0.4);
-        });
-    });
+    // Disable scroll effects to prevent lag
+    // let scrollTimeout;
+    // window.addEventListener('scroll', function() {
+    //     if (scrollTimeout) return;
+    //     scrollTimeout = setTimeout(() => {
+    //         requestAnimationFrame(() => {
+    //             const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    //             const mycelialElements = document.querySelectorAll('.mycelial-network');
+    //             mycelialElements.forEach(element => {
+    //                 element.style.opacity = 0.3 + (scrollPercent * 0.4);
+    //             });
+    //         });
+    //         scrollTimeout = null;
+    //     }, 100);
+    // });
     
     // Initialize Lucide icons if available
     if (typeof lucide !== 'undefined') {
@@ -575,6 +590,70 @@ style.textContent = `
     @keyframes rotateCube {
         0% { transform: rotateX(0deg) rotateY(0deg); }
         100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+    
+    @keyframes floatingCodeDrift {
+        0% {
+            transform: translate(var(--start-x, 0), var(--start-y, 0)) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.9;
+        }
+        90% {
+            opacity: 0.9;
+        }
+        100% {
+            transform: translate(var(--end-x, 0), var(--end-y, 0)) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes codeFloatDown {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translate(var(--end-x, 0), var(--end-y, 0)) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes codeFloatRandom {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translate(var(--end-x, 0), var(--end-y, 0)) rotate(360deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes colorCycle {
+        0% { color: #39ff14; }
+        33% { color: #00ffff; }
+        66% { color: #ff00ff; }
+        100% { color: #39ff14; }
+    }
+    
+    @keyframes fadeInOut {
+        0% { opacity: 0; }
+        50% { opacity: 0.8; }
+        100% { opacity: 0; }
     }
 `;
 document.head.appendChild(style);

@@ -321,11 +321,35 @@ function openDonateModal() {
 }
 
 function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+            alert('✓ Address copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+            fallbackCopyTextToClipboard(text);
+        });
+    } else {
+        fallbackCopyTextToClipboard(text);
+    }
+}
+
+function fallbackCopyTextToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
         alert('✓ Address copied to clipboard!');
-    }).catch(err => {
-        console.error('Failed to copy:', err);
-    });
+    } catch (err) {
+        console.error('Fallback: Could not copy text: ', err);
+        alert('Copy failed. Please select and copy manually.');
+    }
+    document.body.removeChild(textArea);
 }
 
 function openBioModal() {
