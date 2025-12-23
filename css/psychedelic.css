@@ -204,7 +204,8 @@
 }
 
 .expandable-card.expanded .card-content {
-    max-height: 200px;
+    max-height: none;
+    overflow: visible;
     padding: 15px 25px 25px;
 }
 

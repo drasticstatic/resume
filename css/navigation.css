@@ -264,7 +264,8 @@
 }
 
 .expandable-card.expanded .card-content {
-    max-height: 500px;
+    max-height: none;
+    overflow: visible;
 }
 
 .expand-icon {

@@ -284,12 +284,24 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <script src="../js/modal.js"></script>
-    <script src="../js/glossary.js"></script>
     <script src="../js/contact.js"></script>
     <script src="../js/effects.js"></script>
     <script src="../js/solidity-rain.js"></script>
     <script src="../js/hero-effects.js"></script>
     <script>
+        function openGlossary(term) {
+            if (window.modalInstance) {
+                window.modalInstance.open(`
+                    <div class="glossary-entry">
+                        <h3>${term.toUpperCase()}</h3>
+                        <p>Loading definition...</p>
+                        <div class="glossary-actions">
+                            <a href="glossary.html#${term}" class="glossary-link" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">📚 View Full Glossary</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
     </script>
     
     <script>

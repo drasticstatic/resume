@@ -147,6 +147,8 @@
     transition: opacity 0.3s;
     z-index: -1;
     filter: blur(20px);
+    pointer-events: none;
+    border-radius: inherit;
 }
 
 .glow-effect:hover::before {

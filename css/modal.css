@@ -26,6 +26,11 @@
     box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
 }
 
+.modal-content a {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
 @keyframes modalSlideIn {
     from {
         opacity: 0;
@@ -366,4 +371,37 @@ body {
         font-size: 0.8rem;
         padding: 6px 12px;
     }
+}
+
+
+/* Glossary Actions Fix */
+.glossary-actions {
+    margin-top: 20px;
+    position: relative;
+    z-index: 10001;
+}
+
+.glossary-actions a,
+.glossary-actions button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 10002;
+}
+
+.glossary-actions a:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
+.modal-actions a {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.modal-actions a:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
 }

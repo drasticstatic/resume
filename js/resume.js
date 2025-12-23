@@ -3,7 +3,15 @@
 // Toggle experience card expand/collapse
 function toggleCard(header) {
     const card = header.closest('.expandable-card');
+    const content = card.querySelector('.card-content');
+    const icon = header.querySelector('.expand-icon');
+    
+    content.classList.toggle('active');
     card.classList.toggle('expanded');
+    
+    if (icon) {
+        icon.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
 }
 
 // Glossary function with jump to full glossary

@@ -306,7 +306,7 @@ function openDonateModal() {
                 
                 <div class="payment-section">
                     <h4>Web3 Wallet</h4>
-                    <button class="wallet-connect-btn" onclick="alert('Wallet connect coming soon! For now, please use the addresses above.')">
+                    <button class="wallet-connect-btn" onclick="alert('Wallet connect coming soon! For now, please copy and use the addresses above.')">
                         <i class="fas fa-wallet"></i> Connect Wallet (Demo Mode)
                     </button>
                     <p class="demo-note">Live wallet integration coming soon via ThirdWeb</p>
@@ -350,6 +350,169 @@ function fallbackCopyTextToClipboard(text) {
         alert('Copy failed. Please select and copy manually.');
     }
     document.body.removeChild(textArea);
+}
+
+function openGlossaryModal() {
+    const glossaryContent = `
+        <div class="glossary-modal">
+            <h3>📚 Web3 & Sacred Technology Glossary</h3>
+            <div class="glossary-terms">
+                <div class="term-item" onclick="openTermModal('zero-knowledge')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>Zero-Knowledge:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('mpc')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>MPC:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('soulbound')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>Soulbound:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('dao')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>DAO:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('mycelial')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>Mycelial:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('aleo')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>Aleo:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('defi')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>DeFi:</strong> Click to learn more</div>
+                <div class="term-item" onclick="openTermModal('ritual')" style="cursor: pointer; padding: 10px; border-radius: 8px; margin: 5px 0; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.1);" onmouseover="this.style.background='rgba(255,0,128,0.1)'" onmouseout="this.style.background='transparent'"><strong>Ritual Intelligence:</strong> Click to learn more</div>
+            </div>
+            <div class="glossary-actions">
+                <a href="pages/glossary.html" class="glossary-link btn-primary" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">📖 View Full Glossary</a>
+            </div>
+        </div>
+    `;
+    
+    if (window.modalInstance) {
+        window.modalInstance.open(glossaryContent);
+    }
+}
+
+function openTermModal(termId) {
+    const terms = {
+        'zero-knowledge': {
+            title: 'Zero-Knowledge Proofs',
+            content: 'Cryptographic protocols that allow one party to prove to another that they know a value, without conveying any information apart from the fact that they know the value. Essential for privacy-preserving blockchain applications.'
+        },
+        'mpc': {
+            title: 'Multi-Party Computation (MPC)',
+            content: 'Cryptographic technique that enables multiple parties to jointly compute a function over their inputs while keeping those inputs private. Used for secure key management and distributed governance.'
+        },
+        'soulbound': {
+            title: 'Soulbound Tokens',
+            content: 'Non-transferable NFTs that represent identity, achievements, or credentials tied to a specific wallet or person. They cannot be sold or transferred, making them ideal for reputation systems.'
+        },
+        'dao': {
+            title: 'Decentralized Autonomous Organization',
+            content: 'An organization governed by smart contracts and token holders rather than traditional management structures. Decisions are made through community voting and executed automatically.'
+        },
+        'mycelial': {
+            title: 'Mycelial Networks',
+            content: 'Organizational structures inspired by fungal networks, emphasizing decentralized, interconnected nodes that share resources and information organically rather than hierarchically.'
+        },
+        'aleo': {
+            title: 'Aleo Platform',
+            content: 'A privacy-focused blockchain platform that uses zero-knowledge proofs to enable private smart contracts and applications while maintaining verifiability and decentralization.'
+        },
+        'defi': {
+            title: 'Decentralized Finance',
+            content: 'Financial services built on blockchain technology that operate without traditional intermediaries like banks, enabling peer-to-peer lending, trading, and other financial activities.'
+        },
+        'ritual': {
+            title: 'Ritual Intelligence',
+            content: 'AI systems designed to support spiritual practices, ceremony guidance, and community wisdom synthesis. Combines machine learning with sacred technology principles.'
+        },
+        'nft': {
+            title: 'Non-Fungible Tokens',
+            content: 'Unique digital assets that represent ownership of specific items or content on the blockchain. Unlike cryptocurrencies, each NFT has distinct properties and cannot be exchanged on a one-to-one basis.'
+        },
+        'privacy': {
+            title: 'Privacy-Preserving Technology',
+            content: 'Technologies that protect user data and maintain confidentiality while still enabling verification and functionality. Essential for maintaining human dignity in digital systems.'
+        },
+        'web3': {
+            title: 'Web3',
+            content: 'The next evolution of the internet built on blockchain technology, emphasizing decentralization, user ownership, and peer-to-peer interactions without intermediaries.'
+        },
+        'smart-contracts': {
+            title: 'Smart Contracts',
+            content: 'Self-executing contracts with terms directly written into code. Automatically execute when predetermined conditions are met, eliminating need for intermediaries.'
+        },
+        'ethereum': {
+            title: 'Ethereum',
+            content: 'Decentralized blockchain platform enabling smart contracts and decentralized applications (dApps). Uses Ether (ETH) as native cryptocurrency.'
+        },
+        'blockchain': {
+            title: 'Blockchain',
+            content: 'Distributed ledger technology that maintains a continuously growing list of records (blocks) linked and secured using cryptography.'
+        },
+        'cryptocurrency': {
+            title: 'Cryptocurrency',
+            content: 'Digital or virtual currency secured by cryptography, making it nearly impossible to counterfeit. Operates independently of central banks.'
+        },
+        'dapp': {
+            title: 'dApp (Decentralized Application)',
+            content: 'Application that runs on a decentralized network, typically blockchain, rather than centralized servers. Offers censorship resistance and user control.'
+        },
+        'wallet': {
+            title: 'Crypto Wallet',
+            content: 'Digital tool for storing, sending, and receiving cryptocurrencies. Contains public and private keys for blockchain transactions.'
+        },
+        'gas': {
+            title: 'Gas Fees',
+            content: 'Transaction fees paid to blockchain validators for processing and confirming transactions. Varies based on network congestion and complexity.'
+        },
+        'consensus': {
+            title: 'Consensus Mechanism',
+            content: 'Protocol used by blockchain networks to agree on the validity of transactions. Common types include Proof of Work and Proof of Stake.'
+        },
+        'tokenomics': {
+            title: 'Tokenomics',
+            content: 'Economic model and incentive structure of a cryptocurrency token, including supply, distribution, utility, and governance mechanisms.'
+        },
+        'yield-farming': {
+            title: 'Yield Farming',
+            content: 'DeFi strategy of lending or staking cryptocurrency to earn rewards, often in the form of additional tokens or interest payments.'
+        },
+        'liquidity-pool': {
+            title: 'Liquidity Pool',
+            content: 'Collection of funds locked in smart contracts to facilitate decentralized trading and lending. Users provide liquidity in exchange for fees.'
+        },
+        'oracle': {
+            title: 'Blockchain Oracle',
+            content: 'Service that connects blockchains to external data sources, enabling smart contracts to access real-world information.'
+        },
+        'layer2': {
+            title: 'Layer 2 Solutions',
+            content: 'Scaling solutions built on top of existing blockchains to increase transaction throughput and reduce fees while maintaining security.'
+        },
+        'interoperability': {
+            title: 'Blockchain Interoperability',
+            content: 'Ability of different blockchain networks to communicate and share data with each other, enabling cross-chain transactions and applications.'
+        },
+        'governance-token': {
+            title: 'Governance Token',
+            content: 'Cryptocurrency that gives holders voting rights in decentralized protocols, allowing community-driven decision making and protocol upgrades.'
+        }
+    };
+    
+    const term = terms[termId];
+    if (term && window.modalInstance) {
+        const termContent = `
+            <div class="term-modal">
+                <h3>${term.title}</h3>
+                <p>${term.content}</p>
+                <div class="modal-actions">
+                    <button onclick="openGlossaryModal()" class="btn-secondary">← Back to Glossary</button>
+                    <a href="pages/glossary.html" class="btn-primary" style="margin-left: 10px; display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">📖 View Full Glossary</a>
+                </div>
+            </div>
+        `;
+        window.modalInstance.open(termContent);
+    } else {
+        // Show loading for undefined terms
+        const loadingContent = `
+            <div class="term-modal">
+                <h3>Loading definition...</h3>
+                <p>This term is being added to our glossary.</p>
+                <div class="modal-actions">
+                    <button onclick="openGlossaryModal()" class="btn-secondary">← Back to Glossary</button>
+                </div>
+            </div>
+        `;
+        if (window.modalInstance) {
+            window.modalInstance.open(loadingContent);
+        }
+    }
 }
 
 function openBioModal() {

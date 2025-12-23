@@ -149,140 +149,85 @@
                 <div class="timeline-line"></div>
                 <div class="timeline-item">
                     <div class="timeline-date">2024 - Present</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Co-Founder & Lead Developer</h3>
-                            <h4>Ethereal Offering — Spiritual Web3 Ecosystem</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Co-founded spiritual-technological ecosystem integrating gratitude-based tokens, soulbound identity protocols, zero-knowledge privacy systems, and LLM-powered ritual intelligence (Oracle of Fruit). Building DAO governance structures and mycelial network architectures for decentralized spiritual communities.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('aleo')">Aleo Leo</span>
-                                <span class="tech-tag" onclick="openGlossary('zero-knowledge')">ZK Circuits</span>
-                                <span class="tech-tag" onclick="openGlossary('dao')">DAO Governance</span>
-                                <span class="tech-tag" onclick="openGlossary('llm')">LLM Integration</span>
-                                <span class="tech-tag" onclick="openGlossary('soulbound')">Soulbound Tokens</span>
-                                <span class="tech-tag" onclick="openGlossary('ritual')">Ritual Intelligence</span>
-                            </div>
-                            <a href="https://github.com/drasticstatic" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> View Project
-                            </a>
+                    <div class="timeline-content">
+                        <h3>Co-Founder & Lead Developer</h3>
+                        <h4>Ethereal Offering — Spiritual Web3 Ecosystem</h4>
+                        <p>Co-founded spiritual-technological ecosystem integrating gratitude-based tokens, soulbound identity protocols, zero-knowledge privacy systems, and LLM-powered ritual intelligence (Oracle of Fruit). Building DAO governance structures and mycelial network architectures for decentralized spiritual communities.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('aleo-leo')">Aleo Leo</span>
+                            <span class="tech-tag" onclick="openGlossary('zk-circuits')">ZK Circuits</span>
+                            <span class="tech-tag" onclick="openGlossary('dao-governance')">DAO Governance</span>
+                            <span class="tech-tag" onclick="openGlossary('llm-integration')">LLM Integration</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2022 - Present</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Lead CNC Lathe Programmer & Machinist</h3>
-                            <h4>Jones Manufacturing — York, PA</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Family-owned precision machining company specializing in complex turned components. Lead Mazak lathe programmer using Mazatrol Smooth G for advanced turning/mill-turn operations. Improved cycle times and tool life through optimized toolpaths. Mentored apprentices and junior machinists. Returned to York to be closer to family and community.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('mazatrol')">Mazatrol Programming</span>
-                                <span class="tech-tag" onclick="openGlossary('cnc-lathe')">CNC Lathe</span>
-                                <span class="tech-tag" onclick="openGlossary('metrology')">Precision Tolerances</span>
-                                <span class="tech-tag" onclick="openGlossary('cam')">CAM Software</span>
-                            </div>
-                            <a href="https://www.jonesmanufacturingyorkpa.com" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> Visit Company
-                            </a>
+                    <div class="timeline-content">
+                        <h3>Lead CNC Lathe Programmer & Machinist</h3>
+                        <h4>Jones Manufacturing — York, PA</h4>
+                        <p>Family-owned precision machining company specializing in complex turned components. Lead Mazak lathe programmer using Mazatrol Smooth G for advanced turning/mill-turn operations. Improved cycle times and tool life through optimized toolpaths. Mentored apprentices and junior machinists. Returned to York to be closer to family and community.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('mazatrol-programming')">Mazatrol Programming</span>
+                            <span class="tech-tag" onclick="openGlossary('precision-tolerances')">±0.0001" Tolerances</span>
+                            <span class="tech-tag" onclick="openGlossary('process-optimization')">Process Optimization</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2016 - 2022</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>CNC Lathe Machinist & CAM Programmer</h3>
-                            <h4>TAIT Towers — Lititz, PA</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>World-class staging and entertainment engineering company serving global tours and arena installations. Programmed and operated Doosan, Haas, and Fanuc-controlled lathes with heavy FeatureCAM and Mastercam workflows. Supported rapid manufacturing for time-critical entertainment industry projects including major touring productions.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('mastercam')">Mastercam</span>
-                                <span class="tech-tag" onclick="openGlossary('cnc-lathe')">CNC Lathe</span>
-                                <span class="tech-tag" onclick="openGlossary('cam')">CAM Programming</span>
-                                <span class="tech-tag" onclick="openGlossary('gcode')">G-code</span>
-                            </div>
-                            <a href="https://www.taittowers.com" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> Visit Company
-                            </a>
+                    <div class="timeline-content">
+                        <h3>CNC Lathe Machinist & CAM Programmer</h3>
+                        <h4>TAIT Towers — Lititz, PA</h4>
+                        <p>World-class staging and entertainment engineering company serving global tours and arena installations. Programmed and operated Doosan, Haas, and Fanuc-controlled lathes with heavy FeatureCAM and Mastercam workflows. Supported rapid manufacturing for time-critical entertainment industry projects including major touring productions.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('featurecam')">FeatureCAM</span>
+                            <span class="tech-tag" onclick="openGlossary('mastercam')">Mastercam</span>
+                            <span class="tech-tag" onclick="openGlossary('multi-axis-programming')">Multi-axis Programming</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2006 - 2016</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Lead Lathe Programmer & Machinist</h3>
-                            <h4>Billet Industries — Hellam, PA</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Began apprenticeship and grew into lead programmer role. Mazak/Mastercam/G-code production in AS9100/ITAR precision environment for aerospace, defense, and specialized industrial components. Trained team members and maintained quality standards in regulated manufacturing environment.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('mazatrol')">Mazatrol</span>
-                                <span class="tech-tag" onclick="openGlossary('mastercam')">Mastercam</span>
-                                <span class="tech-tag" onclick="openGlossary('gcode')">G-code</span>
-                                <span class="tech-tag" onclick="openGlossary('metrology')">Precision Metrology</span>
-                            </div>
-                            <a href="https://www.billetindustries.com" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> Visit Company
-                            </a>
+                    <div class="timeline-content">
+                        <h3>Lead Lathe Programmer & Machinist</h3>
+                        <h4>Billet Industries — Hellam, PA</h4>
+                        <p>Began apprenticeship and grew into lead programmer role. Mazak/Mastercam/G-code production in AS9100/ITAR precision environment for aerospace, defense, and specialized industrial components. Trained team members and maintained quality standards in regulated manufacturing environment.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('as9100')">AS9100 Certified</span>
+                            <span class="tech-tag" onclick="openGlossary('itar')">ITAR Compliance</span>
+                            <span class="tech-tag" onclick="openGlossary('aerospace-components')">Aerospace Components</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2008 - Present</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Freelance Audio Engineer & Producer</h3>
-                            <h4>CSW Productions — York, PA</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Professional audio engineering services including FOH engineering, sound reinforcement, system design and installation, lighting design, event production and rental for festivals, concerts, weddings, churches, schools, theater, and orchestral performances. Advanced multi-track recording and live sound mixing.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('audio')">FOH Engineering</span>
-                                <span class="tech-tag" onclick="openGlossary('audio')">System Design</span>
-                                <span class="tech-tag" onclick="openGlossary('audio')">Live Production</span>
-                                <span class="tech-tag" onclick="openGlossary('audio')">Digital Mixing</span>
-                            </div>
-                            <a href="https://drasticstatic.wixsite.com/cswproductions" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
+                    <div class="timeline-content">
+                        <h3>Freelance Audio Engineer & Producer</h3>
+                        <h4>CSW Productions — York, PA</h4>
+                        <p>Professional audio engineering services including FOH engineering, sound reinforcement, system design and installation, lighting design, event production and rental for festivals, concerts, weddings, churches, schools, theater, and orchestral performances. Advanced multi-track recording and live sound mixing.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('foh-engineering')">FOH Engineering</span>
+                            <span class="tech-tag" onclick="openGlossary('system-design')">System Design</span>
+                            <span class="tech-tag" onclick="openGlossary('live-production')">Live Production</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2020 - Present</div>
-                    <div class="timeline-content expandable-card">
-                        <div class="card-header" onclick="toggleCard(this)">
-                            <h3>Ordained Minister</h3>
-                            <h4>Psanctuary Community — Spiritual Guidance</h4>
-                            <i class="fas fa-chevron-down expand-icon"></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Ordained minister providing spiritual guidance within psychedelic-informed recovery and healing communities. Facilitating contemplative practices, ceremony support, and integration work. Bridging ancient wisdom traditions with modern therapeutic approaches.</p>
-                            <div class="tech-highlights">
-                                <span class="tech-tag" onclick="openGlossary('spiritual')">Spiritual Guidance</span>
-                                <span class="tech-tag" onclick="openGlossary('spiritual')">Integration Support</span>
-                                <span class="tech-tag" onclick="openGlossary('spiritual')">Community Healing</span>
-                                <span class="tech-tag" onclick="openGlossary('ritual')">Ceremony Support</span>
-                            </div>
-                            <a href="https://www.psanctuary.org" class="external-link" target="_blank" style="display: inline-block; margin-top: 15px;">
-                                <i class="fas fa-external-link-alt"></i> Visit Website
-                            </a>
+                    <div class="timeline-content">
+                        <h3>Ordained Minister</h3>
+                        <h4>Psanctuary Community — Spiritual Guidance</h4>
+                        <p>Ordained minister providing spiritual guidance within psychedelic-informed recovery and healing communities. Facilitating contemplative practices, ceremony support, and integration work. Bridging ancient wisdom traditions with modern therapeutic approaches.</p>
+                        <div class="tech-highlights">
+                            <span class="tech-tag" onclick="openGlossary('spiritual-guidance')">Spiritual Guidance</span>
+                            <span class="tech-tag" onclick="openGlossary('integration-support')">Integration Support</span>
+                            <span class="tech-tag" onclick="openGlossary('community-healing')">Community Healing</span>
                         </div>
                     </div>
                 </div>
@@ -434,6 +379,19 @@
             storyElements.forEach(el => observer.observe(el));
         });
         
+        function openGlossary(term) {
+            if (window.modalInstance) {
+                window.modalInstance.open(`
+                    <div class="glossary-entry">
+                        <h3>${term.toUpperCase()}</h3>
+                        <p>Loading definition...</p>
+                        <div class="glossary-actions">
+                            <a href="glossary.html#${term}" class="glossary-link" style="display: inline-block; padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">📚 View Full Glossary</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
     </script>
     
     <style>

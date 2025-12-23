@@ -827,3 +827,221 @@ p, a {
         padding: 6px 12px;
     }
 }
+
+
+/* Fix text cutoff in cards */
+.bento-item,
+.contact-method {
+    height: auto !important;
+    min-height: fit-content !important;
+}
+
+.bento-item p,
+.contact-method p {
+    text-overflow: clip !important;
+    white-space: normal !important;
+}
+
+.timeline-content {
+    overflow: visible !important;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+    filter: blur(20px);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.timeline-content:hover::before {
+    opacity: 0.6;
+}
+
+.timeline-content.expandable-card .card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.timeline-content.expandable-card .card-content.active {
+    max-height: none !important;
+    overflow: visible !important;
+    height: auto !important;
+}
+
+.timeline-content.expandable-card .card-content.active * {
+    overflow: visible !important;
+}
+
+.tech-highlights {
+    overflow: visible !important;
+}
+
+
+/* Fix timeline centering */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    width: 50% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0 !important;
+    padding-right: 60px !important;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50% !important;
+    padding-left: 60px !important;
+}
+
+
+/* Center and animate expand icon */
+.card-header {
+    position: relative;
+    padding-right: 80px !important;
+}
+
+.expand-icon {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 5px)); }
+}
+
+.expandable-card.expanded .expand-icon {
+    animation: none;
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Fix z-index for overlapping elements */
+.timeline-content,
+.insight-node,
+.card,
+.blog-card,
+.tech-stack-grid,
+.blog-actions {
+    position: relative;
+    z-index: 1;
+}
+
+.navigation {
+    z-index: 1000 !important;
+}
+
+/* Widen timeline cards and fix positioning */
+.timeline {
+    position: relative;
+    max-width: 1300px !important;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    width: 44% !important;
+    padding: 10px 30px !important;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0 !important;
+    padding-right: 40px !important;
+}
+
+.timeline-item:nth-child(even) {
+    left: 56% !important;
+    padding-left: 40px !important;
+}
+
+/* Add timeline nodes and line for about page */
+.professional-journey .timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(0, 255, 255, 0.5));
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.professional-journey .timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.8), rgba(139, 92, 246, 0.6));
+    border: 3px solid rgba(0, 0, 0, 0.9);
+    border-radius: 50%;
+    top: 20px;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+.professional-journey .timeline-item:nth-child(odd)::after {
+    right: -10px;
+}
+
+.professional-journey .timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .timeline::after,
+    .professional-journey .timeline::after {
+        left: 30px !important;
+    }
+    
+    .timeline-item {
+        width: 100% !important;
+        padding-left: 70px !important;
+        padding-right: 20px !important;
+        left: 0 !important;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0 !important;
+        padding-left: 70px !important;
+    }
+    
+    .timeline-item::after,
+    .professional-journey .timeline-item::after {
+        left: 20px !important;
+    }
+    
+    .bento-item,
+    .contact-method {
+        min-height: auto !important;
+    }
+    
+    .nav-menu.active {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(6, 0, 3, 0.98);
+        padding: 20px;
+        border-top: 1px solid rgba(139, 92, 246, 0.3);
+    }
+}
