@@ -834,6 +834,7 @@ p, a {
 .contact-method {
     height: auto !important;
     min-height: fit-content !important;
+    isolation: isolate;
 }
 
 .bento-item p,
@@ -893,19 +894,19 @@ p, a {
 }
 
 .timeline-item {
-    width: 50% !important;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+    width: 47% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
 
 .timeline-item:nth-child(odd) {
     left: 0 !important;
-    padding-right: 60px !important;
+    padding-right: 20px !important;
 }
 
 .timeline-item:nth-child(even) {
-    left: 50% !important;
-    padding-left: 60px !important;
+    left: 53% !important;
+    padding-left: 20px !important;
 }
 
 
@@ -960,14 +961,11 @@ p, a {
     padding: 10px 30px !important;
 }
 
-.timeline-item:nth-child(odd) {
-    left: 0 !important;
-    padding-right: 40px !important;
-}
 
-.timeline-item:nth-child(even) {
-    left: 56% !important;
-    padding-left: 40px !important;
+.bento-item {
+    overflow: hidden !important;
+    position: relative;
+    z-index: 1;
 }
 
 /* Add timeline nodes and line for about page */
@@ -1007,7 +1005,8 @@ p, a {
 /* Mobile responsive fixes */
 @media (max-width: 768px) {
     .timeline::after,
-    .professional-journey .timeline::after {
+    .professional-journey .timeline::after,
+    .experience-timeline .timeline-line {
         left: 30px !important;
     }
     
@@ -1043,5 +1042,153 @@ p, a {
         background: rgba(6, 0, 3, 0.98);
         padding: 20px;
         border-top: 1px solid rgba(139, 92, 246, 0.3);
+        z-index: 999;
     }
+    
+    .top-left-actions {
+        display: none;
+    }
+    
+    .nav-social {
+        display: flex;
+        gap: 15px;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(139, 92, 246, 0.2);
+    }
+    
+    .nav-social::after {
+        content: '';
+        display: flex;
+        gap: 15px;
+    }
+    
+    .mobile-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 10px;
+    }
+}
+
+
+/* Move hamburger to left side */
+.hamburger {
+    order: -1;
+    margin-right: 20px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Hide mobile-only buttons on desktop */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: inline-flex !important;
+    }
+}
+
+
+/* Fix nav-link alignment */
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+/* Fix bento grid overlap */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    grid-auto-rows: 1fr;
+}
+
+/* Contact card buttons like learning paths */
+.contact-method button,
+.contact-method a.btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3));
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Navbar animations - icons pulse, text breathes, photo bounces */
+.nav-link i {
+    animation: pulse 2s infinite;
+}
+
+.nav-link {
+    animation: breathe 3s ease-in-out infinite;
+}
+
+.nav-profile-img {
+    animation: subtleBounce 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes breathe {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+}
+
+@keyframes subtleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Show donate/lost in mobile nav */
+@media (max-width: 768px) {
+    .nav-social {
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/* Force show mobile buttons in nav */
+@media (max-width: 768px) {
+    .mobile-only {
+        display: inline-flex !important;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-social {
+        display: flex !important;
+        gap: 10px !important;
+    }
+}
+
+/* Remove conflicting animations */
+.nav-link.heartbeat,
+.social-link.heartbeat {
+    animation: none !important;
+}
+
+.nav-link.breathing-glow,
+.social-link.breathing-glow {
+    animation: none !important;
 }

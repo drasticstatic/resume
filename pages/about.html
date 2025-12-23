@@ -62,6 +62,12 @@
                 <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
                     <i class="fas fa-user-circle"></i>
                 </a>
+                <button class="social-link mobile-only" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="social-link mobile-only" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
+                    <i class="fas fa-compass"></i>
+                </button>
             </div>
             <div class="hamburger mobile-nav">
                 <span></span>
@@ -399,6 +405,12 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
+        
+        // Mobile navigation toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
         
         // Mobile navigation toggle
         document.querySelector('.hamburger').addEventListener('click', function() {
