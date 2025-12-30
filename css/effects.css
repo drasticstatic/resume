@@ -1,3 +1,13 @@
+/* Performance optimizations for animations */
+.floating-card,
+.liquid-glass::before,
+.pulse-beam,
+.glow-effect::before,
+.breathing-glow {
+    will-change: transform, opacity;
+    contain: layout style;
+}
+
 /* Floating Card Gallery Effect */
 .floating-card {
     position: relative;

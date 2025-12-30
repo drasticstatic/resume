@@ -886,27 +886,30 @@ p, a {
 }
 
 
-/* Fix timeline centering */
+/* Fix timeline centering - equal spacing from vertical meridian */
 .timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .timeline-item {
-    width: 47% !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    width: calc(50% - 30px) !important;
+    position: relative !important;
 }
 
 .timeline-item:nth-child(odd) {
     left: 0 !important;
-    padding-right: 20px !important;
+    margin-right: auto !important;
+    padding-right: 30px !important;
+    text-align: right;
 }
 
 .timeline-item:nth-child(even) {
-    left: 53% !important;
-    padding-left: 20px !important;
+    left: calc(50% + 30px) !important;
+    padding-left: 30px !important;
+    text-align: left;
 }
 
 
@@ -984,11 +987,11 @@ p, a {
 }
 
 .professional-journey .timeline-item:nth-child(odd)::after {
-    right: -10px;
+    right: -40px;
 }
 
 .professional-journey .timeline-item:nth-child(even)::after {
-    left: -10px;
+    left: -40px;
 }
 
 
@@ -1103,11 +1106,16 @@ p, a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    grid-auto-rows: auto !important;
 }
 
 .bento-item {
     display: flex;
     flex-direction: column;
+    grid-row: span 1 !important;
+    grid-column: span 1 !important;
+    height: auto !important;
+    min-height: auto !important;
 }
 
 .bento-item button,
@@ -1207,4 +1215,33 @@ p, a {
     border: 1px solid rgba(255, 0, 128, 0.3);
     border-radius: 6px;
     font-size: 0.85rem;
+}
+
+/* Manifesto Section */
+.manifesto-content {
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.manifesto-quote {
+    margin: 0;
+    padding: 0;
+}
+
+.manifesto-quote p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.manifesto-quote p strong {
+    color: #00ffff;
+    font-weight: 600;
+}
+
+.manifesto-quote p:last-child {
+    margin-bottom: 0;
 }

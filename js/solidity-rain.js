@@ -16,7 +16,8 @@ function createSolidityRain() {
         const symbols = ['{}', '[]', '()', '=>', '!=', '==', '&&', '||', '++', '--', '+=', '*=', '/='];
         const allItems = [...solidityKeywords, ...symbols];
         
-        for (let i = 0; i < 12; i++) {
+        // Reduced from 12 to 8 for better performance
+        for (let i = 0; i < 8; i++) {
             const word = document.createElement('div');
             const item = allItems[Math.floor(Math.random() * allItems.length)];
             word.textContent = item;
@@ -26,12 +27,14 @@ function createSolidityRain() {
                 top: -50px;
                 font-family: 'Courier New', monospace;
                 font-size: ${12 + Math.random() * 4}px;
-                animation: solidityWordFall ${10 + Math.random() * 15}s linear infinite, colorChange 2s ease-in-out infinite;
+                animation: solidityWordFall ${10 + Math.random() * 15}s linear infinite, colorChange 3s ease-in-out infinite;
                 animation-delay: ${Math.random() * 12}s;
                 white-space: nowrap;
                 pointer-events: none;
+                will-change: transform, opacity;
+                contain: layout style;
             `;
-            
+
             container.appendChild(word);
         }
     });

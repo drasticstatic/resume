@@ -15,9 +15,10 @@ function initializeHeroEffects() {
 function createWeb3MatrixRain() {
     const heroes = document.querySelectorAll('.hero-section, .about-hero, .portfolio-hero, .blog-hero, .contact-hero, .resources-hero, .glossary-hero');
     const web3Symbols = '0x{}[]()=>!=&&||++--+=*=/=;:.,<>?@#$%^&*';
-    
+
     heroes.forEach(hero => {
-        for (let i = 0; i < 6; i++) {
+        // Reduced from 6 to 4 for better performance
+        for (let i = 0; i < 4; i++) {
             const column = document.createElement('div');
             column.style.cssText = `
                 position: absolute;
@@ -31,14 +32,16 @@ function createWeb3MatrixRain() {
                 animation-delay: ${Math.random() * 10}s;
                 pointer-events: none;
                 z-index: 1;
+                will-change: transform, opacity;
+                contain: layout style;
             `;
-            
+
             let text = '';
-            for (let j = 0; j < 18; j++) {
+            for (let j = 0; j < 12; j++) {
                 text += web3Symbols[Math.floor(Math.random() * web3Symbols.length)] + '<br>';
             }
             column.innerHTML = text;
-            
+
             hero.appendChild(column);
         }
     });

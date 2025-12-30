@@ -327,6 +327,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Personal Manifesto -->
+        <section class="section manifesto">
+            <h2>Personal Manifesto</h2>
+            <div class="manifesto-content liquid-glass">
+                <blockquote class="manifesto-quote">
+                    <p><strong>I am a builder of sacred systems.</strong></p>
+                    <p>I bring the precision of eighteen years in aerospace manufacturing to the emerging field of decentralized technology. I bring the humility of recovery to the design of healing-centered communities. I bring the reverence of ordained ministry to the creation of ritual intelligence.</p>
+                    <p><strong>I believe technology can be a vessel for the sacred</strong> when it is built with intention, tested with rigor, and offered with humility.</p>
+                    <p><strong>I believe privacy is a spiritual necessity</strong>—the foundation of human dignity in a surveillance age.</p>
+                    <p><strong>I believe we are all connected</strong>—branches of one Vine, threads of one Body, nodes of one divine network of love and reciprocity.</p>
+                    <p><strong>I build systems that honor this truth:</strong> zero-knowledge circuits that protect what should remain hidden, soulbound tokens that recognize what cannot be bought or sold, governance structures that distribute power rather than concentrate it.</p>
+                    <p><strong>This is my offering:</strong> precision in service of the sacred, technology in service of healing, code in service of community.</p>
+                </blockquote>
+            </div>
+        </section>
     </main>
 
     <!-- FOOTER -->
@@ -406,19 +422,13 @@
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
-        
+
         // Mobile navigation toggle
         document.querySelector('.hamburger').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
             this.classList.toggle('active');
         });
-        
-        // Mobile navigation toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-        
+
         // Spore rain on nav clicks
         document.querySelectorAll('.nav-link').forEach(button => {
             button.addEventListener('click', function(e) {
