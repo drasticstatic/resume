@@ -68,6 +68,22 @@ function openGlossary(term) {
         'mycelial-networks': {
             title: 'Mycelial Networks',
             content: 'Organizational structures inspired by fungal networks, emphasizing decentralized, interconnected nodes that share resources and information organically rather than hierarchically.'
+        },
+        'audio-foh': {
+            title: 'Front of House (FOH) Engineering',
+            content: 'The audio engineer position responsible for mixing sound for the audience in live events. Controls the main PA system, monitors overall sound quality, and ensures optimal audio experience for attendees.'
+        },
+        'audio-system': {
+            title: 'Audio System Design',
+            content: 'The process of designing and configuring sound reinforcement systems for venues and events. Includes speaker placement, signal flow, power distribution, and acoustic treatment considerations.'
+        },
+        'audio-mixing': {
+            title: 'Digital Mixing',
+            content: 'The art and science of combining multiple audio signals using digital mixing consoles. Includes EQ, compression, effects processing, and routing to create balanced, professional sound.'
+        },
+        'acoustics': {
+            title: 'Acoustics',
+            content: 'The science of sound behavior in enclosed spaces. Understanding room modes, reflections, absorption, and diffusion is essential for both live sound and studio recording environments.'
         }
     };
     

@@ -62,10 +62,10 @@
                 <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
                     <i class="fas fa-user-circle"></i>
                 </a>
-                <button class="social-link mobile-only" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
                     <i class="fas fa-heart"></i>
                 </button>
-                <button class="social-link mobile-only" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
                     <i class="fas fa-compass"></i>
                 </button>
             </div>
@@ -111,12 +111,12 @@
                     <h3>Zero-Knowledge Development</h3>
                     <p>Master privacy-preserving blockchain development with Aleo Leo and ZK circuits.</p>
                     <div class="path-topics">
-                        <span class="topic">Aleo Leo Programming</span>
-                        <span class="topic">ZK Circuit Design</span>
-                        <span class="topic">Privacy Protocols</span>
-                        <span class="topic">MPC Systems</span>
+                        <span class="topic pill-tag" onclick="openGlossary('aleo')">Aleo Leo Programming</span>
+                        <span class="topic pill-tag" onclick="openGlossary('zero-knowledge')">ZK Circuit Design</span>
+                        <span class="topic pill-tag" onclick="openGlossary('privacy')">Privacy Protocols</span>
+                        <span class="topic pill-tag" onclick="openGlossary('mpc')">MPC Systems</span>
                     </div>
-                    <button onclick="openResourceModal('zk-development')" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; transition: all 0.3s ease;">View Resources</button>
+                    <button onclick="openResourceModal('zk-development')" class="magnetize-btn resource-btn">View Resources</button>
                 </div>
 
                 <div class="bento-item liquid-glass glow-effect">
@@ -124,12 +124,12 @@
                     <h3>Precision Manufacturing</h3>
                     <p>Learn CNC machining, CAM programming, and precision engineering principles.</p>
                     <div class="path-topics">
-                        <span class="topic">Mazatrol Programming</span>
-                        <span class="topic">Mastercam Workflows</span>
-                        <span class="topic">G-code Fundamentals</span>
-                        <span class="topic">Quality Systems</span>
+                        <span class="topic pill-tag" onclick="openGlossary('mazatrol')">Mazatrol Programming</span>
+                        <span class="topic pill-tag" onclick="openGlossary('mastercam')">Mastercam Workflows</span>
+                        <span class="topic pill-tag" onclick="openGlossary('cnc-lathe')">G-code Fundamentals</span>
+                        <span class="topic pill-tag" onclick="openGlossary('metrology')">Quality Systems</span>
                     </div>
-                    <button onclick="openResourceModal('manufacturing')" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; transition: all 0.3s ease;">View Resources</button>
+                    <button onclick="openResourceModal('manufacturing')" class="magnetize-btn resource-btn">View Resources</button>
                 </div>
 
                 <div class="bento-item liquid-glass glow-effect">
@@ -137,12 +137,12 @@
                     <h3>Sacred Technology</h3>
                     <p>Explore the intersection of spirituality, technology, and decentralized systems.</p>
                     <div class="path-topics">
-                        <span class="topic">Mycelial Models</span>
-                        <span class="topic">Ritual Intelligence</span>
-                        <span class="topic">Soulbound Identity</span>
-                        <span class="topic">DAO Governance</span>
+                        <span class="topic pill-tag" onclick="openGlossary('mycelial-networks')">Mycelial Models</span>
+                        <span class="topic pill-tag" onclick="openGlossary('ritual-intelligence')">Ritual Intelligence</span>
+                        <span class="topic pill-tag" onclick="openGlossary('soulbound')">Soulbound Identity</span>
+                        <span class="topic pill-tag" onclick="openGlossary('dao')">DAO Governance</span>
                     </div>
-                    <button onclick="openResourceModal('sacred-tech')" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; transition: all 0.3s ease;">View Resources</button>
+                    <button onclick="openResourceModal('sacred-tech')" class="magnetize-btn resource-btn">View Resources</button>
                 </div>
 
                 <div class="bento-item liquid-glass glow-effect">
@@ -150,12 +150,12 @@
                     <h3>Audio Engineering</h3>
                     <p>Professional audio production, live sound, and acoustic principles.</p>
                     <div class="path-topics">
-                        <span class="topic">FOH Engineering</span>
-                        <span class="topic">System Design</span>
-                        <span class="topic">Digital Mixing</span>
-                        <span class="topic">Acoustics</span>
+                        <span class="topic pill-tag" onclick="openGlossary('audio-foh')">FOH Engineering</span>
+                        <span class="topic pill-tag" onclick="openGlossary('audio-system')">System Design</span>
+                        <span class="topic pill-tag" onclick="openGlossary('audio-mixing')">Digital Mixing</span>
+                        <span class="topic pill-tag" onclick="openGlossary('acoustics')">Acoustics</span>
                     </div>
-                    <button onclick="openResourceModal('audio-engineering')" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; transition: all 0.3s ease;">View Resources</button>
+                    <button onclick="openResourceModal('audio-engineering')" class="magnetize-btn resource-btn">View Resources</button>
                 </div>
             </div>
         </section>
@@ -408,21 +408,25 @@
     <script src="../js/spore-effects.js"></script>
     
     <script>
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', function(e) {
-                navMenu.classList.toggle('active');
-                hamburger.classList.toggle('active');
-                if (typeof createSporeRain === 'function') {
-                    createSporeRain(e.pageX, e.pageY);
-                }
-            });
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    if (typeof createSporeRain === 'function') {
+                        createSporeRain(e.pageX, e.pageY);
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>

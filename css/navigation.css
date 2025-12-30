@@ -688,16 +688,25 @@
 }
 
 /* Position social circles around the profile photo */
-.sc-1 { top: 0; right: 40px; }      /* Top right - LinkedIn */
-.sc-2 { top: 0; left: 40px; }       /* Top left - GitHub */
-.sc-3 { bottom: 0; left: 40px; }    /* Bottom left - Gravatar */
-.sc-4 { bottom: 0; right: 40px; }   /* Bottom right - ? button */
+.sc-1 { top: 0 !important; right: 40px !important; bottom: auto !important; left: auto !important; }      /* Top right - LinkedIn */
+.sc-2 { top: 0 !important; left: 40px !important; bottom: auto !important; right: auto !important; }       /* Top left - GitHub */
+.sc-3 { bottom: 0 !important; left: 40px !important; top: auto !important; right: auto !important; }    /* Bottom left - Gravatar */
+.sc-4 { bottom: 0 !important; right: 40px !important; top: auto !important; left: auto !important; }   /* Bottom right - ? button */
+
+/* Mobile only helper class */
+.mobile-only {
+    display: none !important;
+}
 
 @media (max-width: 768px) {
+    .mobile-only {
+        display: flex !important;
+    }
+
     .hamburger {
         display: flex;
     }
-    
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -711,15 +720,15 @@
         padding: 20px 0;
         z-index: 1000;
     }
-    
+
     .nav-menu.active {
         left: 0;
     }
-    
+
     .nav-menu li {
         margin: 15px 0;
     }
-    
+
     .glossary-grid {
         grid-template-columns: 1fr;
     }

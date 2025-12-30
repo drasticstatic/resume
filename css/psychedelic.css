@@ -142,7 +142,7 @@
 }
 
 /* Footer Button Sizes */
-.donate-btn, .404-btn {
+.donate-btn, .lost-btn {
     padding: 12px 20px;
     font-size: 14px;
     min-width: 120px;
@@ -629,8 +629,47 @@
 
 .support-actions {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.support-actions .donate-btn,
+.support-actions .lost-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    min-width: 120px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.support-actions .donate-btn {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(139, 92, 246, 0.3));
+    border: 2px solid rgba(255, 0, 128, 0.5);
+    color: #ff0080;
+}
+
+.support-actions .donate-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(139, 92, 246, 0.5));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 128, 0.4);
+}
+
+.support-actions .lost-btn {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+}
+
+.support-actions .lost-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(139, 92, 246, 0.4));
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
 }
 
 .mycelial-sigil {

@@ -405,3 +405,143 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
 }
+
+/* Donate Modal Styles */
+.donate-modal {
+    position: relative;
+    z-index: 1;
+}
+
+.donate-modal h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.donate-modal p {
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.payment-section h4 {
+    color: var(--accent-cyan);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.payment-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.payment-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 10;
+}
+
+.payment-btn.paypal-btn {
+    background: linear-gradient(135deg, #003087, #009cde);
+    color: white;
+    border: none;
+}
+
+.payment-btn.paypal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 156, 222, 0.4);
+}
+
+.payment-btn.venmo-btn {
+    background: linear-gradient(135deg, #008CFF, #3D95CE);
+    color: white;
+    border: none;
+}
+
+.payment-btn.venmo-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 140, 255, 0.4);
+}
+
+.crypto-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.crypto-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.crypto-item strong {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--accent-cyan);
+}
+
+.address-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.address-container input {
+    flex: 1;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 0.85rem;
+}
+
+.copy-btn {
+    padding: 10px 15px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(0, 255, 255, 0.3));
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    border-radius: 8px;
+    color: var(--accent-cyan);
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(0, 255, 255, 0.5));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Ensure all modal buttons are clickable */
+.modal-content button,
+.modal-content a,
+.modal-content input {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+.modal-content input[type="text"] {
+    cursor: text !important;
+}

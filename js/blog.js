@@ -2,11 +2,33 @@
 
 // Function to open blog post modal
 function openBlogPost(postId) {
-    fetch('../data/blog-posts.json')
-        .then(response => response.json())
+    // Determine path based on current page location
+    const path = window.location.pathname.includes('/pages/') ? '../data/blog-posts.json' : 'data/blog-posts.json';
+
+    fetch(path)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
             const post = data.posts.find(p => p.id === postId);
             if (post && window.modalInstance) {
+                // Parse content - handle markdown-style formatting
+                const formattedContent = post.content
+                    .split('\n\n')
+                    .map(para => {
+                        // Convert **bold** to <strong>
+                        para = para.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                        // Convert bullet points
+                        if (para.startsWith('- ')) {
+                            return `<li>${para.substring(2)}</li>`;
+                        }
+                        return `<p>${para}</p>`;
+                    })
+                    .join('');
+
                 const content = `
                     <article class="blog-post-full">
                         <div class="post-header">
@@ -18,7 +40,7 @@ function openBlogPost(postId) {
                             </div>
                         </div>
                         <div class="post-content">
-                            ${post.content.split('\n\n').map(para => `<p>${para}</p>`).join('')}
+                            ${formattedContent}
                         </div>
                         <div class="post-tags">
                             ${post.tags.map(tag => `<span class="post-tag">${tag}</span>`).join('')}
@@ -26,6 +48,10 @@ function openBlogPost(postId) {
                     </article>
                 `;
                 window.modalInstance.open(content);
+            } else if (!window.modalInstance) {
+                console.error('Modal instance not initialized');
+            } else {
+                console.error('Post not found:', postId);
             }
         })
         .catch(error => console.error('Error loading blog post:', error));
