@@ -566,22 +566,22 @@
     <script src="js/effects.js"></script>
     <script src="js/solidity-rain.js"></script>
     <script src="js/hero-effects.js"></script>
+    <script src="js/spore-effects.js"></script>
     
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
         
         // Mobile navigation toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
         
-        // Mobile navigation toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
         
         // Rainbow spore drop on navigation clicks
         document.querySelectorAll('.nav-link, .cta-button, .skill-item, .tech-tag').forEach(button => {
@@ -591,13 +591,21 @@
         });
         
         function createSporeRain(x, y) {
+            const colors = ['#ff0080', '#00ffff', '#ff00ff', '#00ff00', '#ffff00', '#ff6600'];
             for (let i = 0; i < 20; i++) {
                 const spore = document.createElement('div');
                 spore.className = 'rainbow-spore';
                 spore.style.left = x + 'px';
                 spore.style.top = y + 'px';
-                document.body.appendChild(spore);
+                spore.style.color = colors[Math.floor(Math.random() * colors.length)];
                 
+                const offsetX = (Math.random() - 0.5) * 200;
+                const offsetY = (Math.random() - 0.5) * 200;
+                spore.style.setProperty('--offset-x', offsetX + 'px');
+                spore.style.setProperty('--offset-y', offsetY + 'px');
+                spore.style.animation = 'sporeExplode 2s ease-out forwards';
+                
+                document.body.appendChild(spore);
                 setTimeout(() => spore.remove(), 2000);
             }
         }

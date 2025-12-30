@@ -40,7 +40,7 @@
             <div class="nav-left">
                 <a href="../index.html" class="nav-logo rainbow-text">CW</a>
                 <div class="nav-profile">
-                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow" onclick="window.location.href='../index.html'">
+                    <img src="../img/profile.jpg" alt="Christopher Wilson" class="nav-profile-img breathing-glow floating-profile" onclick="window.location.href='../index.html'">
                     <img class="ring" src="../img/Ring.svg" alt="Ring Border">
                 </div>
             </div>
@@ -62,6 +62,12 @@
                 <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
                     <i class="fas fa-user-circle"></i>
                 </a>
+                <button class="social-link mobile-only" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="social-link mobile-only" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
+                    <i class="fas fa-compass"></i>
+                </button>
             </div>
             <div class="hamburger mobile-nav">
                 <span></span>
@@ -364,6 +370,7 @@
     <script src="../js/effects.js"></script>
     <script src="../js/solidity-rain.js"></script>
     <script src="../js/hero-effects.js"></script>
+    <script src="../js/spore-effects.js"></script>
     
     <script>
         if (typeof lucide !== 'undefined') {

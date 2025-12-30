@@ -949,17 +949,7 @@ p, a {
     z-index: 1000 !important;
 }
 
-/* Widen timeline cards and fix positioning */
-.timeline {
-    position: relative;
-    max-width: 1300px !important;
-    margin: 0 auto;
-}
 
-.timeline-item {
-    width: 44% !important;
-    padding: 10px 30px !important;
-}
 
 
 .bento-item {
@@ -1113,7 +1103,18 @@ p, a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
-    grid-auto-rows: 1fr;
+}
+
+.bento-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-item button,
+.bento-item a.magnetize-btn {
+    width: fit-content;
+    align-self: flex-start;
+    margin-top: 15px;
 }
 
 /* Contact card buttons like learning paths */
@@ -1191,4 +1192,19 @@ p, a {
 .nav-link.breathing-glow,
 .social-link.breathing-glow {
     animation: none !important;
+}
+
+.path-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.topic {
+    padding: 6px 12px;
+    background: rgba(255, 0, 128, 0.1);
+    border: 1px solid rgba(255, 0, 128, 0.3);
+    border-radius: 6px;
+    font-size: 0.85rem;
 }

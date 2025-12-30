@@ -289,8 +289,8 @@
 }
 
 @keyframes breathing {
-    0%, 100% { opacity: 0.8; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.12); }
 }
 
 .breathing-glow {
@@ -320,10 +320,15 @@
 
 .nav-link i {
     display: inline-block;
+    animation: heartbeat 2s ease-in-out infinite;
 }
 
-.nav-menu .nav-link i {
-    animation: heartbeat 2s ease-in-out infinite;
+.nav-menu .nav-link {
+    animation: breathing 6s ease-in-out infinite;
+}
+
+.nav-profile .ring {
+    animation: subtleBounce 3s ease-in-out infinite;
 }
 
 .action-btn {
@@ -331,11 +336,16 @@
 }
 
 .nav-profile-img {
-    animation: subtleHeartbeat 3s ease-in-out infinite;
+    animation: subtleBounce 3s ease-in-out infinite;
+}
+
+@keyframes subtleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
 }
 
 .footer .social-link, .footer .donate-btn, .footer .404-btn {
-    animation: breathing 3s ease-in-out infinite, heartbeat 2s ease-in-out infinite;
+    animation: breathing 3s ease-in-out infinite;
 }
 
 .rainbow-spore {
@@ -490,7 +500,7 @@
 
 /* Hamburger Menu */
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
@@ -538,19 +548,19 @@
 .timeline-item {
     position: relative;
     margin-bottom: 60px;
-    width: 45%;
+    width: 47%;
 }
 
 .timeline-item:nth-child(odd) {
     margin-left: 0;
     margin-right: auto;
-    padding-right: 30px;
+    padding-right: 40px;
 }
 
 .timeline-item:nth-child(even) {
     margin-left: auto;
     margin-right: 0;
-    padding-left: 30px;
+    padding-left: 40px;
 }
 
 .timeline-marker {
@@ -755,5 +765,25 @@
     
     .address-container {
         flex-direction: column;
+    }
+}
+
+.mobile-only {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: flex !important;
+    }
+}
+
+.nav-social .social-link i {
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@media (min-width: 769px) {
+    .hamburger {
+        display: none !important;
     }
 }
