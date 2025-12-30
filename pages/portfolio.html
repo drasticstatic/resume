@@ -331,7 +331,7 @@
                     <button class="donate-btn" onclick="openDonateModal()">
                         <i class="fas fa-heart"></i> Donate
                     </button>
-                    <button class="404-btn" onclick="window.location.href='../pages/404.html'">
+                    <button class="lost-btn" onclick="window.location.href='../pages/404.html'">
                         <i class="fas fa-compass"></i> Lost?
                     </button>
                 </div>
@@ -451,21 +451,34 @@
         // Initialize effects
         document.addEventListener('DOMContentLoaded', function() {
             createMatrixRain();
-            
+
             // Add hover effects to project cards
             document.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-10px) scale(1.02)';
                     this.style.boxShadow = '0 20px 40px rgba(255, 0, 128, 0.3)';
                 });
-                
+
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
                     this.style.boxShadow = 'none';
                 });
             });
+
+            // Mobile hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    navMenu.classList.toggle('active');
+                    hamburger.classList.toggle('active');
+                    if (typeof createSporeRain === 'function') {
+                        createSporeRain(e.pageX, e.pageY);
+                    }
+                });
+            }
         });
-        
+
     </script>
 </body>
 </html>

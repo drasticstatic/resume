@@ -126,7 +126,7 @@
                     <button class="donate-btn" onclick="openDonateModal()">
                         <i class="fas fa-heart"></i> Donate
                     </button>
-                    <button class="404-btn" onclick="window.location.href='404.html'">
+                    <button class="lost-btn" onclick="window.location.href='404.html'">
                         <i class="fas fa-compass"></i> Lost?
                     </button>
                 </div>
@@ -169,28 +169,17 @@
     <script src="../js/spore-effects.js"></script>
 
     <script>
-        function openDonateModal() {
-            if (typeof openDonate === 'function') {
-                openDonate();
-            } else if (window.modalInstance) {
-                window.modalInstance.open('Loading donate modal...');
-            }
-        }
-
-        function openGlossary() {
-            if (typeof window.openGlossary === 'function') {
-                window.openGlossary();
-            }
-        }
-
         // Mobile hamburger menu
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             if (hamburger && navMenu) {
-                hamburger.addEventListener('click', function() {
+                hamburger.addEventListener('click', function(e) {
                     navMenu.classList.toggle('active');
                     this.classList.toggle('active');
+                    if (typeof createSporeRain === 'function') {
+                        createSporeRain(e.pageX, e.pageY);
+                    }
                 });
             }
         });

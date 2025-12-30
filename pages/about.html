@@ -328,18 +328,25 @@
             </div>
         </section>
 
-        <!-- Personal Manifesto -->
+        <!-- Personal Manifesto (Revised — Declarative, Grounded, Professional) -->
         <section class="section manifesto">
             <h2>Personal Manifesto</h2>
             <div class="manifesto-content liquid-glass">
                 <blockquote class="manifesto-quote">
-                    <p><strong>I am a builder of sacred systems.</strong></p>
-                    <p>I bring the precision of eighteen years in aerospace manufacturing to the emerging field of decentralized technology. I bring the humility of recovery to the design of healing-centered communities. I bring the reverence of ordained ministry to the creation of ritual intelligence.</p>
-                    <p><strong>I believe technology can be a vessel for the sacred</strong> when it is built with intention, tested with rigor, and offered with humility.</p>
-                    <p><strong>I believe privacy is a spiritual necessity</strong>—the foundation of human dignity in a surveillance age.</p>
-                    <p><strong>I believe we are all connected</strong>—branches of one Vine, threads of one Body, nodes of one divine network of love and reciprocity.</p>
-                    <p><strong>I build systems that honor this truth:</strong> zero-knowledge circuits that protect what should remain hidden, soulbound tokens that recognize what cannot be bought or sold, governance structures that distribute power rather than concentrate it.</p>
-                    <p><strong>This is my offering:</strong> precision in service of the sacred, technology in service of healing, code in service of community.</p>
+                    <p>Technology, like music and mycelium, can become a vessel for the sacred.</p>
+                    <p>Systems can be designed to honor the dignity of the human soul — rooted in privacy, gratitude, humility, and compassion.</p>
+                    <p><strong>Precision matters.</strong></p>
+                    <p>The same care once required to machine aerospace-grade components now shapes decentralized architectures, cryptographic systems, and ritual intelligence — where every detail carries intention and consequence.</p>
+                    <p><strong>Harmony reveals truth.</strong></p>
+                    <p>Just as every note finds its place in a larger composition, every individual carries a unique frequency that contributes to the symphony of creation — a symphony conducted not by control, but by love.</p>
+                    <p><strong>The mycelial model offers a blueprint for healthy systems.</strong></p>
+                    <p>Interdependence without domination. Resilience without centralization. Growth through mutual nourishment.</p>
+                    <p><strong>Psychedelic insight serves as a doorway, not a destination.</strong></p>
+                    <p>Transformation becomes enduring only when integrated through Christ, embodied through service, and expressed through daily gratitude.</p>
+                    <p><strong>Creation carries hidden intelligence.</strong></p>
+                    <p>The same patterns appear in metal shavings, musical overtones, zero-knowledge circuits, and fungal networks — all pointing toward a unifying Logos that holds everything together.</p>
+                    <p>This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.</p>
+                    <p><strong>This is the offering.</strong></p>
                 </blockquote>
             </div>
         </section>
@@ -378,7 +385,7 @@
                     <button class="donate-btn" onclick="openDonateModal()">
                         <i class="fas fa-heart"></i> Donate
                     </button>
-                    <button class="404-btn" onclick="window.location.href='404.html'">
+                    <button class="lost-btn" onclick="window.location.href='404.html'">
                         <i class="fas fa-compass"></i> Lost?
                     </button>
                 </div>
@@ -424,9 +431,12 @@
         lucide.createIcons();
 
         // Mobile navigation toggle
-        document.querySelector('.hamburger').addEventListener('click', function() {
+        document.querySelector('.hamburger').addEventListener('click', function(e) {
             document.querySelector('.nav-menu').classList.toggle('active');
             this.classList.toggle('active');
+            if (typeof createSporeRain === 'function') {
+                createSporeRain(e.pageX, e.pageY);
+            }
         });
 
         // Spore rain on nav clicks

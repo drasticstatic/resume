@@ -344,7 +344,7 @@
     50% { transform: translateY(-3px); }
 }
 
-.footer .social-link, .footer .donate-btn, .footer .404-btn {
+.footer .social-link, .footer .donate-btn, .footer .lost-btn {
     animation: breathing 3s ease-in-out infinite;
 }
 
@@ -459,7 +459,7 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.footer .donate-btn, .footer .404-btn {
+.footer .donate-btn, .footer .lost-btn {
     padding: 12px 24px;
     border-radius: 8px;
     border: 2px solid rgba(255, 0, 128, 0.5);
@@ -473,7 +473,7 @@
     gap: 8px;
 }
 
-.footer .donate-btn:hover, .footer .404-btn:hover {
+.footer .donate-btn:hover, .footer .lost-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
     border-color: rgba(0, 255, 255, 0.5);
@@ -638,25 +638,32 @@
 /* About page social circles arc */
 .profile-wrapper {
     position: relative;
-    width: 200px;
-    height: 240px;
+    width: 340px;
+    height: 340px;
     margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-wrapper .profile-container {
+    position: relative;
+    z-index: 2;
 }
 
 .social-circles-arc {
     position: absolute;
-    width: 340px;
-    height: 340px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     pointer-events: none;
 }
 
 .social-circle {
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -675,17 +682,16 @@
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
 }
 
-
-
 .social-circle i {
-    font-size: 32px;
+    font-size: 28px;
     color: #fff;
 }
 
-.sc-1 { top: 15px; right: 15px; }
-.sc-2 { top: 15px; left: 15px; }
-.sc-3 { bottom: 15px; left: 15px; }
-.sc-4 { bottom: 15px; right: 15px; }
+/* Position social circles around the profile photo */
+.sc-1 { top: 0; right: 40px; }      /* Top right - LinkedIn */
+.sc-2 { top: 0; left: 40px; }       /* Top left - GitHub */
+.sc-3 { bottom: 0; left: 40px; }    /* Bottom left - Gravatar */
+.sc-4 { bottom: 0; right: 40px; }   /* Bottom right - ? button */
 
 @media (max-width: 768px) {
     .hamburger {

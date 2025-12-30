@@ -892,23 +892,33 @@ p, a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.timeline-item {
-    width: calc(50% - 30px) !important;
+.professional-journey .timeline {
+    display: block;
+    position: relative;
+}
+
+.professional-journey .timeline-item {
+    width: calc(50% - 40px) !important;
     position: relative !important;
+    margin-bottom: 30px;
 }
 
-.timeline-item:nth-child(odd) {
-    left: 0 !important;
-    margin-right: auto !important;
-    padding-right: 30px !important;
+/* Left cards (odd) - positioned to the left of center */
+.professional-journey .timeline-item:nth-child(odd) {
+    margin-left: 0 !important;
+    margin-right: calc(50% + 10px) !important;
     text-align: right;
 }
 
-.timeline-item:nth-child(even) {
-    left: calc(50% + 30px) !important;
-    padding-left: 30px !important;
+/* Right cards (even) - positioned to the right of center */
+.professional-journey .timeline-item:nth-child(even) {
+    margin-left: calc(50% + 10px) !important;
+    margin-right: 0 !important;
     text-align: left;
 }
 
@@ -986,12 +996,14 @@ p, a {
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
 }
 
+/* Left cards (odd) - node on the RIGHT side of card, touching center line */
 .professional-journey .timeline-item:nth-child(odd)::after {
-    right: -40px;
+    right: -30px;
 }
 
+/* Right cards (even) - node on the LEFT side of card, touching center line */
 .professional-journey .timeline-item:nth-child(even)::after {
-    left: -40px;
+    left: -30px;
 }
 
 
@@ -1002,24 +1014,26 @@ p, a {
     .experience-timeline .timeline-line {
         left: 30px !important;
     }
-    
-    .timeline-item {
-        width: 100% !important;
-        padding-left: 70px !important;
-        padding-right: 20px !important;
-        left: 0 !important;
+
+    .professional-journey .timeline-item {
+        width: calc(100% - 50px) !important;
+        margin-left: 50px !important;
+        margin-right: 0 !important;
+        text-align: left;
     }
-    
-    .timeline-item:nth-child(even) {
-        left: 0 !important;
-        padding-left: 70px !important;
+
+    .professional-journey .timeline-item:nth-child(odd),
+    .professional-journey .timeline-item:nth-child(even) {
+        margin-left: 50px !important;
+        margin-right: 0 !important;
     }
-    
-    .timeline-item::after,
-    .professional-journey .timeline-item::after {
-        left: 20px !important;
+
+    .professional-journey .timeline-item:nth-child(odd)::after,
+    .professional-journey .timeline-item:nth-child(even)::after {
+        left: -30px !important;
+        right: auto !important;
     }
-    
+
     .bento-item,
     .contact-method {
         min-height: auto !important;
@@ -1244,4 +1258,56 @@ p, a {
 
 .manifesto-quote p:last-child {
     margin-bottom: 0;
+}
+
+/* Blog post Read More buttons */
+.post-card button,
+.featured-post .read-more,
+.read-more {
+    padding: 12px 28px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3));
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card button:hover,
+.featured-post .read-more:hover,
+.read-more:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(0, 255, 255, 0.5));
+    border-color: #ff0080;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4), 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.post-card button:active,
+.featured-post .read-more:active,
+.read-more:active {
+    transform: translateY(-1px);
+}
+
+/* Donate button styling */
+.donate-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3));
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.donate-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(0, 255, 255, 0.5));
+    border-color: #ff0080;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 128, 0.3);
 }
