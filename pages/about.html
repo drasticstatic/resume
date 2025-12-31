@@ -16,9 +16,9 @@
     
     <!-- Custom styles -->
     <link href="../css/resume.css" rel="stylesheet">
-    <link href="../css/modal.css" rel="stylesheet">
+    <link href="../css/modal.css?v=202501151" rel="stylesheet">
     <link href="../css/psychedelic.css" rel="stylesheet">
-    <link href="../css/navigation.css" rel="stylesheet">
+    <link href="../css/navigation.css?v=202501151" rel="stylesheet">
     <link href="../css/effects.css" rel="stylesheet">
     <link href="../css/hero-fixes.css" rel="stylesheet">
 </head>
@@ -100,15 +100,20 @@
                         <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-circle sc-1" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://github.com/drasticstatic" class="social-circle sc-2" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://gravatar.com/christopherdrasticstatic" class="social-circle sc-3" target="_blank">
+                        <a href="https://gravatar.com/christopherdrasticstatic" class="social-circle sc-2" target="_blank">
                             <i class="fas fa-user-circle"></i>
+                        </a>
+                        <a href="https://github.com/drasticstatic" class="social-circle sc-3" target="_blank">
+                            <i class="fab fa-github"></i>
                         </a>
                         <a href="#" class="social-circle sc-4" onclick="alert('Coming soon!'); return false;">
                             <i class="fas fa-question"></i>
                         </a>
+                    </div>
+                    <div class="resume-buttons">
+                        <button onclick="openResumeModal()" class="resume-btn view-btn breathing-glow">
+                            <i class="fas fa-file-pdf"></i> View Resume
+                        </button>
                     </div>
                 </div>
                 <h1 class="rainbow-text glitch-text" data-text="About Christopher">About Christopher</h1>
@@ -577,6 +582,109 @@
     </script>
     
     <style>
+        /* CRITICAL FIXES - INLINE TO BYPASS CACHE */
+        
+        /* Social buttons in perfect rainbow arc above photo */
+        .social-circles-arc {
+            position: absolute;
+            width: 340px;
+            height: 340px;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .social-circle {
+            pointer-events: all;
+        }
+        
+        .sc-1 { 
+            position: absolute;
+            top: 20px !important; 
+            right: 70px !important; 
+            left: auto !important;
+            bottom: auto !important;
+        }
+        
+        .sc-2 { 
+            position: absolute;
+            top: 0px !important; 
+            left: 50% !important; 
+            transform: translateX(-50%) !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+        
+        .sc-3 { 
+            position: absolute;
+            top: 20px !important; 
+            left: 70px !important; 
+            right: auto !important;
+            bottom: auto !important;
+        }
+        
+        .sc-4 { 
+            position: absolute;
+            top: 20px !important; 
+            left: 20px !important; 
+            right: auto !important;
+            bottom: auto !important;
+        }
+        
+        /* Profile photo pushed down to avoid overlap */
+        .profile-wrapper .profile-container {
+            margin-top: 60px !important;
+        }
+        
+        /* Resume button centered below photo */
+        .resume-buttons {
+            margin-top: 20px !important;
+            text-align: center !important;
+        }
+        
+        /* Modal fixes for clickability and scrolling */
+        .modal {
+            pointer-events: auto !important;
+        }
+        
+        .modal-content {
+            pointer-events: auto !important;
+            max-width: 90vw !important;
+            width: 90vw !important;
+        }
+        
+        .resume-modal-content {
+            pointer-events: auto !important;
+        }
+        
+        .resume-modal-content iframe {
+            pointer-events: auto !important;
+            user-select: auto !important;
+            -webkit-user-select: auto !important;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-width: 98vw !important;
+                width: 98vw !important;
+                margin: 10px auto !important;
+            }
+            
+            .resume-modal-content {
+                padding: 10px !important;
+            }
+            
+            .resume-modal-content iframe {
+                height: 50vh !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .profile-wrapper .profile-container {
+                margin-top: 40px !important;
+            }
+        }
         .about-hero {
             position: relative;
             min-height: 80vh;
@@ -673,5 +781,50 @@
             transform: translateY(-2px);
         }
     </style>
+    
+    <script>
+        function openResumeModal() {
+            const resumeContent = `
+                <div class="resume-modal-content">
+                    <h2 style="color: #00ffff; margin-bottom: 20px; text-align: center;">Christopher Wilson - Resume</h2>
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px;">
+                        <button onclick="event.stopPropagation(); downloadResume();" class="resume-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
+                            <i class="fas fa-download"></i> Download PDF
+                        </button>
+                        <a href="../Resume.pdf" target="_blank" onclick="event.stopPropagation();" class="resume-btn" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">
+                            <i class="fas fa-external-link-alt"></i> Open in New Tab
+                        </a>
+                    </div>
+                    <div style="width: 100%; height: 75vh; overflow: auto;">
+                        <iframe src="../Resume.pdf#toolbar=1&navpanes=1&scrollbar=1" style="width: 100%; height: 100%; border: 2px solid rgba(0, 255, 255, 0.3); border-radius: 12px;"></iframe>
+                    </div>
+                </div>
+            `;
+            if (window.modalInstance) {
+                window.modalInstance.open(resumeContent);
+                
+                // Make modal wider for resume
+                setTimeout(() => {
+                    const modalContent = document.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.style.maxWidth = '95vw';
+                        modalContent.style.width = '95vw';
+                        modalContent.style.height = '90vh';
+                    }
+                }, 10);
+            }
+        }
+        
+        function downloadResume() {
+            const link = document.createElement('a');
+            link.href = '../Resume.pdf';
+            link.download = 'Christopher_Wilson_Resume.pdf';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => document.body.removeChild(link), 100);
+        }
+    </script>
 </body>
 </html>

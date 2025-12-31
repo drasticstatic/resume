@@ -2,7 +2,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
@@ -544,4 +544,30 @@ body {
 
 .modal-content input[type="text"] {
     cursor: text !important;
+}
+
+.resume-modal-content {
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.resume-modal-content iframe {
+    pointer-events: auto !important;
+    user-select: auto !important;
+}
+
+.modal-content {
+    overflow: visible !important;
+    pointer-events: auto !important;
+}
+
+.modal {
+    pointer-events: auto !important;
+}
+
+@media (max-width: 768px) {
+    .resume-modal-content iframe {
+        height: 60vh !important;
+    }
 }

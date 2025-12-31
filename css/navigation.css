@@ -639,16 +639,18 @@
 .profile-wrapper {
     position: relative;
     width: 340px;
-    height: 340px;
+    height: 380px;
     margin: 0 auto 30px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .profile-wrapper .profile-container {
     position: relative;
     z-index: 2;
+    margin-top: 50px;
 }
 
 .social-circles-arc {
@@ -688,10 +690,10 @@
 }
 
 /* Position social circles around the profile photo */
-.sc-1 { top: 0 !important; right: 40px !important; bottom: auto !important; left: auto !important; }      /* Top right - LinkedIn */
-.sc-2 { top: 0 !important; left: 40px !important; bottom: auto !important; right: auto !important; }       /* Top left - GitHub */
-.sc-3 { bottom: 0 !important; left: 40px !important; top: auto !important; right: auto !important; }    /* Bottom left - Gravatar */
-.sc-4 { bottom: 0 !important; right: 40px !important; top: auto !important; left: auto !important; }   /* Bottom right - ? button */
+.sc-1 { top: 15px; right: 80px; }      /* Top right - LinkedIn */
+.sc-2 { top: -5px; left: 50%; transform: translateX(-50%); }       /* Top center - Gravatar */
+.sc-3 { top: 15px; left: 80px; }    /* Top left - GitHub */
+.sc-4 { top: 15px; left: 15px; }   /* Far left - ? button */
 
 /* Mobile only helper class */
 .mobile-only {
@@ -802,3 +804,42 @@
         display: none !important;
     }
 }
+
+.resume-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.resume-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3));
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    animation: breathing 6s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.resume-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(0, 255, 255, 0.5));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
+}
+
+.social-circle {
+    animation: breathing 6s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
+}
+
+/* Updated: 2025-01-15 - Social buttons rainbow arc, profile photo positioning, resume modal */
