@@ -53,21 +53,24 @@
                 <li><a href="contact.html" class="nav-link active heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
             </ul>
             <div class="nav-social">
-                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-linkedin"></i>
+                <a href="../index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
+                    <i class="fas fa-home"></i>
                 </a>
-                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fas fa-user-circle"></i>
-                </a>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;" title="Donate">
                     <i class="fas fa-heart"></i>
                 </button>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;" title="Lost?">
                     <i class="fas fa-compass"></i>
                 </button>
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fas fa-user-circle"></i>
+                </a>
             </div>
             <div class="hamburger mobile-nav">
                 <span></span>
@@ -217,8 +220,8 @@
                 <h2>Ready to Build Something Sacred?</h2>
                 <p>Whether you're working on privacy-preserving technology, precision engineering challenges, or spiritual innovation, I'd love to hear about your vision and explore how we might collaborate.</p>
                 <div class="cta-buttons">
-                    <a href="mailto:drasticstatic@gmail.com" class="btn-primary">Start a Conversation</a>
-                    <a href="../pages/portfolio.html" class="btn-secondary">View My Work</a>
+                    <button onclick="startConversation()" class="btn-primary" style="cursor: pointer;">Start a Conversation</button>
+                    <a href="portfolio.html" class="btn-secondary">View My Work</a>
                 </div>
             </div>
         </section>

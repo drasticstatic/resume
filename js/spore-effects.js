@@ -43,23 +43,31 @@ function createMysticSporeRain(x, y) {
 // Initialize spore effects on clickable elements
 document.addEventListener('DOMContentLoaded', () => {
     // Rainbow spores for navigation and main CTAs
-    document.querySelectorAll('.nav-link, .cta-button, .skill-item, .tech-tag, .hamburger').forEach(button => {
+    const rainbowSelectors = [
+        '.nav-link', '.cta-button', '.skill-item', '.tech-tag', '.hamburger',
+        '.read-more', '.resource-btn', '.magnetize-btn', '.pill-tag',
+        '.btn-primary', '.btn-secondary', '.card-button--site', '.card-button--code',
+        '.insight-node', '.post-card', '.project-card button', '.project-actions button',
+        '.project-actions a', '.submit-btn', '.subscribe-btn', '.tag', '.soft-tag',
+        '.glossary-term', '.timeline-card', '.bento-item button'
+    ];
+
+    document.querySelectorAll(rainbowSelectors.join(', ')).forEach(button => {
         button.addEventListener('click', function(e) {
             createSporeRain(e.pageX, e.pageY);
         });
     });
 
     // Mystic spores for donate, lost, and special buttons
-    document.querySelectorAll('.donate-btn, .lost-btn, .donate-btn-top, .lost-btn-top, .social-link').forEach(button => {
+    const mysticSelectors = [
+        '.donate-btn', '.lost-btn', '.donate-btn-top', '.lost-btn-top',
+        '.social-link', '.social-circle', '.payment-btn', '.wallet-connect-btn',
+        '.contact-btn'
+    ];
+
+    document.querySelectorAll(mysticSelectors.join(', ')).forEach(button => {
         button.addEventListener('click', function(e) {
             createMysticSporeRain(e.pageX, e.pageY);
-        });
-    });
-
-    // Rainbow spores for read more and resource buttons
-    document.querySelectorAll('.read-more, .resource-btn, .magnetize-btn, .pill-tag').forEach(button => {
-        button.addEventListener('click', function(e) {
-            createSporeRain(e.pageX, e.pageY);
         });
     });
 });

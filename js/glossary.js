@@ -84,6 +84,98 @@ function openGlossary(term) {
         'acoustics': {
             title: 'Acoustics',
             content: 'The science of sound behavior in enclosed spaces. Understanding room modes, reflections, absorption, and diffusion is essential for both live sound and studio recording environments.'
+        },
+        'aleo-leo': {
+            title: 'Aleo Leo Programming',
+            content: 'Leo is the programming language for building private applications on Aleo. It compiles to zero-knowledge circuits, enabling developers to write privacy-preserving smart contracts with familiar syntax.'
+        },
+        'spiritual-ai': {
+            title: 'Spiritual AI Systems',
+            content: 'AI systems designed with sacred technology principles, serving human spiritual growth rather than extraction. Examples include the Oracle of Fruit ritual intelligence.'
+        },
+        'privacy-first': {
+            title: 'Privacy-First Design',
+            content: 'An architectural approach that treats privacy as a fundamental requirement rather than an afterthought. Systems are designed from the ground up to protect user data and sovereignty.'
+        },
+        'community-governance': {
+            title: 'Community Governance',
+            content: 'Decentralized decision-making structures that empower community members to participate in organizational direction. Often implemented through DAOs with token-based or reputation-based voting.'
+        },
+        'agent': {
+            title: 'AI Agent',
+            content: 'An autonomous AI system that can perceive its environment, make decisions, and take actions to achieve specific goals. In Web3, agents can interact with smart contracts and blockchain systems.'
+        },
+        'ai': {
+            title: 'Artificial Intelligence',
+            content: 'Computer systems designed to perform tasks that typically require human intelligence, including learning, reasoning, problem-solving, and natural language understanding.'
+        },
+        'arbitrage': {
+            title: 'Arbitrage',
+            content: 'The practice of exploiting price differences between markets. In DeFi, this involves buying assets on one exchange and selling on another for profit, often automated through smart contracts.'
+        },
+        'javascript': {
+            title: 'JavaScript',
+            content: 'A versatile programming language essential for web development. In Web3, JavaScript is used with libraries like ethers.js and wagmi for building decentralized application frontends.'
+        },
+        'cosmos': {
+            title: 'Cosmos',
+            content: 'An ecosystem of interconnected blockchains using the Inter-Blockchain Communication (IBC) protocol. Enables sovereign chains to communicate and transfer assets securely.'
+        },
+        'mantle': {
+            title: 'Mantle',
+            content: 'A Layer 2 scaling solution for Ethereum that uses optimistic rollup technology to provide faster and cheaper transactions while inheriting Ethereum security.'
+        },
+        'ton': {
+            title: 'TON (The Open Network)',
+            content: 'A decentralized blockchain platform originally developed by Telegram. Known for high throughput, low fees, and integration with messaging applications.'
+        },
+        'ccip': {
+            title: 'Chainlink CCIP',
+            content: 'Cross-Chain Interoperability Protocol by Chainlink. Enables secure cross-chain messaging and token transfers between different blockchain networks.'
+        },
+        'audio': {
+            title: 'Audio Engineering',
+            content: 'The technical and creative discipline of recording, mixing, and reproducing sound. Encompasses live sound reinforcement, studio recording, and broadcast audio.'
+        },
+        'live-sound': {
+            title: 'Live Sound',
+            content: 'The practice of amplifying and mixing audio for live events. Requires real-time decision-making, acoustic awareness, and technical expertise with PA systems.'
+        },
+        'production': {
+            title: 'Event Production',
+            content: 'The comprehensive planning and execution of live events, including audio, lighting, staging, and technical coordination. Requires both creative vision and logistical expertise.'
+        },
+        'engineering': {
+            title: 'Engineering',
+            content: 'The application of scientific and mathematical principles to design, build, and maintain systems. In audio, this means creating optimal sound experiences through technical expertise.'
+        },
+        'cnc': {
+            title: 'CNC Machining',
+            content: 'Computer Numerical Control machining uses programmed instructions to control machine tools. Enables precise, repeatable manufacturing of complex parts from various materials.'
+        },
+        'precision': {
+            title: 'Precision Manufacturing',
+            content: 'Manufacturing processes that achieve extremely tight tolerances, often ±0.0001 inches or better. Essential for aerospace, medical, and high-reliability applications.'
+        },
+        'react': {
+            title: 'React',
+            content: 'A JavaScript library for building user interfaces, particularly single-page applications. Widely used in Web3 for creating decentralized application frontends.'
+        },
+        'nodejs': {
+            title: 'Node.js',
+            content: 'A JavaScript runtime built on Chrome V8 engine that enables server-side JavaScript execution. Essential for building Web3 backends and blockchain tooling.'
+        },
+        'wagmi': {
+            title: 'Wagmi',
+            content: 'A collection of React hooks for Ethereum development. Simplifies wallet connection, contract interaction, and blockchain data fetching in React applications.'
+        },
+        'ethersjs': {
+            title: 'Ethers.js',
+            content: 'A complete Ethereum library for JavaScript and TypeScript. Provides utilities for wallet management, contract interaction, and blockchain communication.'
+        },
+        'zk-circuits': {
+            title: 'ZK Circuits',
+            content: 'Mathematical constructs that define the logic of zero-knowledge proofs. Circuits specify what can be proven without revealing the underlying data.'
         }
     };
     

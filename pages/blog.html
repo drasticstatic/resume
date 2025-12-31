@@ -51,21 +51,24 @@
                 <li><a href="contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
             </ul>
             <div class="nav-social">
-                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-linkedin"></i>
+                <a href="../index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
+                    <i class="fas fa-home"></i>
                 </a>
-                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fas fa-user-circle"></i>
-                </a>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;" title="Donate">
                     <i class="fas fa-heart"></i>
                 </button>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;" title="Lost?">
                     <i class="fas fa-compass"></i>
                 </button>
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fas fa-user-circle"></i>
+                </a>
             </div>
             <div class="hamburger mobile-nav">
                 <span></span>
@@ -97,25 +100,45 @@
         <!-- Featured Post -->
         <section class="section featured-post">
             <h2>Featured</h2>
-            
+
             <article class="post-featured">
                 <div class="post-meta">
                     <span class="post-date">January 2025</span>
-                    <span class="post-category">Sacred Technology</span>
+                    <span class="post-category">Web3</span>
                 </div>
-                <h3>The Mycelial Model: How Fungal Networks Inspire Decentralized Governance</h3>
+                <h3>A ZK-Curious Learning Path: Designing Privacy-Aware Web3 Systems</h3>
                 <p class="post-excerpt">
-                    In the quiet depths of forest floors, mycelial networks demonstrate principles of decentralized coordination that blockchain developers are only beginning to understand. This exploration of how fungal intelligence can inform DAO design reveals patterns that bridge the biological and digital realms.
+                    Zero-knowledge systems introduce a fundamental shift in how decentralized applications can be designed. A systems-oriented approach to learning and applying ZK concepts, with a focus on practical architecture, tradeoffs, and real-world use cases.
                 </p>
-                <button class="read-more" onclick="openBlogPost('mycelial-model')">Read More</button>
+                <button class="read-more" onclick="openBlogPost('zk-curious-path')">Read More</button>
             </article>
         </section>
 
         <!-- Blog Posts Grid -->
         <section class="section blog-posts">
             <h2>Recent Posts</h2>
-            
+
             <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 2025</span>
+                        <span class="post-category">Sacred Technology</span>
+                    </div>
+                    <h3>The Mycelial Model: How Fungal Networks Inspire Decentralized Governance</h3>
+                    <p>How fungal networks inspire decentralized governance and blockchain consensus mechanisms...</p>
+                    <button onclick="openBlogPost('mycelial-model')">Read More</button>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-meta">
+                        <span class="post-date">January 2025</span>
+                        <span class="post-category">Precision & Prayer</span>
+                    </div>
+                    <h3>From Microns to Mysticism</h3>
+                    <p>Lessons from eighteen years of precision machining about patience, intention, and sacred geometry...</p>
+                    <button onclick="openBlogPost('microns-mysticism')">Read More</button>
+                </article>
+
                 <article class="post-card">
                     <div class="post-meta">
                         <span class="post-date">December 2024</span>

@@ -59,21 +59,24 @@
                 <li><a href="pages/contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
             </ul>
             <div class="nav-social">
-                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-linkedin"></i>
+                <a href="index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
+                    <i class="fas fa-home"></i>
                 </a>
-                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat">
-                    <i class="fas fa-user-circle"></i>
-                </a>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;" title="Donate">
                     <i class="fas fa-heart"></i>
                 </button>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='pages/404.html'" style="background: none; border: none; padding: 0;">
+                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='pages/404.html'" style="background: none; border: none; padding: 0;" title="Lost?">
                     <i class="fas fa-compass"></i>
                 </button>
+                <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/drasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://gravatar.com/christopherdrasticstatic" class="social-link breathing-glow heartbeat" target="_blank">
+                    <i class="fas fa-user-circle"></i>
+                </a>
             </div>
             <div class="hamburger mobile-nav">
                 <span></span>
@@ -424,23 +427,35 @@
         <section class="section latest-insights">
             <h2 class="insights-title">Latest <span class="insights-highlight soft-glow">Wisdom</span></h2>
             <p class="insights-subtitle">🌌 Sacred Technology Reflections</p>
-            
+
             <div class="insights-stream">
                 <div class="insight-flow">
-                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
-                        <div class="insight-date">January 15, 2025</div>
-                        <h3 class="insight-title">The Mycelial Web</h3>
+                    <div class="insight-node" onclick="openBlogPost('zk-curious-path')">
+                        <div class="insight-date">January 2025</div>
+                        <h3 class="insight-title">A ZK-Curious Learning Path</h3>
+                        <p class="insight-text">Zero-knowledge systems introduce a fundamental shift in how decentralized applications can be designed...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Web3</span>
+                            <span class="insight-tag">12 min</span>
+                        </div>
+                    </div>
+
+                    <div class="insight-connector"></div>
+
+                    <div class="insight-node" onclick="openBlogPost('mycelial-model')">
+                        <div class="insight-date">January 2025</div>
+                        <h3 class="insight-title">The Mycelial Model</h3>
                         <p class="insight-text">How fungal networks inspire decentralized governance and blockchain consensus mechanisms...</p>
                         <div class="insight-tags">
                             <span class="insight-tag">Sacred Technology</span>
-                            <span class="insight-tag">5 min</span>
+                            <span class="insight-tag">8 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="insight-connector"></div>
-                    
-                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
-                        <div class="insight-date">January 8, 2025</div>
+
+                    <div class="insight-node" onclick="openBlogPost('microns-mysticism')">
+                        <div class="insight-date">January 2025</div>
                         <h3 class="insight-title">From Microns to Mysticism</h3>
                         <p class="insight-text">Lessons from eighteen years of precision machining about patience, intention, and sacred geometry...</p>
                         <div class="insight-tags">
@@ -448,16 +463,40 @@
                             <span class="insight-tag">7 min</span>
                         </div>
                     </div>
-                    
+
                     <div class="insight-connector"></div>
-                    
-                    <div class="insight-node" onclick="window.location.href='pages/blog.html'">
-                        <div class="insight-date">December 28, 2024</div>
+
+                    <div class="insight-node" onclick="openBlogPost('oracle-fruit')">
+                        <div class="insight-date">November 2024</div>
+                        <h3 class="insight-title">The Oracle of Fruit</h3>
+                        <p class="insight-text">When AI meets ritual intelligence—exploring the development of our LLM-powered ritual agent...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Spirituality</span>
+                            <span class="insight-tag">6 min</span>
+                        </div>
+                    </div>
+
+                    <div class="insight-connector"></div>
+
+                    <div class="insight-node" onclick="openBlogPost('zk-spiritual')">
+                        <div class="insight-date">December 2024</div>
                         <h3 class="insight-title">Zero-Knowledge as Spiritual Practice</h3>
                         <p class="insight-text">Why privacy-preserving cryptography mirrors contemplative traditions of knowing without revealing...</p>
                         <div class="insight-tags">
                             <span class="insight-tag">Web3 & Spirituality</span>
                             <span class="insight-tag">6 min</span>
+                        </div>
+                    </div>
+
+                    <div class="insight-connector"></div>
+
+                    <div class="insight-node" onclick="openBlogPost('dao-as-sangha')">
+                        <div class="insight-date">December 2024</div>
+                        <h3 class="insight-title">DAO as Sangha</h3>
+                        <p class="insight-text">Exploring how decentralized autonomous organizations can embody principles of spiritual community...</p>
+                        <div class="insight-tags">
+                            <span class="insight-tag">Sacred Technology</span>
+                            <span class="insight-tag">8 min</span>
                         </div>
                     </div>
                 </div>
@@ -552,6 +591,7 @@
     <script src="js/resume.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/glossary.js"></script>
+    <script src="js/blog.js"></script>
     <script src="js/web3-effects.js"></script>
     <script src="js/effects.js"></script>
     <script src="js/solidity-rain.js"></script>

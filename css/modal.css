@@ -400,6 +400,29 @@ body {
     cursor: pointer !important;
 }
 
+/* Glossary and Term Modal Width Fixes */
+.glossary-entry,
+.glossary-modal,
+.term-modal {
+    max-width: 600px;
+    margin: 0 auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.glossary-entry h3,
+.term-modal h3 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.glossary-entry p,
+.term-modal p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+}
+
 .modal-actions a:hover {
     background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)) !important;
     transform: translateY(-2px);
@@ -540,6 +563,8 @@ body {
 .modal-content input {
     pointer-events: auto !important;
     cursor: pointer !important;
+    position: relative;
+    z-index: 100;
 }
 
 .modal-content input[type="text"] {
@@ -555,19 +580,108 @@ body {
 .resume-modal-content iframe {
     pointer-events: auto !important;
     user-select: auto !important;
+    position: relative;
+    z-index: 50;
 }
 
 .modal-content {
     overflow: visible !important;
     pointer-events: auto !important;
+    position: relative;
+    z-index: 10001;
 }
 
 .modal {
     pointer-events: auto !important;
+    z-index: 10000 !important;
+}
+
+#modal-body {
+    position: relative;
+    z-index: 10002;
+}
+
+#modal-body * {
+    position: relative;
 }
 
 @media (max-width: 768px) {
     .resume-modal-content iframe {
         height: 60vh !important;
     }
+}
+
+/* Blog Post Modal Styling */
+.blog-post-full {
+    padding: 20px;
+    max-width: 100%;
+}
+
+.blog-post-full .post-header {
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    padding-bottom: 20px;
+}
+
+.blog-post-full .post-header h2 {
+    color: #00ffff;
+    font-size: 1.8rem;
+    margin: 15px 0;
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.blog-post-full .post-category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(139, 92, 246, 0.3));
+    border: 1px solid rgba(255, 0, 128, 0.5);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #ff0080;
+}
+
+.blog-post-full .post-meta-full {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.blog-post-full .post-content {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.blog-post-full .post-content p {
+    margin-bottom: 1.2em;
+}
+
+.blog-post-full .post-content strong {
+    color: #00ffff;
+}
+
+.blog-post-full .post-content li {
+    margin-left: 20px;
+    margin-bottom: 0.5em;
+    list-style-type: disc;
+}
+
+.blog-post-full .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.blog-post-full .post-tag {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2));
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #00ffff;
 }

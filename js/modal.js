@@ -4,52 +4,58 @@ class Modal {
         this.modal = document.getElementById('modal');
         this.modalBody = document.getElementById('modal-body');
         this.closeBtn = document.querySelector('.close');
-        
+
         this.init();
     }
-    
+
     init() {
         // Close modal when clicking the X
         if (this.closeBtn) {
-            this.closeBtn.onclick = () => this.close();
-        }
-        
-        // Close modal when clicking outside
-        window.onclick = (event) => {
-            if (event.target === this.modal) {
+            this.closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 this.close();
-            }
-        };
-        
+            });
+        }
+
+        // Close modal when clicking outside (on the modal backdrop)
+        if (this.modal) {
+            this.modal.addEventListener('click', (event) => {
+                // Only close if clicking directly on the modal backdrop, not its children
+                if (event.target === this.modal) {
+                    this.close();
+                }
+            });
+        }
+
         // Close modal with Escape key
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.modal.style.display === 'block') {
+            if (event.key === 'Escape' && this.modal && this.modal.style.display === 'block') {
                 this.close();
             }
         });
     }
-    
+
     open(content) {
         this.modalBody.innerHTML = content;
         this.modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-        
+
         // Add liquid glass effect
         const modalContent = document.querySelector('.modal-content');
         if (modalContent && !modalContent.classList.contains('liquid-glass')) {
             modalContent.classList.add('liquid-glass');
         }
-        
+
         // Spore rain on modal open
         if (typeof createSporeRain === 'function') {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
         }
     }
-    
+
     close() {
         this.modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-        
+
         // Spore rain on modal close
         if (typeof createSporeRain === 'function') {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
@@ -228,9 +234,127 @@ function openProjectModal(projectId) {
                     <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
                 </div>
             `
+        },
+        'multi-chain': {
+            title: 'Multi-Chain Hackathon Architecture',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🌐</div>
+                    <h3>Multi-Chain Hackathon Architecture</h3>
+                    <p class="project-role"><strong>Architect & Developer</strong> | 2024</p>
+                </div>
+
+                <div class="project-description">
+                    <p>Cross-chain interoperability system designed for Mantle, Cosmos, TON, ASI, Chainlink, zkID, and Aleo integration. Built during multiple hackathons to explore the frontiers of blockchain interoperability and privacy-preserving cross-chain communication.</p>
+                </div>
+
+                <h4>🌐 Key Features:</h4>
+                <ul>
+                    <li><strong>Cross-chain messaging</strong> - Seamless communication between disparate blockchains</li>
+                    <li><strong>Chainlink CCIP integration</strong> - Secure cross-chain data and token transfers</li>
+                    <li><strong>zkID verification</strong> - Privacy-preserving identity across chains</li>
+                    <li><strong>Multi-chain governance</strong> - Unified DAO operations across ecosystems</li>
+                    <li><strong>Cosmos IBC support</strong> - Inter-Blockchain Communication protocol</li>
+                </ul>
+
+                <h4>🔧 Technical Stack:</h4>
+                <div class="tech-stack-modal">
+                    <span class="tech-tag">Cosmos SDK</span>
+                    <span class="tech-tag">Mantle</span>
+                    <span class="tech-tag">TON</span>
+                    <span class="tech-tag">Chainlink CCIP</span>
+                    <span class="tech-tag">Aleo</span>
+                    <span class="tech-tag">Solidity</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                </div>
+            `
+        },
+        'csw-productions': {
+            title: 'CSW Productions',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🎵</div>
+                    <h3>CSW Productions</h3>
+                    <p class="project-role"><strong>Owner & Lead Engineer</strong> | 2010-Present</p>
+                </div>
+
+                <div class="project-description">
+                    <p>Professional audio engineering services including FOH engineering, live sound, lighting design, and event production. From intimate worship gatherings to large-scale concerts, CSW Productions brings technical excellence and spiritual sensitivity to every event.</p>
+                </div>
+
+                <h4>🎵 Services:</h4>
+                <ul>
+                    <li><strong>Front of House Engineering</strong> - Live mixing for concerts, worship, and events</li>
+                    <li><strong>Live Sound Reinforcement</strong> - Professional PA systems and acoustics</li>
+                    <li><strong>Lighting Design</strong> - Atmospheric and stage lighting</li>
+                    <li><strong>Event Production</strong> - Full-service event technical coordination</li>
+                    <li><strong>Recording & Mixing</strong> - Multi-track recording and post-production</li>
+                </ul>
+
+                <h4>🔧 Equipment & Expertise:</h4>
+                <div class="tech-stack-modal">
+                    <span class="tech-tag">Digital Consoles</span>
+                    <span class="tech-tag">Analog Mixing</span>
+                    <span class="tech-tag">PA Systems</span>
+                    <span class="tech-tag">Stage Lighting</span>
+                    <span class="tech-tag">Multi-track Recording</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://drasticstatic.wixsite.com/cswproductions" class="modal-btn" target="_blank">Visit Website</a>
+                </div>
+            `
+        },
+        'manufacturing': {
+            title: 'Precision Manufacturing Portfolio',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🔧</div>
+                    <h3>Precision Manufacturing Portfolio</h3>
+                    <p class="project-role"><strong>CNC Programmer & Machinist</strong> | 2006-Present</p>
+                </div>
+
+                <div class="project-description">
+                    <p>18+ years of CNC machining expertise across aerospace, defense, and entertainment industries with ±0.0001" tolerances. From titanium aerospace components to precision entertainment structures, this work taught me the discipline of precision that now informs my approach to blockchain development.</p>
+                </div>
+
+                <h4>🔧 Industries Served:</h4>
+                <ul>
+                    <li><strong>Aerospace</strong> - Flight-critical components with AS9100 certification</li>
+                    <li><strong>Defense</strong> - ITAR-compliant precision parts</li>
+                    <li><strong>Entertainment</strong> - TAIT Towers stage automation systems</li>
+                    <li><strong>Medical</strong> - High-precision medical device components</li>
+                    <li><strong>Industrial</strong> - Custom tooling and fixtures</li>
+                </ul>
+
+                <h4>🔧 Technical Expertise:</h4>
+                <div class="tech-stack-modal">
+                    <span class="tech-tag">Mazak Mazatrol</span>
+                    <span class="tech-tag">Mastercam</span>
+                    <span class="tech-tag">FeatureCAM</span>
+                    <span class="tech-tag">G-code</span>
+                    <span class="tech-tag">ISO-9001</span>
+                    <span class="tech-tag">AS9100</span>
+                    <span class="tech-tag">ITAR</span>
+                </div>
+
+                <h4>🏢 Companies:</h4>
+                <ul>
+                    <li><strong>Jones Manufacturing</strong> - Current position, aerospace & defense</li>
+                    <li><strong>TAIT Towers</strong> - Entertainment automation systems</li>
+                    <li><strong>Billet Industries</strong> - Precision machining</li>
+                </ul>
+
+                <div class="project-links">
+                    <a href="https://www.jonesmanufacturingyorkpa.com" class="modal-btn" target="_blank">Jones Manufacturing</a>
+                </div>
+            `
         }
     };
-    
+
     const project = projects[projectId];
     if (project && window.modalInstance) {
         window.modalInstance.open(project.description);
@@ -317,6 +441,57 @@ function openDonateModal() {
     
     if (window.modalInstance) {
         window.modalInstance.open(donateContent);
+    }
+}
+
+function openContactModal() {
+    // Determine correct path based on current page location
+    const contactPath = window.location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html';
+
+    const contactContent = `
+        <div class="contact-modal">
+            <h3>📬 Start a Conversation</h3>
+            <p>I'd love to hear from you. Whether you're interested in sacred technology, precision engineering, or spiritual-technical innovation, let's connect.</p>
+
+            <div class="contact-options">
+                <div class="contact-section">
+                    <h4>Direct Contact</h4>
+                    <div class="contact-links">
+                        <a href="mailto:drasticstatic@gmail.com" class="contact-btn email-btn">
+                            <i class="fas fa-envelope"></i> Email Me
+                        </a>
+                        <a href="tel:+17175011481" class="contact-btn phone-btn">
+                            <i class="fas fa-phone"></i> Call Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h4>Social & Professional</h4>
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="contact-btn linkedin-btn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/drasticstatic" target="_blank" class="contact-btn github-btn">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h4>Location</h4>
+                    <p style="color: rgba(255,255,255,0.8);"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
+                </div>
+            </div>
+
+            <div class="contact-cta" style="margin-top: 20px; text-align: center;">
+                <a href="${contactPath}" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">Visit Full Contact Page</a>
+            </div>
+        </div>
+    `;
+
+    if (window.modalInstance) {
+        window.modalInstance.open(contactContent);
     }
 }
 

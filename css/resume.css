@@ -909,7 +909,7 @@ p, a {
 }
 
 .professional-journey .timeline-item {
-    width: calc(50% - 40px) !important;
+    width: calc(50% - 50px) !important;
     position: relative !important;
     margin-bottom: 40px;
 }
@@ -917,13 +917,13 @@ p, a {
 /* First actual item (2nd child after timeline-line), third item, fifth item... go LEFT */
 .professional-journey .timeline-item:nth-of-type(odd) {
     margin-left: 0 !important;
-    margin-right: calc(50% + 30px) !important;
+    margin-right: calc(50% + 20px) !important;
     text-align: right;
 }
 
 /* Second actual item, fourth item, sixth item... go RIGHT */
 .professional-journey .timeline-item:nth-of-type(even) {
-    margin-left: calc(50% + 30px) !important;
+    margin-left: calc(50% + 20px) !important;
     margin-right: 0 !important;
     text-align: left;
 }
@@ -1004,13 +1004,13 @@ p, a {
 
 /* Left cards (odd) - node on the RIGHT side of card, touching center line */
 .professional-journey .timeline-item:nth-of-type(odd)::after {
-    right: -40px;
+    right: -30px;
     left: auto;
 }
 
 /* Right cards (even) - node on the LEFT side of card, touching center line */
 .professional-journey .timeline-item:nth-of-type(even)::after {
-    left: -40px;
+    left: -30px;
     right: auto;
 }
 
@@ -1313,7 +1313,12 @@ p, a {
     margin-bottom: 15px;
     color: #ffffff;
     line-height: 1.4;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), transparent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-left: -12px;
+    margin-right: -12px;
 }
 
 .post-card p {
@@ -1355,19 +1360,39 @@ p, a {
     transform: translateY(-1px);
 }
 
+/* Support actions - vertical layout */
+.support-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
 /* Donate button styling */
-.donate-btn {
+.donate-btn,
+.lost-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
     padding: 12px 24px;
     border-radius: 12px;
     background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3));
     border: 2px solid rgba(0, 255, 255, 0.5);
     color: #00ffff;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-width: 100px;
 }
 
-.donate-btn:hover {
+.donate-btn i,
+.lost-btn i {
+    font-size: 1.4rem;
+}
+
+.donate-btn:hover,
+.lost-btn:hover {
     background: linear-gradient(135deg, rgba(255, 0, 128, 0.5), rgba(0, 255, 255, 0.5));
     border-color: #ff0080;
     transform: translateY(-2px);
