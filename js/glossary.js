@@ -176,6 +176,30 @@ function openGlossary(term) {
         'zk-circuits': {
             title: 'ZK Circuits',
             content: 'Mathematical constructs that define the logic of zero-knowledge proofs. Circuits specify what can be proven without revealing the underlying data.'
+        },
+        'cam': {
+            title: 'CAM (Computer-Aided Manufacturing)',
+            content: 'Software that translates CAD designs into machine tool instructions. Generates optimized toolpaths for CNC machining operations.'
+        },
+        'gcode': {
+            title: 'G-code',
+            content: 'Programming language used to control CNC machine tools. Specifies movements, speeds, feeds, and tool changes for automated manufacturing.'
+        },
+        'spiritual': {
+            title: 'Spiritual Practice',
+            content: 'Contemplative disciplines that cultivate inner transformation, presence, and connection to the sacred. Includes meditation, prayer, ceremony, and ritual.'
+        },
+        'python': {
+            title: 'Python',
+            content: 'Versatile programming language widely used in data science, AI/ML, automation, and Web3 development. Known for readable syntax and extensive libraries.'
+        },
+        'api': {
+            title: 'API (Application Programming Interface)',
+            content: 'Set of protocols and tools for building software applications. Enables different systems to communicate and share data securely.'
+        },
+        'database': {
+            title: 'Database Design',
+            content: 'The organization and structure of data storage systems. Includes relational databases (SQL) and NoSQL solutions for different use cases.'
         }
     };
     

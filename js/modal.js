@@ -12,6 +12,7 @@ class Modal {
         // Close modal when clicking the X
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 this.close();
             });
@@ -19,8 +20,16 @@ class Modal {
 
         // Close modal when clicking outside (on the modal backdrop)
         if (this.modal) {
-            this.modal.addEventListener('click', (event) => {
+            // Use mousedown to detect clicks before any potential bubbling issues
+            this.modal.addEventListener('mousedown', (event) => {
                 // Only close if clicking directly on the modal backdrop, not its children
+                if (event.target === this.modal) {
+                    this.close();
+                }
+            });
+
+            // Also handle click for devices that don't fire mousedown properly
+            this.modal.addEventListener('click', (event) => {
                 if (event.target === this.modal) {
                     this.close();
                 }
@@ -36,14 +45,26 @@ class Modal {
     }
 
     open(content) {
+        if (!this.modal || !this.modalBody) {
+            console.error('Modal elements not found');
+            return;
+        }
+
         this.modalBody.innerHTML = content;
         this.modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-        // Add liquid glass effect
+        // Reset modal content width to default for non-resume modals
         const modalContent = document.querySelector('.modal-content');
-        if (modalContent && !modalContent.classList.contains('liquid-glass')) {
-            modalContent.classList.add('liquid-glass');
+        if (modalContent) {
+            // Only add liquid-glass if not already present
+            if (!modalContent.classList.contains('liquid-glass')) {
+                modalContent.classList.add('liquid-glass');
+            }
+            // Reset to default width (will be overridden by resume modal if needed)
+            modalContent.style.maxWidth = '';
+            modalContent.style.width = '';
+            modalContent.style.height = '';
         }
 
         // Spore rain on modal open
@@ -53,8 +74,18 @@ class Modal {
     }
 
     close() {
+        if (!this.modal) return;
+
         this.modal.style.display = 'none';
         document.body.style.overflow = 'auto';
+
+        // Reset modal content dimensions
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.maxWidth = '';
+            modalContent.style.width = '';
+            modalContent.style.height = '';
+        }
 
         // Spore rain on modal close
         if (typeof createSporeRain === 'function') {

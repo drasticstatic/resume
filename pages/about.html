@@ -660,21 +660,35 @@
         /* Mobile responsive */
         @media (max-width: 768px) {
             .modal-content {
-                max-width: 98vw !important;
-                width: 98vw !important;
+                max-width: 95vw !important;
+                width: 95vw !important;
                 margin: 10px auto !important;
+                padding: 15px !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
             }
-            
+
             .resume-modal-content {
                 padding: 10px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
             }
-            
+
             .resume-modal-content iframe {
                 height: 50vh !important;
                 width: 100% !important;
                 max-width: 100% !important;
+                box-sizing: border-box !important;
             }
-            
+
+            .resume-modal-content div[style*="height: 75vh"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
+
             .profile-wrapper .profile-container {
                 margin-top: 40px !important;
             }
@@ -824,15 +838,29 @@
         }
 
         function downloadResume() {
-            // Create a proper download link without opening new tab
-            const link = document.createElement('a');
-            link.href = '../Resume.pdf';
-            link.download = 'Christopher_Wilson_Resume.pdf';
-            // Don't set target="_blank" - we want to trigger download dialog
-            link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            setTimeout(() => document.body.removeChild(link), 100);
+            // Use fetch to get the PDF as a blob, then trigger download
+            // This bypasses browser's default PDF viewer behavior
+            fetch('../Resume.pdf')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Christopher_Wilson_Resume.pdf';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    // Cleanup
+                    setTimeout(() => {
+                        document.body.removeChild(link);
+                        window.URL.revokeObjectURL(url);
+                    }, 100);
+                })
+                .catch(err => {
+                    console.error('Download failed:', err);
+                    // Fallback: open in new tab
+                    window.open('../Resume.pdf', '_blank');
+                });
         }
     </script>
 </body>

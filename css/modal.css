@@ -359,14 +359,34 @@ body {
     }
     
     .modal-content {
-        padding: 30px 20px;
+        padding: 20px 15px;
         width: 95%;
+        max-width: 95vw;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
-    
+
+    .modal {
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .resume-modal-content {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .resume-modal-content iframe {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
     .tech-stack-grid {
         gap: 8px;
     }
-    
+
     .tech-badge {
         font-size: 0.8rem;
         padding: 6px 12px;
