@@ -1095,8 +1095,9 @@ p, a {
     }
     
     .nav-menu.active {
-        display: flex !important;
-        flex-direction: column;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         position: absolute;
         top: 100%;
         left: 0;
@@ -1106,11 +1107,54 @@ p, a {
         border-top: 1px solid rgba(139, 92, 246, 0.3);
         z-index: 999;
     }
-    
+
+    .nav-menu.active li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-menu.active li a,
+    .nav-menu.active li button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 15px 10px;
+        border-radius: 12px;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .nav-menu.active li a:hover,
+    .nav-menu.active li button:hover {
+        background: rgba(139, 92, 246, 0.2);
+        border-color: rgba(0, 255, 255, 0.5);
+        transform: scale(1.02);
+    }
+
+    .nav-menu.active li a i,
+    .nav-menu.active li button i {
+        font-size: 1.5rem;
+        margin-right: 0 !important;
+    }
+
+    /* Color coding for different menu items */
+    .nav-menu.active li:nth-child(1) a { border-color: rgba(0, 255, 255, 0.5); }
+    .nav-menu.active li:nth-child(2) a { border-color: rgba(255, 0, 128, 0.5); }
+    .nav-menu.active li:nth-child(3) a { border-color: rgba(0, 255, 128, 0.5); }
+    .nav-menu.active li:nth-child(4) a { border-color: rgba(255, 165, 0, 0.5); }
+    .nav-menu.active li:nth-child(5) a { border-color: rgba(138, 43, 226, 0.5); }
+    .nav-menu.active li:nth-child(6) a { border-color: rgba(0, 191, 255, 0.5); }
+
     .top-left-actions {
         display: none;
     }
-    
+
     .nav-social {
         display: flex;
         gap: 15px;
@@ -1118,7 +1162,7 @@ p, a {
         padding-top: 15px;
         border-top: 1px solid rgba(139, 92, 246, 0.2);
     }
-    
+
     .nav-social::after {
         content: '';
         display: flex;
@@ -2079,4 +2123,214 @@ p, a {
 @keyframes svgDraw {
     0%, 100% { stroke-dashoffset: 0; opacity: 0.5; }
     50% { stroke-dashoffset: 10; opacity: 1; }
+}
+
+/* Z-index fixes - ensure nothing appears above navbar */
+.read-more,
+.read-full-story,
+.insight-node,
+.post-card,
+.project-card,
+.portfolio-card,
+.skill-item,
+.tech-badge,
+.cta-button,
+.btn-primary,
+.btn-secondary {
+    position: relative;
+    z-index: 1 !important;
+}
+
+/* Ensure sections don't overlap navbar */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Latest Wisdom cards styled like blog posts grid */
+.insights-stream {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.insight-flow {
+    display: contents;
+}
+
+.insight-node {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.insight-node:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+}
+
+.insight-connector {
+    display: none;
+}
+
+.insight-date {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 8px;
+}
+
+.insight-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.insight-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.insight-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.insight-tag {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: var(--accent-purple);
+}
+
+@media (min-width: 769px) {
+    .insights-stream {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Skills Journey title readability fix */
+.experience-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.subtitle-glow {
+    font-size: 1.2rem;
+    padding: 11px 22px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 0.2px dashed rgba(0, 255, 255, 0.2);
+    border-radius: 22px;
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.neon-text {
+    animation: neonFlicker 3s ease-in-out infinite;
+}
+
+@keyframes neonFlicker {
+    0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+    50% { opacity: 0.9; text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+}
+
+/* Hero SVG containers */
+.hero-svg-container {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-svg {
+    width: 300px;
+    height: 200px;
+}
+
+/* SVG animations */
+.svg-pulse {
+    animation: svgPulseAnim 2s ease-in-out infinite;
+}
+
+.svg-rotate {
+    animation: svgRotateAnim 10s linear infinite;
+    transform-origin: center;
+}
+
+.svg-dash {
+    stroke-dasharray: 5, 5;
+    animation: svgDashAnim 2s linear infinite;
+}
+
+.svg-blink {
+    animation: svgBlinkAnim 1.5s ease-in-out infinite;
+}
+
+.svg-sparkle {
+    animation: svgSparkleAnim 1s ease-in-out infinite;
+}
+
+.svg-wave {
+    animation: svgWaveAnim 1.5s ease-in-out infinite;
+}
+
+@keyframes svgPulseAnim {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes svgRotateAnim {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes svgDashAnim {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 20; }
+}
+
+@keyframes svgBlinkAnim {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes svgSparkleAnim {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes svgWaveAnim {
+    0%, 100% { opacity: 0.5; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(5px); }
+}
+
+@media (max-width: 768px) {
+    .hero-svg-container {
+        display: none;
+    }
 }

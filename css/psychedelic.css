@@ -334,10 +334,10 @@
 .neon-text {
     color: var(--neon-cyan);
     text-shadow: 
-        0 0 5px var(--neon-cyan),
-        0 0 10px var(--neon-cyan),
-        0 0 15px var(--neon-cyan);
-    animation: pulse-glow 2s ease-in-out infinite;
+        0 0 2px var(--neon-cyan),
+        0 0 4px var(--neon-cyan),
+        0 0 8px var(--neon-cyan);
+    animation: pulse-glow 3s ease-in-out infinite;
 }
 
 .tech-highlight {

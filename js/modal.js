@@ -72,11 +72,16 @@ class Modal {
             return;
         }
 
-        // Add close button at bottom for mobile
+        // Add close button at bottom for mobile with hover effect
         const closeButtonHtml = `
             <div class="modal-close-bottom" style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <button onclick="window.modalInstance.close()" style="padding: 12px 30px; background: rgba(255, 0, 128, 0.2); border: 2px solid rgba(255, 0, 128, 0.5); border-radius: 8px; color: #ff0080; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">
-                    ✕ Close
+                <button
+                    onclick="window.modalInstance.close()"
+                    onmouseenter="this.innerHTML='✕ click to close'; this.style.background='rgba(0, 255, 255, 0.3)'; this.style.borderColor='rgba(0, 255, 255, 0.7)'; this.style.color='#00ffff'; this.style.transform='scale(1.05)';"
+                    onmouseleave="this.innerHTML='ready to return?'; this.style.background='rgba(255, 0, 128, 0.2)'; this.style.borderColor='rgba(255, 0, 128, 0.5)'; this.style.color='#ff0080'; this.style.transform='scale(1)';"
+                    ontouchstart="this.innerHTML='✕ click to close'; this.style.background='rgba(0, 255, 255, 0.3)';"
+                    style="padding: 12px 30px; background: rgba(255, 0, 128, 0.2); border: 2px solid rgba(255, 0, 128, 0.5); border-radius: 8px; color: #ff0080; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">
+                    ready to return?
                 </button>
             </div>
         `;
@@ -490,22 +495,26 @@ function openDonateModal() {
                 </div>
                 
                 <div class="payment-section wallet-section">
-                    <h4>Web3 Wallet</h4>
-                    <div class="wallet-status">
-                        <span class="wallet-status-badge disconnected">
-                            <i class="fas fa-wallet"></i> Not Connected
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <h4 style="margin: 0;">Web3 Wallet</h4>
+                        <span class="wallet-status-badge disconnected" style="font-size: 0.85rem;">
+                            <i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>
                         </span>
                     </div>
-                    <button class="wallet-connect-btn" onclick="connectWallet()">
-                        <i class="fas fa-wallet"></i> Connect Wallet
+                    <button class="wallet-connect-btn" onclick="connectWallet()" style="width: 100%; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <i class="fas fa-wallet" style="font-size: 1.5rem;"></i>
+                        <span style="font-size: 0.9rem; text-align: center;">click to<br>connect your<br>web3 wallet</span>
                     </button>
                     <div class="donation-amounts" style="margin-top: 15px;">
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px;">Quick Send (ETH):</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: center;">Quick Send (ETH):</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
                             <button class="quick-donate-btn" onclick="sendDonation(0.01)">0.01 ETH</button>
                             <button class="quick-donate-btn" onclick="sendDonation(0.05)">0.05 ETH</button>
                             <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
                         </div>
+                        <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${window.WalletManager && window.WalletManager.isConnected ? 'none' : 'block'};">
+                            ⚠️ Demo mode - connect wallet to send real transactions
+                        </p>
                     </div>
                 </div>
             </div>

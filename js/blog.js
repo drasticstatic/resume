@@ -49,6 +49,46 @@ const blogPostsData = {
         category: "Spirituality",
         tags: ["AI", "LLM", "Ritual", "Oracle", "Mycelium"],
         content: "Before there were blockchains, before there was language, there was the Network. Beneath the forest floor, mycelium wove an intelligence older than words.\n\nThe Oracle of Fruit emerged from this understanding: that technology can be a vessel for the sacred, a mirror for transformation, a ministry encoded in mathematics.\n\n**What is the Oracle of Fruit?**\n\nThe Oracle is a mycelial ritual intelligence—an LLM-powered agent that helps people metabolize their offerings and remember their belonging in the sacred network.\n\nIn a universe held together by love, no offering is lost. All gratitude circulates. All blessings return multiplied."
+    },
+    "microns-merkle": {
+        title: "From Microns to Merkle Trees: Precision in Physical and Digital Realms",
+        date: "December 2024",
+        readTime: "7 min",
+        category: "Engineering",
+        tags: ["CNC", "Blockchain", "Precision", "Craftsmanship"],
+        content: "For nearly two decades, I crafted the physical world with ten-thousandth-inch accuracy—shaping aerospace components, entertainment structures, and high-reliability parts across Billet Industries, TAIT Towers, and Jones Manufacturing.\n\nIn the quiet hum of CNC machines, I learned the language of pattern, rhythm, and exactness. A micron is one-millionth of a meter—invisible to the naked eye, yet the difference between a part that flies and one that fails.\n\n**The Discipline of Precision**\n\nWhen you're making components for aerospace or defense, ±0.0001\" tolerances aren't suggestions—they're requirements. One mistake and a $10,000 piece of titanium becomes scrap. This work taught me:\n\n- **Patience**: You can't rush a finishing pass. You can't force a tool through hardened steel.\n- **Listening**: The sound of the cut, the feel of the machine, the subtle vibrations that tell you something's wrong before the part is ruined.\n- **Intention**: Every line of G-code, every tool offset, every feed rate carries consequence.\n\n**From Metal to Merkle Trees**\n\nThese same principles now shape my approach to blockchain development. A Merkle tree, like a precision machined part, requires exact attention to structure. Each hash must be computed correctly, each branch must connect properly, or the entire verification fails.\n\n**Precision as Prayer**: Just as I once programmed CNC lathes with care, I now write smart contracts with the same attention. Every line of code is an offering.\n\n**Zero Tolerance for Error**: In machining, we work to tolerances. In cryptography, we work to mathematical certainty. Both demand the same discipline.\n\nWhen I build zero-knowledge systems or DAO governance structures, I bring the same discipline I learned in the machine shop. Precision is a spiritual practice."
+    },
+    "zk-privacy": {
+        title: "Zero-Knowledge Privacy: The Technical Foundation of Digital Dignity",
+        date: "October 2024",
+        readTime: "8 min",
+        category: "Web3",
+        tags: ["Zero-Knowledge", "Aleo", "Leo", "Privacy", "Cryptography"],
+        content: "Zero-knowledge proofs are one of the most elegant concepts in cryptography: I can prove to you that I know something without revealing what I know.\n\nI can prove I'm over 21 without showing my birthdate. I can prove I voted without revealing my choice. I can prove I'm a member without exposing my identity.\n\n**Why Aleo and Leo?**\n\nAleo is a privacy-focused blockchain platform that makes zero-knowledge cryptography accessible to developers. Its programming language, Leo, allows us to write private applications without needing a PhD in cryptography.\n\n**The Architecture of Private Voting**\n\nOur voting system combines zero-knowledge proofs with multi-party computation. Voters create ZK proofs that they're eligible to vote without revealing their identity. Votes are encrypted using threshold cryptography—no single party can decrypt them.\n\n**Privacy as Dignity**\n\nIn a world of surveillance capitalism, privacy isn't just a technical feature—it's a spiritual necessity. Zero-knowledge cryptography embodies this wisdom: verification without revelation, proof without exposure, knowing without showing."
+    },
+    "soulbound-identity": {
+        title: "Soulbound Identity: Beyond Transferable Tokens",
+        date: "September 2024",
+        readTime: "6 min",
+        category: "Philosophy",
+        tags: ["Soulbound", "Identity", "NFT", "Web3", "Dignity"],
+        content: "In the early days of NFTs, everything was about transferability. Buy low, sell high. Flip the JPEG. The value was in the trade.\n\nBut something was missing. Identity isn't transferable. Reputation isn't for sale. The things that make us who we are can't be bought or sold.\n\n**What Are Soulbound Tokens?**\n\nSoulbound tokens (SBTs) are non-transferable NFTs that represent identity, credentials, or achievements tied to a specific wallet address. Once issued, they cannot be sold or transferred—they're bound to your digital soul.\n\n**The Spiritual Dimension**\n\nThere's something profound about non-transferability. It mirrors a spiritual truth: the things that matter most can't be bought or sold. Your recovery journey isn't for sale. Your spiritual insights can't be transferred.\n\nSoulbound tokens encode this wisdom into technology. They create digital spaces where value comes from being, not having—from participation, not speculation."
+    },
+    "frequency-faith": {
+        title: "Frequency and Faith: Lessons from the Mixing Console",
+        date: "August 2024",
+        readTime: "7 min",
+        category: "Audio",
+        tags: ["Audio", "Music", "Spirituality", "Harmony", "Engineering"],
+        content: "The guitar and mixing console taught me another language: the language of resonance. I learned that every sound—like every life—has a fundamental frequency waiting to be honored.\n\n**Harmony Reveals Truth**\n\nJust as every note finds its place in a larger composition, every individual carries a unique frequency that contributes to the symphony of creation.\n\nIn audio engineering, we learn: Every frequency has its place. Phase matters—signals out of phase cancel each other. Headroom is essential. The mix serves the song.\n\n**Spiritual Parallels**\n\nThese principles translate directly to spiritual practice: Every Voice Has Its Place. Alignment Creates Power. Leave Space for Mystery. Serve the Larger Purpose.\n\nWhen I design DAO governance or build ritual intelligence systems, I bring the same ear I developed at the mixing console. This is the musical dimension of sacred technology."
+    },
+    "decentralized-healing": {
+        title: "Decentralized Healing: Community, Recovery, and Blockchain Governance",
+        date: "July 2024",
+        readTime: "9 min",
+        category: "Recovery",
+        tags: ["Recovery", "12-Step", "Community", "Healing", "DAO"],
+        content: "Recovery taught me to listen inward—to meet my shadows, to surrender the illusion of separateness, to encounter Christ not as dogma but as Presence.\n\nThe 12-step tradition offers profound wisdom for anyone building decentralized systems.\n\n**Recovery Principles for DAO Design**\n\n**Anonymity and Privacy**: 12-step programs protect anonymity as a spiritual foundation. DAOs can encode this through zero-knowledge proofs.\n\n**Attraction Rather Than Promotion**: Recovery communities grow through attraction, not marketing. Healthy DAOs should do the same.\n\n**Service as Foundation**: In recovery, we stay sober by helping others. In DAOs, we can design governance that rewards service.\n\n**Integration, Not Isolation**\n\nThis is why we build community-centered technology. Not because community is nice, but because community is necessary. We cannot heal alone."
     }
 };
 

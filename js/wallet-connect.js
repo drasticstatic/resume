@@ -54,11 +54,21 @@ const WalletManager = {
         this.updateUI();
     },
 
-    // Connect wallet
+    // Connect wallet - supports MetaMask, Coinbase Wallet, Trust Wallet, etc.
     async connect() {
         if (!this.isWalletAvailable()) {
-            alert('No Web3 wallet detected. Please install MetaMask or another wallet.');
-            window.open('https://metamask.io/download/', '_blank');
+            // Show confirmation before redirecting
+            const shouldRedirect = confirm(
+                '🦊 No Web3 wallet detected!\n\n' +
+                'Would you like to install a wallet?\n\n' +
+                'Supported wallets include:\n' +
+                '• MetaMask, Phantom, Coinbase Wallet, Trust Wallet, Rainbow\n' +
+                '• And many more!\n\n' +
+                'Click OK to visit MetaMask download page.'
+            );
+            if (shouldRedirect) {
+                window.open('https://metamask.io/download/', '_blank');
+            }
             return false;
         }
 
@@ -68,6 +78,11 @@ const WalletManager = {
             this.isConnected = true;
             this.currentChain = await this.getChainName();
             this.updateUI();
+
+            // Show success message with wallet info
+            const walletType = this.detectWalletType();
+            console.log(`Connected to ${walletType}: ${this.currentAddress}`);
+
             return true;
         } catch (error) {
             console.error('Error connecting wallet:', error);
@@ -76,6 +91,16 @@ const WalletManager = {
             }
             return false;
         }
+    },
+
+    // Detect which wallet is being used
+    detectWalletType() {
+        if (window.ethereum.isMetaMask) return 'MetaMask';
+        if (window.ethereum.isCoinbaseWallet) return 'Coinbase Wallet';
+        if (window.ethereum.isTrust) return 'Trust Wallet';
+        if (window.ethereum.isRainbow) return 'Rainbow';
+        if (window.ethereum.isBraveWallet) return 'Brave Wallet';
+        return 'Web3 Wallet';
     },
 
     // Disconnect wallet
