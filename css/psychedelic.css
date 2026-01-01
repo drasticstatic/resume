@@ -65,6 +65,7 @@
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 1003;
 }
 
 .hamburger span {

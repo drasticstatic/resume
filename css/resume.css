@@ -28,16 +28,26 @@ html {
     color: var(--text-primary);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    max-width: 100%;
 }
 
 body {
     background: var(--primary-bg);
-    background-image: 
+    background-image:
         radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
     background-attachment: fixed;
     line-height: 1.6;
     padding-top: 80px;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Prevent horizontal scroll on all containers */
+.section, .container, main, header, footer {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* TYPOGRAPHY */
@@ -118,10 +128,11 @@ p, a {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 0.5px;
     background: linear-gradient(90deg, #ff0080, #ff00ff, #8a2be2, #00ffff, #00ff88, #ffff00, #ff0080);
     background-size: 200% 100%;
     animation: rainbowFlow 3s linear infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(255, 0, 128, 0.2);
 }
 
 @keyframes rainbowFlow {
@@ -607,7 +618,7 @@ p, a {
 }
 
 .experience h2 {
-    border-left: 3px solid var(--accent-purple);
+    border-left: 3px solid var(--accent-blue);
     padding-left: 24px;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -684,6 +695,15 @@ p, a {
 .skills {
     background: var(--secondary-bg);
     position: relative;
+}
+
+.skills h2 {
+    border-left: 3px solid var(--accent-blue);
+    padding-left: 24px;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .skills::before {
@@ -1340,12 +1360,13 @@ p, a {
     margin-bottom: 15px;
     color: #ffffff;
     line-height: 1.4;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), transparent);
-    padding: 8px 12px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    padding: 10px 14px;
     border-radius: 8px;
     margin-left: -12px;
     margin-right: -12px;
+    font-weight: 600;
 }
 
 .post-card p {
@@ -2029,4 +2050,33 @@ p, a {
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
     transform: translateY(-3px);
+}
+
+/* Blog Hero SVG Styling */
+.blog-hero-svg {
+    margin-bottom: 20px;
+}
+
+.blog-network-svg {
+    width: 200px;
+    height: 100px;
+    opacity: 0.8;
+}
+
+.blog-network-svg .svg-node {
+    animation: svgPulse 2s ease-in-out infinite;
+}
+
+.blog-network-svg .svg-line {
+    animation: svgDraw 3s ease-in-out infinite;
+}
+
+@keyframes svgPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes svgDraw {
+    0%, 100% { stroke-dashoffset: 0; opacity: 0.5; }
+    50% { stroke-dashoffset: 10; opacity: 1; }
 }

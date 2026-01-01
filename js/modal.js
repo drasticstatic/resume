@@ -4,6 +4,8 @@ class Modal {
         this.modal = document.getElementById('modal');
         this.modalBody = document.getElementById('modal-body');
         this.closeBtn = document.querySelector('.close');
+        this.modalContent = document.querySelector('.modal-content');
+        this.touchStartTarget = null;
 
         this.init();
     }
@@ -16,39 +18,44 @@ class Modal {
                 e.stopPropagation();
                 this.close();
             });
+
+            // Touch support for close button
+            this.closeBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.close();
+            }, { passive: false });
         }
 
         // Close modal when clicking outside (on the modal backdrop)
         if (this.modal) {
-            // Use mousedown to detect clicks before any potential bubbling issues
-            this.modal.addEventListener('mousedown', (event) => {
-                // Only close if clicking directly on the modal backdrop, not its children
-                if (event.target === this.modal) {
+            // Track touch start to verify tap on backdrop
+            this.modal.addEventListener('touchstart', (event) => {
+                this.touchStartTarget = event.target;
+            }, { passive: true });
+
+            // Close on touchend if both start and end were on modal backdrop
+            this.modal.addEventListener('touchend', (event) => {
+                if (this.touchStartTarget === this.modal && event.target === this.modal) {
+                    event.preventDefault();
                     this.close();
                 }
-            });
+                this.touchStartTarget = null;
+            }, { passive: false });
 
-            // Also handle click for devices that don't fire mousedown properly
+            // Mouse click for desktop
             this.modal.addEventListener('click', (event) => {
                 if (event.target === this.modal) {
                     this.close();
                 }
             });
 
-            // Handle touch events for mobile
-            this.modal.addEventListener('touchstart', (event) => {
+            // Mousedown for faster response
+            this.modal.addEventListener('mousedown', (event) => {
                 if (event.target === this.modal) {
-                    event.preventDefault();
                     this.close();
                 }
-            }, { passive: false });
-
-            this.modal.addEventListener('touchend', (event) => {
-                if (event.target === this.modal) {
-                    event.preventDefault();
-                    this.close();
-                }
-            }, { passive: false });
+            });
         }
 
         // Close modal with Escape key
@@ -65,7 +72,15 @@ class Modal {
             return;
         }
 
-        this.modalBody.innerHTML = content;
+        // Add close button at bottom for mobile
+        const closeButtonHtml = `
+            <div class="modal-close-bottom" style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <button onclick="window.modalInstance.close()" style="padding: 12px 30px; background: rgba(255, 0, 128, 0.2); border: 2px solid rgba(255, 0, 128, 0.5); border-radius: 8px; color: #ff0080; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">
+                    ✕ Close
+                </button>
+            </div>
+        `;
+        this.modalBody.innerHTML = content + closeButtonHtml;
         this.modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
@@ -474,12 +489,24 @@ function openDonateModal() {
                     </div>
                 </div>
                 
-                <div class="payment-section">
+                <div class="payment-section wallet-section">
                     <h4>Web3 Wallet</h4>
-                    <button class="wallet-connect-btn" onclick="alert('Wallet connect coming soon! For now, please copy and use the addresses above.')">
-                        <i class="fas fa-wallet"></i> Connect Wallet (Demo Mode)
+                    <div class="wallet-status">
+                        <span class="wallet-status-badge disconnected">
+                            <i class="fas fa-wallet"></i> Not Connected
+                        </span>
+                    </div>
+                    <button class="wallet-connect-btn" onclick="connectWallet()">
+                        <i class="fas fa-wallet"></i> Connect Wallet
                     </button>
-                    <p class="demo-note">Live wallet integration coming soon via ThirdWeb</p>
+                    <div class="donation-amounts" style="margin-top: 15px;">
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px;">Quick Send (ETH):</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="quick-donate-btn" onclick="sendDonation(0.01)">0.01 ETH</button>
+                            <button class="quick-donate-btn" onclick="sendDonation(0.05)">0.05 ETH</button>
+                            <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -51,6 +51,7 @@
                 <li><a href="contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
                 <li class="mobile-hamburger-only"><button class="nav-link heartbeat" onclick="openDonateModal()" style="background: none; border: none; cursor: pointer;"><i class="fas fa-heart heartbeat" style="color: #ff0080;"></i> Donate</button></li>
                 <li class="mobile-hamburger-only"><a href="404.html" class="nav-link heartbeat"><i class="fas fa-compass heartbeat" style="color: #8a2be2;"></i> Lost?</a></li>
+                <li class="mobile-hamburger-only wallet-menu-item"><button class="nav-link heartbeat wallet-status-badge disconnected" onclick="connectWallet()" style="background: none; border: 1px solid rgba(255, 100, 100, 0.3); cursor: pointer;"><i class="fas fa-wallet heartbeat"></i> <span class="wallet-status-text">Connect</span></button></li>
             </ul>
             <div class="nav-social">
                 <a href="../index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
@@ -88,6 +89,28 @@
                 <div class="solidity-code-rain"></div>
             </div>
             <div class="hero-content">
+                <div class="blog-hero-svg">
+                    <svg viewBox="0 0 200 100" class="blog-network-svg">
+                        <defs>
+                            <linearGradient id="blogGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ff0080;stop-opacity:0.8" />
+                                <stop offset="50%" style="stop-color:#8a2be2;stop-opacity:0.6" />
+                                <stop offset="100%" style="stop-color:#00ffff;stop-opacity:0.8" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="30" cy="50" r="4" fill="url(#blogGradient)" class="svg-node" />
+                        <circle cx="70" cy="30" r="3" fill="url(#blogGradient)" class="svg-node" />
+                        <circle cx="100" cy="50" r="5" fill="url(#blogGradient)" class="svg-node" />
+                        <circle cx="130" cy="70" r="3" fill="url(#blogGradient)" class="svg-node" />
+                        <circle cx="170" cy="50" r="4" fill="url(#blogGradient)" class="svg-node" />
+                        <line x1="30" y1="50" x2="70" y2="30" stroke="url(#blogGradient)" stroke-width="1" class="svg-line" />
+                        <line x1="70" y1="30" x2="100" y2="50" stroke="url(#blogGradient)" stroke-width="1" class="svg-line" />
+                        <line x1="100" y1="50" x2="130" y2="70" stroke="url(#blogGradient)" stroke-width="1" class="svg-line" />
+                        <line x1="130" y1="70" x2="170" y2="50" stroke="url(#blogGradient)" stroke-width="1" class="svg-line" />
+                        <line x1="30" y1="50" x2="100" y2="50" stroke="url(#blogGradient)" stroke-width="0.5" stroke-dasharray="3,3" class="svg-line" />
+                        <line x1="100" y1="50" x2="170" y2="50" stroke="url(#blogGradient)" stroke-width="0.5" stroke-dasharray="3,3" class="svg-line" />
+                    </svg>
+                </div>
                 <h1 class="glitch-text rainbow-text" data-text="Blog">Blog</h1>
                 <p class="hero-subtitle cosmic-text">Reflections on Sacred Technology, Precision Engineering, and Spiritual Innovation</p>
             </div>
@@ -282,6 +305,7 @@
     <script src="../js/hero-effects.js"></script>
     <script src="../js/spore-effects.js"></script>
     <script src="../js/web3-effects.js"></script>
+    <script src="../js/wallet-connect.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof lucide !== 'undefined') {

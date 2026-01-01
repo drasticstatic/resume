@@ -424,10 +424,18 @@ body {
 .glossary-entry,
 .glossary-modal,
 .term-modal {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+/* Make modal-content narrower when showing glossary terms */
+.modal-content:has(.term-modal),
+.modal-content:has(.glossary-modal),
+.modal-content:has(.glossary-entry) {
+    max-width: 550px !important;
+    width: auto !important;
 }
 
 .glossary-entry h3,
@@ -447,6 +455,47 @@ body {
     background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)) !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
+/* Wallet Status Badge */
+.wallet-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.wallet-status-badge.disconnected {
+    background: rgba(255, 100, 100, 0.1);
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    color: #ff6b6b;
+}
+
+.wallet-status-badge.connected {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #00ff88;
+}
+
+.quick-donate-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #00ffff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quick-donate-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
 }
 
 /* Donate Modal Styles */
@@ -614,6 +663,12 @@ body {
 .modal {
     pointer-events: auto !important;
     z-index: 10000 !important;
+    cursor: pointer;
+}
+
+/* Ensure modal content doesn't pass clicks through to backdrop */
+.modal-content {
+    cursor: default;
 }
 
 #modal-body {

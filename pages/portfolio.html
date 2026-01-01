@@ -53,6 +53,7 @@
                 <li><a href="contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
                 <li class="mobile-hamburger-only"><button class="nav-link heartbeat" onclick="openDonateModal()" style="background: none; border: none; cursor: pointer;"><i class="fas fa-heart heartbeat" style="color: #ff0080;"></i> Donate</button></li>
                 <li class="mobile-hamburger-only"><a href="404.html" class="nav-link heartbeat"><i class="fas fa-compass heartbeat" style="color: #8a2be2;"></i> Lost?</a></li>
+                <li class="mobile-hamburger-only wallet-menu-item"><button class="nav-link heartbeat wallet-status-badge disconnected" onclick="connectWallet()" style="background: none; border: 1px solid rgba(255, 100, 100, 0.3); cursor: pointer;"><i class="fas fa-wallet heartbeat"></i> <span class="wallet-status-text">Connect</span></button></li>
             </ul>
             <div class="nav-social">
                 <a href="../index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
@@ -370,7 +371,8 @@
     <script src="../js/solidity-rain.js"></script>
     <script src="../js/hero-effects.js"></script>
     <script src="../js/spore-effects.js"></script>
-    
+    <script src="../js/wallet-connect.js"></script>
+
     <script>
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();

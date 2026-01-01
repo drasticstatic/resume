@@ -179,35 +179,44 @@ class PsychedelicEffects {
 // Web3 Connection Simulator
 class Web3Simulator {
     constructor() {
+        this.indicator = null;
         this.addWeb3Indicators();
-        this.simulateBlockchainActivity();
+        // Check wallet status periodically
+        setInterval(() => this.updateWalletStatus(), 2000);
     }
 
     addWeb3Indicators() {
+        // Only show fixed indicator on desktop
+        const isMobile = window.innerWidth <= 768;
+
         const indicator = document.createElement('div');
         indicator.className = 'web3-indicator';
+        indicator.id = 'web3-wallet-indicator';
         indicator.innerHTML = `
-            <div class="blockchain-status">
+            <div class="blockchain-status" style="cursor: pointer;" onclick="window.WalletManager ? (window.WalletManager.isConnected ? null : window.connectWallet()) : null">
                 <span class="status-dot"></span>
-                <span class="status-text">Connected to Ethereum</span>
+                <span class="status-text">Not Connected</span>
             </div>
-            <div class="wallet-address">0x...${Math.random().toString(16).substr(2, 4)}</div>
+            <div class="wallet-address" style="display: none;"></div>
         `;
         indicator.style.cssText = `
             position: fixed;
             top: 100px;
             right: 20px;
             background: rgba(42, 42, 42, 0.9);
-            border: 1px solid var(--neon-cyan);
+            border: 1px solid rgba(255, 100, 100, 0.5);
             border-radius: 12px;
             padding: 12px;
             font-size: 12px;
-            color: var(--neon-cyan);
+            color: #ff6b6b;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 20px rgba(255, 100, 100, 0.2);
+            transition: all 0.3s ease;
+            display: ${isMobile ? 'none' : 'block'};
         `;
         document.body.appendChild(indicator);
+        this.indicator = indicator;
 
         // Animate status dot
         const statusDot = indicator.querySelector('.status-dot');
@@ -215,24 +224,53 @@ class Web3Simulator {
             display: inline-block;
             width: 8px;
             height: 8px;
-            background: var(--neon-green);
+            background: #ff6b6b;
             border-radius: 50%;
             margin-right: 8px;
             animation: pulse-glow 2s ease-in-out infinite;
         `;
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            const mobile = window.innerWidth <= 768;
+            this.indicator.style.display = mobile ? 'none' : 'block';
+        });
+
+        // Initial check
+        setTimeout(() => this.updateWalletStatus(), 500);
     }
 
-    simulateBlockchainActivity() {
-        setInterval(() => {
-            this.showTransactionNotification();
-        }, 8000);
+    updateWalletStatus() {
+        if (!this.indicator) return;
+        const statusText = this.indicator.querySelector('.status-text');
+        const statusDot = this.indicator.querySelector('.status-dot');
+        const walletAddress = this.indicator.querySelector('.wallet-address');
+
+        if (window.WalletManager && window.WalletManager.isConnected) {
+            const chain = window.WalletManager.currentChain || 'Ethereum';
+            statusText.textContent = `Connected to ${chain}`;
+            statusDot.style.background = 'var(--neon-green, #00ff88)';
+            this.indicator.style.borderColor = 'var(--neon-cyan, #00ffff)';
+            this.indicator.style.color = 'var(--neon-cyan, #00ffff)';
+            this.indicator.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
+            walletAddress.textContent = window.WalletManager.formatAddress(window.WalletManager.currentAddress);
+            walletAddress.style.display = 'block';
+        } else {
+            statusText.textContent = 'Click to Connect';
+            statusDot.style.background = '#ff6b6b';
+            this.indicator.style.borderColor = 'rgba(255, 100, 100, 0.5)';
+            this.indicator.style.color = '#ff6b6b';
+            this.indicator.style.boxShadow = '0 0 20px rgba(255, 100, 100, 0.2)';
+            walletAddress.style.display = 'none';
+        }
     }
 
-    showTransactionNotification() {
+    // Transaction notifications now only shown for real transactions
+    showTransactionNotification(txHash, status = 'Confirmed') {
         const notification = document.createElement('div');
         notification.innerHTML = `
-            <div class="tx-hash">Tx: 0x${Math.random().toString(16).substr(2, 8)}...</div>
-            <div class="tx-status">✅ Confirmed</div>
+            <div class="tx-hash">Tx: ${txHash.slice(0, 10)}...</div>
+            <div class="tx-status">✅ ${status}</div>
         `;
         notification.style.cssText = `
             position: fixed;
