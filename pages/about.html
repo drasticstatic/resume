@@ -45,23 +45,19 @@
                 </div>
             </div>
             <ul class="nav-menu desktop-nav">
-                <li><a href="../index.html" class="nav-link heartbeat"><i class="fas fa-home heartbeat"></i> Home</a></li>
+                <li class="desktop-only"><a href="../index.html" class="nav-link heartbeat"><i class="fas fa-home heartbeat"></i> Home</a></li>
                 <li><a href="about.html" class="nav-link active heartbeat"><i class="fas fa-user heartbeat"></i> About</a></li>
                 <li><a href="portfolio.html" class="nav-link heartbeat"><i class="fas fa-briefcase heartbeat"></i> Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link heartbeat"><i class="fas fa-book-open heartbeat"></i> Blog</a></li>
                 <li><a href="resources.html" class="nav-link heartbeat"><i class="fas fa-book heartbeat"></i> Resources</a></li>
                 <li><a href="contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
+                <li class="mobile-hamburger-only"><button class="nav-link heartbeat" onclick="openDonateModal()" style="background: none; border: none; cursor: pointer;"><i class="fas fa-heart heartbeat" style="color: #ff0080;"></i> Donate</button></li>
+                <li class="mobile-hamburger-only"><a href="404.html" class="nav-link heartbeat"><i class="fas fa-compass heartbeat" style="color: #8a2be2;"></i> Lost?</a></li>
             </ul>
             <div class="nav-social">
                 <a href="../index.html" class="social-link mobile-only breathing-glow heartbeat" title="Home">
                     <i class="fas fa-home"></i>
                 </a>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="openDonateModal()" style="background: none; border: none; padding: 0;" title="Donate">
-                    <i class="fas fa-heart"></i>
-                </button>
-                <button class="social-link mobile-only breathing-glow heartbeat" onclick="window.location.href='404.html'" style="background: none; border: none; padding: 0;" title="Lost?">
-                    <i class="fas fa-compass"></i>
-                </button>
                 <a href="https://www.linkedin.com/in/christopherwilsonmrt/" class="social-link breathing-glow heartbeat" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
@@ -587,21 +583,21 @@
         /* Uniformly spaced social icons in rainbow arc
            Arc spans from -60deg to 60deg (120 degree arc)
            4 icons at: -60, -20, 20, 60 degrees
-           Radius: 150px from center */
+           Radius: 180px from center (moved up from photo) */
         .sc-1 {
             position: absolute;
-            /* 60 degrees: x = 150*sin(60) = 130, y = 150*cos(60) = 75 */
-            top: calc(50% - 75px - 22px) !important;
-            left: calc(50% + 130px - 22px) !important;
+            /* 60 degrees: x = 180*sin(60) = 156, y = 180*cos(60) = 90 */
+            top: calc(50% - 90px - 50px) !important;
+            left: calc(50% + 156px - 22px) !important;
             right: auto !important;
             bottom: auto !important;
         }
 
         .sc-2 {
             position: absolute;
-            /* 20 degrees: x = 150*sin(20) = 51, y = 150*cos(20) = 141 */
-            top: calc(50% - 141px - 22px) !important;
-            left: calc(50% + 51px - 22px) !important;
+            /* 20 degrees: x = 180*sin(20) = 62, y = 180*cos(20) = 169 */
+            top: calc(50% - 169px - 50px) !important;
+            left: calc(50% + 62px - 22px) !important;
             transform: none !important;
             right: auto !important;
             bottom: auto !important;
@@ -609,18 +605,18 @@
 
         .sc-3 {
             position: absolute;
-            /* -20 degrees: x = -51, y = 141 */
-            top: calc(50% - 141px - 22px) !important;
-            left: calc(50% - 51px - 22px) !important;
+            /* -20 degrees: x = -62, y = 169 */
+            top: calc(50% - 169px - 50px) !important;
+            left: calc(50% - 62px - 22px) !important;
             right: auto !important;
             bottom: auto !important;
         }
 
         .sc-4 {
             position: absolute;
-            /* -60 degrees: x = -130, y = 75 */
-            top: calc(50% - 75px - 22px) !important;
-            left: calc(50% - 130px - 22px) !important;
+            /* -60 degrees: x = -156, y = 90 */
+            top: calc(50% - 90px - 50px) !important;
+            left: calc(50% - 156px - 22px) !important;
             right: auto !important;
             bottom: auto !important;
         }
@@ -695,12 +691,14 @@
         }
         .about-hero {
             position: relative;
-            min-height: 80vh;
+            min-height: 60vh;
+            max-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             overflow: hidden;
+            padding-top: 80px;
         }
         
         .about-hero .profile-container {

@@ -34,6 +34,21 @@ class Modal {
                     this.close();
                 }
             });
+
+            // Handle touch events for mobile
+            this.modal.addEventListener('touchstart', (event) => {
+                if (event.target === this.modal) {
+                    event.preventDefault();
+                    this.close();
+                }
+            }, { passive: false });
+
+            this.modal.addEventListener('touchend', (event) => {
+                if (event.target === this.modal) {
+                    event.preventDefault();
+                    this.close();
+                }
+            }, { passive: false });
         }
 
         // Close modal with Escape key

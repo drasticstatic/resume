@@ -98,8 +98,35 @@ p, a {
     -webkit-backdrop-filter: blur(20px);
     z-index: 999;
     padding: 16px 0;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid transparent;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)),
+                      linear-gradient(90deg, #ff0080, #ff00ff, #8a2be2, #00ffff, #00ff88, #ffff00, #ff0080);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     transition: all 0.3s ease;
+}
+
+/* Rainbow border animation */
+@keyframes rainbowShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.navigation::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff0080, #ff00ff, #8a2be2, #00ffff, #00ff88, #ffff00, #ff0080);
+    background-size: 200% 100%;
+    animation: rainbowFlow 3s linear infinite;
+}
+
+@keyframes rainbowFlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
 }
 
 .nav-container {
