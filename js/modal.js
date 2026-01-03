@@ -45,12 +45,26 @@ class Modal {
                 this.touchStartTarget = null;
             }, { passive: false });
 
-            // Mouse click for desktop - check if click is outside modal content
+            // Mouse click for desktop - check if click is on the modal backdrop itself
             this.modal.addEventListener('click', (event) => {
-                const modalContent = this.modal.querySelector('.modal-content');
-                if (event.target === this.modal || (modalContent && !modalContent.contains(event.target))) {
+                // Only close if clicking directly on the modal backdrop (not its children)
+                if (event.target === this.modal) {
                     this.close();
                 }
+            });
+
+            // Also add mousedown tracking for better UX
+            this.modal.addEventListener('mousedown', (event) => {
+                if (event.target === this.modal) {
+                    this.modal.dataset.clickedBackdrop = 'true';
+                }
+            });
+
+            this.modal.addEventListener('mouseup', (event) => {
+                if (event.target === this.modal && this.modal.dataset.clickedBackdrop === 'true') {
+                    this.close();
+                }
+                delete this.modal.dataset.clickedBackdrop;
             });
         }
 
@@ -436,22 +450,46 @@ function openDonateModal() {
         <div class="donate-modal">
             <h3>❤️ Support the Work</h3>
             <p>Your support helps build sacred technology that honors human dignity and spiritual growth.</p>
-            
             <div class="payment-options">
                 <div class="payment-section">
-                    <h4>Quick Payment</h4>
+                    <h4>Peer-to-Peer (P2P) Payment Networks</h4>
                     <div class="payment-links">
                         <a href="https://www.paypal.me/csdubz" target="_blank" class="payment-btn paypal-btn">
                             <i class="fab fa-paypal"></i> PayPal
                         </a>
                         <a href="https://venmo.com/u/Christopher-Wilson-cdubz" target="_blank" class="payment-btn venmo-btn">
-                            Venmo
+                            <i class="fab fa-venmo"></i> Venmo
+                        </a>
+                        <a href="https://cash.app/$drasticstatic" target="_blank" class="payment-btn cashapp-btn">
+                            <i class="fa-brands fa-cash-app"></i> Cash App
                         </a>
                     </div>
                 </div>
-                
+                <div class="payment-section wallet-section">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <h4 style="margin: 0;">Direct via Web3 Wallet</h4>
+                        <span class="wallet-status-badge disconnected" style="font-size: 0.85rem;">
+                            <i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>
+                        </span>
+                    </div>
+                    <button class="wallet-connect-btn rainbow-cta" onclick="connectWallet()" style="width: 100%; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)); border: 2px solid; border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1; border-radius: 12px;">
+                        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #00ffff;"></i>
+                        <span style="font-size: 1rem; color: #fff;">Connect Your Web3 Wallet</span>
+                    </button>
+                    <div class="donation-amounts" style="margin-top: 15px;">
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: center;">Quick Send (ETH):</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                            <button class="quick-donate-btn" onclick="sendDonation(0.01)">0.01 ETH</button>
+                            <button class="quick-donate-btn" onclick="sendDonation(0.05)">0.05 ETH</button>
+                            <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
+                        </div>
+                        <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${window.WalletManager && window.WalletManager.isConnected ? 'none' : 'block'};">
+                            ⚠️ Demo mode - connect wallet to send real transactions
+                        </p>
+                    </div>
+                </div>
                 <div class="payment-section">
-                    <h4>Cryptocurrency</h4>
+                    <h4>Cryptocurrency Wallet Addresses</h4>
                     <div class="crypto-addresses">
                         <div class="crypto-item">
                             <strong>Cardano (ADA)</strong>
@@ -497,34 +535,9 @@ function openDonateModal() {
                         </div>
                     </div>
                 </div>
-                
-                <div class="payment-section wallet-section">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                        <h4 style="margin: 0;">Web3 Wallet</h4>
-                        <span class="wallet-status-badge disconnected" style="font-size: 0.85rem;">
-                            <i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>
-                        </span>
-                    </div>
-                    <button class="wallet-connect-btn rainbow-cta" onclick="connectWallet()" style="width: 100%; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)); border: 2px solid; border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1; border-radius: 12px;">
-                        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #00ffff;"></i>
-                        <span style="font-size: 1rem; color: #fff;">Connect Your Web3 Wallet</span>
-                    </button>
-                    <div class="donation-amounts" style="margin-top: 15px;">
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: center;">Quick Send (ETH):</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                            <button class="quick-donate-btn" onclick="sendDonation(0.01)">0.01 ETH</button>
-                            <button class="quick-donate-btn" onclick="sendDonation(0.05)">0.05 ETH</button>
-                            <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
-                        </div>
-                        <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${window.WalletManager && window.WalletManager.isConnected ? 'none' : 'block'};">
-                            ⚠️ Demo mode - connect wallet to send real transactions
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     `;
-    
     if (window.modalInstance) {
         window.modalInstance.open(donateContent);
     }

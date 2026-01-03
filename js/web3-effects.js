@@ -176,92 +176,103 @@ class PsychedelicEffects {
     }
 }
 
-// Web3 Connection Simulator
+// Web3 Connection Simulator - Now uses the HTML CTA button instead of creating a new one
 class Web3Simulator {
     constructor() {
-        this.indicator = null;
-        this.addWeb3Indicators();
+        this.statusBadge = null;
+        this.init();
         // Check wallet status periodically
         setInterval(() => this.updateWalletStatus(), 2000);
     }
 
-    addWeb3Indicators() {
-        // Only show fixed indicator on desktop
+    init() {
+        // Find existing status badge (created in HTML as top-right connect button)
+        // Don't create a duplicate - just add status display functionality
+        this.createStatusBadge();
+
+        // Initial check
+        setTimeout(() => this.updateWalletStatus(), 500);
+    }
+
+    createStatusBadge() {
+        // Create a small status badge that appears below the connect button
         const isMobile = window.innerWidth <= 768;
+        if (isMobile) return; // Don't show on mobile
 
-        const indicator = document.createElement('div');
-        indicator.className = 'web3-indicator';
-        indicator.id = 'web3-wallet-indicator';
-        indicator.innerHTML = `
-            <div class="blockchain-status" style="cursor: pointer;" onclick="window.WalletManager ? (window.WalletManager.isConnected ? null : window.connectWallet()) : null">
-                <span class="status-dot"></span>
-                <span class="status-text">Not Connected</span>
-            </div>
-            <div class="wallet-address" style="display: none;"></div>
+        const topRightActions = document.querySelector('.top-right-actions');
+        if (!topRightActions) return;
+
+        // Add status text element below the button
+        const statusBadge = document.createElement('div');
+        statusBadge.className = 'wallet-status-display';
+        statusBadge.id = 'web3-wallet-status';
+        statusBadge.innerHTML = `
+            <span class="status-dot"></span>
+            <span class="status-text">Not Connected</span>
         `;
-        indicator.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: rgba(42, 42, 42, 0.9);
-            border: 1px solid rgba(255, 100, 100, 0.5);
-            border-radius: 12px;
-            padding: 12px;
-            font-size: 12px;
+        statusBadge.style.cssText = `
+            background: rgba(10, 10, 15, 0.95);
+            border: 1px solid rgba(255, 100, 100, 0.4);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 10px;
             color: #ff6b6b;
-            z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 100, 100, 0.2);
+            box-shadow: 0 0 15px rgba(255, 100, 100, 0.2);
             transition: all 0.3s ease;
-            display: ${isMobile ? 'none' : 'block'};
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         `;
-        document.body.appendChild(indicator);
-        this.indicator = indicator;
+        topRightActions.appendChild(statusBadge);
+        this.statusBadge = statusBadge;
 
-        // Animate status dot
-        const statusDot = indicator.querySelector('.status-dot');
+        // Style the status dot
+        const statusDot = statusBadge.querySelector('.status-dot');
         statusDot.style.cssText = `
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #ff6b6b;
             border-radius: 50%;
-            margin-right: 8px;
             animation: pulse-glow 2s ease-in-out infinite;
         `;
 
         // Handle resize
         window.addEventListener('resize', () => {
             const mobile = window.innerWidth <= 768;
-            this.indicator.style.display = mobile ? 'none' : 'block';
+            if (this.statusBadge) {
+                this.statusBadge.style.display = mobile ? 'none' : 'flex';
+            }
         });
-
-        // Initial check
-        setTimeout(() => this.updateWalletStatus(), 500);
     }
 
     updateWalletStatus() {
-        if (!this.indicator) return;
-        const statusText = this.indicator.querySelector('.status-text');
-        const statusDot = this.indicator.querySelector('.status-dot');
-        const walletAddress = this.indicator.querySelector('.wallet-address');
+        if (!this.statusBadge) return;
+        const statusText = this.statusBadge.querySelector('.status-text');
+        const statusDot = this.statusBadge.querySelector('.status-dot');
 
         if (window.WalletManager && window.WalletManager.isConnected) {
-            const chain = window.WalletManager.currentChain || 'Ethereum';
-            statusText.textContent = `Connected to ${chain}`;
-            statusDot.style.background = 'var(--neon-green, #00ff88)';
-            this.indicator.style.borderColor = 'var(--neon-cyan, #00ffff)';
-            this.indicator.style.color = 'var(--neon-cyan, #00ffff)';
-            this.indicator.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
-            walletAddress.textContent = window.WalletManager.formatAddress(window.WalletManager.currentAddress);
-            walletAddress.style.display = 'block';
+            const chain = window.WalletManager.currentChain || 'Connected';
+            const addr = window.WalletManager.formatAddress(window.WalletManager.currentAddress);
+            statusText.textContent = `${chain}: ${addr}`;
+            statusDot.style.background = '#00ff88';
+            statusDot.style.boxShadow = '0 0 10px #00ff88';
+            this.statusBadge.style.borderColor = 'rgba(0, 255, 136, 0.5)';
+            this.statusBadge.style.color = '#00ff88';
+            this.statusBadge.style.boxShadow = '0 0 15px rgba(0, 255, 136, 0.3)';
+            // Add sparkle effect
+            statusDot.style.animation = 'sparkle 1s ease-in-out infinite';
         } else {
-            statusText.textContent = 'Click to Connect';
+            statusText.textContent = 'Not Connected';
             statusDot.style.background = '#ff6b6b';
-            this.indicator.style.borderColor = 'rgba(255, 100, 100, 0.5)';
-            this.indicator.style.color = '#ff6b6b';
-            this.indicator.style.boxShadow = '0 0 20px rgba(255, 100, 100, 0.2)';
-            walletAddress.style.display = 'none';
+            statusDot.style.boxShadow = 'none';
+            this.statusBadge.style.borderColor = 'rgba(255, 100, 100, 0.4)';
+            this.statusBadge.style.color = '#ff6b6b';
+            this.statusBadge.style.boxShadow = '0 0 15px rgba(255, 100, 100, 0.2)';
+            statusDot.style.animation = 'pulse-glow 2s ease-in-out infinite';
         }
     }
 

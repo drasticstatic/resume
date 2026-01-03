@@ -194,13 +194,20 @@ const HeroSVG = {
         </svg>
     `,
 
-    // SVG configurations for multiple instances
+    // SVG configurations for multiple instances - LARGER sizes
     svgConfigs: [
-        { scale: 1.0, x: 85, y: 20, opacity: 0.9, rotation: 0 },
-        { scale: 0.6, x: 10, y: 10, opacity: 0.5, rotation: 15 },
-        { scale: 0.5, x: 70, y: 60, opacity: 0.4, rotation: -10 },
-        { scale: 0.4, x: 5, y: 55, opacity: 0.35, rotation: 25 },
-        { scale: 0.35, x: 55, y: 5, opacity: 0.3, rotation: -20 }
+        { scale: 1.8, x: 70, y: 10, opacity: 0.9, rotation: 0 },
+        { scale: 1.2, x: 5, y: 5, opacity: 0.6, rotation: 15 },
+        { scale: 1.0, x: 55, y: 55, opacity: 0.5, rotation: -10 },
+        { scale: 0.8, x: 2, y: 50, opacity: 0.45, rotation: 25 },
+        { scale: 0.7, x: 40, y: 3, opacity: 0.4, rotation: -20 }
+    ],
+
+    // Mobile SVG configs - smaller and fewer
+    svgConfigsMobile: [
+        { scale: 1.2, x: 60, y: 5, opacity: 0.7, rotation: 0 },
+        { scale: 0.8, x: 5, y: 50, opacity: 0.5, rotation: 15 },
+        { scale: 0.6, x: 70, y: 60, opacity: 0.4, rotation: -10 }
     ],
 
     // Initialize multiple SVGs on page
@@ -216,21 +223,26 @@ const HeroSVG = {
         heroSection.style.position = 'relative';
         heroSection.style.overflow = 'hidden';
 
+        // Use mobile or desktop configs based on screen width
+        const isMobile = window.innerWidth <= 768;
+        const configs = isMobile ? this.svgConfigsMobile : this.svgConfigs;
+        const baseSize = isMobile ? 120 : 200; // Larger base sizes
+
         // Create multiple SVG instances with different sizes and positions
-        this.svgConfigs.forEach((config, index) => {
+        configs.forEach((config, index) => {
             const container = document.createElement('div');
             container.className = 'hero-svg-container hero-svg-instance';
             container.style.cssText = `
                 position: absolute;
                 right: ${config.x}%;
                 top: ${config.y}%;
-                width: ${150 * config.scale}px;
-                height: ${100 * config.scale}px;
+                width: ${baseSize * config.scale}px;
+                height: ${(baseSize * 0.67) * config.scale}px;
                 opacity: ${config.opacity};
                 transform: rotate(${config.rotation}deg);
                 pointer-events: none;
                 z-index: 1;
-                animation: heroSvgFloat ${3 + index * 0.5}s ease-in-out infinite;
+                animation: heroSvgFloat ${3 + index * 0.5}s ease-in-out infinite, heroSvgPulse ${4 + index * 0.3}s ease-in-out infinite;
                 animation-delay: ${index * 0.3}s;
             `;
             container.innerHTML = svg;
@@ -245,20 +257,29 @@ const HeroSVG = {
             heroSection.appendChild(container);
         });
 
-        // Add floating animation if not exists
+        // Add floating and pulse animations if not exists
         if (!document.getElementById('heroSvgStyles')) {
             const style = document.createElement('style');
             style.id = 'heroSvgStyles';
             style.textContent = `
                 @keyframes heroSvgFloat {
                     0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
-                    50% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
+                    50% { transform: translateY(-15px) rotate(var(--rotation, 0deg)); }
+                }
+                @keyframes heroSvgPulse {
+                    0%, 100% { filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.5)); }
+                    50% { filter: drop-shadow(0 0 30px rgba(255, 0, 128, 0.7)) drop-shadow(0 0 50px rgba(0, 255, 255, 0.5)); }
                 }
                 .hero-svg-instance svg {
-                    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+                    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
                 }
                 .hero-svg-instance:first-child svg {
-                    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+                    filter: drop-shadow(0 0 25px rgba(255, 0, 128, 0.7)) drop-shadow(0 0 50px rgba(0, 255, 255, 0.5));
+                }
+                @media (max-width: 768px) {
+                    .hero-svg-instance {
+                        opacity: 0.6 !important;
+                    }
                 }
             `;
             document.head.appendChild(style);

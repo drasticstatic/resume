@@ -190,7 +190,7 @@ const WalletManager = {
                 </div>
 
                 <div style="text-align: center;">
-                    <button onclick="WalletManager.showSafariModal()" style="background: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;">
+                    <button id="safari-info-btn" style="background: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;">
                         ℹ️ Why Safari Doesn't Work
                     </button>
                 </div>
@@ -199,6 +199,16 @@ const WalletManager = {
 
         if (window.modalInstance) {
             window.modalInstance.open(modalContent);
+
+            // Add event listener for Safari info button after modal opens
+            setTimeout(() => {
+                const safariBtn = document.getElementById('safari-info-btn');
+                if (safariBtn) {
+                    safariBtn.addEventListener('click', () => {
+                        WalletManager.showSafariModal();
+                    });
+                }
+            }, 100);
         }
     },
 
@@ -341,12 +351,87 @@ const WalletManager = {
         }
     },
 
+    // Show transaction badge
+    showTxBadge(type, message, txHash = null) {
+        // Remove any existing badge
+        const existingBadge = document.querySelector('.tx-status-badge');
+        if (existingBadge) existingBadge.remove();
+
+        const badge = document.createElement('div');
+        badge.className = 'tx-status-badge';
+
+        if (type === 'demo') {
+            badge.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(255, 165, 0, 0.9), rgba(255, 100, 0, 0.9)); padding: 15px 25px; border-radius: 12px; z-index: 10000; box-shadow: 0 0 30px rgba(255, 165, 0, 0.5); animation: slideIn 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5rem;">🎭</span>
+                        <div>
+                            <strong style="color: white; display: block;">Demo Mode</strong>
+                            <small style="color: rgba(255,255,255,0.8);">${message}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (type === 'pending') {
+            badge.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(0, 255, 255, 0.9), rgba(138, 43, 226, 0.9)); padding: 15px 25px; border-radius: 12px; z-index: 10000; box-shadow: 0 0 30px rgba(0, 255, 255, 0.5); animation: slideIn 0.3s ease, pulse 1s ease-in-out infinite;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5rem; animation: spin 1s linear infinite;">⏳</span>
+                        <div>
+                            <strong style="color: white; display: block;">Transaction Pending</strong>
+                            <small style="color: rgba(255,255,255,0.8);">${message}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (type === 'success') {
+            badge.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.9), rgba(0, 255, 255, 0.9)); padding: 15px 25px; border-radius: 12px; z-index: 10000; box-shadow: 0 0 30px rgba(0, 255, 136, 0.5); animation: slideIn 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5rem;">✅</span>
+                        <div>
+                            <strong style="color: white; display: block;">Real Transaction!</strong>
+                            <small style="color: rgba(255,255,255,0.8);">${message}</small>
+                            ${txHash ? `<a href="https://etherscan.io/tx/${txHash}" target="_blank" style="color: #00ffff; font-size: 0.8rem;">View on Etherscan →</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (type === 'error') {
+            badge.innerHTML = `
+                <div style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, rgba(255, 100, 100, 0.9), rgba(255, 0, 128, 0.9)); padding: 15px 25px; border-radius: 12px; z-index: 10000; box-shadow: 0 0 30px rgba(255, 100, 100, 0.5); animation: slideIn 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5rem;">❌</span>
+                        <div>
+                            <strong style="color: white; display: block;">Transaction Failed</strong>
+                            <small style="color: rgba(255,255,255,0.8);">${message}</small>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.body.appendChild(badge);
+
+        // Auto-remove after 5 seconds (except pending)
+        if (type !== 'pending') {
+            setTimeout(() => badge.remove(), 5000);
+        }
+
+        return badge;
+    },
+
     // Send donation transaction
     async sendDonation(amountEth) {
         if (!this.isConnected) {
+            // Show demo badge when not connected
+            this.showTxBadge('demo', 'Connect wallet for real transactions');
             const connected = await this.connect();
             if (!connected) return false;
         }
+
+        // Show pending badge
+        const pendingBadge = this.showTxBadge('pending', `Sending ${amountEth} ETH...`);
 
         try {
             const weiValue = '0x' + (parseFloat(amountEth) * 1e18).toString(16);
@@ -358,14 +443,25 @@ const WalletManager = {
                     value: weiValue
                 }]
             });
-            alert(`✓ Transaction sent! Hash: ${txHash.slice(0, 10)}...`);
+
+            // Remove pending badge and show success
+            pendingBadge.remove();
+            this.showTxBadge('success', `${amountEth} ETH sent!`, txHash);
+
+            // Trigger celebration
+            if (typeof createSporeRain === 'function') {
+                createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
+            }
+
             return true;
         } catch (error) {
             console.error('Transaction error:', error);
+            pendingBadge.remove();
+
             if (error.code === 4001) {
-                alert('Transaction cancelled.');
+                this.showTxBadge('error', 'Transaction cancelled by user');
             } else {
-                alert('Transaction failed. Please try again.');
+                this.showTxBadge('error', 'Transaction failed. Please try again.');
             }
             return false;
         }

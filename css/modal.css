@@ -760,3 +760,28 @@ body {
     font-size: 0.8rem;
     color: #00ffff;
 }
+
+/* Cash App Button */
+.cashapp-btn {
+    background-color: #00D632 !important; /* Official Brand Green */
+    color: #ffffff !important;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.cashapp-btn:hover {
+    background-color: #00c32d !important; /* Slightly darker for hover effect */
+    color: #ffffff !important;
+}
+
+/* Ensures the icon and text are perfectly centered */
+.payment-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+}
