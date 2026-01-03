@@ -90,13 +90,117 @@ const HeroSVG = {
         </svg>
     `,
 
+    // Blog SVG - Writing/Ideas theme
+    blog: `
+        <svg class="hero-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="blogGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff6600;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#ff0080;stop-opacity:0.8" />
+                </linearGradient>
+            </defs>
+            <!-- Quill pen -->
+            <path d="M80 140 L120 40 L130 50 L90 150 Z" fill="none" stroke="url(#blogGrad)" stroke-width="2" class="svg-pulse"/>
+            <path d="M120 40 Q140 30 150 50" fill="none" stroke="url(#blogGrad)" stroke-width="2"/>
+            <!-- Paper/document -->
+            <rect x="160" y="50" width="80" height="100" rx="5" fill="none" stroke="url(#blogGrad)" stroke-width="2" class="svg-pulse" style="animation-delay: 0.3s;"/>
+            <line x1="175" y1="70" x2="225" y2="70" stroke="url(#blogGrad)" stroke-width="1"/>
+            <line x1="175" y1="90" x2="225" y2="90" stroke="url(#blogGrad)" stroke-width="1"/>
+            <line x1="175" y1="110" x2="210" y2="110" stroke="url(#blogGrad)" stroke-width="1"/>
+            <!-- Thought bubbles -->
+            <circle cx="50" cy="50" r="15" fill="none" stroke="url(#blogGrad)" stroke-width="1" class="svg-sparkle"/>
+            <circle cx="30" cy="70" r="8" fill="none" stroke="url(#blogGrad)" stroke-width="1" class="svg-sparkle" style="animation-delay: 0.2s;"/>
+            <circle cx="270" cy="40" r="10" fill="none" stroke="url(#blogGrad)" stroke-width="1" class="svg-sparkle" style="animation-delay: 0.4s;"/>
+        </svg>
+    `,
+
+    // Glossary SVG - Dictionary/Knowledge theme
+    glossary: `
+        <svg class="hero-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="glossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#8a2be2;stop-opacity:0.8" />
+                </linearGradient>
+            </defs>
+            <!-- Open dictionary -->
+            <path d="M50 60 L50 160 Q100 140 150 160 L150 60 Q100 80 50 60" fill="none" stroke="url(#glossGrad)" stroke-width="2" class="svg-pulse"/>
+            <path d="M150 60 L150 160 Q200 140 250 160 L250 60 Q200 80 150 60" fill="none" stroke="url(#glossGrad)" stroke-width="2" class="svg-pulse"/>
+            <!-- ABC letters -->
+            <text x="70" y="100" fill="url(#glossGrad)" font-size="20" font-family="serif" class="svg-blink">A</text>
+            <text x="100" y="130" fill="url(#glossGrad)" font-size="16" font-family="serif" class="svg-blink" style="animation-delay: 0.2s;">B</text>
+            <text x="180" y="100" fill="url(#glossGrad)" font-size="18" font-family="serif" class="svg-blink" style="animation-delay: 0.4s;">Z</text>
+            <!-- Magnifying glass -->
+            <circle cx="230" cy="50" r="15" fill="none" stroke="url(#glossGrad)" stroke-width="2" class="svg-pulse"/>
+            <line x1="240" y1="60" x2="255" y2="75" stroke="url(#glossGrad)" stroke-width="3"/>
+        </svg>
+    `,
+
+    // 404 SVG - Lost/Compass theme
+    lost: `
+        <svg class="hero-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="lostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#8a2be2;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#ff0080;stop-opacity:0.8" />
+                </linearGradient>
+            </defs>
+            <!-- Compass -->
+            <circle cx="150" cy="100" r="50" fill="none" stroke="url(#lostGrad)" stroke-width="2" class="svg-pulse"/>
+            <circle cx="150" cy="100" r="40" fill="none" stroke="url(#lostGrad)" stroke-width="1"/>
+            <!-- Compass needle -->
+            <polygon points="150,55 145,100 150,105 155,100" fill="#ff0080" class="svg-rotate-slow"/>
+            <polygon points="150,145 145,100 150,95 155,100" fill="#00ffff" class="svg-rotate-slow"/>
+            <!-- N E S W -->
+            <text x="145" y="45" fill="url(#lostGrad)" font-size="12" font-weight="bold">N</text>
+            <text x="205" y="105" fill="url(#lostGrad)" font-size="10">E</text>
+            <text x="145" y="165" fill="url(#lostGrad)" font-size="10">S</text>
+            <text x="85" y="105" fill="url(#lostGrad)" font-size="10">W</text>
+            <!-- Question marks -->
+            <text x="50" y="60" fill="url(#lostGrad)" font-size="24" class="svg-blink">?</text>
+            <text x="240" y="80" fill="url(#lostGrad)" font-size="18" class="svg-blink" style="animation-delay: 0.3s;">?</text>
+            <text x="30" y="150" fill="url(#lostGrad)" font-size="16" class="svg-blink" style="animation-delay: 0.6s;">?</text>
+        </svg>
+    `,
+
+    // Home SVG - Mycelial network theme
+    home: `
+        <svg class="hero-svg" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="homeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff0080;stop-opacity:0.6" />
+                    <stop offset="50%" style="stop-color:#00ffff;stop-opacity:0.6" />
+                    <stop offset="100%" style="stop-color:#8a2be2;stop-opacity:0.6" />
+                </linearGradient>
+            </defs>
+            <!-- Mycelial network nodes -->
+            <circle cx="150" cy="100" r="10" fill="url(#homeGrad)" class="svg-pulse"/>
+            <circle cx="80" cy="60" r="6" fill="#ff0080" class="svg-sparkle"/>
+            <circle cx="220" cy="70" r="8" fill="#00ffff" class="svg-sparkle" style="animation-delay: 0.2s;"/>
+            <circle cx="100" cy="150" r="7" fill="#8a2be2" class="svg-sparkle" style="animation-delay: 0.4s;"/>
+            <circle cx="200" cy="140" r="5" fill="#00ff88" class="svg-sparkle" style="animation-delay: 0.6s;"/>
+            <circle cx="50" cy="120" r="4" fill="#ffff00" class="svg-sparkle" style="animation-delay: 0.8s;"/>
+            <circle cx="250" cy="110" r="6" fill="#ff6600" class="svg-sparkle" style="animation-delay: 1s;"/>
+            <!-- Connection lines -->
+            <line x1="150" y1="100" x2="80" y2="60" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <line x1="150" y1="100" x2="220" y2="70" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <line x1="150" y1="100" x2="100" y2="150" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <line x1="150" y1="100" x2="200" y2="140" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <line x1="80" y1="60" x2="50" y2="120" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <line x1="220" y1="70" x2="250" y2="110" stroke="url(#homeGrad)" stroke-width="1" stroke-dasharray="3,3" class="svg-dash"/>
+            <!-- Mushroom cap -->
+            <path d="M140 30 Q150 10 160 30 Q180 50 150 60 Q120 50 140 30" fill="none" stroke="url(#homeGrad)" stroke-width="2" class="svg-pulse"/>
+            <line x1="150" y1="60" x2="150" y2="85" stroke="url(#homeGrad)" stroke-width="2"/>
+        </svg>
+    `,
+
     // Initialize SVG on page
     init() {
         const page = this.detectPage();
         const svg = this[page];
         if (!svg) return;
 
-        const heroSection = document.querySelector('.hero-section, .blog-hero, .portfolio-hero, .resources-hero, .contact-hero, .about-hero, [class*="-hero"]');
+        const heroSection = document.querySelector('.hero-section, .blog-hero, .portfolio-hero, .resources-hero, .contact-hero, .about-hero, .glossary-hero, .error-content, [class*="-hero"]');
         if (!heroSection) return;
 
         const container = document.createElement('div');
@@ -111,6 +215,10 @@ const HeroSVG = {
         if (path.includes('resources')) return 'resources';
         if (path.includes('contact')) return 'contact';
         if (path.includes('about')) return 'about';
+        if (path.includes('blog')) return 'blog';
+        if (path.includes('glossary')) return 'glossary';
+        if (path.includes('404')) return 'lost';
+        if (path === '/' || path.endsWith('index.html') || path === '') return 'home';
         return null;
     }
 };

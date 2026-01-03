@@ -1096,22 +1096,25 @@ p, a {
     
     .nav-menu.active {
         display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        position: absolute;
-        top: 100%;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px;
+        position: fixed;
+        top: 70px;
         left: 0;
         right: 0;
         background: rgba(6, 0, 3, 0.98);
         padding: 20px;
-        border-top: 1px solid rgba(139, 92, 246, 0.3);
+        border-top: 2px solid rgba(0, 255, 255, 0.3);
         z-index: 999;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     .nav-menu.active li {
         display: flex;
         justify-content: center;
         align-items: center;
+        list-style: none;
     }
 
     .nav-menu.active li a,
@@ -1120,36 +1123,51 @@ p, a {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 5px;
-        padding: 15px 10px;
+        gap: 8px;
+        padding: 12px 10px;
         border-radius: 12px;
         background: rgba(139, 92, 246, 0.1);
-        border: 1px solid rgba(139, 92, 246, 0.3);
+        border: 2px solid rgba(139, 92, 246, 0.3);
         width: 100%;
+        min-height: 80px;
         text-align: center;
         transition: all 0.3s ease;
+        font-size: 0.85rem;
     }
 
     .nav-menu.active li a:hover,
     .nav-menu.active li button:hover {
-        background: rgba(139, 92, 246, 0.2);
-        border-color: rgba(0, 255, 255, 0.5);
-        transform: scale(1.02);
+        background: rgba(139, 92, 246, 0.25);
+        border-color: rgba(0, 255, 255, 0.6);
+        transform: scale(1.03);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
     }
 
     .nav-menu.active li a i,
     .nav-menu.active li button i {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         margin-right: 0 !important;
     }
 
     /* Color coding for different menu items */
-    .nav-menu.active li:nth-child(1) a { border-color: rgba(0, 255, 255, 0.5); }
-    .nav-menu.active li:nth-child(2) a { border-color: rgba(255, 0, 128, 0.5); }
-    .nav-menu.active li:nth-child(3) a { border-color: rgba(0, 255, 128, 0.5); }
-    .nav-menu.active li:nth-child(4) a { border-color: rgba(255, 165, 0, 0.5); }
-    .nav-menu.active li:nth-child(5) a { border-color: rgba(138, 43, 226, 0.5); }
-    .nav-menu.active li:nth-child(6) a { border-color: rgba(0, 191, 255, 0.5); }
+    .nav-menu.active li:nth-child(1) a,
+    .nav-menu.active li:nth-child(1) button { border-color: rgba(0, 255, 255, 0.5); color: #00ffff; }
+    .nav-menu.active li:nth-child(2) a,
+    .nav-menu.active li:nth-child(2) button { border-color: rgba(255, 0, 128, 0.5); color: #ff0080; }
+    .nav-menu.active li:nth-child(3) a,
+    .nav-menu.active li:nth-child(3) button { border-color: rgba(0, 255, 128, 0.5); color: #00ff88; }
+    .nav-menu.active li:nth-child(4) a,
+    .nav-menu.active li:nth-child(4) button { border-color: rgba(255, 165, 0, 0.5); color: #ffa500; }
+    .nav-menu.active li:nth-child(5) a,
+    .nav-menu.active li:nth-child(5) button { border-color: rgba(138, 43, 226, 0.5); color: #8a2be2; }
+    .nav-menu.active li:nth-child(6) a,
+    .nav-menu.active li:nth-child(6) button { border-color: rgba(0, 191, 255, 0.5); color: #00bfff; }
+    .nav-menu.active li:nth-child(7) a,
+    .nav-menu.active li:nth-child(7) button { border-color: rgba(255, 0, 128, 0.5); color: #ff0080; }
+    .nav-menu.active li:nth-child(8) a,
+    .nav-menu.active li:nth-child(8) button { border-color: rgba(138, 43, 226, 0.5); color: #8a2be2; }
+    .nav-menu.active li:nth-child(9) a,
+    .nav-menu.active li:nth-child(9) button { border-color: rgba(0, 255, 255, 0.5); color: #00ffff; }
 
     .top-left-actions {
         display: none;
@@ -2152,13 +2170,14 @@ main {
     z-index: 1;
 }
 
-/* Latest Wisdom cards styled like blog posts grid */
+/* Latest Wisdom cards styled like blog posts grid - wider and shorter */
 .insights-stream {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
+    gap: 15px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .insight-flow {
@@ -2168,10 +2187,12 @@ main {
 .insight-node {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 15px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    min-height: auto;
+    max-height: 180px;
 }
 
 .insight-node:hover {
@@ -2333,4 +2354,89 @@ main {
     .hero-svg-container {
         display: none;
     }
+}
+
+/* Wallet Connect Button Rainbow CTA Styling */
+.wallet-connect-btn,
+.wallet-connect-main,
+button[onclick*="connectWallet"] {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)) !important;
+    border: 2px solid transparent !important;
+    border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2, #00ff88) 1 !important;
+    border-image-slice: 1 !important;
+    border-radius: 12px !important;
+    padding: 15px 25px !important;
+    color: #fff !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: walletCTA 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.wallet-connect-btn::before,
+.wallet-connect-main::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: walletShine 3s ease-in-out infinite;
+}
+
+.wallet-connect-btn:hover,
+.wallet-connect-main:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(255, 0, 128, 0.3);
+}
+
+@keyframes walletCTA {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(255, 0, 128, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 128, 0.4);
+    }
+}
+
+@keyframes walletShine {
+    0% { transform: rotate(45deg) translateX(-100%); }
+    50%, 100% { transform: rotate(45deg) translateX(100%); }
+}
+
+/* Quick donate button styling */
+.quick-donate-btn {
+    padding: 10px 15px;
+    background: rgba(0, 255, 255, 0.15);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 8px;
+    color: #00ffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.quick-donate-btn:hover {
+    background: rgba(0, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Wallet option cards hover effect */
+.wallet-option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero SVG slow rotate animation */
+.svg-rotate-slow {
+    animation: svgRotateSlow 10s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes svgRotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

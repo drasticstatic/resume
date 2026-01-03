@@ -794,8 +794,25 @@
         display: none !important;
     }
 
-    .hamburger {
+    .hamburger,
+    .hamburger.mobile-nav {
         display: flex !important;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        z-index: 1003;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: linear-gradient(90deg, #00ffff, #ff0080);
+        border-radius: 2px;
+        transition: all 0.3s ease;
     }
 
     .nav-menu {
@@ -810,9 +827,9 @@
         z-index: 1000;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
-        /* Grid layout for hamburger menu */
+        /* Grid layout for hamburger menu - 2 items per row */
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px;
     }
 

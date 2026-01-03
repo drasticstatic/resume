@@ -36,27 +36,31 @@ class Modal {
 
             // Close on touchend if both start and end were on modal backdrop
             this.modal.addEventListener('touchend', (event) => {
-                if (this.touchStartTarget === this.modal && event.target === this.modal) {
+                // Close if touch is outside modal content
+                const modalContent = this.modal.querySelector('.modal-content');
+                if (modalContent && !modalContent.contains(event.target)) {
                     event.preventDefault();
                     this.close();
                 }
                 this.touchStartTarget = null;
             }, { passive: false });
 
-            // Mouse click for desktop
+            // Mouse click for desktop - check if click is outside modal content
             this.modal.addEventListener('click', (event) => {
-                if (event.target === this.modal) {
-                    this.close();
-                }
-            });
-
-            // Mousedown for faster response
-            this.modal.addEventListener('mousedown', (event) => {
-                if (event.target === this.modal) {
+                const modalContent = this.modal.querySelector('.modal-content');
+                if (event.target === this.modal || (modalContent && !modalContent.contains(event.target))) {
                     this.close();
                 }
             });
         }
+
+        // Add event delegation for any dynamically created close buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.modal-close-btn, .close-modal-btn, [data-close-modal]')) {
+                e.preventDefault();
+                this.close();
+            }
+        });
 
         // Close modal with Escape key
         document.addEventListener('keydown', (event) => {
@@ -501,9 +505,9 @@ function openDonateModal() {
                             <i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>
                         </span>
                     </div>
-                    <button class="wallet-connect-btn" onclick="connectWallet()" style="width: 100%; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                        <i class="fas fa-wallet" style="font-size: 1.5rem;"></i>
-                        <span style="font-size: 0.9rem; text-align: center;">click to<br>connect your<br>web3 wallet</span>
+                    <button class="wallet-connect-btn rainbow-cta" onclick="connectWallet()" style="width: 100%; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)); border: 2px solid; border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1; border-radius: 12px;">
+                        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #00ffff;"></i>
+                        <span style="font-size: 1rem; color: #fff;">Connect Your Web3 Wallet</span>
                     </button>
                     <div class="donation-amounts" style="margin-top: 15px;">
                         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: center;">Quick Send (ETH):</p>
