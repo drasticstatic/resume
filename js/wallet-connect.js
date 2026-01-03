@@ -180,7 +180,13 @@ const WalletManager = {
 
                 <div style="text-align: center; padding: 20px; background: rgba(0, 255, 255, 0.1); border-radius: 12px; margin-bottom: 20px;">
                     <h4 style="color: #00ffff; margin: 0 0 10px 0;">📱 On Mobile?</h4>
-                    <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">Download the MetaMask or Rainbow app and use their built-in browser to access this site.</p>
+                    <p style="color: rgba(255,255,255,0.7); margin: 0 0 15px 0; font-size: 0.9rem;">Download the MetaMask or Rainbow app and use their built-in browser to access this site.</p>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(0,255,255,0.3);">
+                        <code style="color: #00ffff; font-size: 0.85rem; word-break: break-all;">${window.location.href}</code>
+                        <button onclick="WalletManager.copyUrl()" style="background: rgba(0,255,255,0.2); border: 1px solid #00ffff; border-radius: 6px; padding: 8px 12px; color: #00ffff; cursor: pointer; white-space: nowrap; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(0,255,255,0.4)'" onmouseout="this.style.background='rgba(0,255,255,0.2)'">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
                 </div>
 
                 <div style="text-align: center;">
@@ -275,6 +281,35 @@ const WalletManager = {
         if (window.ethereum.isBraveWallet) return 'Brave Wallet';
         if (window.ethereum.isPhantom) return 'Phantom';
         return 'Web3 Wallet';
+    },
+
+    // Copy URL to clipboard
+    copyUrl() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            // Show quick feedback
+            const btn = event.target.closest('button');
+            if (btn) {
+                const originalHTML = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                btn.style.background = 'rgba(0,255,136,0.3)';
+                btn.style.borderColor = '#00ff88';
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = 'rgba(0,255,255,0.2)';
+                    btn.style.borderColor = '#00ffff';
+                }, 2000);
+            }
+        }).catch(err => {
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = url;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('✓ URL copied to clipboard!');
+        });
     },
 
     // Disconnect wallet
@@ -375,6 +410,21 @@ const WalletManager = {
         document.querySelectorAll('.wallet-connect-btn').forEach(btn => {
             if (this.isConnected) {
                 btn.innerHTML = `<i class="fas fa-check-circle"></i> Connected: ${this.formatAddress(this.currentAddress)}`;
+            }
+        });
+
+        // Update top-right connect button
+        document.querySelectorAll('.connect-btn-top').forEach(btn => {
+            if (this.isConnected) {
+                btn.classList.add('connected');
+                btn.setAttribute('data-chain', this.currentChain || 'Connected');
+                btn.innerHTML = '<i class="fas fa-check-circle"></i>';
+                btn.onclick = () => this.disconnect();
+            } else {
+                btn.classList.remove('connected');
+                btn.setAttribute('data-chain', 'Connect');
+                btn.innerHTML = '<i class="fas fa-wallet"></i>';
+                btn.onclick = () => this.connect();
             }
         });
     }

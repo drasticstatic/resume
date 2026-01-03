@@ -82,6 +82,90 @@
     color: #00ffff;
 }
 
+/* Top-right connect button - matching style of top-left buttons */
+.top-right-actions {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.connect-btn-top {
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #00ffff, #ff0080, #8a2be2) 1;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1), rgba(138, 43, 226, 0.1));
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 10px rgba(255, 0, 128, 0.2);
+    min-width: 60px;
+    text-align: center;
+    animation: walletPulse 2s ease-in-out infinite, subtleHeartbeat 2.5s ease-in-out infinite;
+}
+
+.connect-btn-top i {
+    font-size: 18px;
+    color: #00ffff;
+}
+
+.connect-btn-top::after {
+    content: 'Connect';
+    font-weight: 500;
+    background: linear-gradient(135deg, #00ffff, #ff0080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.connect-btn-top:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 20px rgba(255, 0, 128, 0.5);
+}
+
+.connect-btn-top.connected {
+    border-color: rgba(0, 255, 136, 0.6);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+}
+
+.connect-btn-top.connected i {
+    color: #00ff88;
+}
+
+.connect-btn-top.connected::after {
+    content: attr(data-chain);
+    background: linear-gradient(135deg, #00ff88, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+@keyframes walletPulse {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), 0 0 8px rgba(255, 0, 128, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.5), 0 0 15px rgba(255, 0, 128, 0.4);
+    }
+}
+
+@media (max-width: 768px) {
+    .top-right-actions {
+        display: none;
+    }
+}
+
 /* Unified button styling */
 .cta-button, .spark-button, .grow-button, .submit-btn, .subscribe-btn, .read-more {
     background: var(--gradient-primary);
@@ -840,41 +924,73 @@
     .nav-menu li {
         margin: 0;
         list-style: none;
+        display: flex;
     }
 
-    .nav-menu li .nav-link {
+    .nav-menu li .nav-link,
+    .nav-menu li button.nav-link {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 15px 10px;
+        padding: 12px 10px;
         background: rgba(255, 255, 255, 0.05);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
         transition: all 0.3s ease;
         min-height: 70px;
+        width: 100%;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 0.85rem;
     }
 
-    .nav-menu li .nav-link i {
-        font-size: 1.5rem;
+    .nav-menu li .nav-link i,
+    .nav-menu li button.nav-link i {
+        font-size: 1.3rem;
         margin-bottom: 5px;
+        margin-right: 0 !important;
     }
 
-    .nav-menu li .nav-link:hover {
+    .nav-menu li .nav-link:hover,
+    .nav-menu li button.nav-link:hover {
         background: rgba(255, 255, 255, 0.1);
-        transform: scale(1.02);
+        transform: scale(1.03);
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
     }
 
-    /* Individual nav item colors */
-    .nav-menu li:nth-child(1) .nav-link { color: #00ffff; border-color: rgba(0, 255, 255, 0.3); }
-    .nav-menu li:nth-child(2) .nav-link { color: #ff0080; border-color: rgba(255, 0, 128, 0.3); }
-    .nav-menu li:nth-child(3) .nav-link { color: #00ff88; border-color: rgba(0, 255, 136, 0.3); }
-    .nav-menu li:nth-child(4) .nav-link { color: #ffff00; border-color: rgba(255, 255, 0, 0.3); }
-    .nav-menu li:nth-child(5) .nav-link { color: #8a2be2; border-color: rgba(138, 43, 226, 0.3); }
-    .nav-menu li:nth-child(6) .nav-link { color: #ff6600; border-color: rgba(255, 102, 0, 0.3); }
-    .nav-menu li:nth-child(7) .nav-link { color: #ff0080; border-color: rgba(255, 0, 128, 0.3); }
-    .nav-menu li:nth-child(8) .nav-link { color: #8a2be2; border-color: rgba(138, 43, 226, 0.3); }
-    .nav-menu li:nth-child(9) .nav-link { color: #00ffff; border-color: rgba(0, 255, 255, 0.3); }
+    /* Individual nav item colors - improved grid colors */
+    .nav-menu li:nth-child(1) .nav-link,
+    .nav-menu li:nth-child(1) button.nav-link { color: #00ffff; border-color: rgba(0, 255, 255, 0.4) !important; }
+    .nav-menu li:nth-child(2) .nav-link,
+    .nav-menu li:nth-child(2) button.nav-link { color: #ff0080; border-color: rgba(255, 0, 128, 0.4) !important; }
+    .nav-menu li:nth-child(3) .nav-link,
+    .nav-menu li:nth-child(3) button.nav-link { color: #00ff88; border-color: rgba(0, 255, 136, 0.4) !important; }
+    .nav-menu li:nth-child(4) .nav-link,
+    .nav-menu li:nth-child(4) button.nav-link { color: #ffff00; border-color: rgba(255, 255, 0, 0.4) !important; }
+    .nav-menu li:nth-child(5) .nav-link,
+    .nav-menu li:nth-child(5) button.nav-link { color: #8a2be2; border-color: rgba(138, 43, 226, 0.4) !important; }
+    .nav-menu li:nth-child(6) .nav-link,
+    .nav-menu li:nth-child(6) button.nav-link { color: #ff6600; border-color: rgba(255, 102, 0, 0.4) !important; }
+    .nav-menu li:nth-child(7) .nav-link,
+    .nav-menu li:nth-child(7) button.nav-link { color: #ff0080; border-color: rgba(255, 0, 128, 0.4) !important; }
+    .nav-menu li:nth-child(8) .nav-link,
+    .nav-menu li:nth-child(8) button.nav-link { color: #8a2be2; border-color: rgba(138, 43, 226, 0.4) !important; }
+    .nav-menu li:nth-child(9) .nav-link,
+    .nav-menu li:nth-child(9) button.nav-link { color: #00ffff; border-color: rgba(0, 255, 255, 0.4) !important; }
+
+    /* Wallet connect button in hamburger - rounded corners */
+    .nav-menu .wallet-menu-item button,
+    .nav-menu .wallet-status-badge {
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 128, 0.1)) !important;
+        border: 2px solid rgba(0, 255, 255, 0.4) !important;
+    }
+
+    .nav-menu .wallet-status-badge.connected {
+        border-color: rgba(0, 255, 136, 0.5) !important;
+        background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 255, 255, 0.1)) !important;
+    }
 
     .glossary-grid {
         grid-template-columns: 1fr;

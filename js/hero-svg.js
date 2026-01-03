@@ -194,7 +194,16 @@ const HeroSVG = {
         </svg>
     `,
 
-    // Initialize SVG on page
+    // SVG configurations for multiple instances
+    svgConfigs: [
+        { scale: 1.0, x: 85, y: 20, opacity: 0.9, rotation: 0 },
+        { scale: 0.6, x: 10, y: 10, opacity: 0.5, rotation: 15 },
+        { scale: 0.5, x: 70, y: 60, opacity: 0.4, rotation: -10 },
+        { scale: 0.4, x: 5, y: 55, opacity: 0.35, rotation: 25 },
+        { scale: 0.35, x: 55, y: 5, opacity: 0.3, rotation: -20 }
+    ],
+
+    // Initialize multiple SVGs on page
     init() {
         const page = this.detectPage();
         const svg = this[page];
@@ -203,10 +212,57 @@ const HeroSVG = {
         const heroSection = document.querySelector('.hero-section, .blog-hero, .portfolio-hero, .resources-hero, .contact-hero, .about-hero, .glossary-hero, .error-content, [class*="-hero"]');
         if (!heroSection) return;
 
-        const container = document.createElement('div');
-        container.className = 'hero-svg-container';
-        container.innerHTML = svg;
-        heroSection.appendChild(container);
+        // Ensure hero section has relative positioning
+        heroSection.style.position = 'relative';
+        heroSection.style.overflow = 'hidden';
+
+        // Create multiple SVG instances with different sizes and positions
+        this.svgConfigs.forEach((config, index) => {
+            const container = document.createElement('div');
+            container.className = 'hero-svg-container hero-svg-instance';
+            container.style.cssText = `
+                position: absolute;
+                right: ${config.x}%;
+                top: ${config.y}%;
+                width: ${150 * config.scale}px;
+                height: ${100 * config.scale}px;
+                opacity: ${config.opacity};
+                transform: rotate(${config.rotation}deg);
+                pointer-events: none;
+                z-index: 1;
+                animation: heroSvgFloat ${3 + index * 0.5}s ease-in-out infinite;
+                animation-delay: ${index * 0.3}s;
+            `;
+            container.innerHTML = svg;
+
+            // Scale SVG elements
+            const svgEl = container.querySelector('svg');
+            if (svgEl) {
+                svgEl.style.width = '100%';
+                svgEl.style.height = '100%';
+            }
+
+            heroSection.appendChild(container);
+        });
+
+        // Add floating animation if not exists
+        if (!document.getElementById('heroSvgStyles')) {
+            const style = document.createElement('style');
+            style.id = 'heroSvgStyles';
+            style.textContent = `
+                @keyframes heroSvgFloat {
+                    0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); }
+                    50% { transform: translateY(-10px) rotate(var(--rotation, 0deg)); }
+                }
+                .hero-svg-instance svg {
+                    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+                }
+                .hero-svg-instance:first-child svg {
+                    filter: drop-shadow(0 0 20px rgba(255, 0, 128, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 255, 0.4));
+                }
+            `;
+            document.head.appendChild(style);
+        }
     },
 
     detectPage() {
