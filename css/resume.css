@@ -167,7 +167,7 @@ p, a {
 }
 
 .nav-menu a {
-    color: var(--text-primary);
+    /* Color is set by animations in navigation.css for desktop-nav */
     text-decoration: none;
     opacity: 0.8;
     transition: all 0.3s ease;
@@ -180,7 +180,6 @@ p, a {
 .nav-menu a:hover,
 .nav-menu a.active {
     opacity: 1;
-    color: var(--accent-purple);
     background: rgba(139, 92, 246, 0.1);
 }
 

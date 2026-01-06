@@ -334,7 +334,19 @@
 
 .payment-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 0, 128, 0.4);
+}
+
+/* Specific payment button hover shadows - don't override with pink */
+.payment-btn.paypal-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 112, 186, 0.4);
+}
+
+.payment-btn.venmo-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 140, 255, 0.4);
+}
+
+.payment-btn.cashapp-btn:hover {
+    box-shadow: 0 6px 20px rgba(0, 214, 50, 0.4);
 }
 
 .crypto-addresses {
@@ -549,14 +561,14 @@
 }
 
 /* Desktop nav link colors - matching hamburger scheme */
-/* 1=Home (cyan), 2=About (pink), 3=Portfolio (green), 4=Blog (gold), 5=Resources (orange), 6=Contact (blue) */
-.desktop-nav li:nth-child(1) .nav-link { animation: psychedelicCyan 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(2) .nav-link { animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(3) .nav-link { animation: psychedelicGreen 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(4) .nav-link { animation: psychedelicGold 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(5) .nav-link { animation: psychedelicOrange 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(6) .nav-link { animation: psychedelicBlue 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(7) .nav-link { animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+/* 1=Home (cyan), 2=About (pink), 3=Portfolio (green), 4=Blog (gold), 5=Resources (orange), 6=Contact (blue), 7=Donate (pink) */
+.desktop-nav li:nth-child(1) .nav-link { color: #00ffff !important; animation: psychedelicCyan 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(2) .nav-link { color: #ff0080 !important; animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(3) .nav-link { color: #00ff88 !important; animation: psychedelicGreen 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(4) .nav-link { color: #ffd700 !important; animation: psychedelicGold 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(5) .nav-link { color: #ff6600 !important; animation: psychedelicOrange 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(6) .nav-link { color: #00bfff !important; animation: psychedelicBlue 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(7) .nav-link { color: #ff0080 !important; animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
 
 /* Goldish-yellow animation for Blog */
 @keyframes psychedelicGold {
@@ -1025,7 +1037,8 @@
         transition: all 0.3s ease;
     }
 
-    .nav-menu {
+    .nav-menu,
+    .nav-menu.desktop-nav {
         position: fixed;
         left: -100%;
         top: 70px;
@@ -1043,7 +1056,8 @@
         gap: 10px;
     }
 
-    .nav-menu.active {
+    .nav-menu.active,
+    .nav-menu.desktop-nav.active {
         left: 0;
     }
 
