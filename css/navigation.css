@@ -402,6 +402,13 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    position: relative;
+}
+
+/* Ensure pseudo-elements don't block clicks */
+.wallet-connect-btn::before,
+.wallet-connect-btn::after {
+    pointer-events: none;
 }
 
 .wallet-connect-btn:hover {
@@ -542,13 +549,22 @@
 }
 
 /* Desktop nav link colors - matching hamburger scheme */
+/* 1=Home (cyan), 2=About (pink), 3=Portfolio (green), 4=Blog (gold), 5=Resources (orange), 6=Contact (blue) */
 .desktop-nav li:nth-child(1) .nav-link { animation: psychedelicCyan 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
 .desktop-nav li:nth-child(2) .nav-link { animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
 .desktop-nav li:nth-child(3) .nav-link { animation: psychedelicGreen 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(4) .nav-link { animation: psychedelicOrange 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
-.desktop-nav li:nth-child(5) .nav-link { animation: psychedelicPurple 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(4) .nav-link { animation: psychedelicGold 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+.desktop-nav li:nth-child(5) .nav-link { animation: psychedelicOrange 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
 .desktop-nav li:nth-child(6) .nav-link { animation: psychedelicBlue 4.5s ease-in-out infinite, breathing 6s ease-in-out infinite; }
 .desktop-nav li:nth-child(7) .nav-link { animation: psychedelicPink 4s ease-in-out infinite, breathing 6s ease-in-out infinite; }
+
+/* Goldish-yellow animation for Blog */
+@keyframes psychedelicGold {
+    0%, 100% { color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    25% { color: #ffcc00; text-shadow: 0 0 15px rgba(255, 204, 0, 0.6); }
+    50% { color: #ffaa00; text-shadow: 0 0 20px rgba(255, 170, 0, 0.7); }
+    75% { color: #ffdd33; text-shadow: 0 0 15px rgba(255, 221, 51, 0.6); }
+}
 
 /* Desktop nav icons inherit parent color */
 .desktop-nav .nav-link i {
@@ -1069,7 +1085,8 @@
         box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
     }
 
-    /* Individual nav item colors - improved grid colors */
+    /* Individual nav item colors - hamburger menu grid
+       1=Home(hidden), 2=About(pink), 3=Portfolio(green), 4=Blog(gold), 5=Resources(orange), 6=Contact(blue), 7=Donate(pink), 8=Lost(purple), 9=Wallet(cyan) */
     .nav-menu li:nth-child(1) .nav-link,
     .nav-menu li:nth-child(1) button.nav-link { color: #00ffff; border-color: rgba(0, 255, 255, 0.4) !important; }
     .nav-menu li:nth-child(2) .nav-link,
@@ -1077,11 +1094,11 @@
     .nav-menu li:nth-child(3) .nav-link,
     .nav-menu li:nth-child(3) button.nav-link { color: #00ff88; border-color: rgba(0, 255, 136, 0.4) !important; }
     .nav-menu li:nth-child(4) .nav-link,
-    .nav-menu li:nth-child(4) button.nav-link { color: #ffff00; border-color: rgba(255, 255, 0, 0.4) !important; }
+    .nav-menu li:nth-child(4) button.nav-link { color: #ffd700; border-color: rgba(255, 215, 0, 0.4) !important; }
     .nav-menu li:nth-child(5) .nav-link,
-    .nav-menu li:nth-child(5) button.nav-link { color: #8a2be2; border-color: rgba(138, 43, 226, 0.4) !important; }
+    .nav-menu li:nth-child(5) button.nav-link { color: #ff6600; border-color: rgba(255, 102, 0, 0.4) !important; }
     .nav-menu li:nth-child(6) .nav-link,
-    .nav-menu li:nth-child(6) button.nav-link { color: #ff6600; border-color: rgba(255, 102, 0, 0.4) !important; }
+    .nav-menu li:nth-child(6) button.nav-link { color: #00bfff; border-color: rgba(0, 191, 255, 0.4) !important; }
     .nav-menu li:nth-child(7) .nav-link,
     .nav-menu li:nth-child(7) button.nav-link { color: #ff0080; border-color: rgba(255, 0, 128, 0.4) !important; }
     .nav-menu li:nth-child(8) .nav-link,

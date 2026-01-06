@@ -271,13 +271,26 @@ const WalletManager = {
                 </div>
 
                 <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="color: rgba(255,255,255,0.6); font-style: italic; margin: 0;">🌟 Web3 is the future of the internet - your keys, your crypto, your identity! 🚀</p>
+                    <p style="color: rgba(255,255,255,0.6); font-style: italic; margin: 0 0 15px 0;">🌟 Web3 is the future of the internet - your keys, your crypto, your identity! 🚀</p>
+                    <button id="back-to-wallet-modal" style="background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 8px; padding: 10px 20px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
+                        ← Back to Wallet Options
+                    </button>
                 </div>
             </div>
         `;
 
         if (window.modalInstance) {
             window.modalInstance.open(modalContent);
+
+            // Add back button listener
+            setTimeout(() => {
+                const backBtn = document.getElementById('back-to-wallet-modal');
+                if (backBtn) {
+                    backBtn.addEventListener('click', () => {
+                        WalletManager.showWalletModal();
+                    });
+                }
+            }, 100);
         }
     },
 

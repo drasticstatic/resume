@@ -2389,6 +2389,7 @@ button[onclick*="connectWallet"] {
     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(45deg);
     animation: walletShine 3s ease-in-out infinite;
+    pointer-events: none; /* Allow clicks to pass through to button */
 }
 
 .wallet-connect-btn:hover,

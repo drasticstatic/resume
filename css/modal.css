@@ -502,6 +502,14 @@ body {
 .donate-modal {
     position: relative;
     z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Constrain modal-content when showing donate modal */
+.modal-content:has(.donate-modal) {
+    max-width: 650px !important;
+    width: auto !important;
 }
 
 .donate-modal h3 {
@@ -765,13 +773,28 @@ body {
 .cashapp-btn {
     background-color: #00D632 !important; /* Official Brand Green */
     color: #ffffff !important;
-    border: none;
-    transition: background-color 0.3s ease;
+    border: none !important;
+    transition: all 0.3s ease !important;
 }
 
 .cashapp-btn:hover {
-    background-color: #00c32d !important; /* Slightly darker for hover effect */
+    background-color: #00a82a !important; /* Darker green for hover */
     color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(0, 214, 50, 0.5) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Venmo Button */
+.venmo-btn {
+    background-color: #008CFF !important; /* Official Venmo Blue */
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.venmo-btn:hover {
+    background-color: #0070cc !important;
+    box-shadow: 0 0 20px rgba(0, 140, 255, 0.5) !important;
+    transform: translateY(-2px) !important;
 }
 
 /* Ensures the icon and text are perfectly centered */
@@ -784,4 +807,10 @@ body {
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Payment button icons */
+.payment-btn i {
+    font-size: 1.2rem;
 }
