@@ -44,12 +44,12 @@
                 </div>
             </div>
             <ul class="nav-menu desktop-nav">
-                <li class="desktop-only"><a href="../index.html" class="nav-link"><i data-lucide="home"></i> Home</a></li>
-                <li><a href="about.html" class="nav-link"><i data-lucide="user"></i> About</a></li>
-                <li><a href="portfolio.html" class="nav-link"><i data-lucide="briefcase"></i> Portfolio</a></li>
-                <li><a href="blog.html" class="nav-link"><i data-lucide="book-open"></i> Blog</a></li>
-                <li><a href="resources.html" class="nav-link active"><i data-lucide="library"></i> Resources</a></li>
-                <li><a href="contact.html" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
+                <li class="desktop-only"><a href="../index.html" class="nav-link heartbeat"><i class="fas fa-home heartbeat"></i> Home</a></li>
+                <li><a href="about.html" class="nav-link heartbeat"><i class="fas fa-user heartbeat"></i> About</a></li>
+                <li><a href="portfolio.html" class="nav-link heartbeat"><i class="fas fa-briefcase heartbeat"></i> Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link heartbeat"><i class="fas fa-book-open heartbeat"></i> Blog</a></li>
+                <li><a href="resources.html" class="nav-link active heartbeat"><i class="fas fa-book heartbeat"></i> Resources</a></li>
+                <li><a href="contact.html" class="nav-link heartbeat"><i class="fas fa-envelope heartbeat"></i> Contact</a></li>
                 <li class="mobile-hamburger-only"><button class="nav-link heartbeat" onclick="openDonateModal()" style="background: none; border: none; cursor: pointer;"><i class="fas fa-heart heartbeat" style="color: #ff0080;"></i> Donate</button></li>
                 <li class="mobile-hamburger-only"><a href="404.html" class="nav-link heartbeat"><i class="fas fa-compass heartbeat" style="color: #8a2be2;"></i> Lost?</a></li>
                 <li class="mobile-hamburger-only wallet-menu-item"><button class="nav-link heartbeat wallet-status-badge disconnected" onclick="connectWallet()" style="background: none; border: 1px solid rgba(255, 100, 100, 0.3); cursor: pointer;"><i class="fas fa-wallet heartbeat"></i> <span class="wallet-status-text">Connect</span></button></li>
@@ -333,6 +333,14 @@
             hamburger.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
                 hamburger.classList.toggle('active');
+            });
+
+            // Close hamburger menu when resizing to desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             });
         }
     </script>

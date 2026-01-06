@@ -142,8 +142,12 @@
                         </div>
                         
                         <div class="project-links">
+                            <a href="https://drasticstatic.github.io/gratitude-token-project_testPublish_2026-01-05/" class="btn-primary" target="_blank"><i class="fas fa-rocket"></i> Launch Dapp</a>
+                            <a href="https://drasticstatic.github.io/gratitude-token-project_docs/" class="btn-secondary" target="_blank"><i class="fas fa-book"></i> Docusaurus</a>
+                        </div>
+                        <div class="project-links" style="margin-top: 10px;">
                             <button class="btn-primary" onclick="openProjectModal('ethereal-offering')">View Details</button>
-                            <a href="https://github.com/drasticstatic" class="btn-secondary">GitHub</a>
+                            <a href="https://github.com/drasticstatic" class="btn-secondary" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -527,6 +531,14 @@
                     hamburger.classList.toggle('active');
                     if (typeof createSporeRain === 'function') {
                         createSporeRain(e.pageX, e.pageY);
+                    }
+                });
+
+                // Close hamburger menu when resizing to desktop view
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
                     }
                 });
             }

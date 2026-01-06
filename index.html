@@ -188,8 +188,12 @@
                         <span class="tag soft-tag" onclick="event.stopPropagation(); openGlossary('nft')">NFT</span>
                     </div>
                     <div class="card-buttons">
+                        <a href="https://drasticstatic.github.io/gratitude-token-project_testPublish_2026-01-05/" class="card-button--site" target="_blank"><i class="fas fa-rocket"></i> Launch Dapp</a>
+                        <a href="https://drasticstatic.github.io/gratitude-token-project_docs/" class="card-button--docs" target="_blank"><i class="fas fa-book"></i> Docusaurus</a>
+                    </div>
+                    <div class="card-buttons" style="margin-top: 8px;">
                         <button class="card-button--site" onclick="openProjectModal('ethereal-offering')">Details</button>
-                        <a href="https://github.com/drasticstatic" class="card-button--code">Code</a>
+                        <a href="https://github.com/drasticstatic" class="card-button--code" target="_blank">Code</a>
                     </div>
                 </div>
 
@@ -642,8 +646,16 @@
                 this.classList.toggle('active');
                 createSporeRain(e.pageX, e.pageY);
             });
+
+            // Close hamburger menu when resizing to desktop view
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
         }
-        
+
         // Rainbow spore drop on navigation clicks
         document.querySelectorAll('.nav-link, .cta-button, .skill-item, .tech-tag').forEach(button => {
             button.addEventListener('click', function(e) {

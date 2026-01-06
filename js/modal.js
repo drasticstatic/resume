@@ -200,9 +200,11 @@ function openProjectModal(projectId) {
                 
                 <h4>🎯 Project Goals:</h4>
                 <p>Ethereal Offering aims to create a Web3 ecosystem where technology serves spiritual growth, community healing, and collective awakening. By integrating zero-knowledge privacy with gratitude-based economics, we're building systems that honor human dignity while enabling transparent, decentralized governance.</p>
-                
+
                 <div class="project-links">
-                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank">View on GitHub</a>
+                    <a href="https://drasticstatic.github.io/gratitude-token-project_testPublish_2026-01-05/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Launch Dapp</a>
+                    <a href="https://drasticstatic.github.io/gratitude-token-project_docs/" class="modal-btn modal-btn-secondary" target="_blank"><i class="fas fa-book"></i> Docusaurus</a>
+                    <a href="https://github.com/drasticstatic" class="modal-btn" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
                 </div>
             `
         },

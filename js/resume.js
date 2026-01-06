@@ -64,11 +64,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile hamburger menu
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             this.classList.toggle('active');
+        });
+
+        // Close hamburger menu when resizing to desktop view
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
     }
 });

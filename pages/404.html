@@ -189,6 +189,14 @@
                         createSporeRain(e.pageX, e.pageY);
                     }
                 });
+
+                // Close hamburger menu when resizing to desktop view
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
             }
         });
     </script>

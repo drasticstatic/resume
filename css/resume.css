@@ -598,6 +598,31 @@ p, a {
     border-color: var(--accent-purple);
 }
 
+/* Docusaurus button style */
+.projects .card .card-buttons .card-button--docs {
+    flex: 1;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid rgba(0, 255, 255, 0.5);
+    background: rgba(0, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.projects .card .card-buttons .card-button--docs:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: #00ffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3);
+}
+
 /* EXPERIENCE */
 .experience-description {
     max-width: 900px;
@@ -1149,7 +1174,8 @@ p, a {
         margin-right: 0 !important;
     }
 
-    /* Color coding for different menu items */
+    /* Color coding for different menu items
+       1=Home(cyan), 2=About(pink), 3=Portfolio(green), 4=Blog(gold), 5=Resources(orange), 6=Contact(blue), 7=Donate(pink), 8=Lost(purple), 9=Wallet(cyan) */
     .nav-menu.active li:nth-child(1) a,
     .nav-menu.active li:nth-child(1) button { border-color: rgba(0, 255, 255, 0.5); color: #00ffff; }
     .nav-menu.active li:nth-child(2) a,
@@ -1157,9 +1183,9 @@ p, a {
     .nav-menu.active li:nth-child(3) a,
     .nav-menu.active li:nth-child(3) button { border-color: rgba(0, 255, 128, 0.5); color: #00ff88; }
     .nav-menu.active li:nth-child(4) a,
-    .nav-menu.active li:nth-child(4) button { border-color: rgba(255, 165, 0, 0.5); color: #ffa500; }
+    .nav-menu.active li:nth-child(4) button { border-color: rgba(255, 215, 0, 0.5); color: #ffd700; }
     .nav-menu.active li:nth-child(5) a,
-    .nav-menu.active li:nth-child(5) button { border-color: rgba(138, 43, 226, 0.5); color: #8a2be2; }
+    .nav-menu.active li:nth-child(5) button { border-color: rgba(255, 102, 0, 0.5); color: #ff6600; }
     .nav-menu.active li:nth-child(6) a,
     .nav-menu.active li:nth-child(6) button { border-color: rgba(0, 191, 255, 0.5); color: #00bfff; }
     .nav-menu.active li:nth-child(7) a,

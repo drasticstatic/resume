@@ -144,9 +144,35 @@
     box-shadow: 0 6px 20px rgba(255, 0, 128, 0.4);
 }
 
+/* Primary modal button - Launch Dapp style */
+.modal-btn-primary {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 255, 0.2)) !important;
+    border-color: rgba(0, 255, 136, 0.6) !important;
+}
+
+.modal-btn-primary:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.5), rgba(0, 255, 255, 0.3)) !important;
+    box-shadow: 0 6px 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Secondary modal button - Docusaurus style */
+.modal-btn-secondary {
+    background: rgba(0, 255, 255, 0.15) !important;
+    border-color: rgba(0, 255, 255, 0.5) !important;
+}
+
+.modal-btn-secondary:hover {
+    background: rgba(0, 255, 255, 0.25) !important;
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4);
+}
+
 .project-links {
     margin-top: 30px;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 /* Navigation Styles */
