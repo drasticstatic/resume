@@ -417,9 +417,10 @@
     position: relative;
 }
 
-/* Ensure pseudo-elements don't block clicks */
+/* Ensure pseudo-elements and children don't block clicks */
 .wallet-connect-btn::before,
-.wallet-connect-btn::after {
+.wallet-connect-btn::after,
+.wallet-connect-btn > * {
     pointer-events: none;
 }
 
@@ -437,10 +438,10 @@
 
 .insights-subtitle {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: rgba(0, 255, 255, 0.8);
     margin-top: -10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .insight-node {

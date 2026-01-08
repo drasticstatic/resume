@@ -89,24 +89,32 @@ const WalletManager = {
 
     // Connect wallet - supports MetaMask, Coinbase Wallet, Trust Wallet, etc.
     async connect() {
+        console.log('WalletManager.connect() called');
+
         // Check if Safari
         const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-        // Wait a moment for wallet injection if not immediately available
+        // Check if wallet is available - give a small moment for injection
         let walletAvailable = this.isWalletAvailable();
+        console.log('Initial wallet check:', walletAvailable);
+
         if (!walletAvailable) {
-            // Wait up to 2 seconds for wallet to inject
-            walletAvailable = await this.waitForWallet(2000);
+            // Wait a brief moment for extension injection (some extensions are slow)
+            await new Promise(resolve => setTimeout(resolve, 500));
+            walletAvailable = this.isWalletAvailable();
+            console.log('After delay wallet check:', walletAvailable);
         }
 
         if (!walletAvailable) {
-            // Show wallet connect modal instead of alert
+            console.log('No wallet found, showing modal');
             this.showWalletModal(isSafari);
             return false;
         }
 
         try {
+            console.log('Requesting accounts from wallet...');
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            console.log('Got accounts:', accounts);
             this.currentAddress = accounts[0];
             this.isConnected = true;
             this.currentChain = await this.getChainName();

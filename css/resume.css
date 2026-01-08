@@ -2196,13 +2196,14 @@ main {
 }
 
 /* Latest Wisdom cards styled like blog posts grid - wider and shorter */
+/* There's another .insights-stream in psychedelic.css - CSS precedence: psychedelic.css loads after resume.css, so it overrides */
 .insights-stream {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 .insight-flow {
@@ -2381,7 +2382,19 @@ main {
 
 @media (max-width: 768px) {
     .hero-svg-container {
-        display: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        opacity: 0.4;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-svg {
+        width: 150px;
+        height: 100px;
     }
 }
 
@@ -2473,7 +2486,7 @@ button[onclick*="connectWallet"] {
 
 /* Skills Galaxy - Interactive Orbital Display */
 .skills-title {
-    text-align: center;
+    text-align: left;
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
@@ -2490,12 +2503,32 @@ button[onclick*="connectWallet"] {
     width: 300px;
     height: 300px;
     margin: 0 auto 50px;
-    display: none; /* Hidden on mobile, shown on desktop */
+    display: block;
+    overflow: visible;
 }
 
-@media (min-width: 769px) {
+.skill-orbit {
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
     .skills-galaxy {
-        display: block;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto 30px;
+    }
+
+    .skill-planet {
+        width: 50px;
+        height: 50px;
+    }
+
+    .planet-icon {
+        font-size: 1.2rem;
+    }
+
+    .planet-label {
+        font-size: 0.6rem;
     }
 }
 
@@ -2608,6 +2641,37 @@ button[onclick*="connectWallet"] {
     font-weight: bold;
 }
 
+/* Skill Planet Tooltips */
+.skill-planet::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    color: #00ffff;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.skill-planet:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.skill-planet:hover {
+    z-index: 9999;
+}
+
 .skill-core {
     position: absolute;
     width: 80px;
@@ -2705,7 +2769,7 @@ button[onclick*="connectWallet"] {
     border-radius: 20px;
     font-size: 0.8rem;
     transition: all 0.3s ease;
-    cursor: default;
+    cursor: pointer;
 }
 
 .skill-tag:hover {

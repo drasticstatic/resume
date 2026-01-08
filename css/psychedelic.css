@@ -522,10 +522,21 @@
 }
 
 /* Insights Stream */
+/* There's another .insights-stream in resume.css - CSS precedence: psychedelic.css loads after resume.css, so it overrides */
 .insights-stream {
-    position: relative;
-    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(333px, 1fr));
+    gap: 22px;
+    max-width: 1650px;
     margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .insights-stream {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
 
 .insight-flow {

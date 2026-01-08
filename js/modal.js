@@ -486,7 +486,7 @@ function openDonateModal() {
                             <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
                         </div>
                         <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${window.WalletManager && window.WalletManager.isConnected ? 'none' : 'block'};">
-                            ⚠️ Demo mode - connect wallet to send real transactions
+                            ⚠️ Demo mode - Click "Connect Your Web3 Wallet" above to exit demo mode and send real transactions
                         </p>
                     </div>
                 </div>
@@ -542,6 +542,11 @@ function openDonateModal() {
     `;
     if (window.modalInstance) {
         window.modalInstance.open(donateContent);
+        // Constrain donate modal width
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.maxWidth = '650px';
+        }
     }
 }
 
