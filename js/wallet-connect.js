@@ -16,6 +16,12 @@ const WalletManager = {
 
     // Check if any wallet is available (with delayed check for injection)
     isWalletAvailable() {
+        // Log what we find for debugging
+        console.log('Checking wallet availability...');
+        console.log('  window.ethereum:', typeof window.ethereum);
+        console.log('  window.ethereum.isMetaMask:', window.ethereum?.isMetaMask);
+        console.log('  window.web3:', typeof window.web3);
+
         // Check for window.ethereum (injected by most wallets)
         if (typeof window.ethereum !== 'undefined') {
             return true;

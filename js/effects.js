@@ -73,17 +73,100 @@ function createPulseBeams(container, count = 5) {
     }
 }
 
+// JavaScript Tooltips for better cross-browser support
+function initTooltips() {
+    // Create tooltip element
+    let tooltip = document.getElementById('js-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'js-tooltip';
+        tooltip.style.cssText = `
+            position: fixed;
+            background: rgba(10, 10, 15, 0.95);
+            border: 1px solid rgba(0, 255, 255, 0.6);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            color: #00ffff;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            pointer-events: none;
+            z-index: 100000;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+        `;
+        document.body.appendChild(tooltip);
+    }
+
+    // Add tooltip to all elements with data-tooltip
+    document.querySelectorAll('[data-tooltip]').forEach(el => {
+        el.addEventListener('mouseenter', (e) => {
+            const text = el.getAttribute('data-tooltip');
+            if (!text) return;
+
+            tooltip.textContent = text;
+            tooltip.style.opacity = '1';
+            tooltip.style.visibility = 'visible';
+
+            // Position tooltip above element
+            const rect = el.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            let top = rect.top - tooltipRect.height - 10;
+
+            // Keep tooltip on screen
+            if (left < 10) left = 10;
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = window.innerWidth - tooltipRect.width - 10;
+            }
+            if (top < 10) {
+                top = rect.bottom + 10; // Show below instead
+            }
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        });
+
+        el.addEventListener('mouseleave', () => {
+            tooltip.style.opacity = '0';
+            tooltip.style.visibility = 'hidden';
+        });
+
+        el.addEventListener('mousemove', (e) => {
+            // Update position on mouse move for smooth following
+            const rect = el.getBoundingClientRect();
+            const tooltipRect = tooltip.getBoundingClientRect();
+            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            let top = rect.top - tooltipRect.height - 10;
+
+            if (left < 10) left = 10;
+            if (left + tooltipRect.width > window.innerWidth - 10) {
+                left = window.innerWidth - tooltipRect.width - 10;
+            }
+            if (top < 10) {
+                top = rect.bottom + 10;
+            }
+
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+        });
+    });
+}
+
 // Initialize all effects
 document.addEventListener('DOMContentLoaded', () => {
     initTechCursor();
     initMagnetizeButtons();
-    
+    initTooltips();
+
     // Add floating effect to cards
     document.querySelectorAll('.project-card, .contact-card, .path-card').forEach((card, i) => {
         card.classList.add('floating-card');
         card.style.animationDelay = `${i * 0.2}s`;
     });
-    
+
     // Add liquid glass to modals
     document.querySelectorAll('.modal-content').forEach(modal => {
         modal.classList.add('liquid-glass');

@@ -16,6 +16,139 @@
     <link href="../css/navigation.css" rel="stylesheet">
     <link href="../css/effects.css" rel="stylesheet">
     <link href="../css/hero-fixes.css" rel="stylesheet">
+    <style>
+        /* Glossary Card Styles */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .glossary-card {
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glossary-card:hover {
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15);
+        }
+
+        .glossary-card.hidden {
+            display: none;
+        }
+
+        .glossary-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .glossary-card-header:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        .glossary-card-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .term-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2));
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #00ffff;
+        }
+
+        .glossary-card-header i {
+            color: rgba(0, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .glossary-card.expanded .glossary-card-header i {
+            transform: rotate(180deg);
+        }
+
+        .glossary-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 20px;
+        }
+
+        .glossary-card.expanded .glossary-card-content {
+            max-height: 300px;
+            padding: 0 20px 20px;
+        }
+
+        .glossary-card-content p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .glossary-card-content strong {
+            color: #00ffff;
+        }
+
+        .glossary-card-content code {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #ff0080;
+        }
+
+        /* Category buttons */
+        .category-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: rgba(0, 255, 255, 0.3) !important;
+            border-color: rgba(0, 255, 255, 0.8) !important;
+        }
+
+        /* Category-specific card borders */
+        .glossary-card[data-category="web3"] { border-left: 3px solid #ff0080; }
+        .glossary-card[data-category="precision"] { border-left: 3px solid #ffd700; }
+        .glossary-card[data-category="spiritual"] { border-left: 3px solid #8a2be2; }
+        .glossary-card[data-category="ethereal"] { border-left: 3px solid #00ff80; }
+
+        @media (max-width: 768px) {
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .glossary-categories {
+                padding: 0 10px;
+            }
+
+            .category-btn {
+                font-size: 0.85rem;
+                padding: 6px 12px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="top-left-actions">
@@ -91,7 +224,14 @@
             <div class="hero-content">
                 <h1 class="glitch-text rainbow-text" data-text="Glossary">Glossary</h1>
                 <p class="hero-subtitle cosmic-text">Sacred Technology & Precision Engineering Terms</p>
-                <div class="hero-actions" style="text-align: center; margin-top: 30px;">
+                <div class="glossary-search-container" style="max-width: 500px; margin: 30px auto 20px;">
+                    <div class="search-wrapper" style="position: relative;">
+                        <i class="fas fa-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(0, 255, 255, 0.5);"></i>
+                        <input type="text" id="glossary-search" placeholder="Search terms..." style="width: 100%; padding: 14px 20px 14px 45px; background: rgba(10, 10, 15, 0.8); border: 2px solid rgba(0, 255, 255, 0.3); border-radius: 25px; color: #fff; font-size: 1rem; outline: none; transition: all 0.3s ease;" onfocus="this.style.borderColor='rgba(0, 255, 255, 0.8)'; this.style.boxShadow='0 0 20px rgba(0, 255, 255, 0.3)'" onblur="this.style.borderColor='rgba(0, 255, 255, 0.3)'; this.style.boxShadow='none'">
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 10px; text-align: center;"><span id="term-count">0</span> terms • Click any term to expand</p>
+                </div>
+                <div class="hero-actions" style="text-align: center; margin-top: 20px;">
                     <a href="resources.html" class="back-btn" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; text-decoration: none; font-size: 1rem; transition: all 0.3s ease;" onmouseover="this.style.background='linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3))'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 255, 255, 0.4)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2))'; this.style.transform='translateY(0)'; this.style.boxShadow='none'">
                         ← 📚 Back to Main Resources
                     </a>
@@ -100,160 +240,562 @@
         </section>
 
         <section class="section glossary-content" id="glossary">
-            <div class="glossary-grid">
-                <div class="glossary-term" id="aleo">
-                    <h3>Aleo</h3>
-                    <p>Privacy-focused blockchain platform using zero-knowledge cryptography (ZK-SNARKs) for building private applications. Uses Leo programming language for writing ZK circuits.</p>
+            <!-- Category Filter -->
+            <div class="glossary-categories" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px;">
+                <button class="category-btn active" data-category="all" style="padding: 8px 16px; background: rgba(0, 255, 255, 0.2); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 20px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">All</button>
+                <button class="category-btn" data-category="web3" style="padding: 8px 16px; background: rgba(255, 0, 128, 0.1); border: 1px solid rgba(255, 0, 128, 0.3); border-radius: 20px; color: #ff0080; cursor: pointer; transition: all 0.3s ease;">Web3</button>
+                <button class="category-btn" data-category="precision" style="padding: 8px 16px; background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 20px; color: #ffd700; cursor: pointer; transition: all 0.3s ease;">Precision</button>
+                <button class="category-btn" data-category="spiritual" style="padding: 8px 16px; background: rgba(138, 43, 226, 0.1); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 20px; color: #8a2be2; cursor: pointer; transition: all 0.3s ease;">Spiritual</button>
+                <button class="category-btn" data-category="ethereal" style="padding: 8px 16px; background: rgba(0, 255, 128, 0.1); border: 1px solid rgba(0, 255, 128, 0.3); border-radius: 20px; color: #00ff80; cursor: pointer; transition: all 0.3s ease;">Ethereal Offering</button>
+            </div>
+
+            <div class="glossary-grid" id="glossary-terms">
+                <!-- A -->
+                <div class="glossary-card" data-category="web3" data-term="aleo">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">A</span> Aleo</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A Layer 1 blockchain focused on <strong>zero-knowledge cryptography</strong> and privacy. Uses Leo programming language for writing ZK circuits. Ethereal Offering uses Aleo for anonymous governance and private voting.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="blockchain">
-                    <h3>Blockchain</h3>
-                    <p>Distributed ledger technology that maintains a continuously growing list of records (blocks) linked and secured using cryptography.</p>
+                <div class="glossary-card" data-category="web3" data-term="amm">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">A</span> AMM (Automated Market Maker)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A decentralized exchange protocol that uses <strong>liquidity pools</strong> instead of order books. Users can swap tokens directly from pools, and liquidity providers earn fees.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="interoperability">
-                    <h3>Blockchain Interoperability</h3>
-                    <p>Ability of different blockchain networks to communicate and share data with each other, enabling cross-chain transactions and applications.</p>
+                <!-- B -->
+                <div class="glossary-card" data-category="web3" data-term="blockchain">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">B</span> Blockchain</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>distributed ledger</strong> that records transactions across many computers. Immutable, transparent, and decentralized.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="oracle">
-                    <h3>Blockchain Oracle</h3>
-                    <p>Service that connects blockchains to external data sources, enabling smart contracts to access real-world information.</p>
+                <div class="glossary-card" data-category="web3" data-term="blockchain-interoperability">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">B</span> Blockchain Interoperability</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Ability of different blockchain networks to communicate and share data with each other, enabling cross-chain transactions and applications.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="cnc-lathe">
-                    <h3>CNC Lathe</h3>
-                    <p>Computer-controlled machine tool that rotates workpiece for precision turning operations. Capable of complex geometries with tight tolerances.</p>
+                <div class="glossary-card" data-category="web3" data-term="blockchain-oracle">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">B</span> Blockchain Oracle</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Service that provides <strong>external data</strong> to smart contracts. Chainlink oracles provide price feeds for collateral systems.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="consensus">
-                    <h3>Consensus Mechanism</h3>
-                    <p>Protocol used by blockchain networks to agree on the validity of transactions. Common types include Proof of Work and Proof of Stake.</p>
+                <!-- C -->
+                <div class="glossary-card" data-category="ethereal" data-term="ceremonial-offering">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> Ceremonial Offering</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The act of <strong>burning ETHO tokens</strong> at the Sacred Altar as a spiritual practice, inspired by ancient burnt offering traditions.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="cryptocurrency">
-                    <h3>Cryptocurrency</h3>
-                    <p>Digital or virtual currency secured by cryptography, making it nearly impossible to counterfeit. Operates independently of central banks.</p>
+                <div class="glossary-card" data-category="precision" data-term="cnc-lathe">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> CNC Lathe</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Computer-controlled machine tool that rotates workpiece for precision turning operations. Capable of complex geometries with tight tolerances.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="wallet">
-                    <h3>Crypto Wallet</h3>
-                    <p>Digital tool for storing, sending, and receiving cryptocurrencies. Contains public and private keys for blockchain transactions.</p>
+                <div class="glossary-card" data-category="web3" data-term="consensus-mechanism">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> Consensus Mechanism</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Protocol used by blockchain networks to agree on the validity of transactions. Common types include Proof of Work and Proof of Stake.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="dao">
-                    <h3>DAO (Decentralized Autonomous Organization)</h3>
-                    <p>Organization represented by rules encoded as smart contracts, controlled by members rather than central authority. Enables transparent, democratic governance on the blockchain.</p>
+                <div class="glossary-card" data-category="web3" data-term="cryptocurrency">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> Cryptocurrency</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Digital or virtual currency secured by cryptography, making it nearly impossible to counterfeit. Operates independently of central banks.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="dapp">
-                    <h3>dApp (Decentralized Application)</h3>
-                    <p>Application that runs on a decentralized network, typically blockchain, rather than centralized servers. Offers censorship resistance and user control.</p>
+                <div class="glossary-card" data-category="web3" data-term="crypto-wallet">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> Crypto Wallet</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Digital tool for storing, sending, and receiving cryptocurrencies. Contains public and private keys for blockchain transactions.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="defi">
-                    <h3>DeFi (Decentralized Finance)</h3>
-                    <p>Financial services built on blockchain without traditional intermediaries like banks. Includes lending, borrowing, trading, and yield farming protocols.</p>
+                <!-- D -->
+                <div class="glossary-card" data-category="web3" data-term="dao">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">D</span> DAO (Decentralized Autonomous Organization)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Organization represented by rules encoded as smart contracts, controlled by members rather than central authority. Enables transparent, democratic governance on the blockchain.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="ethereum">
-                    <h3>Ethereum</h3>
-                    <p>Decentralized blockchain platform enabling smart contracts and decentralized applications (dApps). Uses Ether (ETH) as native cryptocurrency.</p>
+                <div class="glossary-card" data-category="web3" data-term="dapp">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">D</span> dApp (Decentralized Application)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Application that runs on a decentralized network, typically blockchain, rather than centralized servers. Offers censorship resistance and user control.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="gas">
-                    <h3>Gas Fees</h3>
-                    <p>Transaction fees paid to blockchain validators for processing and confirming transactions. Varies based on network congestion and complexity.</p>
+                <div class="glossary-card" data-category="web3" data-term="defi">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">D</span> DeFi (Decentralized Finance)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Financial services built on blockchain without traditional intermediaries like banks. Includes lending, borrowing, trading, and yield farming protocols.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="governance-token">
-                    <h3>Governance Token</h3>
-                    <p>Cryptocurrency that gives holders voting rights in decentralized protocols, allowing community-driven decision making and protocol upgrades.</p>
+                <div class="glossary-card" data-category="ethereal" data-term="dm">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">D</span> DM (Daily Mushroom)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>daily rewards token</strong> earned through check-ins, ceremonies, and participation. Used for gas fees, breeding, and unlocking features.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="layer2">
-                    <h3>Layer 2 Solutions</h3>
-                    <p>Scaling solutions built on top of existing blockchains to increase transaction throughput and reduce fees while maintaining security.</p>
+                <!-- E -->
+                <div class="glossary-card" data-category="web3" data-term="erc20">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">E</span> ERC-20</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The standard for <strong>fungible tokens</strong> on Ethereum. PSILO, MDAO, ETHO, PSD, and DM are all ERC-20 tokens.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="liquidity-pool">
-                    <h3>Liquidity Pool</h3>
-                    <p>Collection of funds locked in smart contracts to facilitate decentralized trading and lending. Users provide liquidity in exchange for fees.</p>
+                <div class="glossary-card" data-category="web3" data-term="erc721">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">E</span> ERC-721</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The standard for <strong>non-fungible tokens (NFTs)</strong> on Ethereum. POB and SHROOM are ERC-721 tokens.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="llm">
-                    <h3>LLM (Large Language Model)</h3>
-                    <p>AI model trained on vast amounts of text data to understand and generate human-like text. Powers applications like ChatGPT and our Oracle of Fruit.</p>
+                <div class="glossary-card" data-category="ethereal" data-term="etho">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">E</span> ETHO (Ethereal Offering Token)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>ceremonial burn token</strong> used at the Sacred Altar. Deflationary supply, earned through participation.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="mastercam">
-                    <h3>Mastercam</h3>
-                    <p>Industry-leading CAM (Computer-Aided Manufacturing) software for creating CNC toolpaths and programs. Used for mill, lathe, and multi-axis machining.</p>
+                <div class="glossary-card" data-category="web3" data-term="ethereum">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">E</span> Ethereum</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>Layer 1 blockchain</strong> with smart contract functionality. Primary blockchain for Ethereal Offering's token ecosystem.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="mazatrol">
-                    <h3>Mazatrol</h3>
-                    <p>Conversational CNC programming language used on Mazak machine tools. Allows intuitive part programming through graphical interface and conversational prompts.</p>
+                <div class="glossary-card" data-category="ethereal" data-term="eternal-flame">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">E</span> Eternal Flame</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>365+ day streak</strong> of daily offerings or check-ins. Earns 2x-3x rewards.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="mpc">
-                    <h3>MPC (Multi-Party Computation)</h3>
-                    <p>Cryptographic protocol allowing multiple parties to jointly compute a function while keeping inputs private. Used for secure key management and collaborative computation.</p>
+                <!-- G -->
+                <div class="glossary-card" data-category="web3" data-term="gas-fees">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">G</span> Gas Fees</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>transaction fee</strong> paid to blockchain validators. On Ethereum, gas fees vary based on network congestion ($1-$100).</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="mycelial-networks">
-                    <h3>Mycelial Networks</h3>
-                    <p>Decentralized organizational structures inspired by fungal networks. Emphasizes interconnection, distributed intelligence, and mutual support without hierarchy.</p>
+                <div class="glossary-card" data-category="web3" data-term="governance-token">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">G</span> Governance Token</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Cryptocurrency that gives holders voting rights in decentralized protocols, allowing community-driven decision making and protocol upgrades.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="nft">
-                    <h3>NFT (Non-Fungible Token)</h3>
-                    <p>Unique digital asset verified using blockchain technology. Represents ownership of specific items, art, or content that cannot be replicated.</p>
+                <!-- H -->
+                <div class="glossary-card" data-category="ethereal" data-term="harvest">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">H</span> Harvest</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p><strong>Burning a Mushroom NFT</strong> to receive DM rewards. Mature mushrooms can be harvested for 50-10,000 DM depending on rarity.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="metrology">
-                    <h3>Precision Metrology</h3>
-                    <p>Science of measurement ensuring parts meet specified tolerances, often to ±0.0001" accuracy. Uses CMMs, micrometers, and optical comparators.</p>
+                <div class="glossary-card" data-category="spiritual" data-term="holacracy">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">H</span> Holacracy</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>decentralized governance structure</strong> with autonomous circles. Ethereal Offering DAO has 4 circles: Core, Development, Community, and Spiritual.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="ritual-intelligence">
-                    <h3>Ritual Intelligence</h3>
-                    <p>AI systems designed to support spiritual practices, ceremonies, and contemplative traditions. Combines technology with sacred wisdom for community healing.</p>
+                <!-- L -->
+                <div class="glossary-card" data-category="web3" data-term="layer1">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">L</span> Layer 1 (L1)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>base blockchain</strong> like Ethereum, TON, or Aleo. Processes transactions and maintains consensus.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="smart-contracts">
-                    <h3>Smart Contracts</h3>
-                    <p>Self-executing contracts with terms directly written into code. Automatically execute when predetermined conditions are met, eliminating need for intermediaries.</p>
+                <div class="glossary-card" data-category="web3" data-term="layer2">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">L</span> Layer 2 (L2)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>scaling solution</strong> built on top of Layer 1. Processes transactions faster and cheaper, then settles to L1.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="solidity">
-                    <h3>Solidity</h3>
-                    <p>Object-oriented programming language for writing smart contracts on Ethereum and EVM-compatible blockchains. Syntax similar to JavaScript and C++.</p>
+                <div class="glossary-card" data-category="web3" data-term="liquidity-pool">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">L</span> Liquidity Pool</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>smart contract</strong> holding two tokens that users can trade against. Liquidity providers deposit tokens and earn fees.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="soulbound">
-                    <h3>Soulbound Tokens</h3>
-                    <p>Non-transferable NFTs that represent identity, credentials, or achievements tied to a specific wallet address. Cannot be sold or transferred, representing intrinsic value tied to the holder.</p>
+                <div class="glossary-card" data-category="spiritual" data-term="llm">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">L</span> LLM (Large Language Model)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>AI model trained on vast amounts of text data to understand and generate human-like text. Powers applications like ChatGPT and our Oracle of Fruit.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="tokenomics">
-                    <h3>Tokenomics</h3>
-                    <p>Economic model and incentive structure of a cryptocurrency token, including supply, distribution, utility, and governance mechanisms.</p>
+                <!-- M -->
+                <div class="glossary-card" data-category="precision" data-term="mastercam">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">M</span> Mastercam</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Industry-leading CAM (Computer-Aided Manufacturing) software for creating CNC toolpaths and programs. Used for mill, lathe, and multi-axis machining.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="web3">
-                    <h3>Web3</h3>
-                    <p>The next evolution of the internet built on blockchain technology, emphasizing decentralization, user ownership, and peer-to-peer interactions without intermediaries.</p>
+                <div class="glossary-card" data-category="precision" data-term="mazatrol">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">M</span> Mazatrol</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Conversational CNC programming language used on Mazak machine tools. Allows intuitive part programming through graphical interface and conversational prompts.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="yield-farming">
-                    <h3>Yield Farming</h3>
-                    <p>DeFi strategy of lending or staking cryptocurrency to earn rewards, often in the form of additional tokens or interest payments.</p>
+                <div class="glossary-card" data-category="ethereal" data-term="mdao">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">M</span> MDAO (Mushroom DAO Token)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>governance token</strong> that grants voting rights in the DAO. Earned by staking PSILO or making offerings.</p>
+                    </div>
                 </div>
 
-                <div class="glossary-term" id="zk">
-                    <h3>Zero-Knowledge Proofs (ZK)</h3>
-                    <p>Cryptographic method allowing one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself. Essential for privacy-preserving blockchain applications.</p>
+                <div class="glossary-card" data-category="web3" data-term="mpc">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">M</span> MPC (Multi-Party Computation)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Cryptographic protocol allowing multiple parties to jointly compute a function while keeping inputs private. Used for secure key management and collaborative computation.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="spiritual" data-term="mycelial-networks">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">M</span> Mycelial Networks</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Decentralized organizational structures inspired by fungal networks. Emphasizes interconnection, distributed intelligence, and mutual support without hierarchy.</p>
+                    </div>
+                </div>
+
+                <!-- N -->
+                <div class="glossary-card" data-category="web3" data-term="nft">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">N</span> NFT (Non-Fungible Token)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>unique digital asset</strong> on the blockchain. Each NFT is distinct and not interchangeable. POB and SHROOM are NFTs.</p>
+                    </div>
+                </div>
+
+                <!-- P -->
+                <div class="glossary-card" data-category="ethereal" data-term="pob">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">P</span> POB (Proof of Burn)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>soulbound NFT</strong> minted when you make an offering at the Sacred Altar. Permanent receipt of your burn.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="precision" data-term="precision-metrology">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">P</span> Precision Metrology</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Science of measurement ensuring parts meet specified tolerances, often to ±0.0001" accuracy. Uses CMMs, micrometers, and optical comparators.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="ethereal" data-term="proof-of-you">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">P</span> Proof of You</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The concept that <strong>your participation is proof of your existence</strong> and value. Not proof of work or stake, but proof of presence.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="ethereal" data-term="psd">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">P</span> PSD (Psanctuary Dollar)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>stablecoin</strong> of the ecosystem, pegged to $1 USD. Used for stable trading pairs and treasury reserves.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="ethereal" data-term="psilo">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">P</span> PSILO (Psilocybin Token)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>crowdsale fundraising token</strong>. Fixed supply of 10M. Stake to earn MDAO.</p>
+                    </div>
+                </div>
+
+                <!-- Q -->
+                <div class="glossary-card" data-category="web3" data-term="quorum">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">Q</span> Quorum</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>minimum participation</strong> required for a vote to be valid. Standard proposals need 10% quorum, Critical need 40%.</p>
+                    </div>
+                </div>
+
+                <!-- R -->
+                <div class="glossary-card" data-category="spiritual" data-term="recovery">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">R</span> Recovery</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The process of <strong>healing from addiction</strong> or trauma. Ethereal Offering integrates 12-step principles and recovery support.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="spiritual" data-term="ritual-intelligence">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">R</span> Ritual Intelligence</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>AI systems designed to support spiritual practices, ceremonies, and contemplative traditions. Combines technology with sacred wisdom for community healing.</p>
+                    </div>
+                </div>
+
+                <!-- S -->
+                <div class="glossary-card" data-category="ethereal" data-term="sacred-altar">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Sacred Altar</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>smart contract</strong> where ETHO tokens are burned ceremonially. Mints POB NFTs and distributes MDAO rewards.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="web3" data-term="smart-contracts">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Smart Contracts</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Self-executing contracts with terms directly written into code. Automatically execute when predetermined conditions are met, eliminating need for intermediaries.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="web3" data-term="solidity">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Solidity</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Object-oriented programming language for writing smart contracts on Ethereum and EVM-compatible blockchains. Syntax similar to JavaScript and C++.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="web3" data-term="soulbound-tokens">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Soulbound Tokens</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Non-transferable NFTs that represent identity, credentials, or achievements tied to a specific wallet address. Cannot be sold or transferred.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="ethereal" data-term="spiritual-hashrate">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Spiritual Hashrate</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A formula representing <strong>spiritual effort</strong>: <code>(Presence + Service + Recovery²) / Ego</code></p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="web3" data-term="staking">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Staking</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p><strong>Locking tokens</strong> in a smart contract to earn rewards. Stake PSILO to earn MDAO.</p>
+                    </div>
+                </div>
+
+                <!-- T -->
+                <div class="glossary-card" data-category="web3" data-term="tokenomics">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">T</span> Tokenomics</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Economic model and incentive structure of a cryptocurrency token, including supply, distribution, utility, and governance mechanisms.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="web3" data-term="ton">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">T</span> TON (The Open Network)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>Layer 1 blockchain</strong> integrated with Telegram. Ethereal Offering uses TON for the Telegram mini-app and daily mining.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="spiritual" data-term="twelve-step">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">T</span> 12-Step</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A <strong>recovery program</strong> based on spiritual principles. Ethereal Offering integrates 12-step concepts into blockchain mechanics.</p>
+                    </div>
+                </div>
+
+                <!-- W -->
+                <div class="glossary-card" data-category="web3" data-term="web3">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">W</span> Web3</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>The <strong>decentralized internet</strong> built on blockchain. Emphasizes user ownership and control.</p>
+                    </div>
+                </div>
+
+                <!-- Y -->
+                <div class="glossary-card" data-category="web3" data-term="yield-farming">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">Y</span> Yield Farming</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>DeFi strategy of lending or staking cryptocurrency to earn rewards, often in the form of additional tokens or interest payments.</p>
+                    </div>
+                </div>
+
+                <!-- Z -->
+                <div class="glossary-card" data-category="web3" data-term="zero-knowledge-proofs">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">Z</span> Zero-Knowledge Proofs (ZK)</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Cryptographic method allowing one party to prove to another that a statement is true without revealing any information beyond the validity of the statement itself. Essential for privacy-preserving blockchain applications.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -326,7 +868,7 @@
 
     <script>
         lucide.createIcons();
-        
+
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         if (hamburger && navMenu) {
@@ -335,7 +877,6 @@
                 hamburger.classList.toggle('active');
             });
 
-            // Close hamburger menu when resizing to desktop view
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768) {
                     navMenu.classList.remove('active');
@@ -343,6 +884,69 @@
                 }
             });
         }
+
+        // Glossary functionality
+        function toggleGlossaryCard(header) {
+            const card = header.parentElement;
+            card.classList.toggle('expanded');
+        }
+
+        // Update term count
+        function updateTermCount() {
+            const visibleCards = document.querySelectorAll('.glossary-card:not(.hidden)');
+            document.getElementById('term-count').textContent = visibleCards.length;
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('glossary-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('.glossary-card');
+
+                cards.forEach(card => {
+                    const term = card.getAttribute('data-term') || '';
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const content = card.querySelector('.glossary-card-content p').textContent.toLowerCase();
+
+                    if (term.includes(searchTerm) || title.includes(searchTerm) || content.includes(searchTerm)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                updateTermCount();
+            });
+        }
+
+        // Category filter functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.getAttribute('data-category');
+                const cards = document.querySelectorAll('.glossary-card');
+
+                cards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                // Clear search when changing category
+                if (searchInput) searchInput.value = '';
+                updateTermCount();
+            });
+        });
+
+        // Initialize term count
+        document.addEventListener('DOMContentLoaded', updateTermCount);
     </script>
 </body>
 </html>
+
