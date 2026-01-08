@@ -36,7 +36,7 @@
 
     <!-- Top-right connect button -->
     <div class="top-right-actions">
-        <button class="connect-btn-top" onclick="connectWallet()" data-chain="Connect">
+        <button class="connect-btn-top" onclick="connectWallet()" data-chain="Connect" data-tooltip="Connect Web3 Wallet">
             <i class="fas fa-wallet"></i>
         </button>
     </div>
@@ -439,6 +439,35 @@
                     <p>This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.</p>
                     <p><strong>This is the offering.</strong></p>
                 </blockquote>
+            </div>
+        </section>
+
+        <!-- Teaching as Learning Section -->
+        <section class="section teaching-practice">
+            <h2>Teaching as Learning</h2>
+            <div class="teaching-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;">
+                <div class="teaching-card liquid-glass" onclick="openACIMModal()" style="cursor: pointer; padding: 30px; border-radius: 16px; transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(0, 255, 255, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-book-open" style="font-size: 1.5rem; color: #00ffff;"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; color: #fff;">Student-Teacher Practice</h3>
+                            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);"><em>A Course in Miracles</em></p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Teaching is understood not as authority or instruction, but as learning made visible through service. A "teacher" is defined by a practical decision: to no longer treat one's interests as separate from another's.</p>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 20px; color: #00ffff;">
+                        <span>Read More</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="teaching-quote liquid-glass" style="padding: 30px; border-radius: 16px; border-left: 4px solid rgba(138, 43, 226, 0.8);">
+                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8;">
+                        <p>"A teacher of God is anyone who chooses to be one. His qualifications consist solely in this; somehow, somewhere he has made a deliberate choice in which he did not see his interests as apart from someone else's."</p>
+                    </blockquote>
+                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem;">— A Course in Miracles, M-1.1:1-2</cite>
+                </div>
             </div>
         </section>
     </main>

@@ -448,6 +448,7 @@ function openProjectModal(projectId) {
 }
 
 function openDonateModal() {
+    const isConnected = window.WalletManager && window.WalletManager.isConnected;
     const donateContent = `
         <div class="donate-modal">
             <h3>❤️ Support the Work</h3>
@@ -468,25 +469,36 @@ function openDonateModal() {
                     </div>
                 </div>
                 <div class="payment-section wallet-section">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                        <h4 style="margin: 0;">Direct via Web3 Wallet</h4>
-                        <span class="wallet-status-badge disconnected" style="font-size: 0.85rem;">
-                            <i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <h4 style="margin: 0;">Direct via Web3 Wallet</h4>
+                            <button onclick="WalletManager.showWalletModal()" class="wallet-info-btn tooltip-left" data-tooltip="Learn about Web3 wallets" style="background: none; border: 1px solid rgba(0,255,255,0.5); border-radius: 50%; width: 24px; height: 24px; color: #00ffff; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-info"></i>
+                            </button>
+                        </div>
+                        <span class="wallet-status-badge ${isConnected ? 'connected' : 'disconnected'}" style="font-size: 0.85rem; padding: 6px 12px; border-radius: 20px; border: 1px solid ${isConnected ? 'rgba(0, 255, 136, 0.5)' : 'rgba(255, 100, 100, 0.3)'}; background: ${isConnected ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255, 100, 100, 0.1)'};">
+                            <i class="fas ${isConnected ? 'fa-check-circle' : 'fa-wallet'}"></i> <span class="wallet-status-text">${isConnected ? window.WalletManager.formatAddress(window.WalletManager.currentAddress) : 'Not Connected'}</span>
                         </span>
                     </div>
-                    <button class="wallet-connect-btn rainbow-cta" onclick="connectWallet()" style="width: 100%; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)); border: 2px solid; border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1; border-radius: 12px;">
-                        <i class="fas fa-wallet" style="font-size: 1.5rem; color: #00ffff;"></i>
-                        <span style="font-size: 1rem; color: #fff;">Connect Your Web3 Wallet</span>
+                    <button class="wallet-connect-btn rainbow-cta tooltip-left" data-tooltip="${isConnected ? 'Disconnect your wallet' : 'Connect MetaMask, Rainbow, or other Web3 wallet'}" onclick="${isConnected ? 'WalletManager.disconnect()' : 'connectWallet()'}" style="width: 100%; padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2), rgba(138, 43, 226, 0.2)); border: 2px solid; border-image: linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1; border-radius: 12px;">
+                        <i class="fas ${isConnected ? 'fa-unlink' : 'fa-wallet'}" style="font-size: 1.5rem; color: ${isConnected ? '#ff6b6b' : '#00ffff'};"></i>
+                        <span style="font-size: 1rem; color: #fff;">${isConnected ? 'Disconnect Wallet' : 'Connect Your Web3 Wallet'}</span>
                     </button>
                     <div class="donation-amounts" style="margin-top: 15px;">
                         <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-align: center;">Quick Send (ETH):</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                            <button class="quick-donate-btn" onclick="sendDonation(0.01)">0.01 ETH</button>
-                            <button class="quick-donate-btn" onclick="sendDonation(0.05)">0.05 ETH</button>
-                            <button class="quick-donate-btn" onclick="sendDonation(0.1)">0.1 ETH</button>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 10px;">
+                            <button class="quick-donate-btn tooltip-left" data-tooltip="Send 0.01 ETH (~$25 USD)" onclick="sendDonation(0.01)">0.01 ETH</button>
+                            <button class="quick-donate-btn tooltip-left" data-tooltip="Send 0.05 ETH (~$125 USD)" onclick="sendDonation(0.05)">0.05 ETH</button>
+                            <button class="quick-donate-btn tooltip-left" data-tooltip="Send 0.1 ETH (~$250 USD)" onclick="sendDonation(0.1)">0.1 ETH</button>
                         </div>
-                        <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${window.WalletManager && window.WalletManager.isConnected ? 'none' : 'block'};">
-                            ⚠️ Demo mode - Click "Connect Your Web3 Wallet" above to exit demo mode and send real transactions
+                        <div style="display: flex; gap: 10px; align-items: center; justify-content: center; margin-top: 12px;">
+                            <input type="number" id="custom-eth-amount" placeholder="Custom amount" step="0.001" min="0.001" style="width: 120px; padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(0,255,255,0.3); background: rgba(0,0,0,0.3); color: #fff; font-size: 0.9rem; text-align: center;">
+                            <button class="quick-donate-btn tooltip-left" data-tooltip="Send custom ETH amount" onclick="sendCustomDonation()" style="padding: 10px 16px;">
+                                <i class="fab fa-ethereum"></i> Send ETH
+                            </button>
+                        </div>
+                        <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${isConnected ? 'none' : 'block'};">
+                            ⚠️ Demo mode - Connect wallet to send real transactions
                         </p>
                     </div>
                 </div>
@@ -815,8 +827,62 @@ function openBioModal() {
         
         <p>Guided by mycelial metaphor and mystical insight, Christopher's mission is to help build systems of dignity, privacy, connection, and awakening. He walks a path where code becomes prayer, where offerings become remembrance, and where each of us is revealed as a hypha in a sacred, intelligent, evolving whole.</p>
     `;
-    
+
     if (window.modalInstance) {
         window.modalInstance.open(bioContent);
+    }
+}
+
+function openACIMModal() {
+    const acimContent = `
+        <div class="acim-modal" style="max-width: 700px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(0, 255, 255, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-book-open" style="font-size: 2rem; color: #00ffff;"></i>
+                </div>
+                <h2 style="background: linear-gradient(135deg, #8a2be2, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Teaching as Learning</h2>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 5px;"><em>Service as Practice</em></p>
+            </div>
+
+            <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                <p>Alongside my technical and creative work, I'm guided by a practice drawn from <em>A Course in Miracles</em> that understands teaching not as authority or instruction, but as learning made visible through service. In this framework, a "teacher" is not defined by credentials, certainty, or belief, but by a practical decision: to no longer treat one's interests as separate from another's.</p>
+
+                <blockquote style="border-left: 3px solid rgba(138, 43, 226, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(0, 255, 255, 0.9);">
+                    <p>"A teacher of God is anyone who chooses to be one. His qualifications consist solely in this; somehow, somewhere he has made a deliberate choice in which he did not see his interests as apart from someone else's. Once he has done that, his road is established and his direction is sure. A light has entered the darkness."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(255,255,255,0.6);">— M-1.1:1-4</cite>
+                </blockquote>
+
+                <p>The <em>Manual for Teachers</em> describes this moment as simple yet decisive—a willingness to choose shared interest over separation. From that choice, direction emerges naturally. A small light enters, and that is enough. Teaching, in this sense, is not about fixing, persuading, or correcting, but about standing for an alternative way of relating—one rooted in cooperation, remembrance, and trust rather than control.</p>
+
+                <p>I hold this role as a student–teacher, not as a title or authority. It is not my hands that heal, nor my voice that carries truth. What is offered is simply what is being learned and received—an orientation toward clarity, forgiveness, and shared understanding. The work is not to supply a remedy, but to remind ourselves of what is already present and available.</p>
+
+                <blockquote style="border-left: 3px solid rgba(0, 255, 255, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(138, 43, 226, 0.9);">
+                    <p>"They stand for the Alternative. With God's Word in their minds they come in benediction, not to heal the sick but to remind them of the remedy God has already given them. It is not their hands that heal. It is not their voice that speaks the Word of God. They merely give what has been given them."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(255,255,255,0.6);">— M-5.III.2:6-10</cite>
+                </blockquote>
+
+                <p>This practice shows up quietly and practically in my work. Whether designing systems, writing code, collaborating with others, or navigating human complexity, I aim to learn openly, offer what I'm learning honestly, and allow service to refine understanding. Teaching and learning are not separate activities here, but a single, ongoing movement.</p>
+
+                <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 255, 255, 0.1)); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
+                    <p style="margin: 0; color: rgba(255,255,255,0.9);">If this way of working resonates—if you're interested in building, learning, or creating in a way that honors shared interest over separation—I welcome collaboration.</p>
+                    <p style="margin: 15px 0 0 0; color: #00ffff; font-weight: 500;">Teaching, as I understand it, is something we enter together.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                <a href="https://acim.org/" target="_blank" style="color: #00ffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-external-link-alt"></i> Explore A Course in Miracles
+                </a>
+            </div>
+        </div>
+    `;
+
+    if (window.modalInstance) {
+        window.modalInstance.open(acimContent);
+        // Constrain modal width
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.maxWidth = '750px';
+        }
     }
 }

@@ -5,9 +5,30 @@ const WalletManager = {
     isConnected: false,
     currentAddress: null,
     currentChain: null,
+    currentChainId: null,
 
-    // Ethereum address for donations
-    donationAddress: '0x96F185dB969F3c45EDDff27c73A4880A877BaeF6',
+    // Wallet addresses for donations
+    donationAddresses: {
+        ETH: '0x96F185dB969F3c45EDDff27c73A4880A877BaeF6',
+        BTC: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh', // Replace with your BTC address
+        LTC: 'LTC_ADDRESS_HERE', // Replace with your LTC address
+        XRP: 'XRP_ADDRESS_HERE'  // Replace with your XRP address
+    },
+
+    // Chain ID to name mapping (expanded)
+    chainNames: {
+        '0x1': 'Ethereum Mainnet',
+        '0x5': 'Goerli Testnet',
+        '0xaa36a7': 'Sepolia Testnet',
+        '0x89': 'Polygon',
+        '0xa86a': 'Avalanche',
+        '0xa4b1': 'Arbitrum One',
+        '0xa': 'Optimism',
+        '0x38': 'BNB Smart Chain',
+        '0x7a69': 'Hardhat Local',
+        '0x539': 'Hardhat Local',
+        '0x13881': 'Polygon Mumbai'
+    },
 
     // Check if MetaMask is available
     isMetaMaskAvailable() {
@@ -362,17 +383,8 @@ const WalletManager = {
         if (!this.isWalletAvailable()) return null;
         try {
             const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-            const chainNames = {
-                '0x1': 'Ethereum',
-                '0x5': 'Goerli',
-                '0xaa36a7': 'Sepolia',
-                '0x89': 'Polygon',
-                '0xa86a': 'Avalanche',
-                '0xa4b1': 'Arbitrum',
-                '0xa': 'Optimism',
-                '0x38': 'BSC'
-            };
-            return chainNames[chainId] || 'Unknown Network';
+            this.currentChainId = chainId;
+            return this.chainNames[chainId] || `Chain ${parseInt(chainId, 16)}`;
         } catch (error) {
             return null;
         }
@@ -448,32 +460,56 @@ const WalletManager = {
         return badge;
     },
 
-    // Send donation transaction
+    // Send donation transaction (ETH)
     async sendDonation(amountEth) {
+        console.log('sendDonation called with amount:', amountEth);
+
         if (!this.isConnected) {
             // Show demo badge when not connected
             this.showTxBadge('demo', 'Connect wallet for real transactions');
             const connected = await this.connect();
-            if (!connected) return false;
+            if (!connected) {
+                console.log('Connection failed, aborting transaction');
+                return false;
+            }
+        }
+
+        // Validate amount
+        const amount = parseFloat(amountEth);
+        if (isNaN(amount) || amount <= 0) {
+            this.showTxBadge('error', 'Invalid amount');
+            return false;
         }
 
         // Show pending badge
-        const pendingBadge = this.showTxBadge('pending', `Sending ${amountEth} ETH...`);
+        const pendingBadge = this.showTxBadge('pending', `Sending ${amount} ETH...`);
 
         try {
-            const weiValue = '0x' + (parseFloat(amountEth) * 1e18).toString(16);
+            // Convert ETH to Wei (1 ETH = 10^18 Wei)
+            const weiAmount = BigInt(Math.floor(amount * 1e18));
+            const weiValue = '0x' + weiAmount.toString(16);
+
+            console.log('Sending transaction:', {
+                from: this.currentAddress,
+                to: this.donationAddresses.ETH,
+                value: weiValue,
+                amountEth: amount
+            });
+
             const txHash = await window.ethereum.request({
                 method: 'eth_sendTransaction',
                 params: [{
                     from: this.currentAddress,
-                    to: this.donationAddress,
+                    to: this.donationAddresses.ETH,
                     value: weiValue
                 }]
             });
 
+            console.log('Transaction hash:', txHash);
+
             // Remove pending badge and show success
             pendingBadge.remove();
-            this.showTxBadge('success', `${amountEth} ETH sent!`, txHash);
+            this.showTxBadge('success', `${amount} ETH sent!`, txHash);
 
             // Trigger celebration
             if (typeof createSporeRain === 'function') {
@@ -488,7 +524,7 @@ const WalletManager = {
             if (error.code === 4001) {
                 this.showTxBadge('error', 'Transaction cancelled by user');
             } else {
-                this.showTxBadge('error', 'Transaction failed. Please try again.');
+                this.showTxBadge('error', error.message || 'Transaction failed. Please try again.');
             }
             return false;
         }
@@ -502,47 +538,54 @@ const WalletManager = {
 
     // Update all UI elements
     updateUI() {
-        // Update wallet status badges
+        const networkShort = this.currentChain ? this.currentChain.split(' ')[0] : '';
+
+        // Update wallet status badges (in donate modal and elsewhere)
         document.querySelectorAll('.wallet-status-badge').forEach(badge => {
             if (this.isConnected) {
-                const textSpan = badge.querySelector('.wallet-status-text');
-                if (textSpan) {
-                    textSpan.textContent = this.formatAddress(this.currentAddress);
-                } else {
-                    badge.innerHTML = `<i class="fas fa-check-circle"></i> ${this.formatAddress(this.currentAddress)}`;
-                }
+                badge.innerHTML = `<i class="fas fa-check-circle" style="color: #00ff88;"></i> <span class="wallet-status-text">${this.formatAddress(this.currentAddress)}</span> <span style="font-size: 0.75em; opacity: 0.8;">(${networkShort})</span>`;
                 badge.classList.add('connected');
                 badge.classList.remove('disconnected');
-                badge.style.borderColor = 'rgba(0, 255, 136, 0.3)';
+                badge.style.borderColor = 'rgba(0, 255, 136, 0.5)';
+                badge.style.background = 'rgba(0, 255, 136, 0.1)';
                 badge.style.color = '#00ff88';
             } else {
-                const textSpan = badge.querySelector('.wallet-status-text');
-                if (textSpan) {
-                    textSpan.textContent = 'Connect';
-                } else {
-                    badge.innerHTML = '<i class="fas fa-wallet"></i> Connect';
-                }
+                badge.innerHTML = '<i class="fas fa-wallet"></i> <span class="wallet-status-text">Not Connected</span>';
                 badge.classList.remove('connected');
                 badge.classList.add('disconnected');
                 badge.style.borderColor = 'rgba(255, 100, 100, 0.3)';
+                badge.style.background = 'rgba(255, 100, 100, 0.1)';
                 badge.style.color = '#ff6b6b';
             }
         });
 
-        // Update connect buttons
+        // Update connect buttons in donate modal - change to Disconnect when connected
         document.querySelectorAll('.wallet-connect-btn').forEach(btn => {
             if (this.isConnected) {
-                btn.innerHTML = `<i class="fas fa-check-circle"></i> Connected: ${this.formatAddress(this.currentAddress)}`;
+                btn.innerHTML = `<i class="fas fa-unlink" style="font-size: 1.5rem; color: #ff6b6b;"></i><span style="font-size: 1rem; color: #fff;">Disconnect Wallet</span>`;
+                btn.onclick = () => WalletManager.disconnect();
+                btn.style.borderImage = 'linear-gradient(135deg, #ff6b6b, #ff0080, #8a2be2) 1';
+            } else {
+                btn.innerHTML = `<i class="fas fa-wallet" style="font-size: 1.5rem; color: #00ffff;"></i><span style="font-size: 1rem; color: #fff;">Connect Your Web3 Wallet</span>`;
+                btn.onclick = () => connectWallet();
+                btn.style.borderImage = 'linear-gradient(135deg, #ff0080, #00ffff, #8a2be2) 1';
             }
         });
+
+        // Update demo badge visibility
+        const demoBadge = document.getElementById('tx-demo-badge');
+        if (demoBadge) {
+            demoBadge.style.display = this.isConnected ? 'none' : 'block';
+        }
 
         // Update top-right connect button
         document.querySelectorAll('.connect-btn-top').forEach(btn => {
             if (this.isConnected) {
                 btn.classList.add('connected');
-                btn.setAttribute('data-chain', this.currentChain || 'Connected');
+                btn.setAttribute('data-chain', `${networkShort} ✓`);
                 btn.innerHTML = '<i class="fas fa-check-circle"></i>';
                 btn.onclick = () => this.disconnect();
+                btn.title = `Connected: ${this.formatAddress(this.currentAddress)} on ${this.currentChain}`;
             } else {
                 btn.classList.remove('connected');
                 btn.setAttribute('data-chain', 'Connect');
@@ -562,5 +605,18 @@ document.addEventListener('DOMContentLoaded', () => {
 window.connectWallet = () => WalletManager.connect();
 window.disconnectWallet = () => WalletManager.disconnect();
 window.sendDonation = (amount) => WalletManager.sendDonation(amount);
+window.sendCustomDonation = () => {
+    const input = document.getElementById('custom-eth-amount');
+    if (input && input.value) {
+        const amount = parseFloat(input.value);
+        if (amount > 0) {
+            WalletManager.sendDonation(amount);
+        } else {
+            WalletManager.showTxBadge('error', 'Please enter a valid amount');
+        }
+    } else {
+        WalletManager.showTxBadge('error', 'Please enter an amount');
+    }
+};
 window.WalletManager = WalletManager;
 

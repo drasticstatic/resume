@@ -2672,6 +2672,114 @@ button[onclick*="connectWallet"] {
     z-index: 9999;
 }
 
+/* Left-positioned tooltips for buttons */
+.tooltip-left {
+    position: relative;
+}
+
+.tooltip-left::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    color: #00ffff;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10001;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    max-width: 200px;
+    white-space: normal;
+    text-align: right;
+}
+
+/* Arrow pointing right */
+.tooltip-left::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0, 255, 255, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.tooltip-left:hover::before,
+.tooltip-left:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Connect button top-right tooltip */
+.connect-btn-top {
+    position: relative;
+}
+
+.connect-btn-top::before {
+    content: attr(data-chain);
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid rgba(0, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    color: #00ffff;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10001;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.connect-btn-top::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0, 255, 255, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.connect-btn-top:hover::before,
+.connect-btn-top:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.connect-btn-top.connected::before {
+    border-color: rgba(0, 255, 136, 0.6);
+    color: #00ff88;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+.connect-btn-top.connected::after {
+    border-color: transparent transparent transparent rgba(0, 255, 136, 0.6);
+}
+
 .skill-core {
     position: absolute;
     width: 80px;
