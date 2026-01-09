@@ -538,6 +538,24 @@ body {
     width: auto !important;
 }
 
+/* Constrain modal-content when showing ACIM modal */
+.modal-content:has(.acim-modal) {
+    max-width: 720px !important;
+    width: auto !important;
+}
+
+/* Constrain modal-content when showing meditation modal */
+.modal-content:has(.meditation-modal) {
+    max-width: 720px !important;
+    width: auto !important;
+}
+
+/* Constrain modal-content when showing manifesto modal */
+.modal-content:has(.manifesto-modal-full) {
+    max-width: 720px !important;
+    width: auto !important;
+}
+
 .donate-modal h3 {
     text-align: center;
     margin-bottom: 20px;

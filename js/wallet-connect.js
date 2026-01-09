@@ -620,3 +620,37 @@ window.sendCustomDonation = () => {
 };
 window.WalletManager = WalletManager;
 
+// Gas Price Indicator - Shows current mainnet gas price
+async function fetchGasPrice() {
+    try {
+        if (typeof window.ethereum === 'undefined') return null;
+        const gasPrice = await window.ethereum.request({ method: 'eth_gasPrice' });
+        const gweiPrice = parseInt(gasPrice, 16) / 1e9;
+        return Math.round(gweiPrice);
+    } catch (e) {
+        console.log('Could not fetch gas price:', e.message);
+        return null;
+    }
+}
+
+// Update gas indicator periodically if on page
+async function updateGasIndicator() {
+    const indicator = document.getElementById('gas-indicator');
+    if (!indicator) return;
+
+    const gasPrice = await fetchGasPrice();
+    if (gasPrice) {
+        let color = '#00ff88'; // Green for low gas
+        if (gasPrice > 50) color = '#ffd700'; // Yellow for medium
+        if (gasPrice > 100) color = '#ff6b6b'; // Red for high
+
+        indicator.innerHTML = `<i class="fas fa-gas-pump" style="color: ${color};"></i> ${gasPrice} gwei`;
+        indicator.style.color = color;
+    }
+}
+
+// Initialize gas price updates every 30 seconds if element exists
+document.addEventListener('DOMContentLoaded', () => {
+    updateGasIndicator();
+    setInterval(updateGasIndicator, 30000);
+});

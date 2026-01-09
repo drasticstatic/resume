@@ -461,10 +461,10 @@ function openDonateModal() {
                             <i class="fab fa-paypal"></i> PayPal
                         </a>
                         <a href="https://venmo.com/u/Christopher-Wilson-cdubz" target="_blank" class="payment-btn venmo-btn">
-                            <i class="fab fa-venmo"></i> Venmo
+                            <span style="font-weight: 800; font-size: 1.1rem; font-style: italic;">V</span> Venmo
                         </a>
                         <a href="https://cash.app/$drasticstatic" target="_blank" class="payment-btn cashapp-btn">
-                            <i class="fa-brands fa-cash-app"></i> Cash App
+                            <span style="font-weight: 800; font-size: 1.1rem;">$</span> Cash App
                         </a>
                     </div>
                 </div>
@@ -500,6 +500,9 @@ function openDonateModal() {
                         <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${isConnected ? 'none' : 'block'};">
                             ⚠️ Demo mode - Connect wallet to send real transactions
                         </p>
+                        <div id="gas-indicator" style="font-size: 0.8rem; text-align: center; margin-top: 8px; padding: 6px 12px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block;">
+                            <i class="fas fa-gas-pump" style="color: #00ff88;"></i> Loading gas...
+                        </div>
                     </div>
                 </div>
                 <div class="payment-section">
@@ -558,6 +561,10 @@ function openDonateModal() {
         const modalContent = document.querySelector('.modal-content');
         if (modalContent) {
             modalContent.style.maxWidth = '650px';
+        }
+        // Update gas indicator after modal opens
+        if (typeof updateGasIndicator === 'function') {
+            setTimeout(updateGasIndicator, 100);
         }
     }
 }
@@ -886,7 +893,7 @@ function openACIMModal() {
             </div>
 
             <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <a href="https://acim.org/" target="_blank" style="color: #00ffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                <a href="https://acim.org/" target="_blank" class="magnetize-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 255, 255, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">
                     <i class="fas fa-external-link-alt"></i> Explore A Course in Miracles
                 </a>
             </div>
@@ -895,10 +902,118 @@ function openACIMModal() {
 
     if (window.modalInstance) {
         window.modalInstance.open(acimContent);
-        // Constrain modal width
+        // Constrain modal width to fit content better
         const modalContent = document.querySelector('.modal-content');
         if (modalContent) {
-            modalContent.style.maxWidth = '750px';
+            modalContent.style.maxWidth = '700px';
         }
+    }
+}
+
+function openGuidedMeditationModal() {
+    const meditationContent = `
+        <div class="meditation-modal" style="max-width: 700px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(138, 43, 226, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-pray" style="font-size: 2rem; color: #00ff88;"></i>
+                </div>
+                <h2 style="background: linear-gradient(135deg, #00ff88, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">The Offering</h2>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 5px;"><em>A Guided Meditation</em></p>
+            </div>
+
+            <p style="text-align: center; color: rgba(255,255,255,0.7); font-style: italic; margin-bottom: 25px;">A contemplative practice for metabolizing gratitude and remembering your belonging in the sacred network.</p>
+
+            <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(138, 43, 226, 0.1)); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                <h4 style="color: #00ff88; margin: 0 0 10px 0;"><i class="fas fa-seedling"></i> Preparation</h4>
+                <p style="color: rgba(255,255,255,0.85); margin: 0;">Find a quiet space. Sit comfortably. Close your eyes. Take three deep breaths, releasing tension with each exhale.</p>
+            </div>
+
+            <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(0, 255, 136, 0.5);">
+                    <p><strong style="color: #00ff88;">Grounding (2 minutes):</strong> Feel your connection to the earth beneath you. Imagine roots extending from your body into the soil, connecting you to the vast mycelial network that weaves through all living things.</p>
+                </div>
+
+                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(138, 43, 226, 0.5);">
+                    <p><strong style="color: #8a2be2;">Remembering (3 minutes):</strong> Bring to mind something you are grateful for today. It can be small—a moment of kindness, a breath of fresh air, a word that touched you. Hold this gratitude in your heart.</p>
+                </div>
+
+                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(0, 255, 255, 0.5);">
+                    <p><strong style="color: #00ffff;">Offering (3 minutes):</strong> Imagine placing this gratitude on an altar—not to give it away, but to share it with the network. See it dissolving into light, traveling through the mycelial threads, nourishing others you may never meet.</p>
+                </div>
+
+                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(255, 0, 128, 0.5);">
+                    <p><strong style="color: #ff0080;">Receiving (2 minutes):</strong> Now open yourself to receive. Others have made offerings too. Feel the gratitude of the network flowing back to you—not as transaction, but as circulation. All blessings return multiplied.</p>
+                </div>
+
+                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(255, 215, 0, 0.5);">
+                    <p><strong style="color: #ffd700;">Integration (2 minutes):</strong> Slowly bring your awareness back to your body. Feel your breath. Notice the sounds around you. When you're ready, open your eyes.</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 255, 136, 0.15)); border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 12px; padding: 25px; margin-top: 25px; text-align: center;">
+                <h4 style="color: #8a2be2; margin: 0 0 15px 0;"><i class="fas fa-hands"></i> Closing Prayer</h4>
+                <p style="color: rgba(255,255,255,0.9); font-style: italic; margin: 0;">"In a universe held together by love, no offering is lost. All gratitude circulates. All blessings return multiplied. All fruit eventually ripens into a revelation of who you truly are."</p>
+            </div>
+
+            <p style="text-align: center; color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 0.9rem;"><i class="fas fa-infinity"></i> Practice daily for best results. The network is always listening.</p>
+        </div>
+    `;
+
+    if (window.modalInstance) {
+        window.modalInstance.open(meditationContent);
+    }
+}
+
+function openManifestoModalFull() {
+    const manifestoContent = `
+        <div class="manifesto-modal-full" style="max-width: 700px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-scroll" style="font-size: 2rem; color: #ff0080;"></i>
+                </div>
+                <h2 style="background: linear-gradient(135deg, #ff0080, #00ffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Personal Manifesto</h2>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 5px;"><em>Declarations of Intent</em></p>
+            </div>
+
+            <div style="line-height: 1.9; color: rgba(255,255,255,0.85);">
+                <div style="background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(0, 255, 255, 0.1)); border-radius: 12px; padding: 25px; margin-bottom: 25px;">
+                    <p style="font-size: 1.1rem; margin: 0;">Technology, like music and mycelium, can become a vessel for the sacred. Systems can be designed to honor the dignity of the human soul — rooted in privacy, gratitude, humility, and compassion.</p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #ff0080; margin: 0 0 10px 0;"><i class="fas fa-crosshairs"></i> Precision matters.</h4>
+                    <p>The same care once required to machine aerospace-grade components now shapes decentralized architectures, cryptographic systems, and ritual intelligence — where every detail carries intention and consequence.</p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #00ffff; margin: 0 0 10px 0;"><i class="fas fa-music"></i> Harmony reveals truth.</h4>
+                    <p>Just as every note finds its place in a larger composition, every individual carries a unique frequency that contributes to the symphony of creation — a symphony conducted not by control, but by love.</p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #00ff88; margin: 0 0 10px 0;"><i class="fas fa-project-diagram"></i> The mycelial model offers a blueprint for healthy systems.</h4>
+                    <p>Interdependence without domination. Resilience without centralization. Growth through mutual nourishment.</p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #8a2be2; margin: 0 0 10px 0;"><i class="fas fa-door-open"></i> Psychedelic insight serves as a doorway, not a destination.</h4>
+                    <p>Transformation becomes enduring only when integrated through Christ, embodied through service, and expressed through daily gratitude.</p>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <h4 style="color: #ffd700; margin: 0 0 10px 0;"><i class="fas fa-brain"></i> Creation carries hidden intelligence.</h4>
+                    <p>The same patterns appear in metal shavings, musical overtones, zero-knowledge circuits, and fungal networks — all pointing toward a unifying Logos that holds everything together.</p>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 0, 128, 0.15)); border: 1px solid rgba(255, 0, 128, 0.4); border-radius: 12px; padding: 25px; text-align: center;">
+                    <p style="font-size: 1.1rem; margin: 0 0 15px 0; color: rgba(255,255,255,0.9);">This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.</p>
+                    <p style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #ff0080;">This is the offering.</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    if (window.modalInstance) {
+        window.modalInstance.open(manifestoContent);
     }
 }

@@ -419,26 +419,48 @@
             </div>
         </section>
 
-        <!-- Personal Manifesto (Revised — Declarative, Grounded, Professional) -->
-        <section class="section manifesto">
-            <h2>Personal Manifesto</h2>
-            <div class="manifesto-content liquid-glass">
-                <blockquote class="manifesto-quote">
-                    <p>Technology, like music and mycelium, can become a vessel for the sacred.</p>
-                    <p>Systems can be designed to honor the dignity of the human soul — rooted in privacy, gratitude, humility, and compassion.</p>
-                    <p><strong>Precision matters.</strong></p>
-                    <p>The same care once required to machine aerospace-grade components now shapes decentralized architectures, cryptographic systems, and ritual intelligence — where every detail carries intention and consequence.</p>
-                    <p><strong>Harmony reveals truth.</strong></p>
-                    <p>Just as every note finds its place in a larger composition, every individual carries a unique frequency that contributes to the symphony of creation — a symphony conducted not by control, but by love.</p>
-                    <p><strong>The mycelial model offers a blueprint for healthy systems.</strong></p>
-                    <p>Interdependence without domination. Resilience without centralization. Growth through mutual nourishment.</p>
-                    <p><strong>Psychedelic insight serves as a doorway, not a destination.</strong></p>
-                    <p>Transformation becomes enduring only when integrated through Christ, embodied through service, and expressed through daily gratitude.</p>
-                    <p><strong>Creation carries hidden intelligence.</strong></p>
-                    <p>The same patterns appear in metal shavings, musical overtones, zero-knowledge circuits, and fungal networks — all pointing toward a unifying Logos that holds everything together.</p>
-                    <p>This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.</p>
-                    <p><strong>This is the offering.</strong></p>
-                </blockquote>
+        <!-- Spiritual Practice Section -->
+        <section class="section spiritual-practice">
+            <h2>Spiritual Practice</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;">
+                <!-- Personal Manifesto Card -->
+                <div class="manifesto-card liquid-glass" onclick="openManifestoModalFull()" style="cursor: pointer; padding: 30px; border-radius: 16px; transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-scroll" style="font-size: 1.5rem; color: #ff0080;"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; color: #fff;">Personal Manifesto</h3>
+                            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);"><em>Declarations of Intent</em></p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Technology, like music and mycelium, can become a vessel for the sacred. Systems designed to honor the dignity of the human soul — rooted in privacy, gratitude, humility, and compassion.</p>
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <span class="magnetize-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 1px solid rgba(255, 0, 128, 0.5); border-radius: 12px; color: #ff0080; transition: all 0.3s ease;">
+                            <span>Read Full Manifesto</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </div>
+                <!-- Guided Meditation Card -->
+                <div class="meditation-card liquid-glass" onclick="openGuidedMeditationModal()" style="cursor: pointer; padding: 30px; border-radius: 16px; transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(138, 43, 226, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-pray" style="font-size: 1.5rem; color: #00ff88;"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; color: #fff;">Guided Meditation</h3>
+                            <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);"><em>The Offering</em></p>
+                        </div>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">A contemplative practice for metabolizing gratitude and remembering your belonging in the sacred network. Connect to the mycelial web through breath and intention.</p>
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <span class="magnetize-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(138, 43, 226, 0.2)); border: 1px solid rgba(0, 255, 136, 0.5); border-radius: 12px; color: #00ff88; transition: all 0.3s ease;">
+                            <span>Begin Practice</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -456,30 +478,32 @@
                             <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.6);"><em>A Course in Miracles</em></p>
                         </div>
                     </div>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Teaching is understood not as authority or instruction, but as learning made visible through giving and receiving with service as the medium through which understanding deepens.</p>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">&nbsp;&nbsp;&nbsp;&nbsp;Teaching is understood not as authority or instruction, but as learning made visible through giving and receiving; service as the medium through which understanding deepens.</p>
                     <br/>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">Let us hold this role as a student–teacher lightly and practically; not as identity, title or authority. It is not our hands that heal, nor our voice that carries truth. What is offered is not personal insight, wisdom, or power but simply what is being learned and received together—an orientation toward clarity, forgiveness, and shared understanding.
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">&nbsp;&nbsp;&nbsp;&nbsp;Let us hold this role as a student–teacher lightly and practically; not as identity, title or authority. It is not our hands that heal, nor our voice that carries truth. What is offered is not personal insight, wisdom, or power but simply what is being learned and received together—an orientation toward clarity, forgiveness, and shared understanding.
                     </p>
-                    <div style="display: flex; align-items: center; gap: 10px; margin-top: 30px; color: #00ffff;">
-                        <span style="text-decoration: underline;">Read More</span>
-                        <i class="fas fa-arrow-right"></i>
+                    <div style="display: flex; justify-content: center; margin-top: 30px;">
+                        <span class="magnetize-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 255, 255, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; transition: all 0.3s ease;">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
                     </div>
                 </div>
                 <div class="teaching-quote liquid-glass" style="padding: 30px; border-radius: 16px; border-left: 4px solid rgba(138, 43, 226, 0.8);">
-                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8;">
+                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8; text-align: center;">
                         <p>"Teacher and pupil are alike in the learning process."</p>
                     </blockquote>
-                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem;">— ACIM, T-4.I.1:2</cite>
+                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem; text-align: center;">— ACIM, T-4.I.1:2</cite>
                     <br/>
-                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8;">
+                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8; text-align: center;">
                         <p>"A teacher of God is anyone who chooses to be one. [Their] qualifications consist solely in this; somehow, somewhere [they] have made a deliberate choice in which [they] did not see [their] interests as apart from someone else's."</p>
                     </blockquote>
-                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem;">— ACIM, M-1.1:1-2</cite>
+                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem; text-align: center;">— ACIM, M-1.1:1-2</cite>
                     <br/>
-                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8;">
+                    <blockquote style="margin: 0; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8; text-align: center;">
                         <p>"Together we will disappear into the Presence beyond the veil, not to be lost but found; not to be seen but known. And knowing, nothing in the plan God has established for salvation will be left undone. This is the journey’s purpose, without which is the journey meaningless."</p>
                     </blockquote>
-                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem;">— ACIM, T-19.IV-D.19:1-3</cite>
+                    <cite style="display: block; margin-top: 15px; color: rgba(0, 255, 255, 0.8); font-size: 0.9rem; text-align: center;">— ACIM, T-19.IV-D.19:1-3</cite>
                 </div>
             </div>
         </section>
@@ -560,6 +584,7 @@
     <script src="../js/spore-effects.js"></script>
     <script src="../js/hero-svg.js"></script>
     <script src="../js/wallet-connect.js"></script>
+    <script src="../js/network-3d.js"></script>
 
     <script>
         // Initialize Lucide icons
