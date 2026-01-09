@@ -2780,6 +2780,84 @@ button[onclick*="connectWallet"] {
     border-color: transparent transparent transparent rgba(0, 255, 136, 0.6);
 }
 
+/* Above-positioned tooltips */
+.tooltip-above {
+    position: relative;
+}
+
+.tooltip-above::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 15, 0.95);
+    border: 1px solid rgba(255, 0, 128, 0.6);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    color: #ff0080;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10001;
+    box-shadow: 0 4px 20px rgba(255, 0, 128, 0.4), 0 0 30px rgba(138, 43, 226, 0.2);
+    text-align: center;
+}
+
+/* Arrow pointing down */
+.tooltip-above::after {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(255, 0, 128, 0.6) transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10001;
+}
+
+.tooltip-above:hover::before,
+.tooltip-above:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Enhanced glow effect for all tooltips */
+.tooltip-left::before,
+.tooltip-above::before,
+.skill-planet::before {
+    animation: tooltipGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes tooltipGlow {
+    0% {
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    }
+    100% {
+        box-shadow: 0 4px 25px rgba(0, 255, 255, 0.6), 0 0 40px rgba(138, 43, 226, 0.3);
+    }
+}
+
+.tooltip-above:hover::before {
+    animation: tooltipGlowPink 2s ease-in-out infinite alternate;
+}
+
+@keyframes tooltipGlowPink {
+    0% {
+        box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
+    }
+    100% {
+        box-shadow: 0 4px 25px rgba(255, 0, 128, 0.7), 0 0 40px rgba(138, 43, 226, 0.4);
+    }
+}
+
 .skill-core {
     position: absolute;
     width: 80px;

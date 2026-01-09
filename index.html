@@ -42,9 +42,12 @@
 
     <!-- Top-right connect button -->
     <div class="top-right-actions">
-        <button class="connect-btn-top" onclick="connectWallet()" data-chain="Connect" data-tooltip="Connect Web3 Wallet (MetaMask, Rainbow, etc.)">
+        <button class="connect-btn-top" onclick="connectWallet()" data-chain="Connect" data-tooltip="Click to Connect Web3 Wallet">
             <i class="fas fa-wallet"></i>
         </button>
+        <div class="connection-status-badge" style="display: none; position: absolute; top: 50px; right: 10px; font-size: 0.7rem; padding: 4px 10px; background: rgba(0, 255, 136, 0.15); border: 1px solid rgba(0, 255, 136, 0.4); border-radius: 12px; color: #00ff88; white-space: nowrap;">
+            <i class="fas fa-check-circle"></i> <span class="status-address"></span>
+        </div>
     </div>
 
     <!-- Navigation -->

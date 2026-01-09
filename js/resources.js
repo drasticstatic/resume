@@ -326,6 +326,12 @@ function openResourceModal(resourceId) {
         }
     };
 
+    // For guided-meditation, use the unified modal from modal.js
+    if (resourceId === 'guided-meditation' && typeof openGuidedMeditationModal === 'function') {
+        openGuidedMeditationModal();
+        return;
+    }
+
     const resource = resources[resourceId];
     if (resource && window.modalInstance) {
         window.modalInstance.open(resource.content);

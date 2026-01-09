@@ -224,7 +224,20 @@ const WalletManager = {
                     </div>
                 </div>
 
-                <div style="text-align: center;">
+                <!-- Social Login Section -->
+                <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(138, 43, 226, 0.1)); border: 1px solid rgba(255, 0, 128, 0.3); border-radius: 12px;">
+                    <h4 style="color: #ff0080; margin: 0 0 15px 0; text-align: center;"><i class="fas fa-users"></i> Or Connect with Social Login</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-align: center; margin-bottom: 15px;">Sign in with your existing accounts - no wallet required!</p>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(219, 68, 55, 0.2); border: 1px solid rgba(219, 68, 55, 0.5); border-radius: 10px; color: #db4437; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-google"></i></button>
+                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(24, 119, 242, 0.2); border: 1px solid rgba(24, 119, 242, 0.5); border-radius: 10px; color: #1877f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></button>
+                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(29, 161, 242, 0.2); border: 1px solid rgba(29, 161, 242, 0.5); border-radius: 10px; color: #1da1f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></button>
+                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(88, 101, 242, 0.2); border: 1px solid rgba(88, 101, 242, 0.5); border-radius: 10px; color: #5865f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-discord"></i></button>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; text-align: center; margin-top: 10px;"><i class="fas fa-shield-alt"></i> Powered by <a href="https://web3auth.io" target="_blank" style="color: #ff0080;">Web3Auth</a></p>
+                </div>
+
+                <div style="text-align: center; margin-top: 15px;">
                     <button id="safari-info-btn" style="background: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;">
                         ℹ️ Why Safari Doesn't Work
                     </button>
@@ -234,6 +247,11 @@ const WalletManager = {
 
         if (window.modalInstance) {
             window.modalInstance.open(modalContent);
+            // Constrain modal width
+            const modalEl = document.querySelector('.modal-content');
+            if (modalEl) {
+                modalEl.style.maxWidth = '650px';
+            }
 
             // Add event listener for Safari info button after modal opens
             setTimeout(() => {
@@ -316,6 +334,11 @@ const WalletManager = {
 
         if (window.modalInstance) {
             window.modalInstance.open(modalContent);
+            // Constrain modal width
+            const modalEl = document.querySelector('.modal-content');
+            if (modalEl) {
+                modalEl.style.maxWidth = '700px';
+            }
 
             // Add back button listener
             setTimeout(() => {
@@ -368,6 +391,41 @@ const WalletManager = {
             document.body.removeChild(textArea);
             alert('✓ URL copied to clipboard!');
         });
+    },
+
+    // Show Social Login Info Modal
+    showSocialLoginInfo() {
+        const modalContent = `
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(138, 43, 226, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-rocket" style="font-size: 2rem; color: #ff0080;"></i>
+                </div>
+                <h2 style="background: linear-gradient(135deg, #ff0080, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;">Social Login Coming Soon!</h2>
+                <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">We're integrating Web3Auth to allow you to connect with your favorite social accounts.</p>
+
+                <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+                    <h4 style="color: #00ff88; margin: 0 0 15px 0;"><i class="fas fa-check-circle"></i> Coming Features</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: rgba(255,255,255,0.8); text-align: left;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-google" style="color: #db4437; width: 20px;"></i> Google Sign-In</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-facebook" style="color: #1877f2; width: 20px;"></i> Facebook Login</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-twitter" style="color: #1da1f2; width: 20px;"></i> Twitter/X Connect</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-discord" style="color: #5865f2; width: 20px;"></i> Discord Auth</li>
+                        <li style="padding: 8px 0;"><i class="fas fa-envelope" style="color: #00ff88; width: 20px;"></i> Email Passwordless</li>
+                    </ul>
+                </div>
+
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">For now, please use a Web3 wallet like MetaMask to connect.</p>
+                <a href="https://web3auth.io" target="_blank" style="color: #ff0080; text-decoration: none;"><i class="fas fa-external-link-alt"></i> Learn about Web3Auth</a>
+            </div>
+        `;
+
+        if (window.modalInstance) {
+            window.modalInstance.open(modalContent);
+            const modalEl = document.querySelector('.modal-content');
+            if (modalEl) {
+                modalEl.style.maxWidth = '650px';
+            }
+        }
     },
 
     // Disconnect wallet
@@ -582,15 +640,28 @@ const WalletManager = {
         document.querySelectorAll('.connect-btn-top').forEach(btn => {
             if (this.isConnected) {
                 btn.classList.add('connected');
-                btn.setAttribute('data-chain', `${networkShort} ✓`);
-                btn.innerHTML = '<i class="fas fa-check-circle"></i>';
+                btn.setAttribute('data-chain', 'Disconnect');
+                btn.setAttribute('data-tooltip', `${this.formatAddress(this.currentAddress)} on ${networkShort} — Click to disconnect`);
+                btn.innerHTML = '<i class="fas fa-unlink"></i>';
                 btn.onclick = () => this.disconnect();
-                btn.title = `Connected: ${this.formatAddress(this.currentAddress)} on ${this.currentChain}`;
+                btn.title = `Connected: ${this.formatAddress(this.currentAddress)} on ${this.currentChain} — Click to disconnect`;
             } else {
                 btn.classList.remove('connected');
                 btn.setAttribute('data-chain', 'Connect');
+                btn.setAttribute('data-tooltip', 'Click to Connect Web3 Wallet');
                 btn.innerHTML = '<i class="fas fa-wallet"></i>';
                 btn.onclick = () => this.connect();
+                btn.title = 'Connect Web3 Wallet';
+            }
+        });
+
+        // Update connection status badges (below connect button)
+        document.querySelectorAll('.connection-status-badge').forEach(badge => {
+            if (this.isConnected) {
+                badge.style.display = 'block';
+                badge.querySelector('.status-address').textContent = `${this.formatAddress(this.currentAddress)} (${networkShort})`;
+            } else {
+                badge.style.display = 'none';
             }
         });
     }

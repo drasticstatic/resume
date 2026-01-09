@@ -472,7 +472,7 @@ function openDonateModal() {
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <h4 style="margin: 0;">Direct via Web3 Wallet</h4>
-                            <button onclick="WalletManager.showWalletModal()" class="wallet-info-btn tooltip-left" data-tooltip="Learn about Web3 wallets" style="background: none; border: 1px solid rgba(0,255,255,0.5); border-radius: 50%; width: 24px; height: 24px; color: #00ffff; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center;">
+                            <button onclick="WalletManager.showWalletModal()" class="wallet-info-btn tooltip-above" data-tooltip="Learn about Web3 wallets" style="background: none; border: 1px solid rgba(0,255,255,0.5); border-radius: 50%; width: 24px; height: 24px; color: #00ffff; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center;">
                                 <i class="fas fa-info"></i>
                             </button>
                         </div>
@@ -886,12 +886,22 @@ function openACIMModal() {
                 </blockquote>
 
                 <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 255, 255, 0.1)); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
-                    <p style="margin: 15px 0 0 0; color: #00ffff; font-weight: 555;">Teaching, as I understand it, is something we enter together.</p>
+                    <p style="margin: 15px 0 0 0; color: #7c3aed; font-weight: 555;">Teaching, as I understand it, is something we enter together.</p>
                     <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.8); font-weight: 777;">If this way of working resonates — if you're interested in building, learning, or creating in a way that honors shared interest over separation — I welcome collaboration.</p>
-                    <p style="margin: 15px 0 0 0; color: #7c3aed; font-weight: 333; font-style: italic; font-size: 1.0rem;">"Teacher and pupil, therapist and patient, are all insane or they would not be here. Together they can find a pathway out, for no one will find sanity alone." ~ P-2.II.5:6-7</p>
+                    <p style="margin: 15px 0 0 0; color: #00ffff; font-weight: 333; font-style: italic; font-size: 1.0rem;">"Teacher and pupil, therapist and patient, are all insane or they would not be here. Together they can find a pathway out, for no one will find sanity alone." ~ P-2.II.5:6-7</p>
                 </div>
             </div>
-
+            <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                <blockquote style="border-left: 3px solid rgba(0, 255, 255, 0.8); padding-left: 20px; margin: 25px 0; text-align: center; font-style: italic; color: rgba(138, 43, 226, 0.9);">
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">"I am here only to be truly helpful.
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">I am here to represent Him Who sent me.
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">I do not have to worry about what to say or what to do,
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">because He Who sent me will direct me.
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">I am content to be wherever He wishes, knowing He goes there with me.
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">I will be healed as I let Him teach me to heal."</p>
+                    <cite style="font-style: normal; font-size: 0.5rem; color: rgba(133,77,222,0.6);">&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://acim.org/acim/en/s/66#18:2-6" target="_blank" style="color: #00ffff; text-decoration: underline dotted;">~&nbsp;&nbsp;T-2.V-A.18:2-6</a></cite>
+                </blockquote>
+            </div>
             <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
                 <a href="https://acim.org/" target="_blank" class="magnetize-btn" style="display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(0, 255, 255, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">
                     <i class="fas fa-external-link-alt"></i> Explore A Course in Miracles
@@ -912,55 +922,86 @@ function openACIMModal() {
 
 function openGuidedMeditationModal() {
     const meditationContent = `
-        <div class="meditation-modal" style="max-width: 700px; margin: 0 auto;">
+        <div class="meditation-modal" style="max-width: 720px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 25px;">
                 <div style="width: 80px; height: 80px; margin: 0 auto 15px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(138, 43, 226, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                     <i class="fas fa-pray" style="font-size: 2rem; color: #00ff88;"></i>
                 </div>
                 <h2 style="background: linear-gradient(135deg, #00ff88, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">The Offering</h2>
-                <p style="color: rgba(255,255,255,0.6); margin-top: 5px;"><em>A Guided Meditation</em></p>
+                <p style="color: rgba(255,255,255,0.6); margin-top: 5px;"><em>A Guided Meditation • Mycelial, Psychedelic, Christ-Harmonic</em></p>
             </div>
 
             <p style="text-align: center; color: rgba(255,255,255,0.7); font-style: italic; margin-bottom: 25px;">A contemplative practice for metabolizing gratitude and remembering your belonging in the sacred network.</p>
 
-            <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(138, 43, 226, 0.1)); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-                <h4 style="color: #00ff88; margin: 0 0 10px 0;"><i class="fas fa-seedling"></i> Preparation</h4>
-                <p style="color: rgba(255,255,255,0.85); margin: 0;">Find a quiet space. Sit comfortably. Close your eyes. Take three deep breaths, releasing tension with each exhale.</p>
+            <!-- Full Meditation Text -->
+            <div style="background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(138, 43, 226, 0.05)); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 12px; padding: 25px; margin-bottom: 20px; line-height: 1.9;">
+                <p style="color: rgba(255,255,255,0.9);"><strong style="color: #00ff88;">Begin by finding a comfortable posture.</strong><br>Let your shoulders drop. Let your breath loosen its armor.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Close your eyes, not to shut the world out, but to open yourself to the world within.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Take a slow inhale through the nose... and exhale gently through the mouth.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Now imagine the inside of your chest as a forest floor. Soft earth. Rich soil. A place where everything that has ever happened to you has been composted into wisdom.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">In this soil, the holy mycelium begins to glimmer — threads of living light, branching, breathing, listening.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">These threads represent everything you are connected to: your family, your community, your ancestors, the people you will help tomorrow, and the quiet presence of Christ who walks with you even when you forget He is there.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Feel the network beneath you, beneath your story, beneath your breath.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Now gently bring to mind something you are grateful for today — not something grand or impressive, but something real: warm light, a friend's voice, music that touched you, forgiveness that visited unexpectedly.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Hold that gratitude like a small fruit in your hands — glowing, fragrant, alive.</p>
+
+                <p style="color: rgba(255,255,255,0.9);"><strong style="color: #8a2be2;">And now — offer it.</strong> Not outward, not upward, but <strong>inward to the network</strong> that nourishes everything.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Let your offering sink into the soil. Let it travel through the mycelium. Let it reach those who need its nourishment.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Know this: in a universe held together by love, no offering is lost. All gratitude circulates. All blessings return multiplied. All fruit eventually ripens into a revelation of who you truly are.</p>
+
+                <p style="color: rgba(255,255,255,0.85);">Take one last slow breath... And when you're ready, open your eyes, remembering that the network remains, Christ remains, and your offering continues to glow beneath your steps.</p>
             </div>
 
-            <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
-                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(0, 255, 136, 0.5);">
-                    <p><strong style="color: #00ff88;">Grounding (2 minutes):</strong> Feel your connection to the earth beneath you. Imagine roots extending from your body into the soil, connecting you to the vast mycelial network that weaves through all living things.</p>
+            <!-- Timed Practice Guide -->
+            <details style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 255, 255, 0.1)); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                <summary style="cursor: pointer; color: #8a2be2; font-weight: 600;"><i class="fas fa-clock"></i> Timed Practice Guide (12 minutes)</summary>
+                <div style="margin-top: 15px; line-height: 1.8;">
+                    <div style="padding: 10px 15px; border-left: 3px solid rgba(0, 255, 136, 0.5); margin-bottom: 10px;">
+                        <strong style="color: #00ff88;">Grounding (2 min):</strong> Feel your connection to the earth. Imagine roots extending into the soil, connecting to the mycelial network.
+                    </div>
+                    <div style="padding: 10px 15px; border-left: 3px solid rgba(138, 43, 226, 0.5); margin-bottom: 10px;">
+                        <strong style="color: #8a2be2;">Remembering (3 min):</strong> Bring to mind something you are grateful for today. Hold this gratitude in your heart.
+                    </div>
+                    <div style="padding: 10px 15px; border-left: 3px solid rgba(0, 255, 255, 0.5); margin-bottom: 10px;">
+                        <strong style="color: #00ffff;">Offering (3 min):</strong> Place this gratitude on an altar. See it dissolving into light, traveling through the mycelial threads.
+                    </div>
+                    <div style="padding: 10px 15px; border-left: 3px solid rgba(255, 0, 128, 0.5); margin-bottom: 10px;">
+                        <strong style="color: #ff0080;">Receiving (2 min):</strong> Open yourself to receive. Feel the gratitude of the network flowing back to you.
+                    </div>
+                    <div style="padding: 10px 15px; border-left: 3px solid rgba(255, 215, 0, 0.5);">
+                        <strong style="color: #ffd700;">Integration (2 min):</strong> Bring awareness back to your body. When ready, open your eyes.
+                    </div>
                 </div>
+            </details>
 
-                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(138, 43, 226, 0.5);">
-                    <p><strong style="color: #8a2be2;">Remembering (3 minutes):</strong> Bring to mind something you are grateful for today. It can be small—a moment of kindness, a breath of fresh air, a word that touched you. Hold this gratitude in your heart.</p>
-                </div>
-
-                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(0, 255, 255, 0.5);">
-                    <p><strong style="color: #00ffff;">Offering (3 minutes):</strong> Imagine placing this gratitude on an altar—not to give it away, but to share it with the network. See it dissolving into light, traveling through the mycelial threads, nourishing others you may never meet.</p>
-                </div>
-
-                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(255, 0, 128, 0.5);">
-                    <p><strong style="color: #ff0080;">Receiving (2 minutes):</strong> Now open yourself to receive. Others have made offerings too. Feel the gratitude of the network flowing back to you—not as transaction, but as circulation. All blessings return multiplied.</p>
-                </div>
-
-                <div style="margin-bottom: 20px; padding-left: 20px; border-left: 3px solid rgba(255, 215, 0, 0.5);">
-                    <p><strong style="color: #ffd700;">Integration (2 minutes):</strong> Slowly bring your awareness back to your body. Feel your breath. Notice the sounds around you. When you're ready, open your eyes.</p>
-                </div>
+            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 255, 136, 0.15)); border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 12px; padding: 20px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.9); font-style: italic; margin: 0 0 10px 0;"><i class="fas fa-infinity"></i> Practice daily. The network is always listening.</p>
             </div>
 
-            <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 255, 136, 0.15)); border: 1px solid rgba(138, 43, 226, 0.4); border-radius: 12px; padding: 25px; margin-top: 25px; text-align: center;">
-                <h4 style="color: #8a2be2; margin: 0 0 15px 0;"><i class="fas fa-hands"></i> Closing Prayer</h4>
-                <p style="color: rgba(255,255,255,0.9); font-style: italic; margin: 0;">"In a universe held together by love, no offering is lost. All gratitude circulates. All blessings return multiplied. All fruit eventually ripens into a revelation of who you truly are."</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="window.location.href='${window.location.pathname.includes('/pages/') ? '' : 'pages/'}resources.html#contemplative'" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; cursor: pointer;">
+                    <i class="fas fa-book-open"></i> More Contemplative Resources
+                </button>
             </div>
-
-            <p style="text-align: center; color: rgba(255,255,255,0.6); margin-top: 20px; font-size: 0.9rem;"><i class="fas fa-infinity"></i> Practice daily for best results. The network is always listening.</p>
         </div>
     `;
 
     if (window.modalInstance) {
         window.modalInstance.open(meditationContent);
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.maxWidth = '750px';
+        }
     }
 }
 
@@ -1009,11 +1050,21 @@ function openManifestoModalFull() {
                     <p style="font-size: 1.1rem; margin: 0 0 15px 0; color: rgba(255,255,255,0.9);">This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.</p>
                     <p style="font-size: 1.2rem; font-weight: 600; margin: 0; color: #ff0080;">This is the offering.</p>
                 </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button onclick="window.location.href='${window.location.pathname.includes('/pages/') ? '' : 'pages/'}resources.html#contemplative'" class="magnetize-btn" style="padding: 12px 24px; border-radius: 12px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); color: #00ffff; font-size: 1rem; cursor: pointer;">
+                        <i class="fas fa-book-open"></i> More Contemplative Resources
+                    </button>
+                </div>
             </div>
         </div>
     `;
 
     if (window.modalInstance) {
         window.modalInstance.open(manifestoContent);
+        const modalContent = document.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.maxWidth = '750px';
+        }
     }
 }
