@@ -845,27 +845,43 @@ function openACIMModal() {
             </div>
 
             <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
-                <p>Alongside my technical and creative work, I'm guided by a practice drawn from <em>A Course in Miracles</em> that understands teaching not as authority or instruction, but as learning made visible through service. In this framework, a "teacher" is not defined by credentials, certainty, or belief, but by a practical decision: to no longer treat one's interests as separate from another's.</p>
-
-                <blockquote style="border-left: 3px solid rgba(138, 43, 226, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(0, 255, 255, 0.9);">
-                    <p>"A teacher of God is anyone who chooses to be one. His qualifications consist solely in this; somehow, somewhere he has made a deliberate choice in which he did not see his interests as apart from someone else's. Once he has done that, his road is established and his direction is sure. A light has entered the darkness."</p>
-                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(255,255,255,0.6);">— M-1.1:1-4</cite>
-                </blockquote>
-
-                <p>The <em>Manual for Teachers</em> describes this moment as simple yet decisive—a willingness to choose shared interest over separation. From that choice, direction emerges naturally. A small light enters, and that is enough. Teaching, in this sense, is not about fixing, persuading, or correcting, but about standing for an alternative way of relating—one rooted in cooperation, remembrance, and trust rather than control.</p>
-
-                <p>I hold this role as a student–teacher, not as a title or authority. It is not my hands that heal, nor my voice that carries truth. What is offered is simply what is being learned and received—an orientation toward clarity, forgiveness, and shared understanding. The work is not to supply a remedy, but to remind ourselves of what is already present and available.</p>
+                <p>&nbsp;&nbsp;In service to the realm of technically precise engineering, creative explorative expression, and/or healing: I understand life and labor as guided through the practice of teaching as learning — a principle articulated in <em>A Course in Miracles (ACIM)</em> that understands teaching not as authority or instruction, but as learning made visible through giving and receiving, service as the medium through which understanding deepens.</p>
 
                 <blockquote style="border-left: 3px solid rgba(0, 255, 255, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(138, 43, 226, 0.9);">
-                    <p>"They stand for the Alternative. With God's Word in their minds they come in benediction, not to heal the sick but to remind them of the remedy God has already given them. It is not their hands that heal. It is not their voice that speaks the Word of God. They merely give what has been given them."</p>
-                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(255,255,255,0.6);">— M-5.III.2:6-10</cite>
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.8);">"Only by teaching it can you learn it. 'As you teach so will you learn.' If that is true, and it is true indeed, do not forget that what you teach is teaching you. And what you project or extend you believe."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(133,77,222,0.6);">&nbsp;&nbsp;&nbsp;&nbsp;~ T-6.III.2:6-9</cite>
                 </blockquote>
 
-                <p>This practice shows up quietly and practically in my work. Whether designing systems, writing code, collaborating with others, or navigating human complexity, I aim to learn openly, offer what I'm learning honestly, and allow service to refine understanding. Teaching and learning are not separate activities here, but a single, ongoing movement.</p>
+                <p>&nbsp;&nbsp;In this framework, a "teacher" is not defined by credentials, certainty, or belief, but by a practical decision: to no longer treat one's interests as separate from another's. From that choiceless choice, direction emerges naturally—not through force or coercion, but through consistency, humility, and the willingness to establish shared responsibility.</p>
+
+
+                <blockquote style="border-left: 3px solid rgba(138, 43, 226, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(0, 255, 255, 0.9);">
+                    <p style="font-size: 1.0rem; color: rgba(55, 222, 222, 0.8);">"A teacher of God is anyone who chooses to be one. His qualifications consist solely in this; somehow, somewhere he has made a deliberate choice in which he did not see his interests as apart from someone else's. Once he has done that, his road is established and his direction is sure. A light has entered the darkness."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(55,222,222,0.6);">&nbsp;&nbsp;&nbsp;&nbsp;~ M-1.1:1-4</cite>
+                </blockquote>
+
+                <p>&nbsp;&nbsp;The <em>Manual for Teachers</em> describes this moment as simple yet decisive—a willingness to choose shared interest over separation. From that choice, direction emerges naturally. A small light enters, and that is enough. Teaching, in this sense, is not about fixing, persuading, or correcting, but about standing for an alternative way of relating—one rooted in cooperation, remembrance, and trust rather than control.</p>
+                <br/>
+                <p>&nbsp;&nbsp;The work, as I understand it, is not to supply an answer or remedy but to remind ourselves of what Answer is already present and available when our minds are vacant; Not intervention looking to repair, convince, correct and/or persuade one another with an occupied mind but rather a soft joining, witnessing each other coming to truth.</p>
+
+                <blockquote style="border-left: 3px solid rgba(0, 255, 255, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(138, 43, 226, 0.9);">
+                    <p style="font-size: 1.0rem; color: rgba(133, 77, 222, 0.9);">"They stand for the Alternative. With God's Word in their minds they come in benediction, not to heal the sick but to remind them of the remedy God has already given them. It is not their hands that heal. It is not their voice that speaks the Word of God. They merely give what has been given them."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(133,77,222,0.6);">&nbsp;&nbsp;&nbsp;&nbsp;~ M-5.III.2:6-10</cite>
+                </blockquote>
+
+                <p>&nbsp;&nbsp;I do not interpret this as religious authority, title, or special calling, but as a discipline of integrity: aligning thought, action, and service so that work—whether technical, creative, or relational—becomes a shared practice rather than a personal claim.</p>
+                <br/>
+                <p>&nbsp;&nbsp;This practice shows up quietly and practically in my work. Whether designing systems, writing code, collaborating with others, or navigating human complexity, I aim to learn openly, offer what I'm learning honestly, and allow service to consistently refine understanding. Teaching and learning are not separate activities here, but a single, ongoing movement allowing thought, action, and service to inform one another.</p>
+
+                <blockquote style="border-left: 3px solid rgba(138, 43, 226, 0.8); padding-left: 20px; margin: 25px 0; font-style: italic; color: rgba(0, 255, 255, 0.9);">
+                    <p style="font-size: 1.0rem; color: rgba(55, 222, 222, 0.8);">"Every good teacher hopes to give his students so much of his own learning that they will one day no longer need him. This is the one true goal of the teacher."</p>
+                    <cite style="font-style: normal; font-size: 0.9rem; color: rgba(55,222,222,0.6);">&nbsp;&nbsp;&nbsp;&nbsp;~ T-4.I.5:1-2</cite>
+                </blockquote>
 
                 <div style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(0, 255, 255, 0.1)); border: 1px solid rgba(0, 255, 255, 0.3); border-radius: 12px; padding: 20px; margin-top: 25px; text-align: center;">
-                    <p style="margin: 0; color: rgba(255,255,255,0.9);">If this way of working resonates—if you're interested in building, learning, or creating in a way that honors shared interest over separation—I welcome collaboration.</p>
-                    <p style="margin: 15px 0 0 0; color: #00ffff; font-weight: 500;">Teaching, as I understand it, is something we enter together.</p>
+                    <p style="margin: 15px 0 0 0; color: #00ffff; font-weight: 555;">Teaching, as I understand it, is something we enter together.</p>
+                    <p style="margin: 15px 0 0 0; color: rgba(255,255,255,0.8); font-weight: 777;">If this way of working resonates — if you're interested in building, learning, or creating in a way that honors shared interest over separation — I welcome collaboration.</p>
+                    <p style="margin: 15px 0 0 0; color: #7c3aed; font-weight: 333; font-style: italic; font-size: 1.0rem;">"Teacher and pupil, therapist and patient, are all insane or they would not be here. Together they can find a pathway out, for no one will find sanity alone." ~ P-2.II.5:6-7</p>
                 </div>
             </div>
 
