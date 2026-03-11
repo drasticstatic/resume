@@ -90,6 +90,8 @@ class Modal {
             return;
         }
 
+        document.dispatchEvent(new Event('tooltip:hide'));
+
         // Add close button at bottom for mobile with hover effect
         const closeButtonHtml = `
             <div class="modal-close-bottom" style="text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
@@ -128,6 +130,8 @@ class Modal {
 
     close() {
         if (!this.modal) return;
+
+        document.dispatchEvent(new Event('tooltip:hide'));
 
         this.modal.style.display = 'none';
         document.body.style.overflow = 'auto';

@@ -100,6 +100,16 @@ function initTooltips() {
         document.body.appendChild(tooltip);
     }
 
+    function hideTooltip() {
+        tooltip.style.opacity = '0';
+        tooltip.style.visibility = 'hidden';
+    }
+
+    if (!tooltip.dataset.modalSyncAttached) {
+        document.addEventListener('tooltip:hide', hideTooltip);
+        tooltip.dataset.modalSyncAttached = 'true';
+    }
+
     // Add tooltip to all elements with data-tooltip
     document.querySelectorAll('[data-tooltip]').forEach(el => {
         el.addEventListener('mouseenter', (e) => {
@@ -130,8 +140,7 @@ function initTooltips() {
         });
 
         el.addEventListener('mouseleave', () => {
-            tooltip.style.opacity = '0';
-            tooltip.style.visibility = 'hidden';
+            hideTooltip();
         });
 
         el.addEventListener('mousemove', (e) => {
