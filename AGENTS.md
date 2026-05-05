@@ -74,6 +74,12 @@ pngquant --force --quality=65-85 *.png
 
 ---
 
+## Override System
+
+Create `AGENTS.override.md` for temporary task-specific rules. Delete when done. Template: `~/code/my-template/AGENTS.override.md`
+
+---
+
 ## Canonical References
 
 - `CLAUDE.md` — Agent roles, scope boundaries, and session rules
