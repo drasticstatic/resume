@@ -2,6 +2,8 @@
 
 > *"Where code becomes prayer and mycelium becomes architecture."*
 
+[![Pages](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment)
+
 ---
 
 ## 🌌 Welcome
