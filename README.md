@@ -3,6 +3,7 @@
 > *"Where code becomes prayer and mycelium becomes architecture."*
 
 [![Pages](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment)
+[![Status](https://img.shields.io/badge/Status-%F0%9F%94%A5%20Live-brightgreen)](https://drasticstatic.github.io/)
 
 ---
 
