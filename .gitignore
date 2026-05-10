@@ -50,3 +50,12 @@ ignition/deployments/chain-31337
 # Imported Data
 /imported data
 imported data
+# Claude Code local config — skills tracked, everything else local only
+.claude/*
+!.claude/skills/
+!.claude/settings.json
+
+# Graphify — local-only outputs (graph.json, GRAPH_REPORT.md, graph.html are committed)
+graphify-out/manifest.json
+graphify-out/cost.json
+graphify-out/cache/
