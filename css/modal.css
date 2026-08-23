@@ -623,6 +623,17 @@ body {
     box-shadow: 0 8px 25px rgba(0, 140, 255, 0.4);
 }
 
+.payment-btn.sponsors-btn {
+    background: linear-gradient(135deg, #24292e, #ea4aaa);
+    color: white;
+    border: none;
+}
+
+.payment-btn.sponsors-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(234, 74, 170, 0.4);
+}
+
 .crypto-addresses {
     display: flex;
     flex-direction: column;

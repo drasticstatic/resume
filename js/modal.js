@@ -438,6 +438,336 @@ function openProjectModal(projectId) {
                     <a href="https://www.jonesmanufacturingyorkpa.com" class="modal-btn" target="_blank">Jones Manufacturing</a>
                 </div>
             `
+        },
+
+        // ─── Appended 2026-08-23: full build-log entries ───
+
+        'web3-ready': {
+            title: 'This Site Is Web3-Ready',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🔮</div>
+                    <h3>This Site Is Web3-Ready</h3>
+                    <p class="project-role"><strong>Vanilla JS, no framework, real wallet integration</strong></p>
+                </div>
+
+                <div class="project-description">
+                    <p>This resume is plain HTML5/CSS3/JavaScript with no build step — and it still connects a real wallet, shows a live gas price, and sends real ETH donations. <code>js/wallet-connect.js</code> implements a full <code>WalletManager</code>: MetaMask/injected-wallet detection, a chain-ID → network-name map covering Ethereum, Polygon, Arbitrum, Optimism, BSC, and several testnets, and clean connect/disconnect/address-formatting flows.</p>
+                </div>
+
+                <h4>🔮 What's actually wired up:</h4>
+                <ul>
+                    <li><strong>Multi-chain wallet connect</strong> — top-right button on every page</li>
+                    <li><strong>Live gas-price indicator</strong> — shown right in the donate modal</li>
+                    <li><strong>Real ETH micro-donations</strong> — quick-amount buttons (0.01/0.05/0.1 ETH) plus a custom-amount field</li>
+                    <li><strong>Multi-asset donation addresses</strong> — BTC, ADA, DOGE, LTC, XRP, alongside ETH</li>
+                </ul>
+
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Vanilla JS</span>
+                    <span class="tech-badge">Web3 Wallet APIs</span>
+                    <span class="tech-badge">No Build Step</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic/resume" class="modal-btn" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+                </div>
+            `
+        },
+        'dappu-coursework': {
+            title: 'DappU Mentorship Coursework',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🎓</div>
+                    <h3>DappU Mentorship Coursework</h3>
+                    <p class="project-role"><strong>Hands-on Solidity & smart-contract fundamentals</strong></p>
+                </div>
+
+                <div class="project-description">
+                    <p>Seven build-along projects from the DappU program, each exploring a different core smart-contract pattern. Five have live GitHub Pages demos; the other two are contract-only exercises with no frontend to deploy.</p>
+                </div>
+
+                <h4>🎓 The gallery:</h4>
+                <ul>
+                    <li><strong>DAO</strong> — production-ready decentralized autonomous organization with funding proposals and voting — <a href="https://drasticstatic.github.io/dao/" target="_blank">live demo</a></li>
+                    <li><strong>Crowdsale</strong> — Ethereum-based token crowdsale using Hardhat and React — <a href="https://drasticstatic.github.io/crowdsale/" target="_blank">live demo</a></li>
+                    <li><strong>AMM</strong> — automated market maker mechanics — <a href="https://drasticstatic.github.io/amm/" target="_blank">live demo</a></li>
+                    <li><strong>NFT Collection</strong> — DappU Punks NFT project — <a href="https://drasticstatic.github.io/nft_dappu-punks/" target="_blank">live demo</a></li>
+                    <li><strong>Solidity Intensive</strong> — core language fundamentals — <a href="https://drasticstatic.github.io/solidity_intensive/" target="_blank">live demo</a></li>
+                    <li><strong>Hardhat Example</strong> — contract-only exercise, no live demo — <a href="https://github.com/drasticstatic/hardhat_example" target="_blank">code</a></li>
+                    <li><strong>Blockchain Developer Bootcamp</strong> — CRA frontend built, live demo not yet deployed — <a href="https://github.com/drasticstatic/blockchain-developer-bootcamp" target="_blank">code</a></li>
+                </ul>
+
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Solidity</span>
+                    <span class="tech-badge">Hardhat</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">Ethers.js</span>
+                </div>
+            `
+        },
+        'iamoneself': {
+            title: 'I Am One Self',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🦉</div>
+                    <h3>I Am One Self</h3>
+                    <p class="project-role"><strong>Primary Technical Architect & Builder</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>The Holy Earth Foundation's online home, bridging A Course in Miracles with Plant Medicine traditions. A 98-question FAQ across 9 categories, Pagefind-powered AI Guide search, retreat booking integration with Retreat Guru and Aya Advisors, and a full dark-mode-aware, animation-rich Next.js SSG build.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Next.js 16</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">Framer Motion</span>
+                    <span class="tech-badge">Pagefind</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://www.iamoneself.com" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'findyourfeathers': {
+            title: 'Find Your Feathers',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🪶</div>
+                    <h3>Find Your Feathers</h3>
+                    <p class="project-role"><strong>Developer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>A personal healing and transformation site, built with the same Next.js SSG + Tailwind + Framer Motion stack as I Am One Self, tuned for a gentler, more intimate reading experience.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Next.js 15</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">Framer Motion</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/findyourfeathers-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'dpnelson': {
+            title: 'dpnelson.com Rebuild',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🧭</div>
+                    <h3>dpnelson.com Rebuild</h3>
+                    <p class="project-role"><strong>Developer / Builder</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>Reconstructing Douglas P Nelson's IFS (Internal Family Systems) coaching practice from WordPress into a high-performance Vite + React static site — preserving every heading and structural phrase from the original while upgrading the visual and motion presentation layer.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Vite 6</span>
+                    <span class="tech-badge">React 18</span>
+                    <span class="tech-badge">Framer Motion</span>
+                    <span class="tech-badge">shadcn/ui</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/dpnelson-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'wilson-lawn': {
+            title: "Wilson's Lawn Maintenance — AI Assist",
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🌱</div>
+                    <h3>Wilson's Lawn Maintenance — AI Assist</h3>
+                    <p class="project-role"><strong>Developer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>A lawn-care business site with a live voice agent (ElevenLabs-powered) for handling customer inquiries, built on Vite + React + shadcn/ui components.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Vite</span>
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">shadcn/ui</span>
+                    <span class="tech-badge">AI Voice Agent</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/wilson-lawn-ai-assist-public/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'pir-devine-news': {
+            title: 'De Vine News — Committee Hub',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🗞️</div>
+                    <h3>De Vine News — Committee Hub</h3>
+                    <p class="project-role"><strong>Developer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>Newsletter workflow hub for the Psychedelics in Recovery™ / PIR® 12-Step Fellowship. A GWS-automated dashboard for newsletter submissions and PR review — partnering with an existing WordPress site rather than replacing it.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Google Workspace CLI</span>
+                    <span class="tech-badge">GitHub Actions</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/pir-devine-news-public/dashboard/index.html" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Dashboard</a>
+                </div>
+            `
+        },
+        'divorce-custody': {
+            title: 'Divorce & Custody Assistant',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">⚖️</div>
+                    <h3>Divorce & Custody Assistant</h3>
+                    <p class="project-role"><strong>Developer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>Privacy-first, AI-assisted case management for pro se litigation support — organizes court documents, maps evidence to statutory custody factors, tracks filings and deadlines, and models financial exposure with strict privacy isolation.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">AI-Assisted</span>
+                    <span class="tech-badge">Privacy-First Architecture</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/divorce-custody-assistant-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'tax-assistant': {
+            title: 'Tax Assistant',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🧾</div>
+                    <h3>Tax Assistant</h3>
+                    <p class="project-role"><strong>Developer</strong> | In Development</p>
+                </div>
+                <div class="project-description">
+                    <p>AI-assisted tax position management — back-tax relief navigation, transaction-history reconstruction, and filing support. Still early-stage; the public preview will populate as the build matures.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">AI-Assisted</span>
+                    <span class="tech-badge">In Development</span>
+                </div>
+            `
+        },
+        'trading-assistant-project': {
+            title: 'Trading Assistant (Fortuna)',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">📈</div>
+                    <h3>Trading Assistant (Fortuna)</h3>
+                    <p class="project-role"><strong>Architect & Developer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>A live, multi-agent AI trading accountability system — wealth warden, accountability coach, session analyst, and success manager for futures and crypto futures operations. Built on Claude Code CLI + Augment Code, backed by MCP integrations into Hummingbot, TradingView, and Robinhood.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Claude Code CLI</span>
+                    <span class="tech-badge">Augment Code</span>
+                    <span class="tech-badge">MCP</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/trading-assistant-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'ecosystem-tooling': {
+            title: 'Ecosystem Tooling & Templates',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🧰</div>
+                    <h3>Ecosystem Tooling & Templates</h3>
+                    <p class="project-role"><strong>Infrastructure & Integrations</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>The reusable scaffolding and adapted third-party tools that keep every project in this portfolio running smoothly.</p>
+                </div>
+                <h4>🧰 The gallery:</h4>
+                <ul>
+                    <li><strong>my-template</strong> — reusable repo scaffolding: gitignore/CI templates, branch protection rulesets, sync workflows — <a href="https://github.com/drasticstatic/my-template" target="_blank">code</a></li>
+                    <li><strong>free-claude-code</strong> — an Anthropic-compatible proxy adapted to route free/open-source model traffic (NVIDIA NIM, DeepSeek, OpenRouter, Ollama) — <a href="https://github.com/drasticstatic/free-claude-code" target="_blank">code</a></li>
+                    <li><strong>hummingbot-mcp</strong> — MCP layer for the Hummingbot trading engine — <a href="https://github.com/drasticstatic/hummingbot-mcp" target="_blank">code</a></li>
+                    <li><strong>hummingbot-api</strong> — Hummingbot API server integration — <a href="https://github.com/drasticstatic/hummingbot-api" target="_blank">code</a></li>
+                    <li><strong>tradingview-mcp-jackson</strong> — TradingView Desktop MCP integration — <a href="https://github.com/drasticstatic/tradingview-mcp-jackson" target="_blank">code</a></li>
+                    <li><strong>robinhood-mcp</strong> — Robinhood MCP integration — <a href="https://github.com/drasticstatic/robinhood-mcp" target="_blank">code</a></li>
+                </ul>
+            `
+        },
+        'dev-recruitment-safeguards': {
+            title: 'Dev Recruitment Safeguards',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🕵️</div>
+                    <h3>Dev Recruitment Safeguards</h3>
+                    <p class="project-role"><strong>Author & Maintainer</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>A security-awareness portal documenting sophisticated LinkedIn recruitment scams targeting Web3 and fullstack developers — pattern recognition, red flags, and protection guidance for the community.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic/dev-recruitment-safeguards" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> View Portal</a>
+                </div>
+            `
+        },
+        'agent-alfred': {
+            title: 'Alfred',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🤖</div>
+                    <h3>Alfred</h3>
+                    <p class="project-role"><strong>System Coordinator</strong> | Claude Code CLI</p>
+                </div>
+                <div class="project-description">
+                    <p>Named for the Master Butler archetype — proactive, discreet, always one step ahead. Alfred handles cross-repo housekeeping, security flags, and routes lower-stakes work to a free-model sandbox, keeping context lean so the specialist agents can stay focused on their own domains.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/anthropas-argus-alfred-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'agent-fortuna': {
+            title: 'Fortuna',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">💰</div>
+                    <h3>Fortuna</h3>
+                    <p class="project-role"><strong>Wealth Warden & Trading Coach</strong> | Claude Code CLI + Augment Code</p>
+                </div>
+                <div class="project-description">
+                    <p>Christopher's dedicated trading accountability coach — session analysis, strategy documentation, and success-manager duties for futures and crypto futures operations.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/trading-assistant-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                </div>
+            `
+        },
+        'agent-kavanah': {
+            title: 'Kavanah',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🕯️</div>
+                    <h3>Kavanah</h3>
+                    <p class="project-role"><strong>Spec-Driven Orchestration</strong> | Augment Intent</p>
+                </div>
+                <div class="project-description">
+                    <p>Intent-driven orchestration rather than a chat session — Kavanah's primary scope is the web3 DEX arbitrage bot and this very resume site, turning specs into coordinated execution.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic/trading-bot-arbitrage-public" class="modal-btn modal-btn-primary" target="_blank"><i class="fab fa-github"></i> DEX Arb Bot</a>
+                </div>
+            `
         }
     };
 
@@ -465,6 +795,9 @@ function openDonateModal() {
                         </a>
                         <a href="https://cash.app/$drasticstatic" target="_blank" class="payment-btn cashapp-btn">
                             <span style="font-weight: 800; font-size: 1.1rem;">$</span> Cash App
+                        </a>
+                        <a href="https://github.com/sponsors/drasticstatic" target="_blank" class="payment-btn sponsors-btn">
+                            <i class="fab fa-github"></i> GitHub Sponsors
                         </a>
                     </div>
                 </div>
