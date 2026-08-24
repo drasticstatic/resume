@@ -337,6 +337,22 @@
     text-shadow: 0 0 10px var(--neon-pink);
 }
 
+/* Appended 2026-08-24: multi-role hero title, one color per role */
+.role-audio-highlight {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.role-cnc-highlight {
+    color: var(--neon-orange);
+    text-shadow: 0 0 10px var(--neon-orange);
+}
+
+.role-trader-highlight {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 10px var(--neon-yellow);
+}
+
 .highlight-glow {
     background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan));
     -webkit-background-clip: text;

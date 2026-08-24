@@ -532,6 +532,19 @@ p, a {
     color: var(--text-secondary);
 }
 
+/* Appended 2026-08-24: center the "Take a look at my works" cards' text */
+.works-card .card-title,
+.works-card .card-description {
+    text-align: center;
+}
+
+/* Appended 2026-08-24: let specific hero/section text runs use the page's
+   full width instead of the 800-900px reading-width cap elsewhere */
+.full-width-text {
+    max-width: none !important;
+    width: 100%;
+}
+
 .card-tags {
     display: flex;
     flex-wrap: wrap;
