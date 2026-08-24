@@ -844,7 +844,7 @@ function openDonateModal() {
                             <span style="font-weight: 800; font-size: 1.1rem;">$</span> Cash App
                         </a>
                         <a href="https://github.com/sponsors/drasticstatic" target="_blank" class="payment-btn sponsors-btn">
-                            <i class="fab fa-github"></i> GitHub Sponsors
+                            <i class="fab fa-github"></i> GitHub Sponsors <span style="opacity: 0.85; font-size: 0.85em;">(<i class="fab fa-stripe"></i> Stripe)</span>
                         </a>
                     </div>
                 </div>

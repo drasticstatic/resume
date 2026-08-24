@@ -143,36 +143,12 @@
     font-size: 20px;
 }
 
-/* Timeline Fixes */
-.experience-timeline {
-    position: relative;
-    padding-left: 40px;
-}
-
-.timeline-line {
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, 
-        var(--neon-pink),
-        var(--neon-cyan),
-        var(--neon-green));
-    box-shadow: 0 0 10px var(--neon-pink);
-}
-
-.timeline-marker {
-    position: absolute;
-    left: -30px;
-    top: 20px;
-    width: 12px;
-    height: 12px;
-    background: var(--neon-cyan);
-    border-radius: 50%;
-    box-shadow: 0 0 15px var(--neon-cyan);
-    animation: markerPulse 2s ease-in-out infinite;
-}
+/* Timeline layout consolidated into css/navigation.css 2026-08-24 — this
+   block previously fought navigation.css's centered/alternating design
+   for the same .experience-timeline/.timeline-line/.timeline-marker
+   selectors (the actual cause of cards overlapping the meridian). The
+   gradient line + markerPulse glow this block introduced are preserved,
+   folded into the consolidated rules. */
 
 .experience-card {
     background: rgba(15, 15, 15, 0.8);
