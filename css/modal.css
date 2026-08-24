@@ -144,6 +144,33 @@
     box-shadow: 0 6px 20px rgba(255, 0, 128, 0.4);
 }
 
+/* Appended 2026-08-24: DappU gallery — each row a label + small jump-to-live-build button */
+.dappu-gallery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.dappu-gallery-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.modal-btn-small {
+    padding: 6px 14px !important;
+    margin-top: 0 !important;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
 /* Primary modal button - Launch Dapp style */
 .modal-btn-primary {
     background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 255, 0.2)) !important;
