@@ -435,7 +435,9 @@ function openProjectModal(projectId) {
                 </ul>
 
                 <div class="project-links">
-                    <a href="https://www.jonesmanufacturingyorkpa.com" class="modal-btn" target="_blank">Jones Manufacturing</a>
+                    <a href="https://www.jonesmanufacturingyorkpa.com" class="modal-btn" target="_blank"><i class="fas fa-external-link-alt"></i> Jones Manufacturing</a>
+                    <a href="https://billet-industries.com/" class="modal-btn" target="_blank"><i class="fas fa-external-link-alt"></i> Billet Industries</a>
+                    <a href="https://www.taittowers.com/" class="modal-btn" target="_blank"><i class="fas fa-external-link-alt"></i> TAIT Towers</a>
                 </div>
             `
         },
@@ -486,19 +488,41 @@ function openProjectModal(projectId) {
                 </div>
 
                 <div class="project-description">
-                    <p>Seven build-along projects from the DappU program, each exploring a different core smart-contract pattern. Five have live GitHub Pages demos; the other two are contract-only exercises with no frontend to deploy.</p>
+                    <p>Seven build-along projects from the DappU program, each exploring a different core smart-contract pattern. Five have live GitHub Pages demos, one has on-chain proof of a from-scratch token deployment, and one is a contract-only exercise with no frontend to deploy.</p>
                 </div>
 
                 <h4>🎓 The gallery:</h4>
-                <ul>
-                    <li><strong>DAO</strong> — production-ready decentralized autonomous organization with funding proposals and voting — <a href="https://drasticstatic.github.io/dao/" target="_blank">live demo</a></li>
-                    <li><strong>Crowdsale</strong> — Ethereum-based token crowdsale using Hardhat and React — <a href="https://drasticstatic.github.io/crowdsale/" target="_blank">live demo</a></li>
-                    <li><strong>AMM</strong> — automated market maker mechanics — <a href="https://drasticstatic.github.io/amm/" target="_blank">live demo</a></li>
-                    <li><strong>NFT Collection</strong> — DappU Punks NFT project — <a href="https://drasticstatic.github.io/nft_dappu-punks/" target="_blank">live demo</a></li>
-                    <li><strong>Solidity Intensive</strong> — core language fundamentals — <a href="https://drasticstatic.github.io/solidity_intensive/" target="_blank">live demo</a></li>
-                    <li><strong>Hardhat Example</strong> — contract-only exercise, no live demo — <a href="https://github.com/drasticstatic/hardhat_example" target="_blank">code</a></li>
-                    <li><strong>Blockchain Developer Bootcamp</strong> — CRA frontend built, live demo not yet deployed — <a href="https://github.com/drasticstatic/blockchain-developer-bootcamp" target="_blank">code</a></li>
-                </ul>
+                <div class="dappu-gallery-list">
+                    <div class="dappu-gallery-item">
+                        <span><strong>DAO</strong> — production-ready decentralized autonomous organization with funding proposals and voting</span>
+                        <a href="https://drasticstatic.github.io/dao/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>Crowdsale</strong> — Ethereum-based token crowdsale using Hardhat and React</span>
+                        <a href="https://drasticstatic.github.io/crowdsale/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>AMM</strong> — automated market maker mechanics</span>
+                        <a href="https://drasticstatic.github.io/amm/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>NFT Collection</strong> — DappU Punks NFT project</span>
+                        <a href="https://drasticstatic.github.io/nft_dappu-punks/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>Solidity Intensive</strong> — core language fundamentals</span>
+                        <a href="https://drasticstatic.github.io/solidity_intensive/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>Blockchain Developer Bootcamp</strong> — a Token.sol contract built from scratch and deployed to Sepolia</span>
+                        <a href="https://sepolia.etherscan.io/address/0x202be008122ba0eeedae74fe81d398f11c5534a8" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-check-circle"></i> Etherscan Proof</a>
+                        <a href="https://github.com/drasticstatic/blockchain-developer-bootcamp" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                    <div class="dappu-gallery-item">
+                        <span><strong>Hardhat Example</strong> — contract-only exercise, no frontend</span>
+                        <a href="https://github.com/drasticstatic/hardhat_example" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
 
                 <h4>⚙️ Technical Stack:</h4>
                 <div class="tech-stack-grid">
@@ -684,25 +708,48 @@ function openProjectModal(projectId) {
             `
         },
         'ecosystem-tooling': {
-            title: 'Ecosystem Tooling & Templates',
+            title: 'Forked & Adapted Tools',
             description: `
                 <div class="project-modal-header">
                     <div class="project-icon-large">🧰</div>
-                    <h3>Ecosystem Tooling & Templates</h3>
+                    <h3>Forked & Adapted Tools</h3>
                     <p class="project-role"><strong>Infrastructure & Integrations</strong></p>
                 </div>
                 <div class="project-description">
-                    <p>The reusable scaffolding and adapted third-party tools that keep every project in this portfolio running smoothly.</p>
+                    <p>Working copies and forks of third-party tools, adapted into this ecosystem's trading infrastructure. (Looking for the reusable repo scaffolding? That's <code>my-template</code>, now its own card in this section.)</p>
                 </div>
                 <h4>🧰 The gallery:</h4>
                 <ul>
-                    <li><strong>my-template</strong> — reusable repo scaffolding: gitignore/CI templates, branch protection rulesets, sync workflows — <a href="https://github.com/drasticstatic/my-template" target="_blank">code</a></li>
-                    <li><strong>free-claude-code</strong> — an Anthropic-compatible proxy adapted to route free/open-source model traffic (NVIDIA NIM, DeepSeek, OpenRouter, Ollama) — <a href="https://github.com/drasticstatic/free-claude-code" target="_blank">code</a></li>
-                    <li><strong>hummingbot-mcp</strong> — MCP layer for the Hummingbot trading engine — <a href="https://github.com/drasticstatic/hummingbot-mcp" target="_blank">code</a></li>
-                    <li><strong>hummingbot-api</strong> — Hummingbot API server integration — <a href="https://github.com/drasticstatic/hummingbot-api" target="_blank">code</a></li>
-                    <li><strong>tradingview-mcp-jackson</strong> — TradingView Desktop MCP integration — <a href="https://github.com/drasticstatic/tradingview-mcp-jackson" target="_blank">code</a></li>
-                    <li><strong>robinhood-mcp</strong> — Robinhood MCP integration — <a href="https://github.com/drasticstatic/robinhood-mcp" target="_blank">code</a></li>
+                    <li><strong>free-claude-code</strong> — an Anthropic-compatible proxy adapted to route free/open-source model traffic (NVIDIA NIM, DeepSeek, OpenRouter, Ollama) — <a href="https://github.com/drasticstatic/free-claude-code" target="_blank"><i class="fab fa-github"></i> code</a></li>
+                    <li><strong>hummingbot-mcp</strong> — MCP layer for the Hummingbot trading engine — <a href="https://github.com/drasticstatic/hummingbot-mcp" target="_blank"><i class="fab fa-github"></i> code</a></li>
+                    <li><strong>hummingbot-api</strong> — Hummingbot API server integration — <a href="https://github.com/drasticstatic/hummingbot-api" target="_blank"><i class="fab fa-github"></i> code</a></li>
+                    <li><strong>tradingview-mcp-jackson</strong> — TradingView Desktop MCP integration — <a href="https://github.com/drasticstatic/tradingview-mcp-jackson" target="_blank"><i class="fab fa-github"></i> code</a></li>
+                    <li><strong>robinhood-mcp</strong> — Robinhood MCP integration — <a href="https://github.com/drasticstatic/robinhood-mcp" target="_blank"><i class="fab fa-github"></i> code</a></li>
                 </ul>
+            `
+        },
+        'drasticstatic-howtos': {
+            title: 'How-To Guides',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">📚</div>
+                    <h3>How-To Guides</h3>
+                    <p class="project-role"><strong>Ecosystem Documentation</strong></p>
+                </div>
+                <div class="project-description">
+                    <p>The <code>drasticstatic/drasticstatic</code> profile repo doubles as a small library of how-to guides for running this whole ecosystem — the same playbooks used to stand up every repo in this portfolio.</p>
+                </div>
+                <h4>📚 The guides:</h4>
+                <ul>
+                    <li><a href="https://github.com/drasticstatic/drasticstatic/blob/main/how-to-establish-a-github-PROFILE-README.md" target="_blank"><i class="fab fa-github"></i> How to establish a GitHub profile README</a></li>
+                    <li><a href="https://github.com/drasticstatic/drasticstatic/blob/main/how-to-establish-cross_repo_CONTRIBUTORS_SECURITY_LICENSING.md" target="_blank"><i class="fab fa-github"></i> How to establish cross-repo CONTRIBUTORS/SECURITY/LICENSING</a></li>
+                    <li><a href="https://github.com/drasticstatic/drasticstatic/blob/main/how-to-publish-react-APPS-to-ghPAGES.md" target="_blank"><i class="fab fa-github"></i> How to publish React apps to GitHub Pages</a></li>
+                    <li><a href="https://github.com/drasticstatic/drasticstatic/blob/main/how-to-setup-BRANCH-PROTECTION-and-TOPICS.md" target="_blank"><i class="fab fa-github"></i> How to set up branch protection & topics</a></li>
+                    <li><a href="https://github.com/drasticstatic/drasticstatic/blob/main/how-to-setup-GITEXPORTER.md" target="_blank"><i class="fab fa-github"></i> How to set up GitExporter</a></li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic/drasticstatic" class="modal-btn modal-btn-primary" target="_blank"><i class="fab fa-github"></i> View Repo</a>
+                </div>
             `
         },
         'dev-recruitment-safeguards': {
