@@ -286,7 +286,7 @@ p, a {
    specific min-height rules (e.g. .portfolio-hero, .about-hero) which
    still take precedence here. */
 .section {
-    padding: 60px 40px;
+    padding: 80px 60px;
 }
 
 /* HEADER */
@@ -1012,7 +1012,7 @@ p, a {
 
 /* Second actual item, fourth item, sixth item... go RIGHT */
 .professional-journey .timeline-item:nth-of-type(even) {
-    margin-left: calc(50% + 10px) !important;
+    margin-left: calc(50% + 30px) !important;
     margin-right: 0 !important;
     text-align: left;
 }
