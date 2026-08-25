@@ -168,6 +168,12 @@ The design balances professional presentation with the unique spiritual and tech
 
 ---
 
+## 📜 License
+
+[MIT License](LICENSE) — free to reuse.
+
+---
+
 <p align="center">
   <em>"Engineering the sacred: Where prayer and devotion manifest as code."</em>
 </p>
