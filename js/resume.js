@@ -66,16 +66,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
 
     if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            this.classList.toggle('active');
-        });
+        if (!navMenu.id) {
+            navMenu.id = 'primary-navigation';
+        }
+
+        hamburger.setAttribute('aria-controls', navMenu.id);
+
+        const syncMenuState = () => {
+            const isOpen = navMenu.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        };
+
+        const menuObserver = new MutationObserver(syncMenuState);
+        menuObserver.observe(navMenu, { attributes: true, attributeFilter: ['class'] });
+
+        syncMenuState();
 
         // Close hamburger menu when resizing to desktop view
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 navMenu.classList.remove('active');
                 hamburger.classList.remove('active');
+            }
+
+            syncMenuState();
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                syncMenuState();
+                hamburger.focus({ preventScroll: true });
             }
         });
     }

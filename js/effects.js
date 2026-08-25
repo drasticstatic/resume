@@ -96,6 +96,8 @@ function initTooltips() {
             z-index: 100000;
             box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
             font-family: 'JetBrains Mono', monospace;
+            max-width: 300px;
+            white-space: normal;
         `;
         document.body.appendChild(tooltip);
     }
@@ -110,58 +112,91 @@ function initTooltips() {
         tooltip.dataset.modalSyncAttached = 'true';
     }
 
+    // Helper function to position tooltip
+    function positionTooltip(el, tooltip) {
+        const rect = el.getBoundingClientRect();
+        const tooltipRect = tooltip.getBoundingClientRect();
+        const isLeft = el.classList.contains('tooltip-left');
+        let left, top;
+
+        if (isLeft) {
+            // Position to the left of element
+            left = rect.left - tooltipRect.width - 10;
+            top = rect.top + (rect.height / 2) - (tooltipRect.height / 2);
+            // If goes off left edge, show on right instead
+            if (left < 10) {
+                left = rect.right + 10;
+            }
+        } else {
+            // Position above element (default)
+            left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+            top = rect.top - tooltipRect.height - 10;
+            // If goes off top, show below
+            if (top < 10) {
+                top = rect.bottom + 10;
+            }
+        }
+
+        // Keep tooltip on screen horizontally
+        if (left < 10) left = 10;
+        if (left + tooltipRect.width > window.innerWidth - 10) {
+            left = window.innerWidth - tooltipRect.width - 10;
+        }
+        // Keep on screen vertically
+        if (top < 10) top = 10;
+        if (top + tooltipRect.height > window.innerHeight - 10) {
+            top = window.innerHeight - tooltipRect.height - 10;
+        }
+
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+    }
+
     // Add tooltip to all elements with data-tooltip
-    document.querySelectorAll('[data-tooltip]').forEach(el => {
-        el.addEventListener('mouseenter', (e) => {
+    function attachTooltipListeners(el) {
+        if (el._tooltipAttached) return; // Prevent duplicate listeners
+        el._tooltipAttached = true;
+
+        el.addEventListener('mouseenter', () => {
             const text = el.getAttribute('data-tooltip');
             if (!text) return;
 
             tooltip.textContent = text;
             tooltip.style.opacity = '1';
             tooltip.style.visibility = 'visible';
-
-            // Position tooltip above element
-            const rect = el.getBoundingClientRect();
-            const tooltipRect = tooltip.getBoundingClientRect();
-            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-            let top = rect.top - tooltipRect.height - 10;
-
-            // Keep tooltip on screen
-            if (left < 10) left = 10;
-            if (left + tooltipRect.width > window.innerWidth - 10) {
-                left = window.innerWidth - tooltipRect.width - 10;
-            }
-            if (top < 10) {
-                top = rect.bottom + 10; // Show below instead
-            }
-
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = top + 'px';
+            positionTooltip(el, tooltip);
         });
 
         el.addEventListener('mouseleave', () => {
             hideTooltip();
         });
 
-        el.addEventListener('mousemove', (e) => {
-            // Update position on mouse move for smooth following
-            const rect = el.getBoundingClientRect();
-            const tooltipRect = tooltip.getBoundingClientRect();
-            let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
-            let top = rect.top - tooltipRect.height - 10;
+        el.addEventListener('mousemove', () => {
+            positionTooltip(el, tooltip);
+        });
+    }
 
-            if (left < 10) left = 10;
-            if (left + tooltipRect.width > window.innerWidth - 10) {
-                left = window.innerWidth - tooltipRect.width - 10;
-            }
-            if (top < 10) {
-                top = rect.bottom + 10;
-            }
+    // Attach to existing elements
+    document.querySelectorAll('[data-tooltip]').forEach(attachTooltipListeners);
 
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = top + 'px';
+    // Use MutationObserver to handle dynamically added elements
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === 1) { // Element node
+                    if (node.hasAttribute && node.hasAttribute('data-tooltip')) {
+                        attachTooltipListeners(node);
+                    }
+                    // Also check children
+                    if (node.querySelectorAll) {
+                        node.querySelectorAll('[data-tooltip]').forEach(attachTooltipListeners);
+                    }
+                }
+            });
         });
     });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 }
 
 // Initialize all effects

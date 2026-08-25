@@ -754,17 +754,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new PsychedelicEffects();
     new Web3Simulator();
     
-    // Initialize mobile navigation
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-    }
-    
     // Add universal spore drop effects to all interactive elements
     document.addEventListener('click', (e) => {
         const target = e.target;

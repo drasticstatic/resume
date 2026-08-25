@@ -1,8 +1,6 @@
 # Christopher Wilson - Portfolio Website
 
-> *"Where code becomes prayer and mycelium becomes architecture."*
-
----
+> "Where code becomes prayer and mycelium becomes architecture."
 
 ## 🌌 Welcome
 
@@ -13,8 +11,6 @@ For nearly two decades, Christopher crafted the physical world with ten-thousand
 Through spiritual practice, ordination, and psychedelic healing, he learned the language of the soul — presence, surrender, gratitude, compassion. And through Web3 development, he discovered a new frontier where **the mechanical, the mystical, and the digital converge**.
 
 Today, Christopher stands at the threshold of these realms, co-creating **Ethereal Offering** — a sacred-technological ecosystem integrating gratitude rituals, soulbound identity, decentralized governance, and mycelial AI (the Oracle of Fruit). More than a project, it is a living altar: a place where code becomes prayer, where offerings become data, and where technology remembers its responsibility to serve the human heart.
-
----
 
 ## 🌿 Overview
 
@@ -29,6 +25,7 @@ This portfolio represents the unique journey of Christopher Wilson - a CNC machi
 ## Site Structure
 
 ### Pages
+
 - **Home** (`index.html`) - Hero introduction with key projects and experience
 - **About** (`pages/about.html`) - Comprehensive personal story and professional journey
 - **Portfolio** (`pages/portfolio.html`) - Detailed project showcases and technical skills
@@ -37,6 +34,7 @@ This portfolio represents the unique journey of Christopher Wilson - a CNC machi
 - **Contact** (`pages/contact.html`) - Multiple contact methods and inquiry form
 
 ### Key Features
+
 - **Responsive Design**: Mobile-first approach with clean, professional aesthetics
 - **Modal System**: Interactive project details and content exploration
 - **Navigation**: Fixed navigation with smooth transitions between pages
@@ -53,26 +51,34 @@ This portfolio represents the unique journey of Christopher Wilson - a CNC machi
 ## Projects Highlighted
 
 ### Ethereal Offering
+
 Co-founded spiritual Web3 ecosystem integrating:
+
 - Gratitude-based token systems
 - Soulbound identity protocols
 - LLM-powered ritual intelligence (Oracle of Fruit)
 - Zero-knowledge privacy systems
 
 ### Anonymous ZK + MPC Voting Platform
+
 Privacy-preserving governance built on Aleo with:
+
 - Zero-knowledge ballot casting
 - MPC fail-safe recovery
 - DAO-triggered key rotation
 
 ### DEX Arbitrage Scanner & Treasury Agent
+
 Automated treasury management featuring:
+
 - Cross-DEX arbitrage detection
 - Real-time profit optimization
 - Treasury auto-compounding
 
 ### Mycelium Agent — Oracle of Fruit
+
 LLM-powered ritual intelligence system providing:
+
 - Offering indexing and analysis
 - Spiritual practice guidance
 - Community wisdom synthesis
@@ -80,16 +86,19 @@ LLM-powered ritual intelligence system providing:
 ## Professional Background
 
 ### Current Roles
+
 - **Lead CNC Lathe Programmer** - Jones Manufacturing (2022-Present)
 - **Co-Founder** - Ethereal Offering (2024-Present)
 - **Ordained Minister** - Psanctuary Community
 - **Freelance Audio Engineer** - CSW Productions (2008-Present)
 
 ### Previous Experience
+
 - **CNC Machinist & CAM Programmer** - TAIT Towers (2016-2022)
 - **Lead Lathe Programmer** - Billet Industries (2006-2016)
 
 ### Technical Expertise
+
 - **Blockchain**: Aleo Leo, Solidity, MPC systems, DAO governance
 - **Manufacturing**: Mazatrol, Mastercam, FeatureCAM, G-code programming
 - **Audio**: FOH engineering, digital mixing, system design
@@ -98,8 +107,6 @@ LLM-powered ritual intelligence system providing:
 ## 🌟 Mission Statement
 
 **My mission is to build systems — spiritual, technological, and communal — that honor human dignity, protect personal sovereignty, and nurture pathways of healing and awakening. I combine precision engineering with zero-knowledge privacy, decentralized governance, and ministerial presence to create tools that empower individuals, strengthen communities, and reflect the sacred interconnectedness of all life.**
-
----
 
 ## 🌱 Personal Manifesto
 
@@ -117,8 +124,6 @@ Technology, like music and mycelium, can become a vessel for the sacred. Systems
 
 *This work exists to build technology that brings people home — to themselves, to one another, and to the Source from which all coherence flows.*
 
----
-
 ## 🧭 Philosophy & Approach
 
 This portfolio reflects a unique integration of:
@@ -128,11 +133,10 @@ This portfolio reflects a unique integration of:
 3. **Mycelial Intelligence**: Using fungal network models for decentralized governance
 4. **Ritual Technology**: Creating systems that support spiritual practice and community healing
 
----
-
 ## 📬 Contact & Collaboration
 
 Christopher is available for:
+
 - Zero-knowledge system architecture consulting
 - Precision manufacturing and CNC programming projects
 - Sacred technology development and spiritual innovation
@@ -140,15 +144,14 @@ Christopher is available for:
 - Speaking engagements on technology and spirituality
 
 **Contact Information:**
-| Platform | Link |
-|----------|------|
-| 📧 Email | [drasticstatic@gmail.com](mailto:drasticstatic@gmail.com) |
-| 💼 LinkedIn | [christopherwilsonmrt](https://www.linkedin.com/in/christopherwilsonmrt/) |
-| 🐙 GitHub | [drasticstatic](https://github.com/drasticstatic) |
-| 🌐 Gravatar | [christopherdrasticstatic](https://gravatar.com/christopherdrasticstatic) |
-| 📍 Location | York, Pennsylvania, USA |
 
----
+| Platform | Link |
+| --- | --- |
+| 📧 Email | drasticstatic@gmail.com |
+| 💼 LinkedIn | christopherwilsonmrt |
+| 🐙 GitHub | drasticstatic |
+| 🌐 Gravatar | christopherdrasticstatic |
+| 📍 Location | York, Pennsylvania, USA |
 
 ## 🛠️ Development Notes
 
@@ -157,18 +160,13 @@ The site is built with semantic HTML, accessible design principles, and progress
 The design balances professional presentation with the unique spiritual and technological perspective that defines Christopher's work at the intersection of precision engineering and sacred innovation.
 
 ### Technical Stack
+
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Styling**: Custom CSS with CSS Grid and Flexbox
 - **Fonts**: Inter font family for modern, clean typography
 - **Icons**: Font Awesome for consistent iconography
 - **Effects**: Custom psychedelic visual effects (liquid waves, northern lights, mycelial networks)
 
----
+<p align="center"><em>"Engineering the sacred: Where prayer and devotion manifest as code."</em></p>
 
-<p align="center">
-  <em>"Engineering the sacred: Where prayer and devotion manifest as code."</em>
-</p>
-
-<p align="center">
-  <strong>Minister-Technologist • Machinist-Mystic • Builder of Sacred-Decentralized Systems</strong>
-</p>
+<p align="center"><strong>Minister-Technologist • Machinist-Mystic • Builder of Sacred-Decentralized Systems</strong></p>
