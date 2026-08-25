@@ -875,11 +875,11 @@
 }
 
 .timeline-item:nth-child(odd) .timeline-marker {
-    right: -6px;
+    right: -18px;
 }
 
 .timeline-item:nth-child(even) .timeline-marker {
-    left: -6px;
+    left: -18px;
 }
 
 .timeline-content {
