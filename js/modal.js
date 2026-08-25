@@ -416,7 +416,7 @@ function openProjectModal(projectId) {
                     <li><strong>Industrial</strong> - Custom tooling and fixtures</li>
                 </ul>
 
-                <h4>🔧 Technical Expertise:</h4>
+                <h4 style="margin-top: 24px;">🔧 Technical Expertise:</h4>
                 <div class="tech-stack-modal">
                     <span class="tech-tag">Mazak Mazatrol</span>
                     <span class="tech-tag">Mastercam</span>
@@ -427,11 +427,11 @@ function openProjectModal(projectId) {
                     <span class="tech-tag">ITAR</span>
                 </div>
 
-                <h4>🏢 Companies:</h4>
+                <h4 style="margin-top: 24px;">🏢 Companies:</h4>
                 <ul>
-                    <li><strong>Jones Manufacturing</strong> - Current position, aerospace & defense</li>
+                    <li><strong>Jones Manufacturing</strong> - Industrial component manufacturing</li>
                     <li><strong>TAIT Towers</strong> - Entertainment automation systems</li>
-                    <li><strong>Billet Industries</strong> - Precision machining</li>
+                    <li><strong>Billet Industries</strong> - Precision machining & fabrication</li>
                 </ul>
 
                 <div class="project-links">
@@ -495,32 +495,46 @@ function openProjectModal(projectId) {
                 <div class="dappu-gallery-list">
                     <div class="dappu-gallery-item">
                         <span><strong>DAO</strong> — production-ready decentralized autonomous organization with funding proposals and voting</span>
-                        <a href="https://drasticstatic.github.io/dao/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://drasticstatic.github.io/dao/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>Crowdsale</strong> — Ethereum-based token crowdsale using Hardhat and React</span>
-                        <a href="https://drasticstatic.github.io/crowdsale/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://drasticstatic.github.io/crowdsale/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>AMM</strong> — automated market maker mechanics</span>
-                        <a href="https://drasticstatic.github.io/amm/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://drasticstatic.github.io/amm/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>NFT Collection</strong> — DappU Punks NFT project</span>
-                        <a href="https://drasticstatic.github.io/nft_dappu-punks/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://drasticstatic.github.io/nft_dappu-punks/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>Solidity Intensive</strong> — core language fundamentals</span>
-                        <a href="https://drasticstatic.github.io/solidity_intensive/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://drasticstatic.github.io/solidity_intensive/" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-rocket"></i> Live Demo</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>Blockchain Developer Bootcamp</strong> — a Token.sol contract built from scratch and deployed to Sepolia</span>
-                        <a href="https://sepolia.etherscan.io/address/0x202be008122ba0eeedae74fe81d398f11c5534a8" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-check-circle"></i> Etherscan Proof</a>
-                        <a href="https://github.com/drasticstatic/blockchain-developer-bootcamp" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://sepolia.etherscan.io/address/0x202be008122ba0eeedae74fe81d398f11c5534a8" class="modal-btn modal-btn-small" target="_blank"><i class="fas fa-check-circle"></i> Etherscan Proof</a>
+                            <a href="https://github.com/drasticstatic/blockchain-developer-bootcamp" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                     <div class="dappu-gallery-item">
                         <span><strong>Hardhat Example</strong> — contract-only exercise, no frontend</span>
-                        <a href="https://github.com/drasticstatic/hardhat_example" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <div class="dappu-gallery-actions">
+                            <a href="https://github.com/drasticstatic/hardhat_example" class="modal-btn modal-btn-small" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        </div>
                     </div>
                 </div>
 
@@ -815,6 +829,77 @@ function openProjectModal(projectId) {
                     <a href="https://github.com/drasticstatic/trading-bot-arbitrage-public" class="modal-btn modal-btn-primary" target="_blank"><i class="fab fa-github"></i> DEX Arb Bot</a>
                 </div>
             `
+        },
+        'david-amaringo': {
+            title: 'David Amaringo',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🎨</div>
+                    <h3>David Amaringo</h3>
+                    <p class="project-role"><strong>Ayahuasca Visionary Artist</strong> | Chaiconi Bari Healer</p>
+                </div>
+                <div class="project-description">
+                    <p>A home online for Maestro David Amaringo, trained by his uncle Pablo Cesar Amaringo Shuña — founder of the USKO-AYAR Amazonian School of Painting. His work has shown at the Museum of Children's Art in Oslo, Norway. Beyond painting, he's a skilled guide of the upper Amazon basin, an English translator, and a masterful ceremonial facilitator.</p>
+                </div>
+                <div class="project-description">
+                    <p>This site is an early foundation — Kenney and Christopher are still building out the fuller picture of David's story, services, and needs. Shares its technical foundation with I Am One Self and Find Your Feathers.</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Next.js</span>
+                    <span class="tech-badge">Visionary Art</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/david-amaringo-public-preview/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                    <a href="https://github.com/drasticstatic/david-amaringo-public-preview" class="modal-btn" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+                </div>
+            `
+        },
+        'this-site': {
+            title: 'This Very Site',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🌈</div>
+                    <h3>This Very Site</h3>
+                    <p class="project-role"><strong>Vanilla HTML5/CSS3/JS</strong> | No Framework, No Build Step</p>
+                </div>
+                <div class="project-description">
+                    <p>This resume is proof that "modern" doesn't require a bundler. No React, no build pipeline — just hand-written HTML, CSS, and JavaScript, deployed straight to GitHub Pages. And it still connects a real wallet, sends real ETH, and shows a live gas price (see "This Site Is Web3-Ready" under Major Roles for the full technical writeup).</p>
+                </div>
+                <h4>⚙️ Technical Stack:</h4>
+                <div class="tech-stack-grid">
+                    <span class="tech-badge">Vanilla JS</span>
+                    <span class="tech-badge">No Build Step</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://drasticstatic.github.io/resume/" class="modal-btn modal-btn-primary" target="_blank"><i class="fas fa-rocket"></i> Visit Live Site</a>
+                    <a href="https://github.com/drasticstatic/resume" class="modal-btn" target="_blank"><i class="fab fa-github"></i> View on GitHub</a>
+                </div>
+            `
+        },
+        'my-template-guides': {
+            title: 'my-template Workflow Guides',
+            description: `
+                <div class="project-modal-header">
+                    <div class="project-icon-large">🧱</div>
+                    <h3>my-template Workflow Guides</h3>
+                    <p class="project-role"><strong>Reusable Repo Scaffolding</strong></p>
+                </div>
+                <div class="project-description">
+                    <p><code>my-template/workflow-templates/</code> holds the reference docs every repo in this portfolio was built against — proven patterns and pitfalls, not just boilerplate files.</p>
+                </div>
+                <h4>🧱 The guides:</h4>
+                <ul>
+                    <li><a href="https://github.com/drasticstatic/my-template/blob/main/workflow-templates/GITEXPORTER-TO-ACTIONS-SYNC.md" target="_blank"><i class="fab fa-github"></i> GitExporter → GitHub Actions sync pipeline</a></li>
+                    <li><a href="https://github.com/drasticstatic/my-template/blob/main/workflow-templates/DETACHED_HEAD_GUIDE.md" target="_blank"><i class="fab fa-github"></i> Detached HEAD guide</a></li>
+                    <li><a href="https://github.com/drasticstatic/my-template/blob/main/workflow-templates/nextjs-ssg-ghpages-deploy.md" target="_blank"><i class="fab fa-github"></i> Next.js SSG → GitHub Pages deploy</a></li>
+                    <li><a href="https://github.com/drasticstatic/my-template/blob/main/workflow-templates/react-cra-ghpages-deploy.md" target="_blank"><i class="fab fa-github"></i> React (CRA) → GitHub Pages deploy</a></li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/drasticstatic/my-template/tree/main/workflow-templates" class="modal-btn modal-btn-primary" target="_blank"><i class="fab fa-github"></i> Browse All Templates</a>
+                </div>
+            `
         }
     };
 
@@ -844,7 +929,7 @@ function openDonateModal() {
                             <span style="font-weight: 800; font-size: 1.1rem;">$</span> Cash App
                         </a>
                         <a href="https://github.com/sponsors/drasticstatic" target="_blank" class="payment-btn sponsors-btn">
-                            <i class="fab fa-github"></i> GitHub Sponsors <span style="opacity: 0.85; font-size: 0.85em;">(<i class="fab fa-stripe"></i> Stripe)</span>
+                            <i class="fab fa-github"></i> GitHub Sponsors <span style="opacity: 0.85;">(<i class="fab fa-stripe"></i>)</span>
                         </a>
                     </div>
                 </div>
@@ -955,48 +1040,70 @@ function openContactModal() {
 
     const contactContent = `
         <div class="contact-modal">
-            <h3>📬 Start a Conversation</h3>
-            <p>I'd love to hear from you. Whether you're interested in sacred technology, precision engineering, or spiritual-technical innovation, let's connect.</p>
+            <h3><span id="contact-modal-typed"></span></h3>
+            <div id="contact-modal-body" style="opacity: 0; transition: opacity 0.5s ease;">
+                <p>I'd love to hear from you. Whether you're interested in sacred technology, precision engineering, or spiritual-technical innovation, let's connect.</p>
 
-            <div class="contact-options">
-                <div class="contact-section">
-                    <h4>Direct Contact</h4>
-                    <div class="contact-links">
-                        <a href="mailto:drasticstatic@gmail.com" class="contact-btn email-btn">
-                            <i class="fas fa-envelope"></i> Email Me
-                        </a>
-                        <a href="tel:+17175011481" class="contact-btn phone-btn">
-                            <i class="fas fa-phone"></i> Call Me
-                        </a>
+                <div class="contact-options">
+                    <div class="contact-section">
+                        <h4>Direct Contact</h4>
+                        <div class="contact-links">
+                            <a href="mailto:drasticstatic@gmail.com" class="contact-btn email-btn">
+                                <i class="fas fa-envelope"></i> Email Me
+                            </a>
+                            <a href="tel:+17175011481" class="contact-btn phone-btn">
+                                <i class="fas fa-phone"></i> Call Me
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-section">
+                        <h4>Social & Professional</h4>
+                        <div class="contact-links">
+                            <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="contact-btn linkedin-btn">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/drasticstatic" target="_blank" class="contact-btn github-btn">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-section">
+                        <h4>Location</h4>
+                        <p style="color: rgba(255,255,255,0.8);"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
                     </div>
                 </div>
 
-                <div class="contact-section">
-                    <h4>Social & Professional</h4>
-                    <div class="contact-links">
-                        <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="contact-btn linkedin-btn">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="https://github.com/drasticstatic" target="_blank" class="contact-btn github-btn">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                    </div>
+                <div class="contact-cta" style="margin-top: 20px; text-align: center;">
+                    <a href="${contactPath}" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">Visit Full Contact Page</a>
                 </div>
-
-                <div class="contact-section">
-                    <h4>Location</h4>
-                    <p style="color: rgba(255,255,255,0.8);"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
-                </div>
-            </div>
-
-            <div class="contact-cta" style="margin-top: 20px; text-align: center;">
-                <a href="${contactPath}" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">Visit Full Contact Page</a>
             </div>
         </div>
     `;
 
     if (window.modalInstance) {
         window.modalInstance.open(contactContent);
+
+        if (typeof createSporeRain === 'function') {
+            createSporeRain(window.innerWidth / 2, window.innerHeight / 3);
+        }
+
+        // Type out the heading, then reveal the structured content
+        const typedEl = document.getElementById('contact-modal-typed');
+        const bodyEl = document.getElementById('contact-modal-body');
+        const heading = '📬 Start a Conversation';
+        let i = 0;
+        setTimeout(function typeHeading() {
+            if (!typedEl) return;
+            if (i < heading.length) {
+                typedEl.textContent += heading.charAt(i);
+                i++;
+                setTimeout(typeHeading, 35);
+            } else if (bodyEl) {
+                bodyEl.style.opacity = '1';
+            }
+        }, 200);
     }
 }
 

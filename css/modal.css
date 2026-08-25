@@ -153,15 +153,29 @@
 }
 
 .dappu-gallery-item {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    justify-content: space-between;
     gap: 12px;
     padding: 10px 14px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
+}
+
+/* Buttons stack in a column to the right, never wrapping under the
+   description text — keeps longer project rows easy to scan. */
+.dappu-gallery-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+    .dappu-gallery-item {
+        grid-template-columns: 1fr;
+    }
 }
 
 .modal-btn-small {
