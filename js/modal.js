@@ -6,11 +6,21 @@ class Modal {
         this.closeBtn = document.querySelector('.close');
         this.modalContent = document.querySelector('.modal-content');
         this.touchStartTarget = null;
+        this.previouslyFocusedElement = null;
+        this.modalHeadingId = 'modal-heading';
 
         this.init();
     }
 
     init() {
+        if (this.modal) {
+            this.modal.setAttribute('aria-hidden', 'true');
+        }
+
+        if (this.modalContent) {
+            this.modalContent.setAttribute('tabindex', '-1');
+        }
+
         // Close modal when clicking the X
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', (e) => {
@@ -78,16 +88,81 @@ class Modal {
 
         // Close modal with Escape key
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && this.modal && this.modal.style.display === 'block') {
+            if (event.key === 'Escape' && this.isOpen()) {
                 this.close();
+                return;
+            }
+
+            if (event.key === 'Tab' && this.isOpen()) {
+                this.trapFocus(event);
             }
         });
+    }
+
+    isOpen() {
+        return Boolean(this.modal && this.modal.style.display === 'block');
+    }
+
+    getFocusableElements() {
+        if (!this.modalContent) {
+            return [];
+        }
+
+        return Array.from(this.modalContent.querySelectorAll(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter((element) => element instanceof HTMLElement && element.getClientRects().length > 0);
+    }
+
+    trapFocus(event) {
+        const focusableElements = this.getFocusableElements();
+
+        if (!focusableElements.length) {
+            event.preventDefault();
+            this.modalContent?.focus({ preventScroll: true });
+            return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+            event.preventDefault();
+            lastElement.focus({ preventScroll: true });
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+            event.preventDefault();
+            firstElement.focus({ preventScroll: true });
+        }
+    }
+
+    syncDialogLabel() {
+        if (!this.modal || !this.modalBody) {
+            return;
+        }
+
+        const heading = this.modalBody.querySelector('h1, h2, h3, h4, h5, h6');
+
+        if (heading instanceof HTMLElement) {
+            if (!heading.id) {
+                heading.id = this.modalHeadingId;
+            }
+            this.modal.setAttribute('aria-labelledby', heading.id);
+            this.modal.removeAttribute('aria-label');
+        } else {
+            this.modal.removeAttribute('aria-labelledby');
+            this.modal.setAttribute('aria-label', 'Dialog');
+        }
     }
 
     open(content) {
         if (!this.modal || !this.modalBody) {
             console.error('Modal elements not found');
             return;
+        }
+
+        document.dispatchEvent(new Event('tooltip:hide'));
+
+        if (this.modal.style.display !== 'block' && document.activeElement instanceof HTMLElement) {
+            this.previouslyFocusedElement = document.activeElement;
         }
 
         // Add close button at bottom for mobile with hover effect
@@ -105,6 +180,7 @@ class Modal {
         `;
         this.modalBody.innerHTML = content + closeButtonHtml;
         this.modal.style.display = 'block';
+        this.modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
 
         // Reset modal content width to default for non-resume modals
@@ -120,6 +196,9 @@ class Modal {
             modalContent.style.height = '';
         }
 
+        this.syncDialogLabel();
+        this.focusInitialElement();
+
         // Spore rain on modal open
         if (typeof createSporeRain === 'function') {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
@@ -129,7 +208,12 @@ class Modal {
     close() {
         if (!this.modal) return;
 
+        document.dispatchEvent(new Event('tooltip:hide'));
+
         this.modal.style.display = 'none';
+        this.modal.setAttribute('aria-hidden', 'true');
+        this.modal.removeAttribute('aria-labelledby');
+        this.modal.removeAttribute('aria-label');
         document.body.style.overflow = 'auto';
 
         // Reset modal content dimensions
@@ -140,9 +224,27 @@ class Modal {
             modalContent.style.height = '';
         }
 
+        if (this.previouslyFocusedElement && this.previouslyFocusedElement.isConnected) {
+            this.previouslyFocusedElement.focus({ preventScroll: true });
+        }
+        this.previouslyFocusedElement = null;
+
         // Spore rain on modal close
         if (typeof createSporeRain === 'function') {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 2);
+        }
+    }
+
+    focusInitialElement() {
+        const focusTarget = this.modalContent?.querySelector(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        ) || this.closeBtn || this.modalContent;
+
+        if (focusTarget instanceof HTMLElement) {
+            if (focusTarget === this.modalContent) {
+                focusTarget.setAttribute('tabindex', '-1');
+            }
+            focusTarget.focus({ preventScroll: true });
         }
     }
 }
@@ -965,7 +1067,7 @@ function openDonateModal() {
                         <p id="tx-demo-badge" style="font-size: 0.75rem; color: rgba(255, 165, 0, 0.8); text-align: center; margin-top: 10px; display: ${isConnected ? 'none' : 'block'};">
                             ⚠️ Demo mode - Connect wallet to send real transactions
                         </p>
-                        <div id="gas-indicator" style="font-size: 0.8rem; text-align: center; margin-top: 8px; padding: 6px 12px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block;">
+                        <div id="gas-indicator" class="tooltip-above" data-tooltip="Current Ethereum mainnet gas price - lower is cheaper" style="font-size: 0.8rem; text-align: center; margin-top: 8px; padding: 6px 12px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; cursor: help;">
                             <i class="fas fa-gas-pump" style="color: #00ff88;"></i> Loading gas...
                         </div>
                     </div>
@@ -1016,6 +1118,18 @@ function openDonateModal() {
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Social Login Section -->
+                <div class="payment-section" style="background: linear-gradient(135deg, rgba(255, 0, 128, 0.05), rgba(138, 43, 226, 0.05)); border: 1px solid rgba(255, 0, 128, 0.2); border-radius: 12px; padding: 20px; margin-top: 15px;">
+                    <h4 style="color: #ff0080; margin: 0 0 10px 0; text-align: center;"><i class="fas fa-users"></i> Or Connect with Social Login</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-align: center; margin-bottom: 15px;">No wallet? Sign in with your existing accounts!</p>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px;">
+                        <button onclick="WalletManager.showWeb3AuthModal()" style="padding: 12px; background: rgba(219, 68, 55, 0.2); border: 1px solid rgba(219, 68, 55, 0.5); border-radius: 10px; color: #db4437; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-google"></i></button>
+                        <button onclick="WalletManager.showWeb3AuthModal()" style="padding: 12px; background: rgba(24, 119, 242, 0.2); border: 1px solid rgba(24, 119, 242, 0.5); border-radius: 10px; color: #1877f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></button>
+                        <button onclick="WalletManager.showWeb3AuthModal()" style="padding: 12px; background: rgba(29, 161, 242, 0.2); border: 1px solid rgba(29, 161, 242, 0.5); border-radius: 10px; color: #1da1f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></button>
+                        <button onclick="WalletManager.showWeb3AuthModal()" style="padding: 12px; background: rgba(88, 101, 242, 0.2); border: 1px solid rgba(88, 101, 242, 0.5); border-radius: 10px; color: #5865f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-discord"></i></button>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; text-align: center;"><i class="fas fa-shield-alt"></i> Powered by <a href="https://web3auth.io" target="_blank" style="color: #ff0080;">Web3Auth</a></p>
                 </div>
             </div>
         </div>
