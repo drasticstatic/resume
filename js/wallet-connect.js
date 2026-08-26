@@ -7,6 +7,10 @@ const WalletManager = {
     currentChain: null,
     currentChainId: null,
 
+    storageKeys: {
+        disconnectPreference: 'resume.wallet.disconnectRequested'
+    },
+
     // Wallet addresses for donations
     donationAddresses: {
         ETH: '0x96F185dB969F3c45EDDff27c73A4880A877BaeF6',
@@ -85,7 +89,7 @@ const WalletManager = {
             // Check if already connected
             try {
                 const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                if (accounts.length > 0) {
+                if (accounts.length > 0 && !this.hasDisconnectPreference()) {
                     this.currentAddress = accounts[0];
                     this.isConnected = true;
                     this.currentChain = await this.getChainName();
@@ -97,8 +101,9 @@ const WalletManager = {
             // Listen for account changes
             window.ethereum.on('accountsChanged', (accounts) => {
                 if (accounts.length === 0) {
-                    this.disconnect();
+                    this.disconnect({ persistPreference: false });
                 } else {
+                    this.setDisconnectPreference(false);
                     this.currentAddress = accounts[0];
                     this.isConnected = true;
                     this.updateUI();
@@ -142,6 +147,7 @@ const WalletManager = {
             console.log('Requesting accounts from wallet...');
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             console.log('Got accounts:', accounts);
+            this.setDisconnectPreference(false);
             this.currentAddress = accounts[0];
             this.isConnected = true;
             this.currentChain = await this.getChainName();
@@ -224,22 +230,21 @@ const WalletManager = {
                     </div>
                 </div>
 
-                <!-- Social Login Section -->
-                <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(138, 43, 226, 0.1)); border: 1px solid rgba(255, 0, 128, 0.3); border-radius: 12px;">
-                    <h4 style="color: #ff0080; margin: 0 0 15px 0; text-align: center;"><i class="fas fa-users"></i> Or Connect with Social Login</h4>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-align: center; margin-bottom: 15px;">Sign in with your existing accounts - no wallet required!</p>
-                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(219, 68, 55, 0.2); border: 1px solid rgba(219, 68, 55, 0.5); border-radius: 10px; color: #db4437; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-google"></i></button>
-                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(24, 119, 242, 0.2); border: 1px solid rgba(24, 119, 242, 0.5); border-radius: 10px; color: #1877f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-facebook"></i></button>
-                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(29, 161, 242, 0.2); border: 1px solid rgba(29, 161, 242, 0.5); border-radius: 10px; color: #1da1f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-twitter"></i></button>
-                        <button onclick="WalletManager.showSocialLoginInfo()" style="padding: 12px; background: rgba(88, 101, 242, 0.2); border: 1px solid rgba(88, 101, 242, 0.5); border-radius: 10px; color: #5865f2; cursor: pointer; transition: all 0.3s ease;"><i class="fab fa-discord"></i></button>
-                    </div>
-                    <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; text-align: center; margin-top: 10px;"><i class="fas fa-shield-alt"></i> Powered by <a href="https://web3auth.io" target="_blank" style="color: #ff0080;">Web3Auth</a></p>
+                <!-- Web3Auth Info Link -->
+                <div style="margin-top: 20px; padding: 15px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(138, 43, 226, 0.1)); border: 1px solid rgba(255, 0, 128, 0.3); border-radius: 12px; text-align: center;">
+                    <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0 0 10px 0;"><i class="fas fa-users"></i> No wallet? Use social login instead!</p>
+                    <button onclick="WalletManager.showWeb3AuthModal()" style="padding: 10px 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(138, 43, 226, 0.2)); border: 1px solid rgba(255, 0, 128, 0.5); border-radius: 8px; color: #ff0080; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-key"></i> Connect with Web3Auth
+                    </button>
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.7rem; margin-top: 8px;"><i class="fas fa-shield-alt"></i> Powered by <a href="https://web3auth.io" target="_blank" style="color: #ff0080;">Web3Auth</a></p>
                 </div>
 
-                <div style="text-align: center; margin-top: 15px;">
+                <div style="text-align: center; margin-top: 15px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button id="safari-info-btn" style="background: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;">
                         ℹ️ Why Safari Doesn't Work
+                    </button>
+                    <button onclick="openDonateModal()" style="background: none; border: 1px solid rgba(0,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-arrow-left"></i> Back to Donate
                     </button>
                 </div>
             </div>
@@ -325,9 +330,14 @@ const WalletManager = {
 
                 <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
                     <p style="color: rgba(255,255,255,0.6); font-style: italic; margin: 0 0 15px 0;">🌟 Web3 is the future of the internet - your keys, your crypto, your identity! 🚀</p>
-                    <button id="back-to-wallet-modal" style="background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 8px; padding: 10px 20px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
-                        ← Back to Wallet Options
-                    </button>
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                        <button id="back-to-wallet-modal" style="background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 128, 0.2)); border: 1px solid rgba(0, 255, 255, 0.5); border-radius: 8px; padding: 10px 20px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
+                            <i class="fas fa-wallet"></i> Back to Wallet Options
+                        </button>
+                        <button onclick="openDonateModal()" style="background: none; border: 1px solid rgba(255, 0, 128, 0.5); border-radius: 8px; padding: 10px 20px; color: #ff0080; cursor: pointer; transition: all 0.3s ease;">
+                            <i class="fas fa-heart"></i> Back to Donate
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
@@ -393,29 +403,157 @@ const WalletManager = {
         });
     },
 
-    // Show Social Login Info Modal
-    showSocialLoginInfo() {
+    // Web3Auth instance
+    web3auth: null,
+    web3authProvider: null,
+
+    // Initialize Web3Auth
+    async initWeb3Auth() {
+        if (this.web3auth) return this.web3auth;
+
+        try {
+            // Check if Web3Auth SDK is loaded
+            const Web3AuthCtor = window.Web3Auth?.Web3Auth || window.Modal?.Web3Auth;
+            const EthereumPrivateKeyProviderCtor = window.EthereumProvider?.EthereumPrivateKeyProvider;
+            if (typeof Web3AuthCtor === 'undefined' || typeof EthereumPrivateKeyProviderCtor === 'undefined') {
+                console.log('Web3Auth SDK not loaded yet');
+                return null;
+            }
+
+            const chainConfig = {
+                chainNamespace: "eip155",
+                chainId: "0x1",
+                rpcTarget: "https://rpc.ankr.com/eth",
+            };
+
+            const privateKeyProvider = new EthereumPrivateKeyProviderCtor({
+                config: { chainConfig }
+            });
+
+            this.web3auth = new Web3AuthCtor({
+                clientId: "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ", // Demo client ID
+                chainConfig,
+                privateKeyProvider,
+                web3AuthNetwork: "sapphire_mainnet",
+            });
+
+            await this.web3auth.initModal();
+            console.log('Web3Auth initialized successfully');
+            return this.web3auth;
+        } catch (error) {
+            console.error('Web3Auth initialization failed:', error);
+            return null;
+        }
+    },
+
+    // Connect with Web3Auth
+    async connectWithWeb3Auth(loginProvider = null) {
+        try {
+            // Show loading state
+            this.showTxBadge('pending', 'Connecting with Web3Auth...');
+
+            if (!this.web3auth) {
+                await this.initWeb3Auth();
+            }
+
+            if (!this.web3auth) {
+                throw new Error('Web3Auth not available');
+            }
+
+            const web3authProvider = await this.web3auth.connect();
+            if (web3authProvider) {
+                this.web3authProvider = web3authProvider;
+
+                // Get user info
+                const user = await this.web3auth.getUserInfo();
+                console.log('Web3Auth user:', user);
+
+                // Get accounts from provider
+                const accounts = await web3authProvider.request({ method: 'eth_accounts' });
+                if (accounts && accounts.length > 0) {
+                    this.setDisconnectPreference(false);
+                    this.currentAddress = accounts[0];
+                    this.isConnected = true;
+                    this.currentChain = 'Ethereum';
+
+                    // Remove pending badge and show success
+                    const existingBadge = document.querySelector('.tx-status-badge');
+                    if (existingBadge) existingBadge.remove();
+
+                    this.showTxBadge('success', `Connected as ${user.name || this.formatAddress(this.currentAddress)}`);
+                    this.updateUI();
+
+                    // Close modal
+                    if (window.modalInstance) {
+                        window.modalInstance.close();
+                    }
+
+                    return true;
+                }
+            }
+            return false;
+        } catch (error) {
+            console.error('Web3Auth connection failed:', error);
+            const existingBadge = document.querySelector('.tx-status-badge');
+            if (existingBadge) existingBadge.remove();
+
+            if (error.message !== 'User closed the modal') {
+                this.showTxBadge('error', 'Connection cancelled or failed');
+            }
+            return false;
+        }
+    },
+
+    // Show Web3Auth Modal
+    showWeb3AuthModal() {
+        const isConnected = this.isConnected;
         const modalContent = `
             <div style="max-width: 600px; margin: 0 auto; text-align: center;">
                 <div style="width: 80px; height: 80px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(138, 43, 226, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-rocket" style="font-size: 2rem; color: #ff0080;"></i>
+                    <i class="fas fa-key" style="font-size: 2rem; color: #ff0080;"></i>
                 </div>
-                <h2 style="background: linear-gradient(135deg, #ff0080, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;">Social Login Coming Soon!</h2>
-                <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">We're integrating Web3Auth to allow you to connect with your favorite social accounts.</p>
+                <h2 style="background: linear-gradient(135deg, #ff0080, #8a2be2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">Web3Auth Social Login</h2>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Connect with your favorite social accounts - no wallet needed!</p>
 
-                <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-                    <h4 style="color: #00ff88; margin: 0 0 15px 0;"><i class="fas fa-check-circle"></i> Coming Features</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: rgba(255,255,255,0.8); text-align: left;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-google" style="color: #db4437; width: 20px;"></i> Google Sign-In</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-facebook" style="color: #1877f2; width: 20px;"></i> Facebook Login</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-twitter" style="color: #1da1f2; width: 20px;"></i> Twitter/X Connect</li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><i class="fab fa-discord" style="color: #5865f2; width: 20px;"></i> Discord Auth</li>
-                        <li style="padding: 8px 0;"><i class="fas fa-envelope" style="color: #00ff88; width: 20px;"></i> Email Passwordless</li>
-                    </ul>
+                ${isConnected ? `
+                    <div style="background: rgba(0, 255, 136, 0.1); border: 1px solid rgba(0, 255, 136, 0.3); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                        <p style="color: #00ff88; margin: 0;"><i class="fas fa-check-circle"></i> Already Connected: ${this.formatAddress(this.currentAddress)}</p>
+                    </div>
+                ` : `
+                    <div id="web3auth-status" style="background: rgba(255, 165, 0, 0.1); border: 1px solid rgba(255, 165, 0, 0.3); border-radius: 12px; padding: 15px; margin-bottom: 20px;">
+                        <p style="color: #ffa500; margin: 0;"><i class="fas fa-info-circle"></i> Click a provider below to connect</p>
+                    </div>
+                `}
+
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px;">
+                    <button onclick="WalletManager.connectWithWeb3Auth('google')" style="padding: 15px; background: rgba(219, 68, 55, 0.15); border: 1px solid rgba(219, 68, 55, 0.4); border-radius: 12px; color: #db4437; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;" onmouseover="this.style.background='rgba(219, 68, 55, 0.3)'" onmouseout="this.style.background='rgba(219, 68, 55, 0.15)'">
+                        <i class="fab fa-google" style="font-size: 1.2rem;"></i> Google
+                    </button>
+                    <button onclick="WalletManager.connectWithWeb3Auth('facebook')" style="padding: 15px; background: rgba(24, 119, 242, 0.15); border: 1px solid rgba(24, 119, 242, 0.4); border-radius: 12px; color: #1877f2; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;" onmouseover="this.style.background='rgba(24, 119, 242, 0.3)'" onmouseout="this.style.background='rgba(24, 119, 242, 0.15)'">
+                        <i class="fab fa-facebook" style="font-size: 1.2rem;"></i> Facebook
+                    </button>
+                    <button onclick="WalletManager.connectWithWeb3Auth('twitter')" style="padding: 15px; background: rgba(29, 161, 242, 0.15); border: 1px solid rgba(29, 161, 242, 0.4); border-radius: 12px; color: #1da1f2; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;" onmouseover="this.style.background='rgba(29, 161, 242, 0.3)'" onmouseout="this.style.background='rgba(29, 161, 242, 0.15)'">
+                        <i class="fab fa-twitter" style="font-size: 1.2rem;"></i> Twitter/X
+                    </button>
+                    <button onclick="WalletManager.connectWithWeb3Auth('discord')" style="padding: 15px; background: rgba(88, 101, 242, 0.15); border: 1px solid rgba(88, 101, 242, 0.4); border-radius: 12px; color: #5865f2; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;" onmouseover="this.style.background='rgba(88, 101, 242, 0.3)'" onmouseout="this.style.background='rgba(88, 101, 242, 0.15)'">
+                        <i class="fab fa-discord" style="font-size: 1.2rem;"></i> Discord
+                    </button>
                 </div>
 
-                <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">For now, please use a Web3 wallet like MetaMask to connect.</p>
-                <a href="https://web3auth.io" target="_blank" style="color: #ff0080; text-decoration: none;"><i class="fas fa-external-link-alt"></i> Learn about Web3Auth</a>
+                <button onclick="WalletManager.connectWithWeb3Auth()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 255, 0.2)); border: 2px solid rgba(0, 255, 136, 0.5); border-radius: 12px; color: #00ff88; cursor: pointer; transition: all 0.3s ease; margin-bottom: 20px; font-size: 1rem;" onmouseover="this.style.background='linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 255, 255, 0.3))'" onmouseout="this.style.background='linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 255, 0.2))'">
+                    <i class="fas fa-envelope"></i> Email / More Options
+                </button>
+
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem; margin-bottom: 15px;"><i class="fas fa-shield-alt"></i> Powered by <a href="https://web3auth.io" target="_blank" style="color: #ff0080;">Web3Auth</a> - Non-custodial, secure authentication</p>
+
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button onclick="openDonateModal()" style="background: none; border: 1px solid rgba(0,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: #00ffff; cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-arrow-left"></i> Back to Donate
+                    </button>
+                    <button onclick="WalletManager.showWalletModal()" style="background: none; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.3s ease;">
+                        <i class="fas fa-wallet"></i> Use Web3 Wallet Instead
+                    </button>
+                </div>
             </div>
         `;
 
@@ -429,11 +567,31 @@ const WalletManager = {
     },
 
     // Disconnect wallet
-    disconnect() {
+    disconnect({ persistPreference = true } = {}) {
+        if (persistPreference) {
+            this.setDisconnectPreference(true);
+        }
         this.isConnected = false;
         this.currentAddress = null;
         this.currentChain = null;
+        this.currentChainId = null;
         this.updateUI();
+    },
+
+    hasDisconnectPreference() {
+        try {
+            return window.localStorage?.getItem(this.storageKeys.disconnectPreference) === 'true';
+        } catch (error) {
+            return false;
+        }
+    },
+
+    setDisconnectPreference(value) {
+        try {
+            window.localStorage?.setItem(this.storageKeys.disconnectPreference, value ? 'true' : 'false');
+        } catch (error) {
+            console.log('Could not persist wallet disconnect preference');
+        }
     },
 
     // Get chain name
@@ -642,7 +800,7 @@ const WalletManager = {
                 btn.classList.add('connected');
                 btn.setAttribute('data-chain', 'Disconnect');
                 btn.setAttribute('data-tooltip', `${this.formatAddress(this.currentAddress)} on ${networkShort} — Click to disconnect`);
-                btn.innerHTML = '<i class="fas fa-unlink"></i>';
+                btn.innerHTML = '<i class="fas fa-check-circle" style="font-size: 10px; position: absolute; top: 2px; right: 2px; color: #00ff88;"></i><i class="fas fa-unlink"></i>';
                 btn.onclick = () => this.disconnect();
                 btn.title = `Connected: ${this.formatAddress(this.currentAddress)} on ${this.currentChain} — Click to disconnect`;
             } else {
@@ -655,11 +813,10 @@ const WalletManager = {
             }
         });
 
-        // Update connection status badges (below connect button)
+        // Update connection status badges (if any exist - legacy support)
         document.querySelectorAll('.connection-status-badge').forEach(badge => {
             if (this.isConnected) {
-                badge.style.display = 'block';
-                badge.querySelector('.status-address').textContent = `${this.formatAddress(this.currentAddress)} (${networkShort})`;
+                badge.style.display = 'none'; // Hide separate badge, info is now in button
             } else {
                 badge.style.display = 'none';
             }
@@ -694,10 +851,30 @@ window.WalletManager = WalletManager;
 // Gas Price Indicator - Shows current mainnet gas price
 async function fetchGasPrice() {
     try {
-        if (typeof window.ethereum === 'undefined') return null;
-        const gasPrice = await window.ethereum.request({ method: 'eth_gasPrice' });
-        const gweiPrice = parseInt(gasPrice, 16) / 1e9;
-        return Math.round(gweiPrice);
+        // Try using connected wallet first
+        if (typeof window.ethereum !== 'undefined') {
+            const gasPrice = await window.ethereum.request({ method: 'eth_gasPrice' });
+            const gweiPrice = parseInt(gasPrice, 16) / 1e9;
+            return Math.round(gweiPrice);
+        }
+
+        // Fallback to public RPC endpoint
+        const response = await fetch('https://rpc.ankr.com/eth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                jsonrpc: '2.0',
+                method: 'eth_gasPrice',
+                params: [],
+                id: 1
+            })
+        });
+        const data = await response.json();
+        if (data.result) {
+            const gweiPrice = parseInt(data.result, 16) / 1e9;
+            return Math.round(gweiPrice);
+        }
+        return null;
     } catch (e) {
         console.log('Could not fetch gas price:', e.message);
         return null;
@@ -717,6 +894,9 @@ async function updateGasIndicator() {
 
         indicator.innerHTML = `<i class="fas fa-gas-pump" style="color: ${color};"></i> ${gasPrice} gwei`;
         indicator.style.color = color;
+    } else {
+        indicator.innerHTML = `<i class="fas fa-gas-pump" style="color: rgba(255,255,255,0.5);"></i> N/A`;
+        indicator.style.color = 'rgba(255,255,255,0.5)';
     }
 }
 

@@ -118,7 +118,7 @@ class MycelialNetwork3D {
         this.nodes.forEach(node => {
             const scale = (node.z + 100) / 200;
             const radius = node.radius * (0.5 + scale * 0.5);
-            const pulseRadius = radius + Math.sin(node.pulse) * 2;
+            const pulseRadius = Math.max(radius + Math.sin(node.pulse) * 2, 0.5);
 
             // Glow
             const gradient = this.ctx.createRadialGradient(
@@ -160,11 +160,19 @@ class MycelialNetwork3D {
     }
 }
 
-// Initialize on DOM load if not on mobile
-document.addEventListener('DOMContentLoaded', () => {
-    if (window.innerWidth > 768) {
-        window.mycelialNetwork = new MycelialNetwork3D();
-        window.mycelialNetwork.mount();
+// Initialize once while still avoiding very narrow/mobile layouts
+function initMycelialNetwork() {
+    if (window.mycelialNetwork || window.innerWidth < 640) {
+        return;
     }
-});
+
+    window.mycelialNetwork = new MycelialNetwork3D();
+    window.mycelialNetwork.mount();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMycelialNetwork, { once: true });
+} else {
+    initMycelialNetwork();
+}
 

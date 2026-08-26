@@ -41,6 +41,20 @@
     border-color: rgba(0, 255, 255, 0.7);
 }
 
+.action-btn:focus-visible,
+.connect-btn-top:focus-visible,
+.nav-link:focus-visible,
+.social-link:focus-visible,
+.nav-profile-link:focus-visible,
+.hamburger:focus-visible,
+.footer .donate-btn:focus-visible,
+.footer .lost-btn:focus-visible,
+.footer a:focus-visible {
+    outline: 2px solid #00ffff;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.2);
+}
+
 .donate-btn-top {
     border-color: rgba(255, 0, 128, 0.6);
 }
@@ -135,17 +149,17 @@
 }
 
 .connect-btn-top.connected {
-    border-color: rgba(0, 255, 136, 0.6);
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
 }
 
 .connect-btn-top.connected i {
-    color: #00ff88;
+    color: #ff6b6b;
 }
 
 .connect-btn-top.connected::after {
     content: attr(data-chain);
-    background: linear-gradient(135deg, #00ff88, #00ffff);
+    background: linear-gradient(135deg, #ff6b6b, #ff0080);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -217,6 +231,12 @@
 .connect-btn-top i,
 .connect-btn-top::after {
     pointer-events: none;
+}
+
+.nav-profile-link {
+    display: block;
+    line-height: 0;
+    border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -797,6 +817,9 @@
     cursor: pointer;
     gap: 4px;
     z-index: 1003;
+    background: none;
+    border: 0;
+    padding: 0;
 }
 
 .hamburger span {
@@ -1036,6 +1059,7 @@
         background: rgba(0, 0, 0, 0.3);
         border-radius: 8px;
         border: 1px solid rgba(0, 255, 255, 0.3);
+        appearance: none;
     }
 
     .hamburger span {
