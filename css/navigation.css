@@ -842,12 +842,18 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Centered Timeline */
+/* Centered Timeline — consolidated 2026-08-24. This is now the single
+   source of truth for .experience-timeline/.timeline/.timeline-item/
+   .timeline-marker/.timeline-content (previously duplicated, with partial
+   conflicting overrides, in modal.css and psychedelic.css — that's what
+   caused cards to visually overlap the meridian). Mycelial-glow marker
+   treatment folded in from the old psychedelic.css version; spacing
+   tightened throughout for a more compact collapsed view. */
 .experience-timeline, .timeline {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 24px 0;
 }
 
 .timeline-line {
@@ -856,53 +862,54 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+    background: linear-gradient(180deg, var(--neon-pink), var(--neon-cyan), var(--neon-green));
+    box-shadow: 0 0 10px var(--neon-pink);
     transform: translateX(-50%);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 60px;
+    margin-bottom: 28px;
     width: 47%;
 }
 
 .timeline-item:nth-child(odd) {
     margin-left: 0;
     margin-right: auto;
-    padding-right: 40px;
+    padding-right: 32px;
 }
 
 .timeline-item:nth-child(even) {
     margin-left: auto;
     margin-right: 0;
-    padding-left: 40px;
+    padding-left: 32px;
 }
 
 .timeline-marker {
     position: absolute;
-    top: 0;
-    width: 16px;
-    height: 16px;
-    background: var(--accent-purple);
-    border: 3px solid var(--primary-bg);
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    background: var(--neon-cyan);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+    box-shadow: 0 0 15px var(--neon-cyan);
+    animation: markerPulse 2s ease-in-out infinite;
     z-index: 2;
 }
 
 .timeline-item:nth-child(odd) .timeline-marker {
-    right: -8px;
+    right: -18px;
 }
 
 .timeline-item:nth-child(even) .timeline-marker {
-    left: -8px;
+    left: -18px;
 }
 
 .timeline-content {
     background: var(--card-bg);
     border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 12px;
-    padding: 25px;
+    padding: 16px 20px;
     position: relative;
 }
 
@@ -910,40 +917,41 @@
     content: '';
     position: absolute;
     top: 10px;
-    width: 30px;
+    width: 24px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(139, 92, 246, 0.5), transparent);
+    background: linear-gradient(90deg, var(--neon-cyan), transparent);
 }
 
 .timeline-item:nth-child(odd) .timeline-content::before {
-    right: -30px;
+    right: -24px;
 }
 
 .timeline-item:nth-child(even) .timeline-content::before {
-    left: -30px;
+    left: -24px;
     transform: scaleX(-1);
 }
 
 @media (max-width: 768px) {
     .timeline-item {
         width: 100%;
-        padding-left: 40px !important;
+        margin-bottom: 22px;
+        padding-left: 36px !important;
         padding-right: 0 !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-    
+
     .timeline-line {
-        left: 20px;
+        left: 18px;
     }
-    
+
     .timeline-marker {
         left: 12px !important;
         right: auto !important;
     }
-    
+
     .timeline-content::before {
-        left: -30px !important;
+        left: -24px !important;
         right: auto !important;
         transform: none !important;
     }

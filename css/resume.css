@@ -279,9 +279,14 @@ p, a {
 }
 
 .header,
+/* Reduced 2026-08-24: dropped the forced 850px min-height (sections now
+   size to their content) and cut the uniform 110px padding down — the
+   blanket rule was the main source of the site's excess vertical
+   whitespace between sections. Hero-style sections keep their own more
+   specific min-height rules (e.g. .portfolio-hero, .about-hero) which
+   still take precedence here. */
 .section {
-    min-height: 850px;
-    padding: 110px;
+    padding: 80px 60px;
 }
 
 /* HEADER */
@@ -530,6 +535,19 @@ p, a {
 .projects .card .card-description {
     margin-bottom: 24px;
     color: var(--text-secondary);
+}
+
+/* Appended 2026-08-24: center the "Take a look at my works" cards' text */
+.works-card .card-title,
+.works-card .card-description {
+    text-align: center;
+}
+
+/* Appended 2026-08-24: let specific hero/section text runs use the page's
+   full width instead of the 800-900px reading-width cap elsewhere */
+.full-width-text {
+    max-width: none !important;
+    width: 100%;
 }
 
 .card-tags {
@@ -982,7 +1000,7 @@ p, a {
 .professional-journey .timeline-item {
     width: calc(50% - 30px) !important;
     position: relative !important;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 /* First actual item (2nd child after timeline-line), third item, fifth item... go LEFT */
@@ -994,7 +1012,7 @@ p, a {
 
 /* Second actual item, fourth item, sixth item... go RIGHT */
 .professional-journey .timeline-item:nth-of-type(even) {
-    margin-left: calc(50% + 10px) !important;
+    margin-left: calc(50% + 30px) !important;
     margin-right: 0 !important;
     text-align: left;
 }
@@ -1048,12 +1066,13 @@ p, a {
     z-index: 1;
 }
 
-/* Add timeline nodes and line for about page */
+/* Timeline nodes + line for the about page — tightened and matched to
+   the homepage timeline's neon-glow marker treatment, 2026-08-24 */
 .professional-journey .timeline::after {
     content: '';
     position: absolute;
     width: 2px;
-    background: linear-gradient(180deg, rgba(139, 92, 246, 0.5), rgba(0, 255, 255, 0.5));
+    background: linear-gradient(180deg, var(--neon-pink), var(--neon-cyan), var(--neon-green));
     top: 0;
     bottom: 0;
     left: 50%;
@@ -1063,14 +1082,14 @@ p, a {
 .professional-journey .timeline-item::after {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.8), rgba(139, 92, 246, 0.6));
-    border: 3px solid rgba(0, 0, 0, 0.9);
+    width: 14px;
+    height: 14px;
+    background: var(--neon-cyan);
     border-radius: 50%;
-    top: 20px;
+    top: 14px;
     z-index: 2;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 15px var(--neon-cyan);
+    animation: markerPulse 2s ease-in-out infinite;
 }
 
 /* Left cards (odd) - node on the RIGHT side of card, touching center line */
