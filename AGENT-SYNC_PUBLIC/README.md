@@ -11,6 +11,7 @@ This is **distinct from** the private `AGENT-SYNC/` hub in the `trading-assistan
 - `created-by-augment-vscode-migration/` — export package from the Augment VS Code extension session (session logs, decision ledger, architecture notes, canonical project state snapshots). These are dated snapshots from 2026-03-08 and are left as-is, including any references to the directory's earlier path, as an accurate historical record.
 - `created-by-alfred/` — handoffs from Alfred (ClaudeCodeCLI, primary lead on this repo going forward)
 - `created-by-christopher/` — notes placed directly by Christopher
+- `created-by-kavanah/` — handoffs from Kavanah (Augment Intent)
 - `archive-legacy-planning-docs/` — copy of the repo's `archive/` legacy planning docs, mirrored here for a single browsable coordination trail (the original `archive/` directory is untouched)
 
 Convention: files live in the **creator's** subdirectory, named descriptively. Don't add content to another contributor's subdirectory.
