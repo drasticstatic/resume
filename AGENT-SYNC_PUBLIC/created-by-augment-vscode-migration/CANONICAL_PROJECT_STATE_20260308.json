@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-08",
+  "repo": {
+    "name": "resume",
+    "visibility": "public",
+    "root_path": "/Users/christopherwilson/dappu/resume",
+    "site_url": "https://drasticstatic.github.io/resume/index.html"
+  },
+  "project_identity": {
+    "summary": "Public portfolio/resume site used both as a personal site and as an Augment showcase.",
+    "architecture_reality": "Static multi-page HTML/CSS/JS site",
+    "architecture_note": "Some docs refer to React, but the on-disk implementation is static HTML/CSS/JS."
+  },
+  "context_bridge": {
+    "purpose": "Provide a repo-local continuity layer that multiple Augment surfaces can reuse.",
+    "stable_current_snapshot": "AGENT-SYNC/VSCode/Augment/CANONICAL_PROJECT_STATE.json",
+    "dated_snapshot": "AGENT-SYNC/VSCode/Augment/CANONICAL_PROJECT_STATE_20260308.json",
+    "primary_index": "AGENT-SYNC/VSCode/Augment/MASTER_INDEX_AND_MANIFEST_20260308.md",
+    "fast_start": "AGENT-SYNC/VSCode/Augment/NEXT_AGENT_START_HERE_20260308.md"
+  },
+  "current_status": {
+    "export_package_state": "broad export plus context bridge artifacts created",
+    "latest_wave": "context bridge pack added after manifest/prior-session reconstruction work",
+    "open_product_tasks": [
+      "SweetAlerts for Skills Planets",
+      "Add Multi-Chain Support"
+    ]
+  },
+  "key_artifacts": {
+    "machine_readable": [
+      "AGENT-SYNC/VSCode/Augment/CANONICAL_PROJECT_STATE.json",
+      "AGENT-SYNC/VSCode/Augment/CANONICAL_PROJECT_STATE_20260308.json"
+    ],
+    "human_fast_start": [
+      "AGENT-SYNC/VSCode/Augment/NEXT_AGENT_START_HERE_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/INTENT_COORDINATOR_SUMMARY_20260308.md"
+    ],
+    "history_and_logs": [
+      "AGENT-SYNC/VSCode/Augment/SESSION_LOG_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/PRIOR_SESSION_HISTORY_RECONSTRUCTION_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/VERBATIM_CHAT_RECONSTRUCTION_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/SESSION_DELTA_LOG_20260308.md"
+    ],
+    "decisions_and_risks": [
+      "AGENT-SYNC/VSCode/Augment/DECISION_LEDGER_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/KNOWN_RISKS_AND_GOTCHAS_20260308.md"
+    ],
+    "working_guides": [
+      "AGENT-SYNC/VSCode/Augment/FILE_PRIORITY_AND_OWNERSHIP_GUIDE_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/VALIDATION_MATRIX_20260308.md",
+      "AGENT-SYNC/VSCode/Augment/PROMPT_RECIPES_FOR_THIS_REPO_20260308.md"
+    ]
+  },
+  "product_hotspots": [
+    "index.html",
+    "pages/about.html",
+    "pages/portfolio.html",
+    "pages/resources.html",
+    "pages/contact.html",
+    "pages/blog.html",
+    "pages/glossary.html",
+    "js/modal.js",
+    "js/wallet-connect.js",
+    "js/effects.js",
+    "js/blog.js",
+    "js/glossary.js",
+    "js/resources.js",
+    "js/network-3d.js",
+    "css/navigation.css",
+    "css/modal.css",
+    "css/resume.css",
+    "css/psychedelic.css"
+  ],
+  "constraints": [
+    "Do not commit or push without explicit permission.",
+    "Never read or expose .env contents, private keys, seed phrases, wallet secrets, or API credentials.",
+    "Do not copy private cross-repo information into this public repo.",
+    "Trust the codebase over summaries when they conflict.",
+    "Use package managers for dependency changes instead of hand-editing manifests.",
+    "Keep whitespace clean and leave one empty line at end of file."
+  ],
+  "working_preferences": [
+    "Keep moving through straightforward requested tasks without unnecessary pauses.",
+    "Be extensive when creating repo-local context exports.",
+    "Differentiate exact snapshots, direct quotes, and reconstructed history.",
+    "Use task tracking for multi-step work.",
+    "Do not remove comments unless the associated code is being removed."
+  ],
+  "next_agent_guidance": [
+    "Start with MASTER_INDEX_AND_MANIFEST, NEXT_AGENT_START_HERE, and the stable CANONICAL_PROJECT_STATE.json.",
+    "Use DECISION_LEDGER and KNOWN_RISKS_AND_GOTCHAS before making architectural assumptions.",
+    "Use FILE_PRIORITY_AND_OWNERSHIP_GUIDE and VALIDATION_MATRIX before editing product code.",
+    "If resuming product work, the visible open priorities are SweetAlerts for Skills Planets and Add Multi-Chain Support."
+  ],
+  "history_fidelity": {
+    "exact": [
+      "repo files on disk",
+      "visible task snapshots",
+      "git/workspace snapshots"
+    ],
+    "high": [
+      "narrative summaries from accessible session history"
+    ],
+    "mixed": [
+      "quote-heavy reconstructions where direct quotes and summary-based reconstruction are combined"
+    ],
+    "reconstructed": [
+      "prior-session history recovered from preserved summaries"
+    ]
+  }
+}
