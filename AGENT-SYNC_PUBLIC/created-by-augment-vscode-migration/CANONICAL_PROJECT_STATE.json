@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-03-08",
+  "file_role": "stable current snapshot alias",
+  "dated_source_snapshot": "AGENT-SYNC/VSCode/Augment/CANONICAL_PROJECT_STATE_20260308.json",
+  "repo": {
+    "name": "resume",
+    "visibility": "public",
+    "site_url": "https://drasticstatic.github.io/resume/index.html"
+  },
+  "quick_start": {
+    "manifest": "AGENT-SYNC/VSCode/Augment/MASTER_INDEX_AND_MANIFEST_20260308.md",
+    "fast_start": "AGENT-SYNC/VSCode/Augment/NEXT_AGENT_START_HERE_20260308.md",
+    "coordinator_summary": "AGENT-SYNC/VSCode/Augment/INTENT_COORDINATOR_SUMMARY_20260308.md"
+  },
+  "current_priorities": [
+    "SweetAlerts for Skills Planets",
+    "Add Multi-Chain Support"
+  ],
+  "most_important_constraints": [
+    "No commits or pushes without explicit permission.",
+    "No secrets, keys, .env contents, wallet files, or API credentials in export artifacts.",
+    "Do not treat inaccessible transcript storage as available.",
+    "Trust the codebase over summaries when they conflict."
+  ]
+}

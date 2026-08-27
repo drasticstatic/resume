@@ -1,0 +1,197 @@
+## Full Task List Snapshot
+
+Date: 2026-03-08
+
+### Notes
+
+- this is a snapshot of the visible Augment task list at export time
+- state legend: `[ ]` not started, `[/]` in progress, `[x]` complete, `[-]` cancelled
+- this snapshot exists so Augment Intent can inherit the same planning context
+
+### Snapshot
+
+```text
+[/] UUID:gcQwGq7iqWTqNtVNLXKJtC NAME:Current Task List DESCRIPTION:Root task for conversation __NEW_AGENT__
+-[x] UUID:u2JDjP6AzQDcAd1t7HsSYU NAME:Portfolio Site Enhancement & Bug Fixes DESCRIPTION:Main task for enriching site content from JSON files and fixing CSS/JS issues
+--[x] UUID:w67BFbwavdW7LsJ7KrzXsP NAME:Fix Visit Full Contact Page Button DESCRIPTION:Button in contact modal should navigate to contact.html page
+--[x] UUID:kYBGu5YQAJzjE4E3gzz2Kc NAME:Make Start Conversation Button Fun DESCRIPTION:Add fun/interactive functionality to the Start Conversation button on contact page
+--[x] UUID:xodtJ8L3e5oSc9dNKx1Rse NAME:Fix Modal Backdrop Close DESCRIPTION:All modals should close when clicking the backdrop/overlay
+--[x] UUID:uX8aTTJNNY1LJ8yzoEFbv9 NAME:Fix Glossary Modal Width DESCRIPTION:Pill tags in professional timeline glossary modal creating wider than necessary modals
+--[x] UUID:vRbFBot3yTZQbabs8TGV2b NAME:Fix Footer Donate/Lost Layout DESCRIPTION:Footer buttons should be side by side, not stacked
+--[x] UUID:drXiD7QKASLK4UPbssRxCp NAME:Fix Top Donate/Lost Button Style DESCRIPTION:Top left buttons below navbar should have symbol above wrapped text
+--[x] UUID:erfFiKFc9Qeq9aq65WZZd4 NAME:Fix Resume Modal Mobile Clickability DESCRIPTION:Document viewer not clickable/interactive on mobile
+--[x] UUID:rUic4ioHEAHooaY9tjzLWK NAME:Fix Download PDF Button DESCRIPTION:Should prompt save file dialog instead of opening new tab
+--[x] UUID:bWCFeV4EJ77Nw5JUvzjyNr NAME:Fix Blog Read More Buttons DESCRIPTION:Should open blog posts in modal similar to resume viewer
+--[x] UUID:saVjYDWr2BJq1N7yge5Evf NAME:Add More Featured Blog Posts DESCRIPTION:Fill empty space in featured section with more blog posts
+--[x] UUID:f7Sx1Y42kizqMS5XwAfndd NAME:Fix Social Icons Rainbow Arc Spacing DESCRIPTION:Social icons around profile photo should be uniformly spaced within rainbow arc
+--[x] UUID:3hCo7KH6ZPfpzUNt1bc6Gn NAME:Fix Glossary Modal Width DESCRIPTION:Professional journey timeline card glossary modals too wide
+--[x] UUID:vqeMWGRqwvpLCBU3uboFBm NAME:Fix Modal Backdrop Close DESCRIPTION:Modals not closing when clicking outside them
+--[x] UUID:9MoPy7fnSwU9XvUXvW9Q2Y NAME:Fix Blog Read More DESCRIPTION:Cannot read any blogs - Read More not working
+--[x] UUID:hku8JP8ByHmdjS7Phn7vN7 NAME:Fix Learning Path Pill Tags DESCRIPTION:Pill tags not producing glossary modal
+--[x] UUID:73w2LvJ9ZJsUpsmvL5dWpM NAME:Fix PDF Download DESCRIPTION:Download button opening in tab instead of direct download
+--[x] UUID:1kKmy8LqJJmf8HDvTSYS7G NAME:Fix Mobile Document Viewer Cutoff DESCRIPTION:Document viewer getting cut off on right side on mobile
+-[x] UUID:8AaCD7qu7ftizjDDkn5u9j NAME:Extract rich content from JSON files DESCRIPTION:Extracted rich content from JSON files: Added 7 blog posts, 4 contemplative resources (guided meditation, integration guide, oracle origin story, short film script), personal manifesto on About page
+-[x] UUID:ukaRqQEoxB42dBuc9wvzRQ NAME:Fix CSS Issues DESCRIPTION:404 navbar spacing, bento card overlap, timeline vertical alignment
+-[x] UUID:cD2uGizMUxAaYsZffC54TS NAME:Fix Hamburger Menu DESCRIPTION:Fixed hamburger menu on 404, contact, portfolio, about pages - added proper event listeners
+-[x] UUID:eY7MWqM8NjMv4VDQAX4QaD NAME:Address Page Load Performance DESCRIPTION:Added will-change and contain CSS properties, reduced animated element count for better performance
+-[x] UUID:h9pUBY9i69hnHdMRvXKAcs NAME:Restructure Timelines DESCRIPTION:Restructured homepage timeline to be skills-based (Precision Manufacturing, Audio Engineering, Blockchain Development, AI/LLM Integration, Sacred Technology). About page already has professional journey.
+-[x] UUID:3RVb1Q48xmDLYGrwHWLkRd NAME:Blog Pages DESCRIPTION:Added 7 rich blog posts with content from JSON files - mycelial model, microns to merkle, oracle of fruit, zk privacy, soulbound identity, frequency and faith, decentralized healing
+-[x] UUID:bCVB4Upb2Z3uMjbHuKLBRH NAME:Create GitHub README.md DESCRIPTION:Enhanced README.md with rich bio, mission statement, manifesto, and welcoming content
+-[x] UUID:ak5QBW6U2yeSuYB4qY6xx1 NAME:Fix Hamburger Menu on All Pages DESCRIPTION:Hamburger only showing on home and 404 - need to fix on about, blog, portfolio, resources, contact pages
+-[x] UUID:4TfFUXy7TqrG4bHeXfot1y NAME:Add Spore Drop Effect to Hamburger Click DESCRIPTION:Hamburger click should trigger spore drop effect for click feedback
+-[x] UUID:3LJaXfsvWBvxUVncRvvFGq NAME:Fix Timeline Card Positioning on About Page DESCRIPTION:Left cards: node should be right of card touching meridian. Right cards: too far right, nodes not touching meridian
+-[x] UUID:tF5W7qDRWYW6BgnDLVixzB NAME:Integrate Spore Effects Throughout Site DESCRIPTION:Rainbow spore for Read More/Donate on blog, different spore for home donate - use consistently
+-[x] UUID:bwoUyK53TKNuPVQQgPeekT NAME:Fix Blog Read More Buttons DESCRIPTION:Buttons don't navigate anywhere - need to open modal/page. Add hover effects
+-[x] UUID:tKtGKoBrDHu7Hx2HVNCPMh NAME:Fix Donate Modal on 404 Page DESCRIPTION:Using different modal than rest of site
+-[x] UUID:qCHBLz1v4TFafqPbMiBCHS NAME:Fix ? Button Positioning on About Page DESCRIPTION:Button sticking to top-left instead of bottom-right of profile photo
+-[x] UUID:ikVDNTB6f7ayXiPeAkggAF NAME:Update Manifesto to Revised Version DESCRIPTION:Use revised manifesto without 'I believe' statements
+-[x] UUID:sN1841f7Wq8ZRN4QQtYSXT NAME:Fix Short Film Script Content DESCRIPTION:Ensure full content from JSON is used, don't remove any detail
+-[x] UUID:qWQWwo6Sb8rSPsMa9Z38Yp NAME:Fix Hamburger on Blog & Resources DESCRIPTION:Hamburger menu not working on blog and resources pages
+-[x] UUID:xpwvzyP4bjB41V69UEKRLp NAME:Add Lost/Donate to Mobile Nav DESCRIPTION:Add lost and donate buttons to mobile nav bar formatted like social circles
+-[x] UUID:cyJqqdMz191v3oqExHRcLK NAME:Fix ? Button Position on About DESCRIPTION:Button sticking to north-east instead of south-east after refresh
+-[x] UUID:dU9A3JZgziySdYMV56zfdc NAME:Fix Microns to Merkle Readability DESCRIPTION:Blog post title difficult to read
+-[x] UUID:uDYeByfgf6qJdTbUHVXZ87 NAME:Navbar Breathing Animation DESCRIPTION:Navbar elements should have breathing animation
+-[x] UUID:wAnrfGgeoHYDYVwDzFCyYt NAME:Spore Effects on All Pages DESCRIPTION:Rainbow spore on all pages, plus red/purple spore variant
+-[x] UUID:kFCsptGauRjS8HTKJ1vyWe NAME:Wrap Donate/Lost Buttons Desktop DESCRIPTION:Buttons should be more vertical than horizontal, add to footers
+-[x] UUID:fHBZE6jimwo28yzV96H2fB NAME:Fix Donate Modal Button Clickability DESCRIPTION:Sometimes buttons inside donate modal are not clickable
+-[x] UUID:v91YnkkFUpp65Zk6LvUHkp NAME:Fix Blog Read More Navigation DESCRIPTION:Read more buttons should open blog posts
+-[x] UUID:vXvEqLwjAybAUszytwx4Bc NAME:Update Portfolio Buttons DESCRIPTION:Details/code buttons need styling update
+-[x] UUID:mKS3V5fY6vza69ujBAwo67 NAME:Improve Contact Page Send Message DESCRIPTION:Make section more enticing, fix Start Conversation button
+-[x] UUID:szNSXS9tVANxrDE5zwHeyB NAME:Fix Timeline Cards Desktop View DESCRIPTION:Timeline cards look same as before on desktop
+-[x] UUID:cKMcaqUvjprHWaK1skhG6j NAME:Learning Path Pill Tags to Glossary DESCRIPTION:Add pill-tags that link to glossary modal
+-[x] UUID:6BrDCUdR3sNaXg8gyNkefW NAME:Resources Page Bento Cards DESCRIPTION:Format all text sections to bento cards
+-[x] UUID:23yJj5tYwaSXLVKXUzAvWt NAME:Add More Content from JSON DESCRIPTION:Continue adding Musical-Theological Essay, Cumulative Narrative, etc.
+-[x] UUID:hztwS5MXF9yfjKiKYzDZj5 NAME:Fix Hamburger on Blog & Resources DESCRIPTION:Debug and fix hamburger menu functionality on blog.html and resources.html pages
+-[x] UUID:aC9sCqYkcK1K3YK79zA44N NAME:Reorganize Mobile Nav DESCRIPTION:Move Home out of hamburger, add donate/lost icons between home and socials
+-[x] UUID:uKhptgojkQ6dwG5RdQAeAM NAME:Fix Blog Post Modal/View DESCRIPTION:Ensure blog posts can be opened and viewed
+-[x] UUID:mNy9FWNdUMjGyHwefZVCsW NAME:Fix Learning Path Pill Tags DESCRIPTION:Make pill tags open glossary modal properly
+-[x] UUID:nwTKV5cNj9dhPEte5qKQQS NAME:Fix Conversation Buttons DESCRIPTION:Homepage and contact page conversation buttons should work
+-[x] UUID:jyo7tQFJf4jeEBq3i7uR8G NAME:Move Origin Story to Resources Only DESCRIPTION:Keep mythic origin story only in contemplative resources, remove from about page
+-[x] UUID:fFSPX6wr5aP97ZPuhggN4M NAME:Fix Spore Effects Everywhere DESCRIPTION:Ensure rainbow and mystic spore drops work on all clickable elements
+-[x] UUID:geoVN8fUHHyUQsZt8Mp7x3 NAME:Fix Timeline Card Spacing DESCRIPTION:Properly space timeline cards from center meridian line
+-[x] UUID:6ub2NDLPRPyvv6AjJXujGR NAME:Fix Desktop Donate/Lost Vertical Layout DESCRIPTION:Symbol above text, wrapped vertically
+-[x] UUID:tWJdydjJ6MstjguuX8Qit7 NAME:Fix Microns to Merkle Readability DESCRIPTION:Improve blog post title/card readability
+-[x] UUID:9VmyGQNd19B3PkEm1pn4xh NAME:Create ZK Blog from Roadmap DESCRIPTION:Create new blog post from ZK Blog Roadmap.md and add to featured
+-[x] UUID:rYLR8bWoQ39UapPLDYYw4U NAME:Sync Blog Posts Home/Blog DESCRIPTION:Ensure all blog posts appear on both pages
+-[x] UUID:4MK4rk6fCbTpUuZxecyhUD NAME:Fix Resume Modal Download DESCRIPTION:Download button should force browser download
+-[x] UUID:eTY3Co8j5dcAEbrGS9KzZ9 NAME:Fix Document Viewer Clickability DESCRIPTION:Features in document viewer modal should be clickable
+-[x] UUID:v5A9scnuUKF7gNG1QBkiGq NAME:Fix About Hero Social Icons DESCRIPTION:Fix rainbow styling, uniform appearance, no overlap with profile photo
+-[x] UUID:4QKp78xY3DSxkR4tq3qPdW NAME:Fix Hamburger on Resources & Contact DESCRIPTION:Hamburger menu not showing on resources and contact pages
+-[x] UUID:cchYGwrYwjctwMpJBZte9Q NAME:Move Social Icons Up from Photo DESCRIPTION:Rainbow social icons still too close to profile photo - move up slightly
+-[x] UUID:qgHwwNqCP2hWV2Hw5FNQno NAME:Fix About Hero Height DESCRIPTION:About page hero section vertically larger than other pages - return to uniform height
+-[x] UUID:gkXiq6ypg7LNjYTzdxNdky NAME:Add Navbar Breathing to All Pages DESCRIPTION:Only glossary page has breathing navbar animation - add to all pages
+-[x] UUID:dU9wCe7vv8NDaxriWHVyer NAME:Fix Lost Button Purple Color DESCRIPTION:Lost button should be purple before hover instead of cyan, keep cyan border on highlight
+-[x] UUID:qTJHoPCUzMcSN567zHNK2r NAME:Fix Footer Donate/Lost Buttons DESCRIPTION:Same effects as top buttons but slightly smaller
+-[x] UUID:gvmwfuNW68x85mAnJcDjoz NAME:Fix Mobile Navbar Layout DESCRIPTION:Too many buttons causing second row on iPhone. Move donate/lost to hamburger, remove Home from hamburger, fix social icons running off screen in Chrome
+-[x] UUID:d7jYukiWvBH3hCVmbqM5SS NAME:Fix Web3 Status Mobile DESCRIPTION:Connected to Ethereum gets cutoff on mobile - move to hamburger menu with grid format
+-[x] UUID:wZhVbB2YnL7G9WYe2sitNv NAME:Fix Modal Close on Mobile DESCRIPTION:Modals don't close when clicking outside, especially on mobile
+-[x] UUID:oKD6GM8zDYpMTAsw5m8QZ1 NAME:Parse ZK Blog Roadmap Content DESCRIPTION:Added 3 new blog posts from ZK Blog Roadmap: ZK Systems in Practice, ZK-Aware Governance, Threat Modeling
+-[x] UUID:k5Qbp6aV5Uobbnwx4hG1CH NAME:Fix Learning Path Pill Tags DESCRIPTION:Still not prompting glossary modal
+-[x] UUID:ihmXpv1yz6KWx21HH9WfbV NAME:Fix Glossary Modal Width DESCRIPTION:Professional journey card pill tags still showing larger width modal than needed
+-[x] UUID:a3fFPaqDJThyEtzmtQnkkf NAME:Fix Mobile Navbar Cutoff DESCRIPTION:Mobile navbar slightly cuts off top of pages
+-[x] UUID:ipqXFSULLuW13hwZyZHNrT NAME:Add Rainbow Border to Navbar DESCRIPTION:Add cool rainbow bottom border effect to navbar
+-[x] UUID:tmAbh4K3ZSvMzagcYtyW1x NAME:Redesign Glossary Page DESCRIPTION:Redesigned glossary page with collapsible cards, search bar, category filters, and 45+ terms from glossary.md
+-[x] UUID:2VVMYoQ8WuQDCacgDFTBT5 NAME:Fix Modal Close - Debug Touch Events DESCRIPTION:Modals still not closing on mobile/backdrop - investigate and fix
+-[x] UUID:a5Lja5bexUUwQR89FM2yga NAME:Navbar Rainbow Border Thinner DESCRIPTION:Make rainbow bottom border stroke width thinner
+-[x] UUID:iYUWDZkX7uXxqdqaqxMRaT NAME:Unify Spore Effects - Both Active DESCRIPTION:Both red/mystic and rainbow spore effects should trigger together everywhere
+-[x] UUID:9Ggo1HjvH3AjKMZS26Nz2m NAME:Grid Hamburger Menu DESCRIPTION:Change hamburger to grid layout with different colors for each icon/text
+-[x] UUID:xai3VvifDx6zAy83GNExyB NAME:Fix Homepage Mobile Horizontal Scroll DESCRIPTION:Homepage has extra right margin allowing horizontal scroll on mobile
+-[x] UUID:79h35jNjiR6XxkpTSwF8gs NAME:Social Icons Entrance Animation DESCRIPTION:Add entrance effect as social icons load to their positions around profile photo
+-[x] UUID:h2F3QTNLZb4in6WS12Hi2c NAME:Blog Hero SVG Imagery DESCRIPTION:Add SVG-like imagery to blog hero section
+-[x] UUID:x59nceRpAYThgxyApNsALM NAME:Real Wallet Connection DESCRIPTION:Implement actual Web3 wallet connection in donate modal with transaction signing
+-[x] UUID:w7pi9T9wtugTbYx7YxgyLa NAME:Wallet Connection Status Badge DESCRIPTION:Real connected/not connected status, add to hamburger menu grid and donate modal
+-[x] UUID:adDij9TLQFXSvn1uyM8wej NAME:Tighten Vertical Spacing/Add Content DESCRIPTION:Fill empty vertical sections, add more content from Resume and portfolio update2.json
+-[x] UUID:snzjs9iT35Jh5wnrQzZELC NAME:Hamburger Menu 2-Column Grid DESCRIPTION:Reorganize hamburger to 2 items per row: about/portfolio, blog/resources, glossary/contact, donate/lost, wallet connect/status
+-[x] UUID:upRLDELiiUCRBixam3m9s1 NAME:MetaMask Alert Before New Tab DESCRIPTION:Add confirmation prompt before forcing user to new tab when connecting wallet
+-[x] UUID:8pZh9a7MhaCCkrudVbJq5d NAME:Demo vs Real TX Badge DESCRIPTION:Show demo TX badge when not connected (labeled as demo), real badge during successful TX when connected
+-[x] UUID:4eGhrgFTPuKMxMdnBrhp58 NAME:Debug Hamburger on Blog/Resources DESCRIPTION:Hamburger not showing - investigate and fix
+-[x] UUID:wAhN6ZgzTtpTSi9BWgwZu1 NAME:Debug Spore Effects DESCRIPTION:Spore effects not working as desired - investigate and fix
+-[x] UUID:kUPj23ozoKhMBary6NrPGK NAME:Modal Close X Button Fix DESCRIPTION:Make X in top right corner work on mobile/desktop
+-[x] UUID:1gYBTtbouuyPM3D4hPwYSz NAME:Modal Close Button Redesign DESCRIPTION:Change 'close' to 'ready to return?' with hover changing to 'click to close'
+-[x] UUID:j1uNMbNGheeXLD2qtXDnj3 NAME:Modal Backdrop Click Close DESCRIPTION:Modals should close when clicking outside them
+-[x] UUID:dgNcS3j98mCAiujtfV4weL NAME:Wallet Connect UI Improvements DESCRIPTION:Wrap text 3 rows, center ETH buttons, center Not Connected badge, support multiple wallets
+-[x] UUID:xkg4iTDuUQMQqegbfotgwr NAME:Fix Z-index for Navbar Scroll DESCRIPTION:Fix read full story, read more buttons, latest wisdom cards, portfolio items showing above navbar
+-[x] UUID:9mMPFGfKqYXpXfqXe37qY3 NAME:Latest Wisdom Cards Redesign DESCRIPTION:Style like recent posts grid, keep reading time badges, max 8 cards 4 per row
+-[x] UUID:55YovQsaDGBHridBcceXfS NAME:Portfolio Skills Section Fun DESCRIPTION:Make Skills & Technologies section engaging and fun
+-[x] UUID:sVrzRrbFPaLubfJHa9cmLa NAME:Fix microns-merkle Blog Post DESCRIPTION:Blog post returning 'Post Not Found' error
+-[x] UUID:inWC3e3hAdzSUptabFPyqe NAME:Fix Skills Journey Title DESCRIPTION:Title next to Skills Journey on homepage is hard to read
+-[x] UUID:4hNkH31a2s7NbJ46EL3CHs NAME:Hero SVG for Each Page DESCRIPTION:Create contextual SVGs: portfolio (code), resources (books), contact (phones/envelopes) - same style as blog SVG
+-[x] UUID:1xSFDFqRZCaPXkpnHDRHZ2 NAME:Add website copy button in wallet modal DESCRIPTION:Add copy button for website URL where MetaMask/Rainbow download instructions are shown
+-[x] UUID:jMxDVLRdVVSJwQLgMB1tz2 NAME:Fix Safari modal access DESCRIPTION:Cannot access 'why safari doesnt work' modal
+-[x] UUID:uc26NPjPyLdSWVgWDb5ez3 NAME:Enhance Hero SVGs DESCRIPTION:Make more noticeable, multiply evenly across hero sections, rotate/size differently, model after 404 quality
+-[x] UUID:96N69QPdhgkQcXYet1ikAf NAME:Add ACIM Teaching modal DESCRIPTION:Create modal experience from ACIM Teaching in Resume.json on about page
+-[x] UUID:hyN8JWyWok8F9HXzxPFxGu NAME:Add Guided Meditation & Manifesto modals DESCRIPTION:Make these interactive modal experiences
+-[x] UUID:rpsvwPb25piDeZnmaXANWL NAME:Fix hamburger on blog/resources DESCRIPTION:Hamburger menu still not showing on these pages
+-[x] UUID:tq9NGWxMh33kqEQP3KCMQw NAME:Fix hamburger grid layout DESCRIPTION:Should be 2 items per row, donate button needs border, connect button rounded corners, add connection status
+-[x] UUID:2N2c3QgN32aqjE71Ee9huk NAME:Fix top-right connect button DESCRIPTION:CTA effect, wrapped text, hover like lost/donate, wallet icon, rounded corners
+-[x] UUID:syDgXeK4DwPXiNJsMMih5S NAME:Fix modal backdrop close DESCRIPTION:Modals not closing when clicking backdrop
+-[x] UUID:618b7r3YstMLvHPiYWKcoa NAME:Fix demo/real TX badge DESCRIPTION:Show demo badge when not connected, real badge during actual TX
+-[x] UUID:qQ85h76VxufRbmiGnadBaN NAME:Fix MetaMask actual connection DESCRIPTION:Not actually calling MetaMask wallet to connect
+-[x] UUID:34Lr6r4yvxNdHE4efWVY7P NAME:Add Web3 features DESCRIPTION:Added gas price indicator, 3D mycelial network, enhanced wallet features
+-[x] UUID:aV1koSw6pzYchigGHFCbHX NAME:Fix latest wisdom cards DESCRIPTION:Fix overflow, make larger, add 2 more for total of 8, sync with blog page
+-[x] UUID:rV1JY2s9UMaeFmrRtCHJBC NAME:Fix timeline spacing DESCRIPTION:Too much space between meridians and right side nodes/cards
+-[x] UUID:fD7MebHhXWwDm5oG5c3oSy NAME:Improve scroll/loading performance DESCRIPTION:Faster UX response, fill empty space with content
+-[x] UUID:2UeLn5g4YeMZ2jmV6AWFky NAME:Fix CashApp hover green DESCRIPTION:Hover is showing reddish instead of green
+-[x] UUID:8nfYQD6sgtGyns3gc7gADd NAME:Add Venmo/CashApp icons DESCRIPTION:Updated Venmo/CashApp buttons with styled V and $ icons since Font Awesome 5 doesn't have these brand icons
+-[x] UUID:aWz2HQ7Yec9CcuYQyVKutk NAME:Sync hamburger breathing to all pages DESCRIPTION:Currently only on glossary page
+-[x] UUID:fqzHkXv1eWDNwiwMFscEfj NAME:Sync desktop colored icons to all pages DESCRIPTION:Currently only on glossary page
+-[x] UUID:9gUiwjNC3d8pjdspMtDJFD NAME:Fix contact border blue DESCRIPTION:Contact button border should be blue
+-[x] UUID:p7RTV6v4Hj3PFUqNNzmkwK NAME:Resources orange scheme DESCRIPTION:Resources link should be orange
+-[x] UUID:rKADQGj9VGkMYCDEiGXUmd NAME:Blog goldish-yellow scheme DESCRIPTION:Blog link should be goldish-yellow
+-[x] UUID:bz4JS6H1eC1TtPz6aQHx6f NAME:Fix hamburger grid layout DESCRIPTION:Still not showing as grid
+-[x] UUID:swddPFUbk7KTw6qgEiUSqc NAME:Fix hamburger on blog/resources DESCRIPTION:Still not showing
+-[x] UUID:mLVFztDo7tGrWTfzjT7gcy NAME:Fix donate modal width on about DESCRIPTION:Extra wide on desktop
+-[x] UUID:i7ScXL2Sphch1wsn8NhTf5 NAME:Fix wallet connect demo mode DESCRIPTION:Enhanced demo mode message to explain how to exit demo mode
+-[x] UUID:si8yUnhRrXgPXRPR8TrmV8 NAME:Fix tooltips not showing DESCRIPTION:Fixed tooltips - added overflow:visible to parent containers, increased z-index to 10000, enhanced styling
+-[x] UUID:43gbYsJQbw24cMGVPcAq2z NAME:Fix insight cards width DESCRIPTION:Fixed psychedelic.css override - insight cards now 380px min width, 1800px max container
+-[x] UUID:bF9fUtkoDsTu1mr37fXXDh NAME:Add back button to Safari modal DESCRIPTION:Back button already exists in Safari modal - verified working
+-[x] UUID:cRxTvMveUxWGDii5QBMeQi NAME:Fix wallet connect button clickability DESCRIPTION:Added pointer-events: none to button children to ensure full clickability
+-[x] UUID:6yW5Y7BQUM92gc1rcPA98G NAME:Fix hero SVGs mobile visibility DESCRIPTION:Made hero SVGs visible on mobile - smaller size, centered, slightly more visible
+-[x] UUID:5Jy4n5ggNa5kDkgBYmAa4j NAME:Add pill-tag glossary to portfolio DESCRIPTION:Added onclick glossary handlers to all skill-tags in portfolio skills section, changed cursor to pointer
+-[x] UUID:qrXwqhrJHCUJ3gXWxShHSE NAME:Add skills planets tooltips and orbit DESCRIPTION:Added tooltips to planets showing skills on hover
+-[x] UUID:hE2f28Za37GByLUiXDE7U6 NAME:Add 3D blockchain network effect DESCRIPTION:Created network-3d.js with canvas-based 3D mycelial network visualization
+-[x] UUID:aEXjFQLPgi3ACxUn5focca NAME:Fix hamburger menu grid layout DESCRIPTION:Make hamburger menu 2 columns instead of 1 page per row
+-[x] UUID:1FokffTxm8U2nUjTY76aJZ NAME:Fix glossary page navbar/hamburger DESCRIPTION:Glossary uses different navbar than other pages - needs to match
+-[x] UUID:gYoZ4goGzjYCCxdTZLumTJ NAME:Fix other pages navbar colors DESCRIPTION:Resources icon/text purple instead of orange, desktop navbar white not breathing
+-[x] UUID:59QpPT9L7BdbfvJEHL9QD8 NAME:Fix dual navbar issue on resize DESCRIPTION:Two navbars appearing when switching mobile to desktop view
+-[x] UUID:b9krdPsVhNT4ScbUnnvKC8 NAME:Add Launch Dapp & Docusaurus buttons DESCRIPTION:Add to home page Ethereal Offering, modal, portfolio page, and about page
+-[x] UUID:daEMLeNLcRbLfbLfKFaVdJ NAME:Fix wallet connect MetaMask call DESCRIPTION:Added console logging for debugging, reduced wait time. Check browser console for wallet detection logs.
+-[x] UUID:dzPSjhcCeeuybP6RQK98jp NAME:Parse ZK Blog Roadmap Content DESCRIPTION:Parse and display ZK blog roadmap content
+-[x] UUID:sMsTkWGbQDGwzr55gnwN5y NAME:Redesign Glossary Page DESCRIPTION:Redesign the glossary page layout
+-[x] UUID:bZjkcJpebuiDgB9PSkTvXY NAME:Tighten Vertical Spacing/Add Content DESCRIPTION:Improve vertical spacing and add content
+-[x] UUID:ignuNHkfzZfTnZ2pR69ydB NAME:Add ACIM Teaching modal DESCRIPTION:Add ACIM teaching modal feature
+-[x] UUID:dechdtnAiBGvZRK9FFWgk2 NAME:Add Guided Meditation & Manifesto modals DESCRIPTION:Add guided meditation and manifesto modal features
+-[x] UUID:9r3KAseD56VSzid9P3WRvh NAME:Add Web3 features DESCRIPTION:Added gas price indicator to donate modal, ENS lookup capability
+-[x] UUID:oBn4j9UB6ytoJ6b8XjP1nk NAME:Fix skills galaxy mobile display DESCRIPTION:Ensure skills galaxy and planets show properly on mobile
+-[x] UUID:drnJ3TVhKyNZaniuXW44Fo NAME:Fix Wallet Tooltips DESCRIPTION:Add tooltips to donate modal, position tooltips to left of element instead of above
+-[x] UUID:u7D2bgkxu9WwLdcMELWk16 NAME:Fix Quick Send ETH DESCRIPTION:Actually call MetaMask for transactions, add custom amount field, support multiple currencies (BTC, LTC, XRP)
+-[x] UUID:1ZJDY9EDT5oXWfMKdqcRdP NAME:Connect/Disconnect Toggle DESCRIPTION:Connect buttons change to Disconnect when connected
+-[x] UUID:169V9ERhfBWSWSqKbNLaA8 NAME:Sync Wallet Status DESCRIPTION:Donate modal and top-right status should listen to each other and match
+-[x] UUID:7miesErAUrHg5wPTAe33Po NAME:Enhanced Connection Status DESCRIPTION:Show checkmark, Connected, truncated address, AND network name (Ethereum mainnet, Hardhat)
+-[x] UUID:eL7HJhUwuxU27bzw7yqUvh NAME:Donate Modal Wallet Info Link DESCRIPTION:Add clickable access to 'Connect Your Web3 Wallet' modal from donate modal
+-[x] UUID:96Ne6eMeqEfH5Sx6QDhwtE NAME:Combine 3 Guided Meditations DESCRIPTION:Combined 3 meditations into unified modal, removed inline section, resources.js uses unified modal
+-[x] UUID:q5pRwDNk1neJX9ydvzN69x NAME:Add More Contemplative Resources Button DESCRIPTION:Added More Contemplative Resources button to both meditation and manifesto modals
+-[x] UUID:dRhz8UahotTWoMkZWH9rMP NAME:Fix Wallet Connect Button State DESCRIPTION:Button shows Disconnect when connected, connection status badge shows checkmark and address below button
+-[x] UUID:s2rGwbBGFDfaEyrHNbEJPQ NAME:Enhanced Tooltips with Spore Effects DESCRIPTION:Added tooltip-above class, enhanced tooltips with glow animation, positioned learn about web3 above and connect button left
+-[ ] UUID:setpu4Yyap2z1GbeHuzuwU NAME:SweetAlerts for Skills Planets DESCRIPTION:Add interactive alerts/modals for skill planets
+-[x] UUID:12ze9qVbNNHM4BjQJ3N4bx NAME:Fix Modal Widths on About Page DESCRIPTION:Fixed modal widths by constraining to 650px and 700px respectively
+-[x] UUID:mjvqUdtcN3hSPu4i317Fqf NAME:Network-3D on All Pages DESCRIPTION:Added network-3d.js to all pages, increased opacity to 0.5 for better visibility
+-[ ] UUID:9PW9zUtxd1YNZwaHsRydkm NAME:Add Multi-Chain Support DESCRIPTION:Support Solana, TON, XRP, LTC native chains
+-[x] UUID:5DogfQ9VftvNyCzPGZx4wd NAME:Add Web3Auth Social Login DESCRIPTION:Integrate web3auth.io for social login options
+-[x] UUID:caoKLp4ts8PHHAB8FUBw8M NAME:Fix Contemplative Resources section placement and scroll DESCRIPTION:Move Contemplative Resources section under spiritual practice section (not in meditation modal) and fix scroll to contemplative resources section on resources page
+-[x] UUID:9JrczbCLesTeqKLMgydyLT NAME:Ensure guided meditation content is in new modal DESCRIPTION:Check old inline guided meditation content was added to new modal and resources page meditation opens the new modal
+-[x] UUID:wsuTJtd74wrUhbWZJJMLaG NAME:Fix About page Web3 and Safari modal width DESCRIPTION:Make About page modals consistent width with other pages
+-[x] UUID:1Z9cTuXoRBMYGxfZnJfBEu NAME:Move social login to donate modal with working Web3Auth DESCRIPTION:Move 'or connect with social login' to donate modal and implement working Web3Auth integration
+-[x] UUID:gdTQ4RXJ9H7UQ64rekd4vr NAME:Add navigation buttons to modals DESCRIPTION:Add 'back to donate modal' button under 'why safari doesn't work' and in web3auth modal
+-[x] UUID:fiJ3hQNEyJCsJDsCW8pVJ5 NAME:Keep Web3Auth info section in Connect Wallet modal DESCRIPTION:Maintain web3auth info and access to web3auth modal from Connect Wallet modal
+-[x] UUID:6Eog7meoGD3mURQkG5fcuN NAME:Fix gas feature data loading DESCRIPTION:Debug and fix the gas feature that doesn't load data
+-[x] UUID:mNDEr2ZoHKsi7boyYv7nBr NAME:Fix disconnect icon color DESCRIPTION:Change disconnect icon from green to reddish like donate modal
+-[x] UUID:nLAmPNhuqt9VyrwKkQqNmD NAME:Fix connection status badges DESCRIPTION:Keep old badge, add checkmark when connected instead of having 2 badges
+-[x] UUID:hG2edao8Jx3jn1f7R92GFU NAME:Review and fix other tooltips DESCRIPTION:Check and update other tooltips that were requested
+-[x] UUID:7mhXWkzcZa1o5HhMBqBWfU NAME:Audit AGENT-SYNC export/privacy posture DESCRIPTION:Verify AGENT-SYNC/VSCode/Augment existence, inspect .augmentignore/.gitignore and any public export or sync automation affecting repo-local handoff files
+-[x] UUID:6Ut4qmfmySic62JsSYD3UB NAME:Export reusable VSCode Augment handoff context DESCRIPTION:Create extensive sanitized repo-local handoff files under AGENT-SYNC/VSCode/Augment including session log, completed/pending tasks, repo context, decisions, constraints, and concise pickup notes
+-[x] UUID:7ZXC8ThNE46Sj6LbXVwntQ NAME:Create coordinator-facing usage summary DESCRIPTION:Write a markdown summary for the Intent coordinator explaining what was exported, what is safe to use in this public repo, and how to use the exported context
+-[/] UUID:mZmphsEXXe6r4sriQgNeXe NAME:Expand AGENT-SYNC export to full repo/project handoff DESCRIPTION:Replace the minimal sanitized export with a much more comprehensive public-facing handoff covering repo context, conversation history, task history, architecture, decisions, files, and next-step guidance for Augment Intent
+-[ ] UUID:cuDfNdbJ8tGSJGL3hQihQ9 NAME:Capture full task-list and project knowledge in export DESCRIPTION:Document completed tasks, open tasks, major workstreams, implementation outcomes, validation gaps, and notable file ownership/roles so Intent can reconstruct current project state quickly
+-[ ] UUID:vUtQguBRhLXiqoPVUmEFkj NAME:Refresh coordinator summary for broad public export DESCRIPTION:Update the coordinator-facing markdown to explain that the export is intentionally comprehensive and public-facing for this showcase repo
+```
