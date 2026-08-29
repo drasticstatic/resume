@@ -96,8 +96,8 @@ function openContactModal() {
                 <div class="contact-method">
                     <i class="fas fa-phone fa-2x"></i>
                     <h3>Phone</h3>
-                    <a href="tel:+17173091570">+1 (717) 309-1570</a>
-                    <a href="https://wa.me/17173091570" class="whatsapp-link">
+                    <a href="tel:+17175011481">+1 (717) 501-1481</a>
+                    <a href="https://wa.me/17175011481" class="whatsapp-link">
                         <i class="fab fa-whatsapp"></i> WhatsApp (International)
                     </a>
                 </div>
