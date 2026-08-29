@@ -130,18 +130,21 @@ function typeText(elementId, text, speed, callback) {
     type();
 }
 
-// Scroll to contact form and close modal
+// Scroll to contact form if present; otherwise navigate to the full contact page
 function scrollToForm() {
-    if (window.modalInstance) {
-        window.modalInstance.close();
-    }
     const form = document.getElementById('contactForm');
     if (form) {
+        if (window.modalInstance) {
+            window.modalInstance.close();
+        }
         form.scrollIntoView({ behavior: 'smooth', block: 'center' });
         // Focus on first input
         setTimeout(() => {
             const nameInput = document.getElementById('name');
             if (nameInput) nameInput.focus();
         }, 500);
+    } else {
+        const contactPath = window.location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html';
+        window.location.href = contactPath;
     }
 }
