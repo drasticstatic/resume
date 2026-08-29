@@ -1151,47 +1151,59 @@ function openDonateModal() {
 function openContactModal() {
     // Determine correct path based on current page location
     const contactPath = window.location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html';
+    const onContactPage = window.location.pathname.endsWith('contact.html');
+
+    const greetings = [
+        "🌟 Hello, fellow traveler of the digital mycelium!",
+        "🍄 Welcome to the sacred network...",
+        "✨ The Oracle senses your presence...",
+        "🔮 A connection is forming across the void...",
+        "🌌 The network awakens to your call..."
+    ];
+
+    const prompts = [
+        "What vision calls you to connect?",
+        "What sacred technology shall we build together?",
+        "How may the mycelium serve your journey?",
+        "What questions stir in the depths of your inquiry?",
+        "What creation awaits our collaboration?"
+    ];
+
+    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
 
     const contactContent = `
-        <div class="contact-modal">
-            <h3><span id="contact-modal-typed"></span></h3>
-            <div id="contact-modal-body" style="opacity: 0; transition: opacity 0.5s ease;">
-                <p>I'd love to hear from you. Whether you're interested in sacred technology, precision engineering, or spiritual-technical innovation, let's connect.</p>
+        <div class="contact-modal" style="text-align: center;">
+            <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 20px; min-height: 60px;">
+                <span id="typed-greeting"></span>
+            </div>
+            <div id="prompt-container" style="opacity: 0; transition: opacity 0.5s ease;">
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 25px;" id="typed-prompt"></p>
 
-                <div class="contact-options">
-                    <div class="contact-section">
-                        <h4>Direct Contact</h4>
-                        <div class="contact-links">
-                            <a href="mailto:drasticstatic@gmail.com" class="contact-btn email-btn">
-                                <i class="fas fa-envelope"></i> Email Me
-                            </a>
-                            <a href="tel:+17175011481" class="contact-btn phone-btn">
-                                <i class="fas fa-phone"></i> Call Me
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="contact-section">
-                        <h4>Social & Professional</h4>
-                        <div class="contact-links">
-                            <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="contact-btn linkedin-btn">
-                                <i class="fab fa-linkedin"></i> LinkedIn
-                            </a>
-                            <a href="https://github.com/drasticstatic" target="_blank" class="contact-btn github-btn">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="contact-section">
-                        <h4>Location</h4>
-                        <p style="color: rgba(255,255,255,0.8);"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
-                    </div>
+                <div class="conversation-options" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 20px;">
+                    <button onclick="scrollToForm()" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; cursor: pointer; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fas fa-pencil-alt"></i> Write to Me
+                    </button>
+                    <a href="mailto:drasticstatic@gmail.com" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(255, 0, 128, 0.5); border-radius: 12px; color: #ff0080; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fas fa-envelope"></i> Email Directly
+                    </a>
+                    <a href="tel:+17175011481" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(0, 255, 136, 0.5); border-radius: 12px; color: #00ff88; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fas fa-phone"></i> Call Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/christopherwilsonmrt/" target="_blank" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(0, 119, 181, 0.3), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(0, 119, 181, 0.5); border-radius: 12px; color: #0077b5; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                    </a>
+                    <a href="https://github.com/drasticstatic" target="_blank" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 12px; color: #fff; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
 
-                <div class="contact-cta" style="margin-top: 20px; text-align: center;">
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
+
+                ${!onContactPage ? `
+                <div style="margin-top: 15px;">
                     <a href="${contactPath}" class="btn-primary" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, rgba(255, 0, 128, 0.3), rgba(0, 255, 255, 0.3)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 8px; color: #00ffff; text-decoration: none; transition: all 0.3s ease;">Visit Full Contact Page</a>
-                </div>
+                </div>` : ''}
             </div>
         </div>
     `;
@@ -1203,21 +1215,54 @@ function openContactModal() {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 3);
         }
 
-        // Type out the heading, then reveal the structured content
-        const typedEl = document.getElementById('contact-modal-typed');
-        const bodyEl = document.getElementById('contact-modal-body');
-        const heading = '📬 Start a Conversation';
-        let i = 0;
-        setTimeout(function typeHeading() {
-            if (!typedEl) return;
-            if (i < heading.length) {
-                typedEl.textContent += heading.charAt(i);
-                i++;
-                setTimeout(typeHeading, 35);
-            } else if (bodyEl) {
-                bodyEl.style.opacity = '1';
-            }
-        }, 200);
+        // Typing effect for greeting, then reveal the prompt + options
+        setTimeout(() => {
+            typeText('typed-greeting', randomGreeting, 50, () => {
+                const promptContainer = document.getElementById('prompt-container');
+                if (promptContainer) {
+                    promptContainer.style.opacity = '1';
+                    typeText('typed-prompt', randomPrompt, 40);
+                }
+            });
+        }, 300);
+    }
+}
+
+// Typing effect helper (also defined in contact.js for pages that load both; kept in sync)
+function typeText(elementId, text, speed, callback) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    let i = 0;
+    element.innerHTML = '';
+
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        } else if (callback) {
+            callback();
+        }
+    }
+    type();
+}
+
+// Scroll to the on-page contact form if present (contact.html); otherwise navigate to the full contact page
+function scrollToForm() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        if (window.modalInstance) {
+            window.modalInstance.close();
+        }
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+            const nameInput = document.getElementById('name');
+            if (nameInput) nameInput.focus();
+        }, 500);
+    } else {
+        const contactPath = window.location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html';
+        window.location.href = contactPath;
     }
 }
 
