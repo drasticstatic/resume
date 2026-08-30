@@ -1169,9 +1169,6 @@ function openContactModal() {
         "What creation awaits our collaboration?"
     ];
 
-    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-
     const contactContent = `
         <div class="contact-modal" style="text-align: center;">
             <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 20px; min-height: 60px;">
@@ -1196,6 +1193,9 @@ function openContactModal() {
                     <a href="https://github.com/drasticstatic" target="_blank" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 12px; color: #fff; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
                         <i class="fab fa-github"></i> GitHub
                     </a>
+                    <a href="https://gravatar.com/christopherdrasticstatic" target="_blank" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(255, 165, 0, 0.5); border-radius: 12px; color: #ffa500; text-decoration: none; transition: all 0.3s ease; font-size: 1rem;">
+                        <i class="fas fa-user-circle"></i> Gravatar
+                    </a>
                 </div>
 
                 <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> York, Pennsylvania, USA</p>
@@ -1215,17 +1215,48 @@ function openContactModal() {
             createSporeRain(window.innerWidth / 2, window.innerHeight / 3);
         }
 
-        // Typing effect for greeting, then reveal the prompt + options
+        // Cycle through every greeting/prompt pair (in random order) while the
+        // modal stays open, so a one-time visitor sees the whole suite instead
+        // of just whichever single pair happened to be picked at random.
         setTimeout(() => {
-            typeText('typed-greeting', randomGreeting, 50, () => {
-                const promptContainer = document.getElementById('prompt-container');
-                if (promptContainer) {
-                    promptContainer.style.opacity = '1';
-                    typeText('typed-prompt', randomPrompt, 40);
-                }
-            });
+            cycleConversationPhrases(greetings, prompts, shuffle([...greetings.keys()]));
         }, 300);
     }
+}
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Types greetings[order[0]] + prompts[order[0]], holds, then repeats for the
+// rest of `order`, looping back to the start. Stops on its own once the
+// contact modal's elements are no longer in the DOM (modal closed or its
+// content was replaced by another modal).
+function cycleConversationPhrases(greetings, prompts, order, step = 0) {
+    const greetingEl = document.getElementById('typed-greeting');
+    const promptEl = document.getElementById('typed-prompt');
+    const promptContainer = document.getElementById('prompt-container');
+    if (!greetingEl || !promptEl || !promptContainer) return;
+
+    const i = order[step % order.length];
+    promptContainer.style.opacity = '0';
+    greetingEl.innerHTML = '';
+    promptEl.innerHTML = '';
+
+    typeText('typed-greeting', greetings[i], 50, () => {
+        if (!document.getElementById('typed-greeting')) return;
+        promptContainer.style.opacity = '1';
+        typeText('typed-prompt', prompts[i], 40, () => {
+            if (!document.getElementById('typed-prompt')) return;
+            setTimeout(() => {
+                cycleConversationPhrases(greetings, prompts, order, step + 1);
+            }, 3500);
+        });
+    });
 }
 
 // Typing effect helper (also defined in contact.js for pages that load both; kept in sync)
