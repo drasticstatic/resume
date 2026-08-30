@@ -638,7 +638,7 @@
     50% { transform: translateY(-3px); }
 }
 
-.footer .social-link, .footer .donate-btn, .footer .lost-btn {
+.footer .social-link, .footer .donate-btn, .footer .lost-btn, .footer .conversation-btn {
     animation: breathing 3s ease-in-out infinite;
 }
 
@@ -753,7 +753,7 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.footer .donate-btn, .footer .lost-btn {
+.footer .donate-btn, .footer .lost-btn, .footer .conversation-btn {
     padding: 10px 20px;
     border-radius: 8px;
     border: 2px solid rgba(255, 0, 128, 0.5);
@@ -777,6 +777,11 @@
     color: #8a2be2;
 }
 
+.footer .conversation-btn {
+    border-color: rgba(0, 255, 255, 0.5);
+    color: #00ffff;
+}
+
 .footer .donate-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
@@ -789,6 +794,13 @@
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     border-color: rgba(0, 255, 255, 0.6);
     color: #00ffff;
+}
+
+.footer .conversation-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    border-color: #ff0080;
+    color: #ff0080;
 }
 
 /* Fix modal transition */
