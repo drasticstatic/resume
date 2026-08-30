@@ -1262,7 +1262,7 @@ function scrollToForm() {
         }, 500);
     } else {
         const contactPath = window.location.pathname.includes('/pages/') ? 'contact.html' : 'pages/contact.html';
-        window.location.href = contactPath;
+        window.location.href = `${contactPath}#contactForm`;
     }
 }
 
