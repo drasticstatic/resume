@@ -35,6 +35,10 @@ Agent roles for this repo:
 
 - Always ask Christopher if a new section or page should be added before creating files
 - Commit after every meaningful change — do not leave uncommitted work at session end
+- **Keep `CHANGELOG.md` up to date as you work** — newest entry at the top, dated, one bullet per
+  notable change. Do not wait until session end to write it up. See the summary section at the
+  bottom of `CHANGELOG.md` for where the VSCode-era archive lives and how the current worktree
+  setup came to be.
 
 ---
 
