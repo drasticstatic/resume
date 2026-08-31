@@ -80,6 +80,31 @@ Create `AGENTS.override.md` for temporary task-specific rules. Delete when done.
 
 ---
 
+## AGENT-SYNC Directory Structure
+
+All repos in this ecosystem share this convention for cross-agent coordination:
+
+```
+AGENT-SYNC/
+  AGENT_SYNC.md              ← shared living context (specialist repos: trading, divorce)
+  CROSS_REPO_RULES.md        ← cross-repo coordination rules (hub: trading-assistant)
+  POINTER.md                 ← cross-repo pointer
+  app-data-claude/           ← Claude Code CLI session JSONL backups (Alfred + Fortuna share)
+  app-data-auggie/           ← Auggie app data
+  app-data-kavanah/          ← Kavanah continuity JSONL
+  created-by-<agent>/
+    <AGENT>_CONTEXT.md       ← that agent's persistent context for this repo
+    prompts/YYYY/MM-Mon/     ← outbound prompts that agent writes for other agents
+```
+
+**File convention:** files live in the **creator's** directory, named after the **recipient** —
+e.g. `AGENT-SYNC/created-by-kavanah/ALFRED_PROMPT_YYYYMMDD.md` is Kavanah writing to Alfred. Never
+add content to another agent's own context/prompt file — create your own.
+
+Source: `anthropas-argus-alfred/specs/alfred-workflow.md` (canonical copy, kept in sync manually).
+
+---
+
 ## Canonical References
 
 - `CLAUDE.md` — Agent roles, scope boundaries, and session rules
