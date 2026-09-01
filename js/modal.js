@@ -1233,7 +1233,10 @@ function shuffle(array) {
 }
 
 // Types greetings[order[0]] + prompts[order[0]], holds, then repeats for the
-// rest of `order`, looping back to the start. Stops on its own once the
+// rest of `order`, looping back to the start. Only the title/subtitle text
+// retypes on each pass — the buttons/info area fades in once on the first
+// pass and then stays put, so nothing in the modal disappears or flashes
+// while a visitor might be reaching for a button. Stops on its own once the
 // contact modal's elements are no longer in the DOM (modal closed or its
 // content was replaced by another modal).
 function cycleConversationPhrases(greetings, prompts, order, step = 0) {
@@ -1243,13 +1246,12 @@ function cycleConversationPhrases(greetings, prompts, order, step = 0) {
     if (!greetingEl || !promptEl || !promptContainer) return;
 
     const i = order[step % order.length];
-    promptContainer.style.opacity = '0';
     greetingEl.innerHTML = '';
     promptEl.innerHTML = '';
 
     typeText('typed-greeting', greetings[i], 50, () => {
         if (!document.getElementById('typed-greeting')) return;
-        promptContainer.style.opacity = '1';
+        if (step === 0) promptContainer.style.opacity = '1';
         typeText('typed-prompt', prompts[i], 40, () => {
             if (!document.getElementById('typed-prompt')) return;
             setTimeout(() => {
