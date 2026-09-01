@@ -16,12 +16,16 @@ file.
   `opacity: 0` and back on every phrase change, which could hide a button a visitor was reaching
   for. Now only the title/subtitle text retypes each cycle; the buttons/info area fades in once
   and stays put.
-- Added play/pause/back/forward controls to the conversation-starter modal so visitors can control
-  the phrase carousel instead of only watching it auto-advance. Replaced the old one-shot recursive
-  cycling function with a `window.conversationCycler` object that tracks index/paused state
-  explicitly. This surfaced a latent bug: `contact.js` had its own dead, unreferenced
-  `startConversation()` plus a duplicate `typeText()` that — loading after `modal.js` on
-  `contact.html` — silently shadowed the real one, so removed both as dead code.
+- Gave the conversation-starter modal's phrase carousel a `window.conversationCycler` object with
+  explicit index/paused state, replacing the old one-shot recursive cycling function. This surfaced
+  a latent bug: `contact.js` had its own dead, unreferenced `startConversation()` plus a duplicate
+  `typeText()` that — loading after `modal.js` on `contact.html` — silently shadowed the real one,
+  so removed both as dead code.
+- First pass added a play/pause/back/forward button row, but it sat between the typing title and
+  subtitle and visually split them apart. Replaced it with a single countdown-ring spinner that
+  appears once the subtitle finishes typing, depletes over the 3.5s hold before the next title
+  starts, and click-to-pauses/resumes (ring dims and freezes when paused). Manual back/forward
+  stepping was dropped in favor of the simpler single indicator.
 
 ## 2026-08-30
 
