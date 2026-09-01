@@ -7,6 +7,22 @@ workspace/spec framework, and how the two parallel git worktrees (`dappu/resume`
 this Intent workspace clone) were reconciled back into one, see the summary at the bottom of this
 file.
 
+## 2026-09-01
+
+- The footer redesign (2026-08-30) accidentally stripped the Gravatar icon from the top navbar
+  on every page too, not just the footer it was meant to replace — restored it after the GitHub
+  icon.
+- The conversation-starter modal's phrase carousel was fading its whole button/info area to
+  `opacity: 0` and back on every phrase change, which could hide a button a visitor was reaching
+  for. Now only the title/subtitle text retypes each cycle; the buttons/info area fades in once
+  and stays put.
+- Added play/pause/back/forward controls to the conversation-starter modal so visitors can control
+  the phrase carousel instead of only watching it auto-advance. Replaced the old one-shot recursive
+  cycling function with a `window.conversationCycler` object that tracks index/paused state
+  explicitly. This surfaced a latent bug: `contact.js` had its own dead, unreferenced
+  `startConversation()` plus a duplicate `typeText()` that — loading after `modal.js` on
+  `contact.html` — silently shadowed the real one, so removed both as dead code.
+
 ## 2026-08-30
 
 - Fixed the homepage's "Write to Me" button navigating to the top of the Contact page instead of
