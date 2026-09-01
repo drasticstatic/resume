@@ -1174,19 +1174,15 @@ function openContactModal() {
             <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 10px; min-height: 60px;">
                 <span id="typed-greeting"></span>
             </div>
-            <div class="conv-controls" style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 20px;">
-                <button onclick="conversationCycler.prev()" class="conv-control-btn" aria-label="Previous phrase" title="Previous" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
-                    <i class="fas fa-step-backward"></i>
-                </button>
-                <button onclick="conversationCycler.togglePlay()" id="conv-play-pause" class="conv-control-btn" aria-label="Pause" title="Pause" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
-                    <i class="fas fa-pause"></i>
-                </button>
-                <button onclick="conversationCycler.next()" class="conv-control-btn" aria-label="Next phrase" title="Next" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
-                    <i class="fas fa-step-forward"></i>
-                </button>
-            </div>
             <div id="prompt-container" style="opacity: 0; transition: opacity 0.5s ease;">
-                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 25px;" id="typed-prompt"></p>
+                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 15px;" id="typed-prompt"></p>
+
+                <div id="conv-timer" role="button" tabindex="0" aria-label="Pause" title="Pause" onclick="conversationCycler.togglePlay()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();conversationCycler.togglePlay();}" style="width: 26px; height: 26px; margin: 0 auto 20px; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">
+                    <svg width="26" height="26" viewBox="0 0 26 26">
+                        <circle cx="13" cy="13" r="11" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"></circle>
+                        <circle id="conv-timer-ring" cx="13" cy="13" r="11" fill="none" stroke="#00ffff" stroke-width="2" stroke-linecap="round" stroke-dasharray="69.1" stroke-dashoffset="0" transform="rotate(-90 13 13)"></circle>
+                    </svg>
+                </div>
 
                 <div class="conversation-options" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 20px;">
                     <button onclick="scrollToForm()" class="conv-btn" style="padding: 15px 25px; background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(139, 92, 246, 0.2)); border: 2px solid rgba(0, 255, 255, 0.5); border-radius: 12px; color: #00ffff; cursor: pointer; transition: all 0.3s ease; font-size: 1rem;">
@@ -1248,8 +1244,10 @@ function shuffle(array) {
 // title/subtitle text retypes on each pass — the buttons/info area fades in
 // once on the first pass and then stays put, so nothing in the modal
 // disappears or flashes while a visitor might be reaching for a button.
-// Exposed on window so the modal's play/pause/back/forward buttons (inline
-// onclick handlers) can reach it.
+// A single countdown-ring spinner appears once the subtitle finishes typing,
+// depletes over the 3.5s hold before the next title starts, and doubles as
+// a click-to-pause/resume control. Exposed on window so the spinner's inline
+// onclick handler can reach it.
 window.conversationCycler = {
     greetings: [],
     prompts: [],
@@ -1259,6 +1257,8 @@ window.conversationCycler = {
     readyForNext: false,
     everShown: false,
     holdTimeout: null,
+    holdDuration: 3500,
+    ringCircumference: 69.1,
 
     init(greetings, prompts) {
         clearTimeout(this.holdTimeout);
@@ -1269,7 +1269,6 @@ window.conversationCycler = {
         this.paused = false;
         this.readyForNext = false;
         this.everShown = false;
-        this.updateIcon();
         this.render();
     },
 
@@ -1278,6 +1277,8 @@ window.conversationCycler = {
         const promptEl = document.getElementById('typed-prompt');
         const promptContainer = document.getElementById('prompt-container');
         if (!greetingEl || !promptEl || !promptContainer) return;
+
+        this.hideTimer();
 
         const i = this.order[this.index];
         typeText('typed-greeting', this.greetings[i], 50, () => {
@@ -1296,44 +1297,68 @@ window.conversationCycler = {
 
     scheduleAdvance() {
         clearTimeout(this.holdTimeout);
-        if (this.paused) return;
+        if (this.paused) {
+            this.showTimer(true);
+            return;
+        }
+        this.showTimer(false);
+        this.startTimerRing();
         this.holdTimeout = setTimeout(() => {
             this.readyForNext = false;
             this.index = (this.index + 1) % this.order.length;
             this.render();
-        }, 3500);
+        }, this.holdDuration);
     },
 
     togglePlay() {
         this.paused = !this.paused;
-        this.updateIcon();
         if (this.paused) {
             clearTimeout(this.holdTimeout);
+            if (this.readyForNext) {
+                this.freezeTimerRing();
+                this.showTimer(true);
+            }
         } else if (this.readyForNext) {
             this.scheduleAdvance();
         }
     },
 
-    prev() {
-        clearTimeout(this.holdTimeout);
-        this.readyForNext = false;
-        this.index = (this.index - 1 + this.order.length) % this.order.length;
-        this.render();
+    showTimer(paused) {
+        const wrap = document.getElementById('conv-timer');
+        const ring = document.getElementById('conv-timer-ring');
+        if (!wrap) return;
+        wrap.style.opacity = '1';
+        wrap.setAttribute('aria-label', paused ? 'Resume' : 'Pause');
+        wrap.setAttribute('title', paused ? 'Resume' : 'Pause');
+        if (ring) ring.style.stroke = paused ? 'rgba(255,255,255,0.4)' : '#00ffff';
     },
 
-    next() {
-        clearTimeout(this.holdTimeout);
-        this.readyForNext = false;
-        this.index = (this.index + 1) % this.order.length;
-        this.render();
+    hideTimer() {
+        const wrap = document.getElementById('conv-timer');
+        const ring = document.getElementById('conv-timer-ring');
+        if (wrap) wrap.style.opacity = '0';
+        if (ring) {
+            ring.style.transition = 'none';
+            ring.style.strokeDashoffset = '0';
+        }
     },
 
-    updateIcon() {
-        const btn = document.getElementById('conv-play-pause');
-        if (!btn) return;
-        btn.innerHTML = this.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
-        btn.setAttribute('aria-label', this.paused ? 'Play' : 'Pause');
-        btn.setAttribute('title', this.paused ? 'Play' : 'Pause');
+    startTimerRing() {
+        const ring = document.getElementById('conv-timer-ring');
+        if (!ring) return;
+        ring.style.transition = 'none';
+        ring.style.strokeDashoffset = '0';
+        void ring.getBoundingClientRect(); // force reflow so the reset above isn't animated
+        ring.style.transition = `stroke-dashoffset ${this.holdDuration}ms linear`;
+        ring.style.strokeDashoffset = String(this.ringCircumference);
+    },
+
+    freezeTimerRing() {
+        const ring = document.getElementById('conv-timer-ring');
+        if (!ring) return;
+        const current = getComputedStyle(ring).strokeDashoffset;
+        ring.style.transition = 'none';
+        ring.style.strokeDashoffset = current;
     }
 };
 
