@@ -1171,17 +1171,28 @@ function openContactModal() {
 
     const contactContent = `
         <div class="contact-modal" style="text-align: center;">
-            <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 10px; min-height: 60px;">
+            <div class="typing-container rainbow-text" style="font-size: 1.5rem; margin-bottom: 10px; min-height: 60px; animation-duration: 3s;">
                 <span id="typed-greeting"></span>
             </div>
+            <div id="conv-timer" role="button" tabindex="0" aria-label="Pause" title="Pause" onclick="conversationCycler.togglePlay()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();conversationCycler.togglePlay();}" style="width: 26px; height: 26px; margin: 0 auto 14px; cursor: pointer; opacity: 0; transition: opacity 0.3s ease; animation: rotate-hue 2.5s linear infinite;">
+                <svg width="26" height="26" viewBox="0 0 26 26">
+                    <circle cx="13" cy="13" r="11" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"></circle>
+                    <circle id="conv-timer-ring" cx="13" cy="13" r="11" fill="none" stroke="#00ffff" stroke-width="2" stroke-linecap="round" stroke-dasharray="69.1" stroke-dashoffset="0" transform="rotate(-90 13 13)"></circle>
+                </svg>
+            </div>
             <div id="prompt-container" style="opacity: 0; transition: opacity 0.5s ease;">
-                <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 15px;" id="typed-prompt"></p>
+                <p class="rainbow-text" style="font-size: 1.1rem; margin-bottom: 15px; animation-duration: 4s;" id="typed-prompt"></p>
 
-                <div id="conv-timer" role="button" tabindex="0" aria-label="Pause" title="Pause" onclick="conversationCycler.togglePlay()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();conversationCycler.togglePlay();}" style="width: 26px; height: 26px; margin: 0 auto 20px; cursor: pointer; opacity: 0; transition: opacity 0.3s ease;">
-                    <svg width="26" height="26" viewBox="0 0 26 26">
-                        <circle cx="13" cy="13" r="11" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="2"></circle>
-                        <circle id="conv-timer-ring" cx="13" cy="13" r="11" fill="none" stroke="#00ffff" stroke-width="2" stroke-linecap="round" stroke-dasharray="69.1" stroke-dashoffset="0" transform="rotate(-90 13 13)"></circle>
-                    </svg>
+                <div class="conv-transport" style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 20px;">
+                    <button onclick="conversationCycler.prev()" class="conv-control-btn" aria-label="Previous phrase" title="Previous" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: transform 0.2s ease; animation: rotate-hue 2.5s linear infinite; animation-delay: 0s;">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button onclick="conversationCycler.togglePlay()" id="conv-play-pause" class="conv-control-btn" aria-label="Pause" title="Pause" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: transform 0.2s ease; animation: rotate-hue 2.5s linear infinite; animation-delay: 0.4s;">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button onclick="conversationCycler.next()" class="conv-control-btn" aria-label="Next phrase" title="Next" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: transform 0.2s ease; animation: rotate-hue 2.5s linear infinite; animation-delay: 0.8s;">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
                 </div>
 
                 <div class="conversation-options" style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-bottom: 20px;">
@@ -1244,10 +1255,11 @@ function shuffle(array) {
 // title/subtitle text retypes on each pass — the buttons/info area fades in
 // once on the first pass and then stays put, so nothing in the modal
 // disappears or flashes while a visitor might be reaching for a button.
-// A single countdown-ring spinner appears once the subtitle finishes typing,
-// depletes over the 3.5s hold before the next title starts, and doubles as
-// a click-to-pause/resume control. Exposed on window so the spinner's inline
-// onclick handler can reach it.
+// A countdown-ring spinner between the title and subtitle shows time left
+// before the next phrase, and a back/pause-play/forward transport row below
+// the subtitle gives explicit manual control. Both drive the same paused
+// state and stay in sync. Exposed on window so their inline onclick handlers
+// can reach it.
 window.conversationCycler = {
     greetings: [],
     prompts: [],
@@ -1269,6 +1281,7 @@ window.conversationCycler = {
         this.paused = false;
         this.readyForNext = false;
         this.everShown = false;
+        this.updateControlIcon();
         this.render();
     },
 
@@ -1312,6 +1325,7 @@ window.conversationCycler = {
 
     togglePlay() {
         this.paused = !this.paused;
+        this.updateControlIcon();
         if (this.paused) {
             clearTimeout(this.holdTimeout);
             if (this.readyForNext) {
@@ -1321,6 +1335,28 @@ window.conversationCycler = {
         } else if (this.readyForNext) {
             this.scheduleAdvance();
         }
+    },
+
+    prev() {
+        clearTimeout(this.holdTimeout);
+        this.readyForNext = false;
+        this.index = (this.index - 1 + this.order.length) % this.order.length;
+        this.render();
+    },
+
+    next() {
+        clearTimeout(this.holdTimeout);
+        this.readyForNext = false;
+        this.index = (this.index + 1) % this.order.length;
+        this.render();
+    },
+
+    updateControlIcon() {
+        const btn = document.getElementById('conv-play-pause');
+        if (!btn) return;
+        btn.innerHTML = this.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+        btn.setAttribute('aria-label', this.paused ? 'Play' : 'Pause');
+        btn.setAttribute('title', this.paused ? 'Play' : 'Pause');
     },
 
     showTimer(paused) {
