@@ -9,8 +9,10 @@ This repo is **resume** — Christopher Wilson's personal portfolio site, live a
 
 Agent roles for this repo:
 - **Auggie (Augment CLI):** Primary builder — leads HTML/CSS/JS updates, design, and deployment
-- **Kavanah (Augment Intent):** Coordinator/facilitator — keeps all agents in alignment
-- **Fortuna (Claude Code CLI):** Awareness-level only — looped in when portfolio content intersects trading or broader life context
+- **Kavanah (Augment Intent):** Coordinator/facilitator — keeps all agents in alignment. Identity is bound to the Intent workspace UI surface, not the model underneath.
+- **Alfred (Claude Code CLI, native terminal):** Stands in for Auggie/Kavanah while Augment is on hiatus, native-terminal `dappu/`-worktree lane — see `~/code/anthropas-argus-alfred/sandbox/AGENT_IDENTITY_REFERENCE.md` for the full naming rationale.
+- **Mystarch (Μυσταρχης — "Ruler of the Mysteries"):** Augment Intent's app-level Chief of Staff — sits above individual workspaces.
+- **Fortuna (Claude Code CLI):** Belongs to the `trading-assistant` repo/persona; awareness-level only here, looped in when portfolio content intersects trading or broader life context.
 
 ---
 
@@ -64,3 +66,5 @@ When skills, specs, or task files exist for a topic — follow the logic there, 
 - **Tasks:** `PENDING-TASKS.md` or `tasks.md` if present — active/completed task tracking
 - **Agent handoffs:** `AGENT-SYNC/` (hub: `~/code/trading-assistant/`) — see `AGENT_SYNC.md` for current state
 - **Memory:** `~/.claude/projects/.../memory/MEMORY.md` — auto-loaded; detail in topic files
+- **Intent workspace ↔ local worktree map:** `~/code/anthropas-argus-alfred/sandbox/INTENT_WORKTREE_LEGEND.md` — maps Intent's randomly-slugged workspace dirs to actual repo paths, branches, and spec-note locations across all active workspaces
+- **Agent identity map (Kavanah/Alfred/Fortuna/Mystarch, full epithets):** `~/code/anthropas-argus-alfred/sandbox/AGENT_IDENTITY_REFERENCE.md`
