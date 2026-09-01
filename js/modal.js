@@ -1171,8 +1171,19 @@ function openContactModal() {
 
     const contactContent = `
         <div class="contact-modal" style="text-align: center;">
-            <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 20px; min-height: 60px;">
+            <div class="typing-container" style="font-size: 1.5rem; color: #00ffff; margin-bottom: 10px; min-height: 60px;">
                 <span id="typed-greeting"></span>
+            </div>
+            <div class="conv-controls" style="display: flex; justify-content: center; align-items: center; gap: 14px; margin-bottom: 20px;">
+                <button onclick="conversationCycler.prev()" class="conv-control-btn" aria-label="Previous phrase" title="Previous" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
+                    <i class="fas fa-step-backward"></i>
+                </button>
+                <button onclick="conversationCycler.togglePlay()" id="conv-play-pause" class="conv-control-btn" aria-label="Pause" title="Pause" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button onclick="conversationCycler.next()" class="conv-control-btn" aria-label="Next phrase" title="Next" style="width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,255,255,0.4); background: rgba(0,255,255,0.08); color: #00ffff; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: all 0.2s ease;">
+                    <i class="fas fa-step-forward"></i>
+                </button>
             </div>
             <div id="prompt-container" style="opacity: 0; transition: opacity 0.5s ease;">
                 <p style="font-size: 1.1rem; color: rgba(255,255,255,0.9); margin-bottom: 25px;" id="typed-prompt"></p>
@@ -1217,9 +1228,10 @@ function openContactModal() {
 
         // Cycle through every greeting/prompt pair (in random order) while the
         // modal stays open, so a one-time visitor sees the whole suite instead
-        // of just whichever single pair happened to be picked at random.
+        // of just whichever single pair happened to be picked at random. The
+        // play/pause/back/forward controls let a visitor take the wheel.
         setTimeout(() => {
-            cycleConversationPhrases(greetings, prompts, shuffle([...greetings.keys()]));
+            conversationCycler.init(greetings, prompts);
         }, 300);
     }
 }
@@ -1232,44 +1244,113 @@ function shuffle(array) {
     return array;
 }
 
-// Types greetings[order[0]] + prompts[order[0]], holds, then repeats for the
-// rest of `order`, looping back to the start. Only the title/subtitle text
-// retypes on each pass — the buttons/info area fades in once on the first
-// pass and then stays put, so nothing in the modal disappears or flashes
-// while a visitor might be reaching for a button. Stops on its own once the
-// contact modal's elements are no longer in the DOM (modal closed or its
-// content was replaced by another modal).
-function cycleConversationPhrases(greetings, prompts, order, step = 0) {
-    const greetingEl = document.getElementById('typed-greeting');
-    const promptEl = document.getElementById('typed-prompt');
-    const promptContainer = document.getElementById('prompt-container');
-    if (!greetingEl || !promptEl || !promptContainer) return;
+// Drives the greeting/prompt typing carousel in the contact modal. Only the
+// title/subtitle text retypes on each pass — the buttons/info area fades in
+// once on the first pass and then stays put, so nothing in the modal
+// disappears or flashes while a visitor might be reaching for a button.
+// Exposed on window so the modal's play/pause/back/forward buttons (inline
+// onclick handlers) can reach it.
+window.conversationCycler = {
+    greetings: [],
+    prompts: [],
+    order: [],
+    index: 0,
+    paused: false,
+    readyForNext: false,
+    everShown: false,
+    holdTimeout: null,
 
-    const i = order[step % order.length];
-    greetingEl.innerHTML = '';
-    promptEl.innerHTML = '';
+    init(greetings, prompts) {
+        clearTimeout(this.holdTimeout);
+        this.greetings = greetings;
+        this.prompts = prompts;
+        this.order = shuffle([...greetings.keys()]);
+        this.index = 0;
+        this.paused = false;
+        this.readyForNext = false;
+        this.everShown = false;
+        this.updateIcon();
+        this.render();
+    },
 
-    typeText('typed-greeting', greetings[i], 50, () => {
-        if (!document.getElementById('typed-greeting')) return;
-        if (step === 0) promptContainer.style.opacity = '1';
-        typeText('typed-prompt', prompts[i], 40, () => {
-            if (!document.getElementById('typed-prompt')) return;
-            setTimeout(() => {
-                cycleConversationPhrases(greetings, prompts, order, step + 1);
-            }, 3500);
+    render() {
+        const greetingEl = document.getElementById('typed-greeting');
+        const promptEl = document.getElementById('typed-prompt');
+        const promptContainer = document.getElementById('prompt-container');
+        if (!greetingEl || !promptEl || !promptContainer) return;
+
+        const i = this.order[this.index];
+        typeText('typed-greeting', this.greetings[i], 50, () => {
+            if (!document.getElementById('typed-greeting')) return;
+            if (!this.everShown) {
+                promptContainer.style.opacity = '1';
+                this.everShown = true;
+            }
+            typeText('typed-prompt', this.prompts[i], 40, () => {
+                if (!document.getElementById('typed-prompt')) return;
+                this.readyForNext = true;
+                this.scheduleAdvance();
+            });
         });
-    });
-}
+    },
 
-// Typing effect helper (also defined in contact.js for pages that load both; kept in sync)
+    scheduleAdvance() {
+        clearTimeout(this.holdTimeout);
+        if (this.paused) return;
+        this.holdTimeout = setTimeout(() => {
+            this.readyForNext = false;
+            this.index = (this.index + 1) % this.order.length;
+            this.render();
+        }, 3500);
+    },
+
+    togglePlay() {
+        this.paused = !this.paused;
+        this.updateIcon();
+        if (this.paused) {
+            clearTimeout(this.holdTimeout);
+        } else if (this.readyForNext) {
+            this.scheduleAdvance();
+        }
+    },
+
+    prev() {
+        clearTimeout(this.holdTimeout);
+        this.readyForNext = false;
+        this.index = (this.index - 1 + this.order.length) % this.order.length;
+        this.render();
+    },
+
+    next() {
+        clearTimeout(this.holdTimeout);
+        this.readyForNext = false;
+        this.index = (this.index + 1) % this.order.length;
+        this.render();
+    },
+
+    updateIcon() {
+        const btn = document.getElementById('conv-play-pause');
+        if (!btn) return;
+        btn.innerHTML = this.paused ? '<i class="fas fa-play"></i>' : '<i class="fas fa-pause"></i>';
+        btn.setAttribute('aria-label', this.paused ? 'Play' : 'Pause');
+        btn.setAttribute('title', this.paused ? 'Play' : 'Pause');
+    }
+};
+
+// Typing effect helper (also defined in contact.js for pages that load both; kept in sync).
+// Each element tracks its own call token so a newer typeText() call on the same
+// elementId (e.g. clicking back/forward mid-animation) cancels any in-flight one
+// instead of both writing to the element at once.
 function typeText(elementId, text, speed, callback) {
     const element = document.getElementById(elementId);
     if (!element) return;
 
+    const token = (element._typeToken = (element._typeToken || 0) + 1);
     let i = 0;
     element.innerHTML = '';
 
     function type() {
+        if (element._typeToken !== token) return;
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
             i++;
