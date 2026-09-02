@@ -68,3 +68,9 @@ When skills, specs, or task files exist for a topic — follow the logic there, 
 - **Memory:** `~/.claude/projects/.../memory/MEMORY.md` — auto-loaded; detail in topic files
 - **Intent workspace ↔ local worktree map:** `~/code/anthropas-argus-alfred/sandbox/INTENT_WORKTREE_LEGEND.md` — maps Intent's randomly-slugged workspace dirs to actual repo paths, branches, and spec-note locations across all active workspaces
 - **Agent identity map (Kavanah/Alfred/Fortuna/Mystarch, full epithets):** `~/code/anthropas-argus-alfred/sandbox/AGENT_IDENTITY_REFERENCE.md`
+
+---
+
+## Commit Convention
+
+Footer: `Co-Authored-By: Alfred · Claude · [model] <noreply@anthropic.com>`
