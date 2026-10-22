@@ -3071,8 +3071,20 @@ button[onclick*="connectWallet"] {
 .steward-grid {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
+}
+
+@media (min-width: 640px) {
+    .steward-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    .steward-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .steward-card {
@@ -3137,7 +3149,7 @@ button[onclick*="connectWallet"] {
 }
 
 .steward-link {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-width: max-content;
     height: 44px;
     padding: 0 14px;
@@ -3204,5 +3216,9 @@ button[onclick*="connectWallet"] {
 
     .steward-desc {
         font-size: 15px;
+    }
+
+    .steward-link {
+        padding: 0 12px;
     }
 }
