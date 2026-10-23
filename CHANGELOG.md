@@ -7,7 +7,20 @@ workspace/spec framework, and how the two parallel git worktrees (`dappu/resume`
 this Intent workspace clone) were reconciled back into one, see the summary at the bottom of this
 file.
 
-## 2026-09-01
+## 2026-10-22
+
+- Added an "Organizations I steward on GitHub" section to the homepage, between the works cards
+  and Experience. It has one card each for Psychedelics In Recovery™ – PIR®, The Holy Earth
+  Foundation, Octagon Religious-Research Group (ORG), Psanctuary Church, Psanctuary, and the
+  Psychedelic Policy Reform initiative. Each card shows the org's own share image (its live
+  `og:image`, lazy-loaded), a one-line description quoted from the org's public profile, and links
+  to its portal, GitHub org and AstroLog changelog. A header link points to the shared arrival
+  kit in `my-template`.
+- The new cards deliberately skip the global `.card` class, because its breathing animation
+  hue-rotates and would shift each org's brand colors. The cards sit in one column on phones, two
+  from 640px and three from 1280px.
+- Reserved a testimonials slot under the cards. It shows only a quiet "coming soon" line, and no
+  quotes will be published without each collaborator's permission.
 
 - The footer redesign (2026-08-30) accidentally stripped the Gravatar icon from the top navbar
   on every page too, not just the footer it was meant to replace — restored it after the GitHub
