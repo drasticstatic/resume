@@ -200,6 +200,38 @@ function openGlossary(term) {
         'database': {
             title: 'Database Design',
             content: 'The organization and structure of data storage systems. Includes relational databases (SQL) and NoSQL solutions for different use cases.'
+        },
+        'software-factory': {
+            title: 'AI Software Factory',
+            content: 'A way of building where several AI agents (Claude Code, Codex, Cosmos) work from one shared rulebook (AGENTS.md), hand work to each other in writing, and ship through the same tested lanes a human team would: rehearse, review, promote.'
+        },
+        'sdlc': {
+            title: 'SDLC Integration Design',
+            content: 'Designing the whole software development life cycle as one connected system: idea, proposal, build, rehearsal site, review, release, and the feedback that starts the next turn.'
+        },
+        'cicd': {
+            title: 'CI/CD Lanes',
+            content: 'Continuous integration and delivery with GitHub Actions: every change builds and is checked on a rehearsal copy first, then a one-click promote publishes it live. Secret scanning and dependency updates run in the same lanes.'
+        },
+        'context-engineering': {
+            title: 'Cross-System Context',
+            content: 'Keeping many repositories, organizations and AI sessions in step: code maps (Graphify), written handoffs between sessions, trackers and site-health pages, so any helper can pick up the work without starting over.'
+        },
+        'supply-chain': {
+            title: 'Supply-Chain Security',
+            content: 'Keeping dependencies current and safe: grouped Dependabot updates tested against a baseline build, merged one at a time with a live-site check after each, and GitGuardian scanning every commit for secrets.'
+        },
+        'a11y': {
+            title: 'Accessibility & UX Feedback Loops',
+            content: 'Measuring what visitors actually experience: WCAG contrast checks and axe audits at zero failures, keyboard and reduced-motion passes, frame-time budgets for motion, and five-language welcomes.'
+        },
+        'yield-farming': {
+            title: 'Yield Farming',
+            content: 'Providing liquidity to DeFi protocols and automated market makers in return for fees and rewards, with attention to impermanent loss, smart-contract risk and position management.'
+        },
+        'web3-onboarding': {
+            title: 'Gentle Web3 Onboarding',
+            content: 'Letting newcomers try a wallet safely: a practice wallet that signs a message with a key that exists only in memory, and a practice gift that walks through giving with no wallet, money or address involved.'
         }
     };
     

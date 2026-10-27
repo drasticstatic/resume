@@ -7,6 +7,20 @@ workspace/spec framework, and how the two parallel git worktrees (`dappu/resume`
 this Intent workspace clone) were reconciled back into one, see the summary at the bottom of this
 file.
 
+## 2026-10-26
+
+- Added an **AI Software Factory & SDLC Design** card (2025 to present) to Experience: the multi-agent
+  fleet working from one shared `AGENTS.md` across five GitHub organizations, CI/CD lanes with
+  rehearsal sites and one-click promotes, Dependabot updates tested and merged one at a time with a
+  live-site check, cross-system context (code maps, written handoffs, proposals as PDFs), UX feedback
+  loops (WCAG and axe at zero failures, five-language welcomes, frame-time budgets), and gentle web3
+  onboarding (a practice wallet and practice gift).
+- New **Software Factory & DevOps** skills group, plus **Yield Farming** and **Gentle Web3 Onboarding**
+  under Web3 & Blockchain. Each opens a glossary note; the full glossary page gains the same seven terms
+  under a new "Software Factory" filter (each card has an `id`, so the modal's "View Full Glossary"
+  link lands on it).
+- Checked in headless Chromium at 1280px and 390px: the card expands, the notes open, no page errors.
+
 ## 2026-10-22
 
 - Added an "Organizations I steward on GitHub" section to the homepage, between the works cards

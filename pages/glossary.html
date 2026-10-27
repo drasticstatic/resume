@@ -254,10 +254,31 @@
                 <button class="category-btn" data-category="precision" style="padding: 8px 16px; background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 20px; color: #ffd700; cursor: pointer; transition: all 0.3s ease;">Precision</button>
                 <button class="category-btn" data-category="spiritual" style="padding: 8px 16px; background: rgba(138, 43, 226, 0.1); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 20px; color: #8a2be2; cursor: pointer; transition: all 0.3s ease;">Spiritual</button>
                 <button class="category-btn" data-category="ethereal" style="padding: 8px 16px; background: rgba(0, 255, 128, 0.1); border: 1px solid rgba(0, 255, 128, 0.3); border-radius: 20px; color: #00ff80; cursor: pointer; transition: all 0.3s ease;">Ethereal Offering</button>
+                <button class="category-btn" data-category="factory" style="padding: 8px 16px; background: rgba(0, 170, 255, 0.1); border: 1px solid rgba(0, 170, 255, 0.35); border-radius: 20px; color: #4cc3ff; cursor: pointer; transition: all 0.3s ease;">Software Factory</button>
             </div>
 
             <div class="glossary-grid" id="glossary-terms">
                 <!-- A -->
+                <div class="glossary-card" data-category="factory" data-term="a11y" id="a11y">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">A</span> Accessibility &amp; UX Feedback Loops</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Measuring what visitors actually experience: WCAG contrast checks and axe audits at zero failures, keyboard and reduced-motion passes, frame-time budgets for motion, and welcomes in five languages.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="factory" data-term="software-factory" id="software-factory">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">A</span> AI Software Factory</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>A way of building where several AI agents (Claude Code, Codex, Cosmos) work from one shared rulebook (<code>AGENTS.md</code>), hand work to each other in writing, and ship through the same tested lanes a human team would: rehearse, review, promote.</p>
+                    </div>
+                </div>
+
                 <div class="glossary-card" data-category="web3" data-term="aleo">
                     <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
                         <h3><span class="term-letter">A</span> Aleo</h3>
@@ -320,6 +341,16 @@
                     </div>
                 </div>
 
+                <div class="glossary-card" data-category="factory" data-term="cicd" id="cicd">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> CI/CD Lanes</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Continuous integration and delivery with GitHub Actions: every change builds and is checked on a rehearsal copy first, then a one-click promote publishes it live. Secret scanning and dependency updates run in the same lanes.</p>
+                    </div>
+                </div>
+
                 <div class="glossary-card" data-category="precision" data-term="cnc-lathe">
                     <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
                         <h3><span class="term-letter">C</span> CNC Lathe</h3>
@@ -337,6 +368,16 @@
                     </div>
                     <div class="glossary-card-content">
                         <p>Protocol used by blockchain networks to agree on the validity of transactions. Common types include Proof of Work and Proof of Stake.</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="factory" data-term="context-engineering" id="context-engineering">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">C</span> Cross-System Context</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Keeping many repositories, organizations and AI sessions in step: code maps (Graphify), written handoffs between sessions, trackers and site-health pages, so any helper can pick up the work without starting over.</p>
                     </div>
                 </div>
 
@@ -460,6 +501,16 @@
                     </div>
                     <div class="glossary-card-content">
                         <p>The <strong>transaction fee</strong> paid to blockchain validators. On Ethereum, gas fees vary based on network congestion ($1-$100).</p>
+                    </div>
+                </div>
+
+                <div class="glossary-card" data-category="factory" data-term="web3-onboarding" id="web3-onboarding">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">G</span> Gentle Web3 Onboarding</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Letting newcomers try a wallet safely: a practice wallet that signs a message with a key that exists only in memory, and a practice gift that walks through giving with no wallet, money or address involved.</p>
                     </div>
                 </div>
 
@@ -691,6 +742,16 @@
                     </div>
                 </div>
 
+                <div class="glossary-card" data-category="factory" data-term="sdlc" id="sdlc">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> SDLC Integration Design</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Designing the whole software development life cycle as one connected system: idea, proposal, build, rehearsal site, review, release, and the feedback that starts the next turn.</p>
+                    </div>
+                </div>
+
                 <div class="glossary-card" data-category="web3" data-term="smart-contracts">
                     <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
                         <h3><span class="term-letter">S</span> Smart Contracts</h3>
@@ -742,6 +803,16 @@
                 </div>
 
                 <!-- T -->
+                <div class="glossary-card" data-category="factory" data-term="supply-chain" id="supply-chain">
+                    <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
+                        <h3><span class="term-letter">S</span> Supply-Chain Security</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="glossary-card-content">
+                        <p>Keeping dependencies current and safe: grouped Dependabot updates tested against a baseline build, merged one at a time with a live-site check after each, and GitGuardian scanning every commit for secrets.</p>
+                    </div>
+                </div>
+
                 <div class="glossary-card" data-category="web3" data-term="tokenomics">
                     <div class="glossary-card-header" onclick="toggleGlossaryCard(this)">
                         <h3><span class="term-letter">T</span> Tokenomics</h3>
