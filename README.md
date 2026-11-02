@@ -1,11 +1,26 @@
+<!-- readme-standard: 2026-11-02 -->
+<div align="center">
+
+<img src="assets/banner.svg" width="100%" alt="Christopher Wilson's portfolio: a five-sided form, one side for each thread the site explores.">
+
 # Christopher Wilson - Portfolio Website
 
-> *"Where code becomes prayer and mycelium becomes architecture."*
+*"Where code becomes prayer and mycelium becomes architecture."*
 
+![Status](https://img.shields.io/badge/Status-live-d9a441?style=flat-square)
+![For](https://img.shields.io/badge/For-Collaborators_and_anyone_curious-64748b?style=flat-square)
 [![Pages](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment)
 [![Status](https://img.shields.io/badge/Status-%F0%9F%94%A5%20Live-brightgreen)](https://drasticstatic.github.io/)
 
----
+<img src="assets/icons/map-pin.svg" width="16" height="16" alt=""> **You are here:** drasticstatic lab › `resume` · public · `main` is the working branch
+
+</div>
+
+## <img src="assets/icons/compass.svg" width="24" height="24" alt=""> TL;DR
+
+1. <img src="assets/icons/sprout.svg" width="16" height="16" alt=""> **What this is.** The source of Christopher Wilson's portfolio website: plain HTML, CSS and JavaScript on GitHub Pages.
+2. <img src="assets/icons/users-round.svg" width="16" height="16" alt=""> **Who it is for.** Anyone who wants to know his work, or to work with him.
+3. <img src="assets/icons/footprints.svg" width="16" height="16" alt=""> **Do this first.** [Open the site](https://drasticstatic.github.io/resume/).
 
 ## 🌌 Welcome
 
@@ -181,3 +196,9 @@ The design balances professional presentation with the unique spiritual and tech
 <p align="center">
   <strong>Minister-Technologist • Machinist-Mystic • Builder of Sacred-Decentralized Systems</strong>
 </p>
+
+## <img src="assets/icons/git-pull-request.svg" width="24" height="24" alt=""> Suggest a change
+
+Noticed something? Open an [issue](../../issues) or a pull request against `main`; Christopher reads them and a person with the role merges. Not on GitHub? Reach Christopher through [his contact page](https://drasticstatic.github.io/resume/pages/contact.html).
+
+<sub>The front door follows the living [README standard](https://github.com/drasticstatic/my-template/blob/main/README-STANDARD.md). Copy it, improve it.</sub>
