@@ -7,10 +7,10 @@
 
 *"Where code becomes prayer and mycelium becomes architecture."*
 
-![Status](https://img.shields.io/badge/Status-live-d9a441?style=flat-square)
+![Status](https://img.shields.io/badge/Status-live-800020?style=flat-square)
 ![For](https://img.shields.io/badge/For-Collaborators_and_anyone_curious-64748b?style=flat-square)
 [![Pages](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/drasticstatic/resume/actions/workflows/pages/pages-build-deployment)
-[![Status](https://img.shields.io/badge/Status-%F0%9F%94%A5%20Live-brightgreen)](https://drasticstatic.github.io/)
+[![Status](https://img.shields.io/badge/Status-%F0%9F%94%A5%20Live-800020)](https://drasticstatic.github.io/)
 
 <img src="assets/icons/map-pin.svg" width="16" height="16" alt=""> **You are here:** drasticstatic lab › `resume` · public · `main` is the working branch
 
